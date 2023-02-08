@@ -152,45 +152,45 @@
 
                     <br>
 
-                    <div class="col-sm-2">
-                        <div class="well well-lg" style="background-color: #00f7ff;">
-                            <i class="fa fa-users white fa-lg"></i> &nbsp;
-                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Total Person</span>
-                        </div>
-                    </div>
+{{--                    <div class="col-sm-2">--}}
+{{--                        <div class="well well-lg" style="background-color: #00f7ff;">--}}
+{{--                            <i class="fa fa-users white fa-lg"></i> &nbsp;--}}
+{{--                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Total Person</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-sm-2">
-                        <div class="well well-lg" style="background-color: #ffaa00;">
-                            <i class="fa fa-user-md white fa-lg""></i> &nbsp;
-                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Total Course</span>
-                        </div>
-                    </div>
+{{--                    <div class="col-sm-2">--}}
+{{--                        <div class="well well-lg" style="background-color: #ffaa00;">--}}
+{{--                            <i class="fa fa-user-md white fa-lg""></i> &nbsp;--}}
+{{--                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Total Course</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-sm-2">
-                        <div class="well well-lg" style="background-color: #a900ff;">
-                            <i class="fa fa-list white fa-lg""></i> &nbsp;
-                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Total Departments</span>
-                        </div>
-                    </div>
+{{--                    <div class="col-sm-2">--}}
+{{--                        <div class="well well-lg" style="background-color: #a900ff;">--}}
+{{--                            <i class="fa fa-list white fa-lg""></i> &nbsp;--}}
+{{--                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Total Departments</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-sm-2">
-                        <div class="well well-lg" style="background-color: #ff00f2;">
-                            <i class="fa fa-dollar white fa-lg""></i> &nbsp;
-                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Rules</span>
-                        </div>
-                    </div>
+{{--                    <div class="col-sm-2">--}}
+{{--                        <div class="well well-lg" style="background-color: #ff00f2;">--}}
+{{--                            <i class="fa fa-dollar white fa-lg"></i> &nbsp;--}}
+{{--                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Rules</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-sm-2">
-                        <div class="well well-lg" style="background-color: #94ff00;">
-                            <i class="fa fa-exchange white fa-lg"></i> &nbsp;
-                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Additional</span>
-                        </div>
-                    </div>
+{{--                    <div class="col-sm-2">--}}
+{{--                        <div class="well well-lg" style="background-color: #94ff00;">--}}
+{{--                            <i class="fa fa-exchange white fa-lg"></i> &nbsp;--}}
+{{--                            <span class="text-center" style="font-weight: bold; color: #ffffff;">Additional</span>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                 </div>
 
                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                <br><
+                <br><br><br><br><br><br><br>
 
 
             </div>

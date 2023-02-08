@@ -281,7 +281,7 @@
                         <i class="ace-icon fa fa-user"></i>
                         <span class="user-info">
 									<small>Welcome &nbsp; <i class="ace-icon fa fa-caret-down"></i></small>
-                                    Mr. X
+                                    {{ session('AdminLoginSession') }}
 								</span>
                     </a>
 

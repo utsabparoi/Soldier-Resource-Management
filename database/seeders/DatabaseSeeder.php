@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             [
                 EmployeeSeeder::class,
                 CouseSeeder::class,
+                AdminSeeder::class,
             ]
         );
     }
