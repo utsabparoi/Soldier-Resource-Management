@@ -78,7 +78,6 @@
     <form action="" id="deleteItemForm" method="POST">
         @csrf @method('DELETE')
     </form>
-
     <!-- /.main-container -->
 
     <!-- basic scripts -->

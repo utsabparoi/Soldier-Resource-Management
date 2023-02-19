@@ -1,0 +1,13 @@
+{
+    "name": "PRM",
+    "alias": "prm",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PRM\\Providers\\PRMServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

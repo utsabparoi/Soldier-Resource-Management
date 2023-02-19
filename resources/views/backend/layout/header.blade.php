@@ -13,8 +13,8 @@
         <div class="navbar-header pull-left">
             <a href="/" class="navbar-brand">
                 <small>
-                    <i class="fa fa-hospital-o"></i>
-                    Biodata
+                    <i class="fa fa-user"></i>
+                    Admin
                 </small>
             </a>
         </div>

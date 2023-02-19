@@ -13,105 +13,18 @@
 
             <b class="arrow"></b>
         </li>
-        {{-- camp parent menu --}}
-        <li class="{{ request()->routeIs('camp*') ? 'open active' : '' }}">
+        <li>
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text">
-                    Camp
+                    Biodata
                 </span>
-
-                <b class="arrow fa fa-angle-down"></b>
+                {{-- <b class="arrow fa fa-angle-down"></b> --}}
             </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-                {{-- assing camp submenu of camp --}}
-                <li class="{{ request()->routeIs('assign-camp') ? 'active' : '' }}">
-                    <a href="{{ route('assign-camp') }}">
-                        <i class=" fa fa-plus purple"></i>
-                        Assign Camp
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                {{-- add camp submenu of cam --}}
-                <li class="{{ request()->routeIs('camp.create') ? 'active' : '' }}">
-                    <a href="{{ route('camp.create') }}">
-                        <i class=" fa fa-eye red"></i>
-                        Add Camp
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-                {{-- 'camps list' submenu of 'camp' --}}
-                <li class="{{ request()->routeIs('camp.index') ? 'active' : '' }}">
-                    <a href="{{ route('camp.index') }}">
-                        <i class=" fa fa-eye red"></i>
-                        Camps List
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-            </ul>
         </li>
-        {{-- Biodata list--}}
-        <li class="nav-item">
-            <a href="{{ route('website.biodata.index') }}">
-                <i class="menu-icon fa fa-users"></i>
-                <span class="menu-text"> Person List </span>
-            </a>
+        {{-- PRM sidebar from module --}}
+        @include('prm::layouts._sidebar')
 
-            <b class="arrow"></b>
-        </li>
-
-        {{-- Add Peron --}}
-        <li class="nav-item">
-            <a href="{{ route('website.biodata.create') }}">
-                <i class="menu-icon fa fa-plus-circle"></i>
-                <span class="menu-text"> Add Person </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        {{-- Add course --}}
-        <li class="nav-item">
-            <a href="{{ route('website.course.create') }}">
-                <i class="menu-icon fa fa-plus-circle"></i>
-                <span class="menu-text"> Add Course </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        {{-- assign course --}}
-        <li class="nav-item">
-            <a href="{{ route('website.assignCourse.create') }}">
-                <i class="menu-icon fa fa-plus-circle"></i>
-                <span class="menu-text"> Assign Course </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        {{-- add punishment --}}
-        <li class="nav-item">
-            <a href="{{ route('website.leaveApplication.create') }}">
-                <i class="menu-icon fa fa-plus-circle"></i>
-                <span class="menu-text"> Leave Application </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-
-        {{-- add punishment --}}
-        <li class="nav-item">
-            <a href="{{ route('website.punishment.create') }}">
-                <i class="menu-icon fa fa-plus-circle"></i>
-                <span class="menu-text"> Add Punishment </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
 
         {{-- Slider List --}}
 {{--        <li class="nav-link {{ request()->is('sliders*') ? 'active' : '' }}">--}}
