@@ -13,8 +13,48 @@
 
             <b class="arrow"></b>
         </li>
+        {{-- camp parent menu --}}
+        <li class="{{ request()->routeIs('camp*') ? 'open active' : '' }}">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text">
+                    Camp
+                </span>
 
-        {{-- Biodata lit--}}
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                {{-- assing camp submenu of camp --}}
+                <li class="{{ request()->routeIs('assign-camp') ? 'active' : '' }}">
+                    <a href="{{ route('assign-camp') }}">
+                        <i class=" fa fa-plus purple"></i>
+                        Assign Camp
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                {{-- add camp submenu of cam --}}
+                <li class="{{ request()->routeIs('camp.create') ? 'active' : '' }}">
+                    <a href="{{ route('camp.create') }}">
+                        <i class=" fa fa-eye red"></i>
+                        Add Camp
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                {{-- 'camps list' submenu of 'camp' --}}
+                <li class="{{ request()->routeIs('camp.index') ? 'active' : '' }}">
+                    <a href="{{ route('camp.index') }}">
+                        <i class=" fa fa-eye red"></i>
+                        Camps List
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+        {{-- Biodata list--}}
         <li class="nav-item">
             <a href="{{ route('website.biodata.index') }}">
                 <i class="menu-icon fa fa-users"></i>
