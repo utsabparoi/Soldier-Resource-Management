@@ -23,7 +23,7 @@
             </a>
         </li>
         {{-- PRM sidebar from module --}}
-        @include('prm::layouts._sidebar')
+        {{-- @include('prm::layouts._sidebar') --}}
 
 
         {{-- Slider List --}}

@@ -15,6 +15,7 @@ return [
 
     'paths' => [
         resource_path('views'),
+        base_path('module/PRM/views'), //should added this line for each Module, in this time added this for PRM Module
     ],
 
     /*

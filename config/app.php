@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        // For Module purpose added this bellow line
+        App\Providers\MigrationServiceProvider::class,
 
     ],
 
