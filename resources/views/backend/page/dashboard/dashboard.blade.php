@@ -1,5 +1,12 @@
 @extends('backend.layout.app')
 @section('title', 'Biodata')
+@section('content')
+<div class="main-content">
+    <div class="main-content-inner" style="padding:320px 0;text-align:center">
+        <h2 style="display: block;margin-left:auto;margin-right:auto">Welcome to Dashboard</h2>
+    </div>
+</div>
+@endsection
 {{-- @section('content')
     <div class="main-content">
     <div class="main-content-inner">

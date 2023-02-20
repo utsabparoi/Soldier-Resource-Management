@@ -2,7 +2,6 @@
 
 use PhpParser\Node\Expr\List_;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CampController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\BiodataController;
@@ -46,8 +45,4 @@ Route::get('/searchEmployee',  function () {
     return view('backend.feature.searchEmployee');
 })->name('searchEmployee')->middleware("AdminLogin");
 
-/* ===========================
-    Camp Routes List
-=============================*/
-Route::resource('camp', CampController::class);
-Route::get('assign-camp', [CampController::class, 'assign_camp'])->name('assign-camp');
+
