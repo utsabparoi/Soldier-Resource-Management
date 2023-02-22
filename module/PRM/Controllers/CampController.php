@@ -4,33 +4,12 @@ namespace Module\PRM\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\FileSaver;
+use Module\PRM\Models\Camp;
 
 class CampController extends Controller
 {
-    private $service;
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | CONSTRUCTOR
-     |--------------------------------------------------------------------------
-    */
-    public function __construct()
-    {
-        
-    }
-
-
-
-
-
-
-
-
-
-
-
-
+    use FileSaver;
     /*
      |--------------------------------------------------------------------------
      | INDEX METHOD
@@ -38,8 +17,13 @@ class CampController extends Controller
     */
     public function index()
     {
-        $data = [];
-        return view('', $data);
+        try {
+            $data['camps']  = Camp::paginate(20);
+            $data['table']  = Camp::getTableName();
+            return view('pages.camp.index', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
 
@@ -61,8 +45,7 @@ class CampController extends Controller
     */
     public function create()
     {
-        $data = [];
-        return view('', $data);
+        return view('pages.camp.create');
     }
 
 
@@ -84,9 +67,16 @@ class CampController extends Controller
     */
     public function store(Request $request)
     {
-        # code...
+        try {
+            $this->storeOrUpdate($request);
+
+            return redirect()->route('prm.camp.index')->with('success','Camp Created Successfully');
+
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
-    
+
 
 
 
@@ -108,7 +98,7 @@ class CampController extends Controller
     {
         # code...
     }
-    
+
 
 
 
@@ -128,7 +118,12 @@ class CampController extends Controller
     */
     public function edit($id)
     {
-        # code...
+        try {
+            $data['camp'] = Camp::find($id);
+            return view('pages.camp.edit', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
 
@@ -150,7 +145,13 @@ class CampController extends Controller
     */
     public function update($id, Request $request)
     {
-        # code...
+        try {
+            $this->storeOrUpdate($request, $id);
+
+            return redirect()->route('prm.camp.index')->with('success','Camp Updated Success');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
 
@@ -171,6 +172,43 @@ class CampController extends Controller
     */
     public function destroy($id)
     {
+        try {
+            $camp = Camp::find($id);
+            $camp->delete();
+
+            return redirect()->back()->with('success','Camp Deleted Success');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
+    }
+
+    /*
+     |--------------------------------------------------------------------------
+     | ASSIGN-CAMP METHOD
+     |--------------------------------------------------------------------------
+    */
+    public function assign_camp()
+    {
         # code...
+    }
+    /*
+     |--------------------------------------------------------------------------
+     | STORE/UPDATE METHOD
+     |--------------------------------------------------------------------------
+    */
+    public function storeOrUpdate($request, $id = null)
+    {
+        try {
+            $camp= Camp::updateOrCreate([
+                'id'                    =>$id,
+            ],[
+                'name'                  =>$request->name,
+                'capacity'              =>$request->capacity,
+                'status'                =>$request->status ? 1: 0,
+            ]);
+            return $camp;
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 }

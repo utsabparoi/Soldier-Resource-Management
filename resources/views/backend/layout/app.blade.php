@@ -501,6 +501,7 @@
         @endif
     </script>
 
+    {{-- x-status js functionality --}}
     <script>
         $(document).on("click", ".updateStatus", function() {
 
@@ -509,7 +510,6 @@
 
             let url = $(this).attr("item-url");
             // console.log(status, item_id, url);
-
             $.ajax({
                 type: 'POST',
                 url: url,
@@ -518,6 +518,7 @@
                     status: status,
                     item_id: item_id
                 },
+
                 success: function(resp) {
                     console.log(resp)
                     if (resp['status'] == 0) {
@@ -552,4 +553,3 @@
 </body>
 
 </html>
-<!-- PROGRAMMING & CODING BY AKASH KUMAR BASAK -->

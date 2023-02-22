@@ -24,6 +24,7 @@
         </li>
         {{-- PRM sidebar from module --}}
         {{-- @include('prm::layouts._sidebar') --}}
+        @include('partials.sidebars.__sidebar_prm')
 
 
         {{-- Slider List --}}

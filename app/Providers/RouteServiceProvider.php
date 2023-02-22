@@ -24,7 +24,8 @@ class RouteServiceProvider extends ServiceProvider
      | MODULE(PRM)
      |--------------------------------------------------------------------------
     */
-    protected $prm                  = 'Module\PRM\Controllers';
+    // protected $prm                  = 'module\PRM\Controllers';
+    protected $prm                  = '\\';
 
     /**
      * The path to the "home" route for your application.
@@ -51,18 +52,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->configureRateLimiting();
+        parent::boot();
+        // $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+        // $this->routes(function () {
+        //     Route::prefix('api')
+        //         ->middleware('api')
+        //         ->namespace($this->namespace)
+        //         ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
+        //     Route::middleware('web')
+        //         ->namespace($this->namespace)
+        //         ->group(base_path('routes/web.php'));
+        // });
     }
 
     /**
@@ -103,7 +105,7 @@ class RouteServiceProvider extends ServiceProvider
             | Parade/Person Resource Management(PRM)
             |--------------------------------------------------------------------------
             */
-            Route::namespace($this->prm)->group(base_path('module/PRM/routes/web.php'));
+            Route::namespace($this->prm)->group(base_path('/module/PRM/routes/web.php'));
         });
     }
 
