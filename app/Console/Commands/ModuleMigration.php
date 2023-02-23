@@ -12,7 +12,7 @@ class ModuleMigration extends Command
 
 
 
-    protected $description = 'Create a new migration for the specified module.';
+    protected $description = 'Command description';
 
     public function handle()
     {
@@ -35,17 +35,22 @@ class ModuleMigration extends Command
         }
 
         $migrationStub = file_get_contents(base_path('app/Console/stubs/migration.stub'));
-        
-        $modelPlural = Str::plural($name);
 
-        $tableName = Str::snake($modelPlural);
-        $firstCaptitallastPlural = Str::ucfirst($modelPlural);
+        $modelPulural = Str::plural($name);
+
+        $tableName = Str::snake($modelPulural);
+
+        $letterUppercase = Str::ucfirst($modelPulural);
+
+        $rmvCharToMakeUpper = preg_replace_callback('/_([a-z]?)/', function($match) {
+            return strtoupper($match[1]);
+        }, $letterUppercase);
 
         $time = Carbon::parse(now())->format('Y_m_d_His');
 
 
         $migrationStub = str_replace('TableName', $tableName, $migrationStub);
-        $migrationStub = str_replace('ClassName', "Create" . $firstCaptitallastPlural . "Table", $migrationStub);
+        $migrationStub = str_replace('ClassName', "Create" . $rmvCharToMakeUpper . "Table", $migrationStub);
 
         $filename = $time . '_create_' . Str::snake($tableName) . '_table.php';
 

@@ -13,13 +13,15 @@ class CreatecampsTable extends Migration
      */
     public function up()
     {
-        Schema::create('camps', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('capacity');
-            $table->tinyInteger('status');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('camps')){
+            Schema::create('camps', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->integer('capacity')->nullable();
+                $table->tinyInteger('status');
+                $table->timestamps();
+            });
+        }
     }
 
 
