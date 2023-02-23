@@ -48,8 +48,8 @@ class ModuleMakeSeeder extends Command
 
         $seeder = file_get_contents(base_path('app/Console/stubs/module/seeder.stub'));
 
-        $seeder = str_replace('DummyClass', $name, $seeder);
         $seeder = str_replace('ModuleName', $path, $seeder);
+        $seeder = str_replace('DummyTableSeeder', $name, $seeder);
 
         file_put_contents("module/$path/database/seeders/" . $name . '.php', $seeder);
 
