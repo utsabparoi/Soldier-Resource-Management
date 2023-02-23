@@ -65,6 +65,9 @@
                                                                             name="name" id="name"
                                                                             value="{{ old('name') }}">
                                                                     </div>
+                                                                    @if ($errors->has('name'))
+                                                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                                    @endif
                                                                 </div>
 
                                                                 <!-- Capacity -->

@@ -67,6 +67,10 @@ class AppointmentHolderController extends Controller
     */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         try {
             $this->storeOrUpdate($request);
 
@@ -145,6 +149,10 @@ class AppointmentHolderController extends Controller
     */
     public function update($id, Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+        
         try {
             $this->storeOrUpdate($request, $id);
 
@@ -188,6 +196,7 @@ class AppointmentHolderController extends Controller
     */
     public function storeOrUpdate($request, $id = null)
     {
+
         try {
             $appointment_holder= AppointmentHolder::updateOrCreate([
                 'id'                    =>$id,

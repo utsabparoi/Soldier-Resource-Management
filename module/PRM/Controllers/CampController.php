@@ -67,6 +67,10 @@ class CampController extends Controller
     */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         try {
             $this->storeOrUpdate($request);
 
@@ -145,6 +149,10 @@ class CampController extends Controller
     */
     public function update($id, Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
         try {
             $this->storeOrUpdate($request, $id);
 
@@ -198,6 +206,7 @@ class CampController extends Controller
     */
     public function storeOrUpdate($request, $id = null)
     {
+
         try {
             $camp= Camp::updateOrCreate([
                 'id'                    =>$id,
