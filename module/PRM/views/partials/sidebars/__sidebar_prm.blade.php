@@ -13,7 +13,7 @@
         <li class="{{ request()->routeIs('prm.camp*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-hospital"></i>
-                <span class="menu-text">Camp</span>
+                <span class="menu-text">Camp Details</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>

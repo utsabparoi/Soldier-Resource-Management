@@ -8,11 +8,11 @@ use Illuminate\Console\Command;
 
 class ModuleMigration extends Command
 {
-    protected $signature = 'module:migration {name} {path?}';
+    protected $signature = 'module:make-migration {name} {path?}';
 
 
 
-    protected $description = 'Command description';
+    protected $description = 'Create a new migration for the specified module.';
 
     public function handle()
     {
@@ -35,16 +35,17 @@ class ModuleMigration extends Command
         }
 
         $migrationStub = file_get_contents(base_path('app/Console/stubs/migration.stub'));
+        
+        $modelPlural = Str::plural($name);
 
-        $modelPulural = Str::plural($name);
-
-        $tableName = Str::snake($modelPulural);
+        $tableName = Str::snake($modelPlural);
+        $firstCaptitallastPlural = Str::ucfirst($modelPlural);
 
         $time = Carbon::parse(now())->format('Y_m_d_His');
 
 
         $migrationStub = str_replace('TableName', $tableName, $migrationStub);
-        $migrationStub = str_replace('ClassName', "Create" . $modelPulural . "Table", $migrationStub);
+        $migrationStub = str_replace('ClassName', "Create" . $firstCaptitallastPlural . "Table", $migrationStub);
 
         $filename = $time . '_create_' . Str::snake($tableName) . '_table.php';
 

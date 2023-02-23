@@ -8,21 +8,6 @@ class Camp extends Model
 {
     protected $table = 'camps';
 
-    protected $guarded = [];
+    //There are few things here which are extending from superclass(Model.php)
 
-
-    public function scopeApiQuery($query)
-    {
-        $query->active();
-    }
-
-    /*
-     |--------------------------------------------------------------------------
-     | GET TABLE NAME
-     |--------------------------------------------------------------------------
-    */
-    public static function getTableName()
-    {
-        return with(new static)->getTable();
-    }
 }
