@@ -26,22 +26,24 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Create New Camp</span>
+                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Create New
+                                                        Camp</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
-                                                <!--------------- Slider List---------------->
-                                                <a href="{{ route('prm.camp.index') }}" class="">
-                                                    <i class="fa fa-list"></i> Camp <span class="hide-in-sm">List</span>
-                                                </a>
-                                            </span>
+                                                    <!--------------- Slider List---------------->
+                                                    <a href="{{ route('prm.camp.index') }}" class="">
+                                                        <i class="fa fa-list"></i> Camp <span class="hide-in-sm">List</span>
+                                                    </a>
+                                                </span>
                                             </div>
 
 
                                             <div class="widget-body">
                                                 <div class="widget-main">
 
-                                                    <form action="{{ route('prm.camp.store') }}" id="Form" method="post" enctype="multipart/form-data">
+                                                    <form action="{{ route('prm.camp.store') }}" id="Form"
+                                                        method="post" enctype="multipart/form-data">
                                                         @csrf
 
                                                         <div class="row">
@@ -53,22 +55,30 @@
                                                                 <!-- Name -->
                                                                 <div class="form-group">
                                                                     <div class="input-group width-100 mb-1">
-                                                                    <span class="input-group-addon width-20" style="text-align: left">
-                                                                        Name <sup class="text-danger">*</sup><span class="label-required"></span>
-                                                                    </span>
-                                                                        <input type="text" class="form-control @error('name') has-error @enderror"
-                                                                               name="name" id="name" value="{{ old('name') }}">
+                                                                        <span class="input-group-addon width-20"
+                                                                            style="text-align: left">
+                                                                            Name <sup class="text-danger">*</sup><span
+                                                                                class="label-required"></span>
+                                                                        </span>
+                                                                        <input type="text"
+                                                                            class="form-control @error('name') has-error @enderror"
+                                                                            name="name" id="name"
+                                                                            value="{{ old('name') }}">
                                                                     </div>
                                                                 </div>
 
                                                                 <!-- Capacity -->
                                                                 <div class="form-group">
                                                                     <div class="input-group width-100 mb-1">
-                                                                    <span class="input-group-addon width-20" style="text-align: left">
-                                                                        Capacity <sup class="text-danger">*</sup><span class="label-required"></span>
-                                                                    </span>
-                                                                        <input type="number" class="form-control @error('capacity') has-error @enderror"
-                                                                               name="capacity" id="capacity" value="{{ old('capacity') }}">
+                                                                        <span class="input-group-addon width-20"
+                                                                            style="text-align: left">
+                                                                            Capacity <sup class="text-danger">*</sup><span
+                                                                                class="label-required"></span>
+                                                                        </span>
+                                                                        <input type="number"
+                                                                            class="form-control @error('capacity') has-error @enderror"
+                                                                            name="capacity" id="capacity"
+                                                                            value="{{ old('capacity') }}">
 
                                                                     </div>
                                                                 </div>
@@ -76,11 +86,14 @@
                                                                 {{-- Status --}}
                                                                 <div class="form-group">
                                                                     <div class="input-group width-100">
-                                                                    <span class="input-group-addon width-20" style="text-align: left">
-                                                                        Status
-                                                                    </span>
+                                                                        <span class="input-group-addon width-20"
+                                                                            style="text-align: left">
+                                                                            Status
+                                                                        </span>
                                                                         <label style="margin: 5px 0 0 8px">
-                                                                            <input name="status" class="ace ace-switch ace-switch-6" type="checkbox" checked>
+                                                                            <input name="status"
+                                                                                class="ace ace-switch ace-switch-6"
+                                                                                type="checkbox" checked>
                                                                             <span class="lbl"></span>
                                                                         </label>
                                                                     </div>
@@ -92,10 +105,12 @@
                                                             <div class="form-group">
                                                                 <!-- Add Page -->
                                                                 <h5 class="widget-title">
-                                                                    <div class="row" style="margin-top: 10px;padding:5px">
+                                                                    <div class="row"
+                                                                        style="margin-top: 10px;padding:5px">
                                                                         <div class="col-md-12 text-center pr-2">
-                                                                            <button type="submit" class="btn btn-primary btn-sm btn-block"
-                                                                                    style="max-width: 150px">
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary btn-sm btn-block"
+                                                                                style="max-width: 150px">
                                                                                 <i class="fa fa-save"></i> Create
                                                                             </button>
                                                                         </div>
@@ -120,4 +135,6 @@
                     {{-- main content end  --}}
                 </div>
             </div>
+        </div>
+    </div>
 @endsection

@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\CampController;
+use Module\PRM\Controllers\AppointmentHolderController;
 
 Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
@@ -11,5 +12,8 @@ Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
     =============================*/
     Route::resource('camp', CampController::class);
     Route::get('assign-camp', [CampController::class, 'assign_camp'])->name('assign-camp');
-    // Route::post('/update-status/{table}', 'Controller@updateStatus')->name('update-status');
+    /* ================================
+        Appointment Holder Routes List
+    ===================================*/
+    Route::resource('appointment-holder', AppointmentHolderController::class);
 });

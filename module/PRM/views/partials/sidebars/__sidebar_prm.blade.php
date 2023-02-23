@@ -12,7 +12,7 @@
         {{-- camp menu item --}}
         <li class="{{ request()->routeIs('prm.camp*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-hospital"></i>
+                <i class="menu-icon fa fa-campground red"></i>
                 <span class="menu-text">Camp Details</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -41,6 +41,35 @@
                     <a href="{{ route('prm.camp.index') }}">
                         <i class=" fa fa-list red"></i>
                         Camps List
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+        {{-- appointment-holder menu item --}}
+        <li class="{{ request()->routeIs('prm.appointment-holder*') ? 'open active' : ''}}">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-tasks red"></i>
+                <span class="menu-text">Appointment Holder</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                {{-- add appointment-holder submenu of appointment-holder --}}
+                <li class="{{ request()->routeIs('prm.appointment-holder.create') ? 'active' : '' }}">
+                    <a href="{{ route('prm.appointment-holder.create') }}">
+                        <i class=" fa fa-plus purple"></i>
+                        Add AppointmentHolder
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+                {{-- 'AppointmentHolders list' submenu of 'appointment-holder' --}}
+                <li class="{{ request()->routeIs('prm.appointment-holder.index') ? 'active' : '' }}">
+                    <a href="{{ route('prm.appointment-holder.index') }}">
+                        <i class=" fa fa-list red"></i>
+                        AppointmentHolder List
                     </a>
 
                     <b class="arrow"></b>

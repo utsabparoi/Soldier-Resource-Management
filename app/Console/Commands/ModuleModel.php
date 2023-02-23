@@ -9,7 +9,7 @@ use Illuminate\Console\Command;
 class ModuleModel extends Command
 {
 
-    protected $signature = 'module:model {name} {path?}';
+    protected $signature = 'module:make-model {name} {path?}';
 
     protected $description = 'Command description';
 

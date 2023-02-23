@@ -8,7 +8,7 @@ class ModuleController extends Command
 {
 
 
-    protected $signature = 'module:controller {name} {path?}';
+    protected $signature = 'module:make-controller {name} {path?}';
 
 
 
