@@ -30,6 +30,7 @@ class ModuleMakeSeeder extends Command
         parent::__construct();
     }
 
+
     /**
      * Execute the console command.
      *
@@ -42,7 +43,7 @@ class ModuleMakeSeeder extends Command
 
 
         if ($path == '') {
-            $path = $this->ask('Module Name: ');
+            $path = $this->ask('Please input the module(path) name: ');
         }
 
 

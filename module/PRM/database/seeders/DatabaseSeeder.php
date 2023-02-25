@@ -4,6 +4,7 @@ namespace Module\PRM\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Module\PRM\database\seeders\CampSeeder;
+use Module\PRM\database\seeders\CourseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,8 +13,12 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        $this->call(CampSeeder::class);
+    public function run(){
+        $this->call(
+        [
+            CampSeeder::class,
+            CourseSeeder::class,
+        ]
+    );
     }
 }

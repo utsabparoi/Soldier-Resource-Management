@@ -9,7 +9,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">All AppointmentHolders</li>
+                    <li class="active">All Trainings</li>
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -33,11 +33,11 @@
 
                     <!-- header -->
                     <div class="widget-header">
-                        <h4 class="widget-title"> <i class="fa fa-info-circle"></i> AppointmentHolder List
+                        <h4 class="widget-title"> <i class="fa fa-info-circle"></i> Training List
                         </h4>
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
-                            <a href="{{ route('prm.appointment-holder.create') }}" class="">
+                            <a href="{{ route('prm.training.create') }}" class="">
                                 <i class="fa fa-plus"></i> Add <span class="hide-in-sm">New</span>
                             </a>
                         </span>
@@ -60,7 +60,7 @@
                                             <thead>
                                             <tr>
                                                 <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
-                                                <th width="40%">Name</th>
+                                                <th width="50%">Name</th>
                                                 <th class="text-center" width="20%">Status</th>
                                                 <th width="5%" class="text-center" style="width: 120px">Action</th>
                                             </tr>
@@ -68,16 +68,16 @@
 
                                             <tbody>
                                             @php $serialNo = 1; @endphp
-                                            @forelse($appointment_holders as $item)
+                                            @forelse($trainings as $training)
                                                 <tr>
                                                     <td class="text-center" class="hide-in-sm"><span class="span">@php echo $serialNo; @endphp</span></td>
-                                                    <td><span class="span">{{$item->name}}</span></td>
+                                                    <td><span class="span">{{$training->name}}</span></td>
                                                     <td class="text-center">
                                                         <!--------------- STATUS EDIT---------------->
                                                         <div>
                                                             <label>
                                                                 <span class="span">
-                                                            <x-status status="{{ $item->status }}" id="{{ $item->id }}" table="{{ $table }}" />
+                                                            <x-status status="{{ $training->status }}" id="{{ $training->id }}" table="{{ $table }}" />
                                                         </span>
                                                             </label>
                                                         </div>
@@ -87,7 +87,7 @@
                                                         <!---------------  EDIT---------------->
                                                         <div class="btn-group btn-corner  action-span ">
 
-                                                            <a href="{{ route('prm.appointment-holder.edit', $item->id) }}"
+                                                            <a href="{{ route('prm.training.edit', $training->id) }}"
                                                                role="button" class="btn btn-xs btn-success bs-tooltip"
                                                                title="Edit">
                                                                 <i class="fa fa-edit"></i>
@@ -95,7 +95,7 @@
 
 
                                                             <button type="button"
-                                                                    onclick="delete_item(`{{ route('prm.appointment-holder.destroy', $item->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('prm.training.destroy', $training->id) }}`)"
                                                                     class="btn btn-xs btn-danger bs-tooltip" title="Delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
@@ -115,7 +115,7 @@
 
                                             </tbody>
                                         </table>
-                                        @include('partials._paginate',['data'=> $appointment_holders])
+                                        @include('partials._paginate',['data'=> $trainings])
                                     </div>
                                 </div>
                             </div>

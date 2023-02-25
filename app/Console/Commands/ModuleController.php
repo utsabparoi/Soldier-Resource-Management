@@ -21,7 +21,7 @@ class ModuleController extends Command
 
 
         if ($path == '') {
-            $path = $this->ask('Module Name: ');
+            $path = $this->ask('Please input the module(path) name: ');
         }
 
 
@@ -32,6 +32,6 @@ class ModuleController extends Command
 
         file_put_contents("module/$path/Controllers/" . $name . '.php', $controller);
 
-        $this->info('Controller created success !');
+        $this->info('Controller created successfully !');
     }
 }

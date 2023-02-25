@@ -1,5 +1,5 @@
 @extends('backend.layout.app')
-@section('title', 'PRM-Admin')
+@section('title', 'PERFECT TEN')
 @section('content')
     <div class="main-content">
         <div class="main-content-inner">
@@ -33,7 +33,7 @@
 
                     <!-- header -->
                     <div class="widget-header">
-                        <h4 class="widget-title"> <i class="fa fa-info-circle"></i> Camps
+                        <h4 class="widget-title"> <i class="fa fa-info-circle"></i> Camp List
                         </h4>
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
