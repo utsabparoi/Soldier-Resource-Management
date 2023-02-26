@@ -6,10 +6,16 @@ use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\CampController;
 use Module\PRM\Controllers\CourseController;
 use Module\PRM\Controllers\TrainingController;
+use Module\PRM\Controllers\LeaveCategoryController;
 use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
 
 Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
+    /* ===========================
+        Leave-Category Routes List
+    =============================*/
+    Route::resource('leave-category', LeaveCategoryController::class);
+
     /* ===========================
         Camp Routes List
     =============================*/

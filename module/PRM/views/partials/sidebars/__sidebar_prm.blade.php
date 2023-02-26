@@ -9,6 +9,35 @@
     </a>
     <b class="arrow"></b>
     <ul class="submenu">
+        {{-- Leave Details menu item --}}
+
+        <li class="{{ request()->routeIs('prm.leave-category*') ? 'open active' : ''}}">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-minus-circle red"></i>
+                <span class="menu-text">Leave Category</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                {{-- 'Add Category' submenu of "Leave Category" --}}
+                <li class="{{ request()->routeIs('prm.leave-category.create') ? 'active' : '' }}">
+                    <a href="{{ route('prm.leave-category.create') }}">
+                        <i class=" fa fa-plus purple"></i>
+                        Add Category
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                {{-- 'Categories List' submenu of "Leave Category" --}}
+                <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
+                    <a href="{{ route('prm.leave-category.index') }}">
+                        <i class=" fa fa-list red"></i>
+                        Categories List
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
 
         {{-- Camp menu item --}}
 
@@ -113,13 +142,14 @@
 
         {{-- 'Training' menu item --}}
 
-        <li class="{{ request()->routeIs('prm.training*', 'prm.training-category*') ? 'open active' : ''}}">
+        <li class="{{ request()->routeIs('prm.training-category*', 'prm.training*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-graduation-cap red"></i>
                 <span class="menu-text">Training Management</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
+
             <ul class="submenu">
                 <li class="{{ request()->routeIs('prm.training-category*') ? 'open active' : ''}}">
                     <a href="#" class="dropdown-toggle">
@@ -149,8 +179,6 @@
                     </ul>
 
                 </li>
-            </ul>
-            <ul class="submenu">
                 <li class="{{ request()->routeIs('prm.training*') ? 'open active' : ''}}">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-info-circle red"></i>
