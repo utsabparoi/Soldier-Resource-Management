@@ -5,11 +5,11 @@ namespace Module\PRM\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\FileSaver;
-use Module\PRM\Models\Training;
 use Module\PRM\Models\TrainingCategory;
 
-class TrainingController extends Controller
+class TrainingCategoryController extends Controller
 {
+
     use FileSaver;
     /*
      |--------------------------------------------------------------------------
@@ -19,9 +19,9 @@ class TrainingController extends Controller
     public function index()
     {
         try {
-            $data['trainings']  = Training::paginate(20);
-            $data['table']  = Training::getTableName();
-            return view('pages.training.index', $data);
+            $data['training_categories']  = TrainingCategory::paginate(20);
+            $data['table']  = TrainingCategory::getTableName();
+            return view('pages.training-category.index', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -46,8 +46,7 @@ class TrainingController extends Controller
     */
     public function create()
     {
-        $data['training_categories'] = TrainingCategory::where('status',1)->get();
-        return view('pages.training.create', $data);
+        return view('pages.training-category.create');
     }
 
 
@@ -76,7 +75,7 @@ class TrainingController extends Controller
         try {
             $this->storeOrUpdate($request);
 
-            return redirect()->route('prm.training.index')->with('success','Training Created Successfully');
+            return redirect()->route('prm.training-category.index')->with('success','TrainingCategory Created Successfully');
 
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
@@ -125,9 +124,8 @@ class TrainingController extends Controller
     public function edit($id)
     {
         try {
-            $data['training_categories'] = TrainingCategory::where('status',1)->get();
-            $data['training'] = Training::find($id);
-            return view('pages.training.edit', $data);
+            $data['training_category'] = TrainingCategory::find($id);
+            return view('pages.training-category.edit', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -159,7 +157,7 @@ class TrainingController extends Controller
         try {
             $this->storeOrUpdate($request, $id);
 
-            return redirect()->route('prm.training.index')->with('success','Training Updated Success');
+            return redirect()->route('prm.training-category.index')->with('success','TrainingCategory Updated Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -184,10 +182,10 @@ class TrainingController extends Controller
     public function destroy($id)
     {
         try {
-            $training = Training::find($id);
-            $training->delete();
+            $training_category = TrainingCategory::find($id);
+            $training_category->delete();
 
-            return redirect()->back()->with('success','Training Deleted Success');
+            return redirect()->back()->with('success','TrainingCategory Deleted Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -202,14 +200,13 @@ class TrainingController extends Controller
     {
 
         try {
-            $training= Training::updateOrCreate([
+            $training_category= TrainingCategory::updateOrCreate([
                 'id'                    =>$id,
             ],[
-                'training_category_id'  =>$request->training_category_id,
                 'name'                  =>$request->name,
                 'status'                =>$request->status ? 1: 0,
             ]);
-            return $training;
+            return $training_category;
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }

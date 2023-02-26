@@ -16,6 +16,7 @@ class CreateTrainingsTable extends Migration
         if(!Schema::hasTable('trainings')){
             Schema::create('trainings', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('training_category_id')->constrained();
                 $table->string('name');
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();

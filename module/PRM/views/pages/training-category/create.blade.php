@@ -12,7 +12,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Create New Training</li>
+                    <li class="active">Create New Category</li>
                 </ul><!-- /.breadcrumb -->
             </div>
             {{-- main content start from here --}}
@@ -27,13 +27,13 @@
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
                                                     <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Create New
-                                                        Training</span>
+                                                        Category</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
-                                                    <!--------------- Training List---------------->
-                                                    <a href="{{ route('prm.training.index') }}" class="">
-                                                        <i class="fa fa-list"></i> Training <span class="hide-in-sm">List</span>
+                                                    <!--------------- Slider List---------------->
+                                                    <a href="{{ route('prm.training-category.index') }}" class="">
+                                                        <i class="fa fa-list"></i> Category <span class="hide-in-sm">List</span>
                                                     </a>
                                                 </span>
                                             </div>
@@ -42,7 +42,7 @@
                                             <div class="widget-body">
                                                 <div class="widget-main">
 
-                                                    <form action="{{ route('prm.training.store') }}" id="Form"
+                                                    <form action="{{ route('prm.training-category.store') }}" id="Form"
                                                         method="post" enctype="multipart/form-data">
                                                         @csrf
 
@@ -51,32 +51,6 @@
                                                             <!-- Left side -->
 
                                                             <div class="col-md-10 col-md-offset-1">
-
-                                                                <!-- Training Category -->
-                                                                <div class="form-group">
-                                                                    <div class="input-group width-100 mb-1">
-                                                                        <span class="input-group-addon width-20"
-                                                                            style="text-align: left">
-                                                                            Category <sup class="text-danger">*</sup><span
-                                                                                class="label-required"></span>
-                                                                        </span>
-
-                                                                        <select name="training_category_id" class="form-control">
-                                                                            <option value="">--Select a Training Category--</option>
-                                                                            @foreach ($training_categories as $category)
-                                                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
-
-                                                                        {{-- <input type="text"
-                                                                            class="form-control @error('training_category_id') has-error @enderror"
-                                                                            name="training_category_id" id="training_category_id"
-                                                                            value="{{ old('training_category_id') }}"> --}}
-                                                                    </div>
-                                                                    @if ($errors->has('name'))
-                                                                        <span class="text-danger">{{ $errors->first('name') }}</span>
-                                                                    @endif
-                                                                </div>
 
                                                                 <!-- Name -->
                                                                 <div class="form-group">

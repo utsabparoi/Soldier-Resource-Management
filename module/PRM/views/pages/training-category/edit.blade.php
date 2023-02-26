@@ -1,5 +1,5 @@
 @extends('backend.layout.app')
-@section('title', 'All Trainings')
+@section('title', 'PERFECT TEN')
 @section('css')
 
 @endsection
@@ -12,7 +12,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Edit Training</li>
+                    <li class="active">Edit Category</li>
                 </ul>
                 <!-- /.breadcrumb -->
             </div>
@@ -27,13 +27,13 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Edit Training</span>
+                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Edit Category</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
                                                 <!--------------- Slider List---------------->
-                                                <a href="{{ route('prm.training.index') }}" class="">
-                                                    <i class="fa fa-list"></i> Training <span class="hide-in-sm">List</span>
+                                                <a href="{{ route('prm.training-category.index') }}" class="">
+                                                    <i class="fa fa-list"></i> Category <span class="hide-in-sm">List</span>
                                                 </a>
                                             </span>
                                             </div>
@@ -42,7 +42,7 @@
                                             <div class="widget-body">
                                                 <div class="widget-main">
 
-                                                    <form action="{{ route('prm.training.update',$training->id) }}" id="Form" method="post" enctype="multipart/form-data">
+                                                    <form action="{{ route('prm.training-category.update',$training_category->id) }}" id="Form" method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
 
@@ -52,23 +52,6 @@
 
                                                             <div class="col-md-10 col-md-offset-1">
 
-                                                                {{-- Training Category --}}
-                                                                <div class="form-group">
-                                                                    <div class="input-group width-100 mb-1">
-                                                                        <span class="input-group-addon width-30" style="text-align: left">
-                                                                            Category <sup class="text-danger">*</sup><span class="label-required"></span>
-                                                                        </span>
-
-                                                                        <select name="training_category_id" class="form-control">
-                                                                            <option value="" >-Select Training Category-</option>
-                                                                            @foreach ($training_categories as $category)
-                                                                                <option value="{{ $category->id }}" {{ ( $category->id ) == $training->training_category->id ? 'selected' : "" }}>{{ $category->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-
-                                                                </div>
-
                                                                 <!-- Name -->
                                                                 <div class="form-group">
                                                                     <div class="input-group width-100 mb-1">
@@ -76,7 +59,7 @@
                                                                         Name <sup class="text-danger">*</sup><span class="label-required"></span>
                                                                     </span>
                                                                         <input type="text" class="form-control @error('name') has-error @enderror"
-                                                                               name="name" id="name" value="{{ old('name', $training->name) }}">
+                                                                               name="name" id="name" value="{{ old('name', $training_category->name) }}">
 
                                                                     </div>
                                                                 </div>
@@ -88,7 +71,7 @@
                                                                         Status
                                                                     </span>
                                                                         <label style="margin: 5px 0 0 8px">
-                                                                            <input name="status" class="ace ace-switch ace-switch-6" type="checkbox" {{ $training->status == 1 ? 'checked' : '' }}>
+                                                                            <input name="status" class="ace ace-switch ace-switch-6" type="checkbox" {{ $training_category->status == 1 ? 'checked' : '' }}>
                                                                             <span class="lbl"></span>
                                                                         </label>
                                                                     </div>

@@ -9,7 +9,9 @@
     </a>
     <b class="arrow"></b>
     <ul class="submenu">
-        {{-- camp menu item --}}
+
+        {{-- Camp menu item --}}
+
         <li class="{{ request()->routeIs('prm.camp*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-campground red"></i>
@@ -18,7 +20,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- assing camp submenu of camp --}}
+                {{-- 'Assing Camp' submenu of "Camp" --}}
                 <li class="{{ request()->routeIs('prm.assign-camp') ? 'active' : '' }}">
                     <a href="{{ route('prm.assign-camp') }}">
                         <i class=" fa fa-plus purple"></i>
@@ -27,7 +29,7 @@
 
                     <b class="arrow"></b>
                 </li>
-                {{-- add camp submenu of cam --}}
+                {{-- 'Add Camp' submenu of "Camp" --}}
                 <li class="{{ request()->routeIs('prm.camp.create') ? 'active' : '' }}">
                     <a href="{{ route('prm.camp.create') }}">
                         <i class=" fa fa-plus purple"></i>
@@ -36,7 +38,7 @@
 
                     <b class="arrow"></b>
                 </li>
-                {{-- 'camps list' submenu of 'camp' --}}
+                {{-- 'Camps List' submenu of "Camp" --}}
                 <li class="{{ request()->routeIs('prm.camp.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.camp.index') }}">
                         <i class=" fa fa-list red"></i>
@@ -47,7 +49,9 @@
                 </li>
             </ul>
         </li>
-        {{-- appointment-holder menu item --}}
+
+        {{-- Appointment Holder menu item --}}
+
         <li class="{{ request()->routeIs('prm.appointment-holder*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-tasks red"></i>
@@ -56,7 +60,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- add appointment-holder submenu of appointment-holder --}}
+                {{-- 'Add AppointmentHolder' submenu of "Appointment Holder" --}}
                 <li class="{{ request()->routeIs('prm.appointment-holder.create') ? 'active' : '' }}">
                     <a href="{{ route('prm.appointment-holder.create') }}">
                         <i class=" fa fa-plus purple"></i>
@@ -65,18 +69,20 @@
 
                     <b class="arrow"></b>
                 </li>
-                {{-- 'AppointmentHolders list' submenu of 'appointment-holder' --}}
+                {{-- 'AppointmentHolders list' submenu of "Appointment Holder" --}}
                 <li class="{{ request()->routeIs('prm.appointment-holder.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.appointment-holder.index') }}">
                         <i class=" fa fa-list red"></i>
-                        AppointmentHolder List
+                        AppointmentHolders List
                     </a>
 
                     <b class="arrow"></b>
                 </li>
             </ul>
         </li>
-        {{-- person menu item --}}
+
+        {{-- Person menu item --}}
+
         <li class="{{ request()->routeIs('') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-user"></i>
@@ -85,7 +91,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- add person submenu of person --}}
+                {{-- 'Add Person' submenu of "Person" --}}
                 <li class="{{ request()->routeIs('') ? 'active' : '' }}">
                     <a href="#">
                         <i class=" fa fa-plus purple"></i>
@@ -94,45 +100,90 @@
                     <b class="arrow"></b>
                 </li>
 
-                {{-- 'person list' submenu of 'person' --}}
+                {{-- 'Persons List' submenu of "Person" --}}
                 <li class="{{ request()->routeIs('') ? 'active' : '' }}">
                     <a href="#">
                         <i class=" fa fa-list red"></i>
-                        Person List
+                        Persons List
                     </a>
                     <b class="arrow"></b>
                 </li>
             </ul>
         </li>
-        {{-- training menu item --}}
-        <li class="{{ request()->routeIs('prm.training*') ? 'open active' : ''}}">
+
+        {{-- 'Training' menu item --}}
+
+        <li class="{{ request()->routeIs('prm.training*', 'prm.training-category*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-graduation-cap red"></i>
-                <span class="menu-text">Training</span>
+                <span class="menu-text">Training Management</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- add training submenu of training --}}
-                <li class="{{ request()->routeIs('prm.training.create') ? 'active' : '' }}">
-                    <a href="{{ route('prm.training.create') }}">
-                        <i class=" fa fa-plus purple"></i>
-                        Add Training
+                <li class="{{ request()->routeIs('prm.training-category*') ? 'open active' : ''}}">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-list-alt red"></i>
+                        <span class="menu-text">Training Category</span>
+                        <b class="arrow fa fa-angle-down"></b>
                     </a>
                     <b class="arrow"></b>
-                </li>
+                    <ul class="submenu">
+                        {{-- 'Add Category' submenu of "Training Management" --}}
+                        <li class="{{ request()->routeIs('prm.training-category.create') ? 'active' : '' }}">
+                            <a href="{{ route('prm.training-category.create') }}">
+                                <i class=" fa fa-plus purple"></i>
+                                Add Category
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
 
-                {{-- 'training list' submenu of 'training' --}}
-                <li class="{{ request()->routeIs('prm.training.index') ? 'active' : '' }}">
-                    <a href="{{ route('prm.training.index') }}">
-                        <i class=" fa fa-list red"></i>
-                        Trainings List
+                        {{-- 'Trainings List' submenu of "Training Management" --}}
+                        <li class="{{ request()->routeIs('prm.training-category.index') ? 'active' : '' }}">
+                            <a href="{{ route('prm.training-category.index') }}">
+                                <i class=" fa fa-list red"></i>
+                                Categories List
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+            <ul class="submenu">
+                <li class="{{ request()->routeIs('prm.training*') ? 'open active' : ''}}">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-info-circle red"></i>
+                        <span class="menu-text">Training Details</span>
+                        <b class="arrow fa fa-angle-down"></b>
                     </a>
                     <b class="arrow"></b>
+                    <ul class="submenu">
+                        {{-- 'Add Training' submenu of "Training" --}}
+                        <li class="{{ request()->routeIs('prm.training.create') ? 'active' : '' }}">
+                            <a href="{{ route('prm.training.create') }}">
+                                <i class=" fa fa-plus purple"></i>
+                                Add Training
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+
+                        {{-- 'Trainings List' submenu of "Training" --}}
+                        <li class="{{ request()->routeIs('prm.training.index') ? 'active' : '' }}">
+                            <a href="{{ route('prm.training.index') }}">
+                                <i class=" fa fa-list red"></i>
+                                Trainings List
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+
                 </li>
             </ul>
         </li>
-        {{-- course menu item --}}
+
+        {{-- 'Course' menu item --}}
+
         <li class="{{ request()->routeIs('prm.course*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-graduation-cap red"></i>
@@ -141,7 +192,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- assing-course submenu of Course --}}
+                {{-- 'Assing Course' submenu of "Course" --}}
                 <li class="{{ request()->routeIs('prm.assign-course') ? 'active' : '' }}">
                     <a href="{{ route('prm.assign-course') }}">
                         <i class=" fa fa-plus purple"></i>
@@ -150,7 +201,7 @@
 
                     <b class="arrow"></b>
                 </li>
-                {{-- add course submenu of course --}}
+                {{-- 'Add Course' submenu of "Course" --}}
                 <li class="{{ request()->routeIs('prm.course.create') ? 'active' : '' }}">
                     <a href="{{ route('prm.course.create') }}">
                         <i class=" fa fa-plus purple"></i>
@@ -159,11 +210,11 @@
                     <b class="arrow"></b>
                 </li>
 
-                {{-- 'course list' submenu of 'course' --}}
+                {{-- 'Courses List' submenu of 'Course' --}}
                 <li class="{{ request()->routeIs('prm.course.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.course.index') }}">
                         <i class=" fa fa-list red"></i>
-                        Course List
+                        Courses List
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -171,6 +222,7 @@
         </li>
 
         {{-- add punishment --}}
+
         <li class="nav-item">
             <a href="#">
                 <i class="menu-icon fa fa-minus-circle red"></i>
