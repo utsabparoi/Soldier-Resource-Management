@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\CampController;
 use Module\PRM\Controllers\CourseController;
+use Module\PRM\Controllers\StoreController;
 use Module\PRM\Controllers\TrainingController;
 use Module\PRM\Controllers\AppointmentHolderController;
 
@@ -29,4 +30,8 @@ Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
     =============================*/
     Route::resource('course', CourseController::class);
     Route::get('assign-course', [CourseController::class, 'assign_course'])->name('assign-course');
+
+    //Store
+    Route::resource('store', StoreController::class);
 });
+Route::post('/camp_store', [StoreController::class, 'getCampStore']);

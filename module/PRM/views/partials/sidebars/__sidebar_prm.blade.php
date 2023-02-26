@@ -189,5 +189,15 @@
 
             <b class="arrow"></b>
         </li>
+
+        {{-- store --}}
+        <li class="nav-item">
+            <a href="{{ route('prm.store.index') }}">
+                <i class="menu-icon fa fa-shopping-cart"></i>
+                <span class="menu-text"> Store </span>
+            </a>
+
+            <b class="arrow"></b>
+        </li>
     </ul>
 </li>
