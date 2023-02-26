@@ -13,15 +13,14 @@
 
             <b class="arrow"></b>
         </li>
-        <li>
+        {{-- <li>
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-list-alt"></i>
                 <span class="menu-text">
                     Biodata
                 </span>
-                {{-- <b class="arrow fa fa-angle-down"></b> --}}
             </a>
-        </li>
+        </li> --}}
         {{-- PRM sidebar from module --}}
         @include('partials.sidebars.__sidebar_prm')
 

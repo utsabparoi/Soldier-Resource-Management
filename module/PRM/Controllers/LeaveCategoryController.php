@@ -19,6 +19,7 @@ class LeaveCategoryController extends Controller
     {
         try {
             $data['leave_categories']  = LeaveCategory::paginate(20);
+            // ddd('Leave categories' , $data['leave_categories']);
             $data['table']  = LeaveCategory::getTableName();
             return view('pages.leave-category.index', $data);
         } catch (\Throwable $th) {

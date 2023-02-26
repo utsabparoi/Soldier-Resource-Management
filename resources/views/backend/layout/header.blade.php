@@ -14,7 +14,7 @@
             <a href="/" class="navbar-brand">
                 <small>
                     <i class="fa fa-user"></i>
-                    Admin
+                    PERFECT TEN
                 </small>
             </a>
         </div>
