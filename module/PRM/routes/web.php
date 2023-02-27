@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\CampController;
 use Module\PRM\Controllers\CourseController;
+use Module\PRM\Controllers\ParadeController;
 use Module\PRM\Controllers\StoreController;
 use Module\PRM\Controllers\TrainingController;
 use Module\PRM\Controllers\LeaveCategoryController;
@@ -45,5 +46,12 @@ Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
 
     //Store
     Route::resource('store', StoreController::class);
+
+    //Parade
+    Route::resource('parade', ParadeController::class);
+    Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
+
 });
+//ajax axios routes
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
+Route::post('/profileStatusChange', [StoreController::class, 'getCampStore']);

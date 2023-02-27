@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         [
             CampSeeder::class,
             CourseSeeder::class,
+            ParadeSeeder::class,
         ]
     );
     }
