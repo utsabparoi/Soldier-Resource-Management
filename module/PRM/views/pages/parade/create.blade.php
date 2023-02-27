@@ -233,10 +233,14 @@
                                                         </div>
                                                         <br>
                                                         <div align="right" class="row">
-                                                            <div class="col-sm-12" style="padding-right: 100px;">
-                                                                <button class="btn btn-primary" type="submit">
+                                                            <div class="col-sm-12" style="padding-right: 102px;">
+                                                                <button class="btn" type="submit" style="background-color: #828282 !important; border: none;">
                                                                     <i class="ace-icon fa fa-arrow-right bigger-110"></i>
                                                                     Proceed to Next
+                                                                </button>
+                                                                <button class="btn" type="button" style="background-color: #431cff !important; border: none;">
+                                                                    <i class="ace-icon fa fa-save bigger-110"></i>
+                                                                    Save
                                                                 </button>
                                                             </div>
                                                         </div>

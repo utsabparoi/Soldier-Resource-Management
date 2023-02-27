@@ -92,7 +92,7 @@
                                                                                         <input type="text" class="form-control" name="details_remark[]" id="">
                                                                                     </td>
                                                                                     <td>
-                                                                                        <button type="button" class="btn btn-danger btn-sm removeEventCourse">-</button>
+                                                                                        <button type="button" class="removeEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
                                                                                     </td>
                                                                                 </tr>
 
@@ -103,7 +103,7 @@
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                     <td>
-                                                                                        <button type="button" class="btn btn-info btn-sm addEventCourse">+</button>
+                                                                                        <button type="button" class="addEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-plus-circle" style="color: #00ff73;"></i></h4></button>
                                                                                     </td>
                                                                                 </tr>
                                                                                 </tfoot>
@@ -150,7 +150,7 @@
                                                                                         <input type="text" class="form-control" name="details_remark[]" id="">
                                                                                     </td>
                                                                                     <td>
-                                                                                        <button type="button" class="btn btn-danger btn-sm removeEventTraining">-</button>
+                                                                                        <button type="button" class="removeEventTraining" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
                                                                                     </td>
                                                                                 </tr>
 
@@ -161,7 +161,7 @@
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                     <td>
-                                                                                        <button type="button" class="btn btn-info btn-sm addEventTraining">+</button>
+                                                                                        <button type="button" class="addEventTraining" style="background-color: white; border: none"><h4><i class="fa fa-plus-circle" style="color: #00ff73;"></i></h4></button>
                                                                                     </td>
                                                                                 </tr>
                                                                                 </tfoot>
@@ -173,11 +173,11 @@
                                                             </div>
                                                         </div>
                                                         <br>
-                                                        <div align="right"class="row" style=" margin-right: 20%; margin-left: 20%;">
+                                                        <div align="right"class="row" style=" margin-right: 19.1%; margin-left: 20%;">
                                                             <div  class="col-sm-12">
-                                                                <button class="btn btn-primary" type="submit">
-                                                                    <i class="ace-icon fa fa-arrow-right bigger-110"></i>
-                                                                    Proceed to Next
+                                                                <button class="btn btn-primary" type="submit"  style="background-color: #431cff !important; border: none;">
+                                                                    <i class="ace-icon fa fa-save bigger-110"></i>
+                                                                    Save
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -218,7 +218,7 @@
                     <input type="text" class="form-control" name="details_remark[]" id="">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-sm removeEventCourse">-</button>
+                    <button type="button" class="removeEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
                 </td>
             </tr>`;
                     // console.log(whole_extra_item_add);
@@ -253,7 +253,7 @@
                     <input type="text" class="form-control" name="details_remark[]" id="">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-sm removeEventTraining">-</button>
+                    <button type="button" class="removeEventTraining" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
                 </td>
             </tr>`;
                     // console.log(whole_extra_item_add);
