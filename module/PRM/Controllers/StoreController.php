@@ -218,11 +218,8 @@ class StoreController extends Controller
 
     public function getCampStore(Request $request){
         $campId = $request->input('CampId');
-        $campStoreName = StoreModel::where('camp_id', '=', $campId)->first()->name;
-        $campStoreManName = StoreModel::where('camp_id', '=', $campId)->first()->store_man;
-        $campStoreCount = StoreModel::where('camp_id', '=', $campId)->count();
-        return response()->json(["storename"=>$campStoreName, "storemanname"=>$campStoreManName,
-            "count"=>$campStoreCount]);
+        $campStore = StoreModel::where('camp_id', '=', $campId)->get();
+        return response()->json($campStore);
     }
 
 

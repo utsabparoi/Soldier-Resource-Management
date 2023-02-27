@@ -203,6 +203,8 @@
 
             axios.post(url, allData).then(
                 function (response) {
+                    var responseData = response.data;
+                    var serialNumber = 1;
                     $('#storeList').empty();
                     $('#storeList').append("" +
                         "<tr>\n" +
@@ -210,13 +212,14 @@
                         "                                                                                    <th width=\"40%\">Store</th>\n" +
                         "                                                                                    <th width=\"40%\">Store Man</th>\n" +
                         "                                                                                </tr>");
-                    for(let i=0; i<response.data.count; i++){
+                    for(let i=0; i<responseData.length; i++){
                     $('#storeList').append("" +
                         "<tr align=\"left\">\n" +
-                        "                                                                                    <td>1</td>\n" +
-                        "                                                                                    <td>"+response.data.storename+"</td>\n" +
-                        "                                                                                    <td>"+response.data.storemanname+"</td>\n" +
+                        "                                                                                    <td>"+serialNumber+"</td>\n" +
+                        "                                                                                    <td>"+responseData[i].name+"</td>\n" +
+                        "                                                                                    <td>"+response.data[i].store_man+"</td>\n" +
                         "                                                                                </tr>");
+                        serialNumber++;
                     }
                 }
             ).catch(
