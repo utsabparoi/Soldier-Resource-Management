@@ -79,7 +79,7 @@
                                                     <td class="text-center">
                                                         <button
                                                             style="width: 70px; height: 25px; background-color: #00BE67; color: white; border: none; border-radius: 5px;"
-                                                            id="storeId" onmouseover="this.style.backgroundColor='#009e53'" onmouseout="this.style.backgroundColor='#00BE67'" data-id="{{$camp->id}}" onclick="viewStore(this)">View
+                                                            id="storeId" onmouseover="this.style.backgroundColor='#009e53'" onmouseout="this.style.backgroundColor='#00BE67'" data-id="{{$camp->id}}" data-name="{{$camp->name}}" onclick="viewStore(this)">View
                                                         </button>
                                                         <!-- The Modal -->
                                                         <div id="myModal" class="modal">
@@ -87,7 +87,7 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <span class="close">&times;</span>
-                                                                    <div class="contuctUs">Stores</div>
+                                                                    <div class="campName" id="campName">Stores</div>
                                                                 </div>
                                                                 <br>
                                                                 <div class="modal-body">
@@ -197,6 +197,8 @@
             }
 
             let camp_id = $(element).attr("data-id");
+            let camp_name = $(element).attr("data-name");
+            document.getElementById('campName').innerHTML = camp_name;
 
             let url = "/camp_store";
             let allData = {CampId:camp_id};
