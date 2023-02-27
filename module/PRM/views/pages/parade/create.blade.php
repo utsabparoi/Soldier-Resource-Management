@@ -44,7 +44,7 @@
                                             </span>
                                             </div>
 
-                                            <form action="" method="get" enctype="multipart/form-data">
+                                            <form action="{{ route('prm.profileExtraInformation') }}" method="get" enctype="multipart/form-data">
                                                 <div class="widget-body">
                                                     <div class="widget-main">
                                                         <div class="row">

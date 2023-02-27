@@ -4,7 +4,9 @@ namespace Module\PRM\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Module\PRM\Models\Course;
 use Module\PRM\Models\ParadeModel;
+use Module\PRM\Models\Training;
 
 class ParadeController extends Controller
 {
@@ -76,6 +78,13 @@ class ParadeController extends Controller
     public function create()
     {
         return view('pages.parade.create');
+    }
+
+    public function addExtraInformation()
+    {
+        $data['courses'] = Course::all();
+        $data['training'] = Training::all();
+        return view('pages.parade.addExtraInformation', $data);
     }
 
 
