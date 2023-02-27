@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/css/fontawesome-iconpicker.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('backend/css/customised-modal.css') }}" />
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
     <!-- page specific plugin styles -->
