@@ -75,8 +75,7 @@ class ParadeController extends Controller
     */
     public function create()
     {
-        $data = [];
-        return view('', $data);
+        return view('pages.parade.create');
     }
 
 

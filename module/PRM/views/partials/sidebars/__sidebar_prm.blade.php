@@ -122,7 +122,7 @@
             <ul class="submenu">
                 {{-- 'Add Person' submenu of "Person" --}}
                 <li class="{{ request()->routeIs('') ? 'active' : '' }}">
-                    <a href="#">
+                    <a href="{{ route('prm.parade.create') }}">
                         <i class=" fa fa-plus purple"></i>
                         Add Parade
                     </a>
