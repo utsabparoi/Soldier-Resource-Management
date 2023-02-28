@@ -49,7 +49,7 @@
                                                 <input type="text" name="name" value="{{$profileData['Name']}}" hidden>
                                                 <input type="text" name="presentLocation" value="{{$profileData['PresentLocation']}}" hidden>
                                                 <input type="date" name="dateOfJoin" value="{{$profileData['DateOfJoin']}}" hidden>
-                                                <input type="file" name="image" value="{{$profileData['Image']}}" style="display: none;" hidden>
+                                                <input type="text" name="image" value="{{$profileData['Image']}}" style="display: none;" hidden>
                                                 <input type="date" name="dateOfEnrolment" value="{{$profileData['DateOfEnrolment']}}" hidden>
                                                 <input type="date" name="dateOfPresentRank" value="{{$profileData['DateOfPresentRank']}}" hidden>
                                                 <input type="date" name="dateOfRetirement" value="{{$profileData['DateOfRetirement']}}" hidden>
