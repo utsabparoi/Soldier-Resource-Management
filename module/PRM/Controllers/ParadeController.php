@@ -98,7 +98,7 @@ class ParadeController extends Controller
                                     'Name'                  => $request->name,
                                     'PresentLocation'       => $request->presentLocation,
                                     'DateOfJoin'            => $request->dateOfJoin,
-                                    'Image'                 => $request->image,
+                                    'Image'                 => $request->file('image'),
                                     'DateOfEnrolment'       => $request->dateOfEnrolment,
                                     'DateOfPresentRank'     => $request->dateOfPresentRank,
                                     'DateOfRetirement'      => $request->dateOfRetirement,
