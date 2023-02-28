@@ -19,10 +19,10 @@ class CreateParadeModelsTable extends Migration
                 $table -> string('name');
                 $table -> string('image')->nullable();
                 $table -> string('present_location')->nullable();
-                $table -> string('join_date_present_unit')->nullable();
-                $table -> string('enrolment_date')->nullable();
-                $table -> string('present_rank_date')->nullable();
-                $table -> string('retirement_date')->nullable();
+                $table -> date('join_date_present_unit')->nullable();
+                $table -> date('enrolment_date')->nullable();
+                $table -> date('present_rank_date')->nullable();
+                $table -> date('retirement_date')->nullable();
                 $table -> string('civ_edn')->nullable();
                 $table -> string('med_cat')->nullable();
                 $table -> string('next_rank')->nullable();

@@ -44,7 +44,8 @@
                                             </span>
                                             </div>
 
-                                            <form action="{{ route('prm.profileExtraInformation') }}" method="get" enctype="multipart/form-data">
+                                            <form action="{{ route('prm.parade.store') }}" method="post" enctype="multipart/form-data" id="Form">
+                                                @csrf
                                                 <div class="widget-body">
                                                     <div class="widget-main">
                                                         <div class="row">
@@ -56,7 +57,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Person Name<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" name="personName" id="name" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="text" name="name" id="name" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -68,7 +69,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Present Location<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <textarea id="primaryAddress" class="col-xs-10 col-sm-10"></textarea>
+                                                                                <textarea name="presentLocation" id="presentLocation" class="col-xs-10 col-sm-10"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -80,7 +81,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Join<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="date" id="phoneOne" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="date" name="dateOfJoin" id="dateOfJoin" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -96,7 +97,7 @@
                                                                                 <div class="widget-main">
                                                                                     <div class="form-group">
                                                                                         <div class="col-xs-12">
-                                                                                            <label class="ace-file-input ace-file-multiple"><input multiple="" type="file" id="favicon"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
+                                                                                            <label class="ace-file-input ace-file-multiple"><input multiple="" type="file" name="image" id="image"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -111,7 +112,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Enrolment <sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" id="phoneTwo" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="date" name="dateOfEnrolment" id="dateOfEnrolment" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -123,7 +124,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Present Rk<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" id="hotLine" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="date" name="dateOfPresentRank" id="dateOfPresentRank" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -140,7 +141,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Retirement<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="date" id="secondaryEmail" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="date" name="dateOfRetirement" id="dateOfRetirement" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -152,7 +153,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Civ Edn<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" id="primaryEmail" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="text" name="cidEdn" id="cidEdn" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -164,7 +165,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Med Cat<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" id="secondaryEmail" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="text" name="medCat" id="medCat" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -176,7 +177,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><h5><strong>Qual/Unqual Rk<sup class="text-danger">*</sup></strong></h5>  </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <select class="col-xs-10 col-sm-10">
+                                                                                <select class="col-xs-10 col-sm-10" name="qualUnqualRank" id="qualUnqualRank">
                                                                                     <option>-Select-</option>
                                                                                     <option>Major</option>
                                                                                     <option>Captain</option>
@@ -196,7 +197,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Permanent Address <sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <textarea id="primaryAddress" class="col-xs-10 col-sm-10" rows="4" cols="50"></textarea>
+                                                                                <textarea name="permanentAddress" id="permanentAddress" class="col-xs-10 col-sm-10" rows="4" cols="50"></textarea>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -208,7 +209,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Merital Status<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <select class="col-xs-10 col-sm-10">
+                                                                                <select class="col-xs-10 col-sm-10" name="meritalStatus" id="meritalStatus">
                                                                                     <option>Unmarried</option>
                                                                                     <option>Married</option>
                                                                                 </select>
@@ -223,7 +224,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>No of Children<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="number" id="binNo" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="number" name="noOfChildren" id="noOfChildren" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -238,7 +239,7 @@
                                                                     <i class="ace-icon fa fa-arrow-right bigger-110"></i>
                                                                     Proceed to Next
                                                                 </button>
-                                                                <button class="btn" type="button" style="background-color: #431cff !important; border: none;">
+                                                                <button class="btn" type="submit" style="background-color: #431cff !important; border: none;">
                                                                     <i class="ace-icon fa fa-save bigger-110"></i>
                                                                     Save
                                                                 </button>
@@ -258,5 +259,7 @@
                 </div>
             </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+            <link rel="stylesheet" href="{{ asset('backend/css/custom-style.css') }}" />
+
 
 @endsection

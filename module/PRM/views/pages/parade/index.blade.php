@@ -60,7 +60,7 @@
                                             <thead>
                                             <tr>
                                                 <th width="5%" class="hide-in-sm">Sl</th>
-                                                 <th width="15%">Image</th>
+                                                <th width="15%">Image</th>
                                                 <th width="25%">Name</th>
                                                 <th width="30%">Location</th>
                                                 <th width="10%">Status</th>
@@ -74,7 +74,7 @@
                                                 <tr>
                                                     <td class="hide-in-sm"><span class="span">{{ $parades->id }}</span></td>
                                                      <td>
-                                                         <img src="{{ asset('backend/images/person.png') }}" width="50px" height="50px">
+                                                         <img src="{{ asset($parades->image) }}" width="50px" height="50px">
                                                     </td>
                                                     <td><span class="span">{{ $parades->name }}</span></td>
                                                     <td><span class="span">{{ $parades->present_location }}</span></td>

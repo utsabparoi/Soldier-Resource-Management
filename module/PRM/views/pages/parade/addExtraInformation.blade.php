@@ -78,7 +78,7 @@
                                                                                 <tbody class="table_body_course">
                                                                                 <tr class="remove_able_tr_course">
                                                                                     <td>
-                                                                                        <select class="form-control">
+                                                                                        <select class="col-xs-12 col-sm-12">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($courses as $course)
                                                                                                 <option>{{ $course->name }}</option>
@@ -136,7 +136,7 @@
                                                                                 <tbody class="table_body_training">
                                                                                 <tr class="remove_able_tr_training">
                                                                                     <td>
-                                                                                        <select class="form-control">
+                                                                                        <select class="col-xs-12 col-sm-12">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($training as $trainings)
                                                                                                 <option>{{ $trainings->name }}</option>
@@ -197,6 +197,7 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('backend/css/custom-style.css') }}" />
 
         <script>
             $(document).ready(function () {
@@ -204,7 +205,7 @@
                 $(document).on("click",".addEventCourse", function(){
                     var whole_extra_item_add = `<tr class="remove_able_tr_course">
                                                                                     <td>
-                                                                                        <select class="form-control">
+                                                                                        <select class="col-xs-12 col-sm-12">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($courses as $course)
                     <option>{{ $course->name }}</option>
@@ -239,7 +240,7 @@
                 $(document).on("click",".addEventTraining", function(){
                     var whole_extra_item_add2 = `<tr class="remove_able_tr_training">
                                                                                     <td>
-                                                                                        <select class="form-control">
+                                                                                        <select class="col-xs-12 col-sm-12">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($training as $trainings)
                     <option>{{ $trainings->name }}</option>

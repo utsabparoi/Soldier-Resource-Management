@@ -2,6 +2,7 @@
 
 namespace Module\PRM\Controllers;
 
+use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Module\PRM\Models\Course;
@@ -11,6 +12,7 @@ use Module\PRM\Models\Training;
 class ParadeController extends Controller
 {
     private $service;
+    use FileSaver;
 
 
     /*
@@ -106,7 +108,18 @@ class ParadeController extends Controller
     */
     public function store(Request $request)
     {
-        # code...
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        try {
+            $this->storeOrUpdate($request);
+
+            return redirect()->route('prm.parade.index')->with('success','Parade Created Successfully');
+
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
 
@@ -194,5 +207,32 @@ class ParadeController extends Controller
     public function destroy($id)
     {
         # code...
+    }
+
+    public function storeOrUpdate($request, $id = null)
+    {
+        try {
+            $parade = ParadeModel::updateOrCreate([
+                'id'                    =>$id,
+            ],[
+                'name'                      =>$request->name,
+                'present_location'          =>$request->presentLocation,
+                'join_date_present_unit'    =>$request->dateOfJoin,
+                'enrolment_date'            =>$request->dateOfEnrolment,
+                'present_rank_date'         =>$request->dateOfPresentRank,
+                'retirement_date'           =>$request->dateOfRetirement,
+                'civ_edn'                   =>$request->cidEdn,
+                'med_cat'                   =>$request->medCat,
+                'next_rank'                 =>$request->qualUnqualRank,
+                'permanent_address'         =>$request->permanentAddress,
+                'marital_status'            =>$request->meritalStatus,
+                'children_number'           =>$request->noOfChildren,
+                'status'                    =>1,
+            ]);
+            $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
+            return $parade;
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 }
