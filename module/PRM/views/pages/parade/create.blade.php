@@ -57,7 +57,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Person Name<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" name="name" id="name" value="" class="col-xs-10 col-sm-10">
+                                                                                <input type="text" name="name" id="name" value="" class="col-xs-10 col-sm-10" required>
                                                                             </div>
                                                                         </div>
                                                                     </div>

@@ -92,16 +92,26 @@ class ParadeController extends Controller
     public function store(Request $request)
     {
         if ($request->submitButton == 'proceedToNext') {
-            $profileData= $request->name;
+            $profileData = array(
+                                    'Name'                  => $request->name,
+                                    'PresentLocation'       => $request->presentLocation,
+                                    'DateOfJoin'            => $request->dateOfJoin,
+                                    'Image'                 => $request->image,
+                                    'DateOfEnrolment,'      => $request->dateOfEnrolment,
+                                    'DateOfPresentRank'     => $request->dateOfPresentRank,
+                                    'DateOfRetirement'      => $request->dateOfRetirement,
+                                    'CidEdn'                => $request->cidEdn,
+                                    'MedCat'                => $request->medCat,
+                                    'QualUnqualRank'        => $request->qualUnqualRank,
+                                    'PermanentAddress'      => $request->permanentAddress,
+                                    'MeritalStatus'         => $request->meritalStatus,
+                                    'NoOfChildren'          => $request->noOfChildren,
+            );
             $data['courses'] = Course::all();
             $data['training'] = Training::all();
             return view('pages.parade.addExtraInformation', compact('profileData'), $data);
         }
         else if ($request->submitButton == 'save'){
-            $request->validate([
-                'name' => 'required',
-            ]);
-
             try {
                 $this->storeOrUpdate($request);
 
