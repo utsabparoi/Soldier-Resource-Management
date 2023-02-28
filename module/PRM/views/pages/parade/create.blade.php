@@ -235,11 +235,11 @@
                                                         <br>
                                                         <div align="right" class="row">
                                                             <div class="col-sm-12" style="padding-right: 102px;">
-                                                                <button class="btn" type="submit" style="background-color: #828282 !important; border: none;">
+                                                                <button class="btn" type="submit" name="submitButton" value="proceedToNext" style="background-color: #828282 !important; border: none;">
                                                                     <i class="ace-icon fa fa-arrow-right bigger-110"></i>
                                                                     Proceed to Next
                                                                 </button>
-                                                                <button class="btn" type="submit" style="background-color: #431cff !important; border: none;">
+                                                                <button class="btn" type="submit" name="submitButton" value="save" style="background-color: #431cff !important; border: none;">
                                                                     <i class="ace-icon fa fa-save bigger-110"></i>
                                                                     Save
                                                                 </button>

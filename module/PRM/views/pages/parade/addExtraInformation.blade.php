@@ -52,7 +52,7 @@
                                                             <div class="col-sm-12">
                                                                 <div align="center" class="row" style=" margin-right: 20%; margin-left: 20%;">
                                                                     <div align="center" class="col-xs-12">
-                                                                        <div align="center"><label class="col-sm-12 control-label"><span style="font-size: 19px;"><strong>Add Additional Information for Mr. X </strong></span> </label>
+                                                                        <div align="center"><label class="col-sm-12 control-label"><span style="font-size: 19px;"><strong>Add Additional Information for {{$profileData}} </strong></span> </label>
                                                                         </div>
                                                                         <div class="form-group">
                                                                         </div>

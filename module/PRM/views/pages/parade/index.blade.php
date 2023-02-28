@@ -82,8 +82,9 @@
                                                         <!--------------- STATUS EDIT---------------->
                                                         <div>
                                                             <label>
-                                                                <input name="status" class="ace ace-switch" type="checkbox" id="status" checked>
-                                                                <span class="lbl"></span>
+                                                                <span class="span">
+                                                            <x-status status="{{ $parades->status }}" id="{{ $parades->id }}" table="{{ $table }}" />
+                                                        </span>
                                                             </label>
                                                         </div>
                                                     </td>
@@ -106,7 +107,7 @@
 
 
                                                             <button type="button"
-                                                                    onclick=""
+                                                                    onclick="delete_item(`{{ route('prm.parade.destroy', $parades->id) }}`)"
                                                                     class="btn btn-xs btn-danger bs-tooltip" title="Delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>

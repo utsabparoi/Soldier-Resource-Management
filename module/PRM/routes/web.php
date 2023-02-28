@@ -50,7 +50,6 @@ Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
     //Parade
     Route::resource('parade', ParadeController::class);
     Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
-    Route::get('/profileExtraInformation', [ParadeController::class, 'addExtraInformation'])->name('profileExtraInformation');
 
 
 });

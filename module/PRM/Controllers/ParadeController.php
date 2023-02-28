@@ -82,23 +82,6 @@ class ParadeController extends Controller
         return view('pages.parade.create');
     }
 
-    public function addExtraInformation()
-    {
-        $data['courses'] = Course::all();
-        $data['training'] = Training::all();
-        return view('pages.parade.addExtraInformation', $data);
-    }
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*
@@ -108,17 +91,25 @@ class ParadeController extends Controller
     */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
+        if ($request->submitButton == 'proceedToNext') {
+            $profileData= $request->name;
+            $data['courses'] = Course::all();
+            $data['training'] = Training::all();
+            return view('pages.parade.addExtraInformation', compact('profileData'), $data);
+        }
+        else if ($request->submitButton == 'save'){
+            $request->validate([
+                'name' => 'required',
+            ]);
 
-        try {
-            $this->storeOrUpdate($request);
+            try {
+                $this->storeOrUpdate($request);
 
-            return redirect()->route('prm.parade.index')->with('success','Parade Created Successfully');
+                return redirect()->route('prm.parade.index')->with('success','Parade Created Successfully');
 
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error',$th->getMessage());
+            } catch (\Throwable $th) {
+                return redirect()->back()->with('error',$th->getMessage());
+            }
         }
     }
 
@@ -206,7 +197,14 @@ class ParadeController extends Controller
     */
     public function destroy($id)
     {
-        # code...
+        try {
+            $store= ParadeModel::find($id);
+            $store->delete();
+
+            return redirect()->back()->with('success','Parade Deleted Success');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
     public function storeOrUpdate($request, $id = null)
