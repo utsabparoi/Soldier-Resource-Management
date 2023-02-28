@@ -20,8 +20,9 @@ class CreateParadeCoursesTable extends Migration
                 $table->foreignId('parade_id')->constrained();
                 $table->string('serial_no')->nullable();
                 $table->string('duration')->nullable();
-                $table->foreignId('result')->nullable();
-                $table->foreignId('status')->default(1);
+                $table->string('result')->nullable();
+                $table->string('remark')->nullable();
+                $table->tinyInteger('status')->default(1);
                 $table->timestamps();
             });
         }

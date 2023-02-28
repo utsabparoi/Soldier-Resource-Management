@@ -39,14 +39,27 @@
                                                 <span class="widget-toolbar">
                                                 <!--------------- Slider List---------------->
                                                 <a href="{{ route('prm.parade.index') }}" class="">
-                                                    <i class="fa fa-list"></i> Course <span class="hide-in-sm">List</span>
+                                                    <i class="fa fa-list"></i> Parade <span class="hide-in-sm">List</span>
                                                 </a>
                                             </span>
                                             </div>
 
-                                            <form action="" method="get" enctype="multipart/form-data">
+                                            <form action="{{ route('prm.parade.store') }}" method="post" enctype="multipart/form-data" id="Form">
+                                                @csrf
+                                                <input type="text" name="name" value="{{$profileData['Name']}}" hidden>
+                                                <input type="text" name="presentLocation" value="{{$profileData['PresentLocation']}}" hidden>
+                                                <input type="date" name="dateOfJoin" value="{{$profileData['DateOfJoin']}}" hidden>
+                                                <input type="file" name="image" value="{{$profileData['Image']}}" style="display: none;" hidden>
+                                                <input type="date" name="dateOfEnrolment" value="{{$profileData['DateOfEnrolment']}}" hidden>
+                                                <input type="date" name="dateOfPresentRank" value="{{$profileData['DateOfPresentRank']}}" hidden>
+                                                <input type="date" name="dateOfRetirement" value="{{$profileData['DateOfRetirement']}}" hidden>
+                                                <input type="text" name="cidEdn" value="{{$profileData['CidEdn']}}" hidden>
+                                                <input type="text" name="medCat" value="{{$profileData['MedCat']}}" hidden>
+                                                <input type="text" name="qualUnqualRank" value="{{$profileData['QualUnqualRank']}}" hidden>
+                                                <input type="text" name="permanentAddress" value="{{$profileData['PermanentAddress']}}" hidden>
+                                                <input type="text" name="meritalStatus" value="{{$profileData['MeritalStatus']}}" hidden>
+                                                <input type="text" name="noOfChildren" value="{{$profileData['NoOfChildren']}}" hidden>
                                                 <div class="widget-body">
-                                                    <form class="widget-main">
                                                         <div class="row">
                                                             <br>
                                                             <div class="col-sm-12">
@@ -72,13 +85,14 @@
                                                                                     <th width="20%">Name of Course</th>
                                                                                     <th width="5%">Resut</th>
                                                                                     <th width="5%">Remarks</th>
+                                                                                    <th width="5%">Duration</th>
                                                                                     <th width="5%">Action</th>
                                                                                 </tr>
                                                                                 </thead>
                                                                                 <tbody class="table_body_course">
                                                                                 <tr class="remove_able_tr_course">
                                                                                     <td>
-                                                                                        <select class="col-xs-12 col-sm-12">
+                                                                                        <select class="col-xs-12 col-sm-12" name="course[]" id="course">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($courses as $course)
                                                                                                 <option>{{ $course->name }}</option>
@@ -86,10 +100,13 @@
                                                                                         </select>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <input type="text" class="form-control" name="details_result[]" id="">
+                                                                                        <input type="text" class="form-control" name="course_result[]" id="">
                                                                                     </td>
                                                                                     <td>
-                                                                                        <input type="text" class="form-control" name="details_remark[]" id="">
+                                                                                        <input type="text" class="form-control" name="course_remark[]" id="">
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <input type="text" class="form-control" name="course_duration[]" id="">
                                                                                     </td>
                                                                                     <td>
                                                                                         <button type="button" class="removeEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
@@ -99,6 +116,7 @@
                                                                                 </tbody>
                                                                                 <tfoot>
                                                                                 <tr>
+                                                                                    <td></td>
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                     <td></td>
@@ -130,13 +148,14 @@
                                                                                     <th width="20%">Name of Training</th>
                                                                                     <th width="5%">Resut</th>
                                                                                     <th width="5%">Remarks</th>
+                                                                                    <th width="5%">Duration</th>
                                                                                     <th width="5%">Action</th>
                                                                                 </tr>
                                                                                 </thead>
                                                                                 <tbody class="table_body_training">
                                                                                 <tr class="remove_able_tr_training">
                                                                                     <td>
-                                                                                        <select class="col-xs-12 col-sm-12">
+                                                                                        <select class="col-xs-12 col-sm-12" name="training[]">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($training as $trainings)
                                                                                                 <option>{{ $trainings->name }}</option>
@@ -144,10 +163,13 @@
                                                                                         </select>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <input type="text" class="form-control" name="details_result[]" id="">
+                                                                                        <input type="text" class="form-control" name="training_result[]" id="">
                                                                                     </td>
                                                                                     <td>
-                                                                                        <input type="text" class="form-control" name="details_remark[]" id="">
+                                                                                        <input type="text" class="form-control" name="training_remark[]" id="">
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <input type="text" class="form-control" name="training_duration[]" id="">
                                                                                     </td>
                                                                                     <td>
                                                                                         <button type="button" class="removeEventTraining" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
@@ -157,6 +179,7 @@
                                                                                 </tbody>
                                                                                 <tfoot>
                                                                                 <tr>
+                                                                                    <td></td>
                                                                                     <td></td>
                                                                                     <td></td>
                                                                                     <td></td>
@@ -175,13 +198,12 @@
                                                         <br>
                                                         <div align="right"class="row" style=" margin-right: 19.1%; margin-left: 20%;">
                                                             <div  class="col-sm-12">
-                                                                <button class="btn btn-primary" type="submit"  style="background-color: #431cff !important; border: none;">
+                                                                <button class="btn btn-primary" type="submit" name="submitButton" value="saveWithExtraInfo" style="background-color: #431cff !important; border: none;">
                                                                     <i class="ace-icon fa fa-save bigger-110"></i>
                                                                     Save
                                                                 </button>
                                                             </div>
                                                         </div>
-                                                    </form>
                                                     <br>
                                                 </div>
                                             </form>
@@ -205,7 +227,7 @@
                 $(document).on("click",".addEventCourse", function(){
                     var whole_extra_item_add = `<tr class="remove_able_tr_course">
                                                                                     <td>
-                                                                                        <select class="col-xs-12 col-sm-12">
+                                                                                        <select class="col-xs-12 col-sm-12" name="course[]">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($courses as $course)
                     <option>{{ $course->name }}</option>
@@ -213,10 +235,13 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="details_result[]" id="">
+                    <input type="text" class="form-control" name="course_result[]" id="">
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="details_remark[]" id="">
+                    <input type="text" class="form-control" name="course_remark[]" id="">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="course_duration[]" id="">
                 </td>
                 <td>
                     <button type="button" class="removeEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
@@ -240,7 +265,7 @@
                 $(document).on("click",".addEventTraining", function(){
                     var whole_extra_item_add2 = `<tr class="remove_able_tr_training">
                                                                                     <td>
-                                                                                        <select class="col-xs-12 col-sm-12">
+                                                                                        <select class="col-xs-12 col-sm-12" name="training[]">
                                                                                             <option>-Select-</option>
                                                                                             @foreach($training as $trainings)
                     <option>{{ $trainings->name }}</option>
@@ -248,10 +273,13 @@
                     </select>
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="details_result[]" id="">
+                    <input type="text" class="form-control" name="training_result[]" id="">
                 </td>
                 <td>
-                    <input type="text" class="form-control" name="details_remark[]" id="">
+                    <input type="text" class="form-control" name="training_remark[]" id="">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="training_duration[]" id="">
                 </td>
                 <td>
                     <button type="button" class="removeEventTraining" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
