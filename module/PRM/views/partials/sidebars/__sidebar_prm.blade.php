@@ -148,7 +148,7 @@
                 <span class="menu-text">Training Management</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-            <b class="arrow"></b>
+            {{-- <b class="arrow"></b> --}}
 
             <ul class="submenu">
                 <li class="{{ request()->routeIs('prm.training-category*') ? 'open active' : ''}}">
@@ -157,7 +157,7 @@
                         <span class="menu-text">Training Category</span>
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
-                    <b class="arrow"></b>
+                    {{-- <b class="arrow"></b> --}}
                     <ul class="submenu">
                         {{-- 'Add Category' submenu of "Training Management" --}}
                         <li class="{{ request()->routeIs('prm.training-category.create') ? 'active' : '' }}">
