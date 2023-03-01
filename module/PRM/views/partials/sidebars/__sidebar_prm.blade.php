@@ -115,25 +115,25 @@
         <li class="{{ request()->routeIs('') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-user"></i>
-                <span class="menu-text">Person</span>
+                <span class="menu-text">Parade</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
                 {{-- 'Add Person' submenu of "Person" --}}
                 <li class="{{ request()->routeIs('') ? 'active' : '' }}">
-                    <a href="#">
+                    <a href="{{ route('prm.parade.create') }}">
                         <i class=" fa fa-plus purple"></i>
-                        Add Person
+                        Add Parade
                     </a>
                     <b class="arrow"></b>
                 </li>
 
                 {{-- 'Persons List' submenu of "Person" --}}
                 <li class="{{ request()->routeIs('') ? 'active' : '' }}">
-                    <a href="#">
+                    <a href="{{ route('prm.parade.index') }}">
                         <i class=" fa fa-list red"></i>
-                        Persons List
+                        Parade List
                     </a>
                     <b class="arrow"></b>
                 </li>

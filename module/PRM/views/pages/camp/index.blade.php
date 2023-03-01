@@ -79,7 +79,7 @@
                                                     <td class="text-center">
                                                         <button
                                                             style="width: 70px; height: 25px; background-color: #00BE67; color: white; border: none; border-radius: 5px;"
-                                                            id="storeId" onmouseover="this.style.backgroundColor='#009e53'" onmouseout="this.style.backgroundColor='#00BE67'" data-id="{{$camp->id}}" onclick="viewStore(this)">View
+                                                            id="storeId" onmouseover="this.style.backgroundColor='#009e53'" onmouseout="this.style.backgroundColor='#00BE67'" data-id="{{$camp->id}}" data-name="{{$camp->name}}" onclick="viewStore(this)">View
                                                         </button>
                                                         <!-- The Modal -->
                                                         <div id="myModal" class="modal">
@@ -87,7 +87,7 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <span class="close">&times;</span>
-                                                                    <div class="contuctUs">Stores</div>
+                                                                    <div class="campName" id="campName">Stores</div>
                                                                 </div>
                                                                 <br>
                                                                 <div class="modal-body">
@@ -197,12 +197,16 @@
             }
 
             let camp_id = $(element).attr("data-id");
+            let camp_name = $(element).attr("data-name");
+            document.getElementById('campName').innerHTML = camp_name;
 
             let url = "/camp_store";
             let allData = {CampId:camp_id};
 
             axios.post(url, allData).then(
                 function (response) {
+                    var responseData = response.data;
+                    var serialNumber = 1;
                     $('#storeList').empty();
                     $('#storeList').append("" +
                         "<tr>\n" +
@@ -210,13 +214,14 @@
                         "                                                                                    <th width=\"40%\">Store</th>\n" +
                         "                                                                                    <th width=\"40%\">Store Man</th>\n" +
                         "                                                                                </tr>");
-                    for(let i=0; i<response.data.count; i++){
+                    for(let i=0; i<responseData.length; i++){
                     $('#storeList').append("" +
                         "<tr align=\"left\">\n" +
-                        "                                                                                    <td>1</td>\n" +
-                        "                                                                                    <td>"+response.data.storename+"</td>\n" +
-                        "                                                                                    <td>"+response.data.storemanname+"</td>\n" +
+                        "                                                                                    <td>"+serialNumber+"</td>\n" +
+                        "                                                                                    <td>"+responseData[i].name+"</td>\n" +
+                        "                                                                                    <td>"+response.data[i].store_man+"</td>\n" +
                         "                                                                                </tr>");
+                        serialNumber++;
                     }
                 }
             ).catch(
