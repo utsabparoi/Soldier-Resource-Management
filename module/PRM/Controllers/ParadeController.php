@@ -2,6 +2,7 @@
 
 namespace Module\PRM\Controllers;
 
+use App\Models\User;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -246,6 +247,8 @@ class ParadeController extends Controller
                     'marital_status'            =>$request->meritalStatus,
                     'children_number'           =>$request->noOfChildren,
                     'status'                    =>1,
+//                    'created_by'                =>session('AdminId'),
+//                    'updated_by'                =>session('AdminId'),
                 ]);
             $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
             return $parade;
@@ -274,6 +277,8 @@ class ParadeController extends Controller
                 'marital_status'            =>$request->meritalStatus,
                 'children_number'           =>$request->noOfChildren,
                 'status'                    =>1,
+//                'created_by'                =>session('AdminId'),
+//                'updated_by'                =>session('AdminId'),
             ]);
             $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
 

@@ -24,9 +24,11 @@ class AdminController extends Controller
         $userEmail = AdminModel::where("email", "=", $email)->where("password", "=", $hashPassword)->count();
 
         $user = AdminModel::where("email", "=", $email)->first()->name;
+        $id   = AdminModel::where("email", "=", $email)->first()->id;
 
         if($userEmail == 1){
             $request->session()->put("AdminLoginSession", $user);
+            $request->session()->put("AdminId", $id);
             return 1;
         }
         else
