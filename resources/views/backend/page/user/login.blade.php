@@ -30,6 +30,17 @@
 <!--[if lte IE 9]>
     <link rel="stylesheet" href="{{asset('backend/css/ace-ie.min.css')}}" />
     <![endif]-->
+    <style>
+        /* lottie or lord-icon position center */
+        .lotti-icon-center{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:-35px;
+            margin-bottom: -20px;
+            width: 50%;
+        }
+    </style>
 
     <!-- inline styles related to this page -->
 
@@ -53,23 +64,28 @@
                     <div class="center">
                         <h1>
                             <i class="ace-icon fa fa-user green"></i>
-                            <span class="red">Bio-data</span>
-                            <span class="white" id="id-text2">Application</span>
+                            <span class="red">PERFECT</span>
+                            <span class="white" id="id-text2">TEN</span>
                         </h1>
                     </div>
 
                     <div class="space-6"></div>
 
                     <div class="position-relative">
-                        <div id="login-box" class="login-box visible widget-box no-border">
+                        <div id="login-box" class="login-box visible widget-box no-border" style="border-radius:10px">
                             <div class="widget-body">
                                 <div class="widget-main">
-                                    <h4 class="header blue lighter bigger">
-                                        <i class="ace-icon fa fa-coffee green"></i>
-                                        Please Enter Your Information
+                                    <h4 class="lighter bigger text-center">
+                                        {{-- <lottie-player src="{{ asset('/frontend/lord-icon/96957-lock.json') }}"
+                                        background="transparent" speed="1" class="lotti-icon-center" style="width: 70px; height: 70px;" loop
+                                        autoplay></lottie-player>
+                                        Sign in --}}
+                                        <lottie-player src="{{ asset('/frontend/lord-icon/25344-army-soldiers.json') }}"
+                                        background="transparent" speed="1" class="lotti-icon-center" style="width: 220px; height: 200px;" loop
+                                        autoplay></lottie-player>
                                     </h4>
 
-                                    <div class="space-6"></div>
+                                    {{-- <div class="space-6"></div> --}}
                                     <h4><div align="center" id="loginFailed" style="color: red;"></div></h4>
 
                                     <form>
@@ -108,14 +124,19 @@
                                             <div class="space-4"></div>
                                         </fieldset>
                                     </form>
+                                    {{-- <div>
+                                        <lottie-player src="{{ asset('/frontend/lord-icon/25344-army-soldiers.json') }}"
+                                        background="transparent" speed="1" class="lotti-icon-center" style="width: 220px; height: 200px;" loop
+                                        autoplay></lottie-player>
 
-                                    <div class="social-or-login center">
+                                    </div> --}}
+                                    {{-- <div class="social-or-login center">
                                         <span class="bigger-110">Or Login Using</span>
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="space-6"></div>
+                                    {{-- <div class="space-6"></div> --}}
 
-                                    <div class="social-login center">
+                                    {{-- <div class="social-login center">
                                         <a class="btn btn-primary">
                                             <i class="ace-icon fa fa-facebook"></i>
                                         </a>
@@ -127,10 +148,10 @@
                                         <a class="btn btn-danger">
                                             <i class="ace-icon fa fa-google-plus"></i>
                                         </a>
-                                    </div>
+                                    </div> --}}
                                 </div><!-- /.widget-main -->
 
-                                <div class="toolbar clearfix">
+                                {{-- <div class="toolbar clearfix">
                                     <div>
                                         <a href="#" data-target="#forgot-box" class="forgot-password-link">
                                             <i class="ace-icon fa fa-arrow-left"></i>
@@ -144,7 +165,7 @@
                                             <i class="ace-icon fa fa-arrow-right"></i>
                                         </a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div><!-- /.widget-body -->
                         </div><!-- /.login-box -->
 
@@ -322,5 +343,7 @@
     }
 </script>
 <script src="{{ asset('/backend/js/axios.min.js') }}"></script>
+<script src="{{ asset('frontend/js/lord-icon-2.1.0.js') }}"></script>
+<script src="{{ asset('frontend/js/lottie-player.js') }}"></script>
 </body>
 </html>

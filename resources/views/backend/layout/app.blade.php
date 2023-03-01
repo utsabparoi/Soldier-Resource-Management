@@ -51,6 +51,9 @@
     {{-- Select2 --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+    {{-- custom-css --}}
+    <link rel="stylesheet" href="{{ asset('backend/custom_css/custom.css') }}">
+
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -180,6 +183,9 @@
             $('.multiselect').select2();
         });
     </script>
+
+    <script src="{{ asset('frontend/js/lord-icon-2.1.0.js') }}"></script>
+    <script src="{{ asset('frontend/js/lottie-player.js') }}"></script>
 
 
 
@@ -550,6 +556,8 @@
             });
         });
     </script>
+    <script src="{{ asset('frontend/js/lord-icon-2.1.0.js') }}"></script>
+    <script src="{{ asset('frontend/js/lottie-player.js') }}"></script>
     @yield('js')
 </body>
 

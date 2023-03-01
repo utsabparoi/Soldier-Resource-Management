@@ -2,7 +2,7 @@
 
 namespace Module\Path\Models;
 
-use App\Models\Model;
+use Module\Path\Models\Model;
 
 class ModelName extends Model
 {

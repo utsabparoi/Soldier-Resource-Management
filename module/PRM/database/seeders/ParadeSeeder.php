@@ -1,10 +1,8 @@
 <?php
 
-namespace Module\PRM\Database\Seeders;
+namespace Module\PRM\database\seeders;
 
-use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use Module\PRM\Models\ParadeModel;
 
 class ParadeSeeder extends Seeder

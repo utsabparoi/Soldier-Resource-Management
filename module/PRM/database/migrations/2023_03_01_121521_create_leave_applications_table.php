@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ClassName extends Migration
+class CreateLeaveApplicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class ClassName extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('TableName')){
-            Schema::create('TableName', function (Blueprint $table) {
+        if(!Schema::hasTable('leave_applications')){
+            Schema::create('leave_applications', function (Blueprint $table) {
                 $table->id();
+                $table->string('name');
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();
 
@@ -35,6 +36,6 @@ class ClassName extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('TableName');
+        Schema::dropIfExists('leave_applications');
     }
 }
