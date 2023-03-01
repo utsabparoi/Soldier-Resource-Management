@@ -1,11 +1,11 @@
 <?php
 
-namespace Module\ModuleName\database\seeders;
+namespace Module\PRM\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class DummyTableSeeder extends Seeder
+class LeaveSeeder extends Seeder
 {
     /**
      * Run the database seeds.

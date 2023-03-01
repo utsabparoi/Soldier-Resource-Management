@@ -1,6 +1,6 @@
 <?php
 
-namespace Module\PRM\Database\Seeders;
+namespace Module\PRM\database\seeders;
 
 use Module\PRM\Models\Course;
 use Illuminate\Database\Seeder;
