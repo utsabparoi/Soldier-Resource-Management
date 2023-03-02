@@ -247,8 +247,8 @@ class ParadeController extends Controller
                     'marital_status'            =>$request->meritalStatus,
                     'children_number'           =>$request->noOfChildren,
                     'status'                    =>1,
-//                    'created_by'                =>session('AdminId'),
-//                    'updated_by'                =>session('AdminId'),
+                    'created_by'                =>session('AdminId'),
+                    'updated_by'                =>session('AdminId'),
                 ]);
             $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
             return $parade;
@@ -277,8 +277,8 @@ class ParadeController extends Controller
                 'marital_status'            =>$request->meritalStatus,
                 'children_number'           =>$request->noOfChildren,
                 'status'                    =>1,
-//                'created_by'                =>session('AdminId'),
-//                'updated_by'                =>session('AdminId'),
+                'created_by'                =>session('AdminId'),
+                'updated_by'                =>session('AdminId'),
             ]);
             $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
 
@@ -294,6 +294,8 @@ class ParadeController extends Controller
                         'duration'  => $request->course_duration[$key],
                         'result'    => $request->course_result[$key],
                         'status'    => 1,
+                        'created_by'=>session('AdminId'),
+                        'updated_by'=>session('AdminId'),
                     ]);
             }
 
@@ -309,6 +311,8 @@ class ParadeController extends Controller
                         'duration'    => $request->training_duration[$key],
                         'result'      => $request->training_result[$key],
                         'status'      => 1,
+                        'created_by'  =>session('AdminId'),
+                        'updated_by'  =>session('AdminId'),
                     ]);
             }
             return $parade;
