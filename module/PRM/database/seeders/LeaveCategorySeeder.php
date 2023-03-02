@@ -28,6 +28,7 @@ class LeaveCategorySeeder extends Seeder
                 [   'id' => $category['id']],
                 [
                     'name' => $category['name'],
+                    'status' => $category['status'],
                     'created_at' =>$category['created_at'],
                     'updated_at' =>$category['updated_at']
                 ]

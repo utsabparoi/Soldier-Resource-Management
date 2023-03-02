@@ -255,6 +255,15 @@
             <a href="#">
                 <i class="menu-icon fa fa-minus-circle red"></i>
                 <span class="menu-text"> Leave Application </span>
+                <ul class="submenu">
+                    <li class="{{ request()->routeIs() ? 'active' : '' }}">
+                        <a href="">
+                            <i class="fa fa-add purple"></i>
+
+                        </a>
+                    </li>
+
+                </ul>
             </a>
 
             <b class="arrow"></b>
