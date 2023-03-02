@@ -4,32 +4,16 @@ namespace Module\PRM\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\FileSaver;
+use Module\PRM\Models\Camp;
+use Module\PRM\Models\LeaveApplication;
+use Module\PRM\Models\LeaveCategory;
+use Module\PRM\Models\ParadeModel;
+use Module\PRM\Models\StoreModel;
 
 class LeaveApplicationController extends Controller
 {
-    private $service;
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | CONSTRUCTOR
-     |--------------------------------------------------------------------------
-    */
-    public function __construct()
-    {
-    }
-
-
-
-
-
-
-
-
-
-
-
-
+    use FileSaver;
     /*
      |--------------------------------------------------------------------------
      | INDEX METHOD
@@ -37,21 +21,14 @@ class LeaveApplicationController extends Controller
     */
     public function index()
     {
-        $data = [];
-        return view('', $data);
+        try {
+            $data['leave_applications']  = LeaveApplication::paginate(20);
+            $data['table']  = LeaveApplication::getTableName();
+            return view('pages.leave-application.index', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -60,21 +37,12 @@ class LeaveApplicationController extends Controller
     */
     public function create()
     {
-        $data = [];
-        return view('', $data);
+        $data['parades'] = ParadeModel::all();
+        $data['leave_categories'] = LeaveCategory::all();
+        $data['camps'] = Camp::all();
+        $data['store_men'] = StoreModel::all();
+        return view('pages.leave-application.create', $data);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -83,42 +51,15 @@ class LeaveApplicationController extends Controller
     */
     public function store(Request $request)
     {
-        # code...
+        try {
+            $this->storeOrUpdate($request);
+
+            return redirect()->route('prm.leave-applications.index')->with('success','Leave Application Created Successfully');
+
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | SHOW METHOD
-     |--------------------------------------------------------------------------
-    */
-    public function show($id)
-    {
-        # code...
-    }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -127,20 +68,13 @@ class LeaveApplicationController extends Controller
     */
     public function edit($id)
     {
-        # code...
+        try {
+            $data['leave_applications'] = LeaveApplication::find($id);
+            return view('pages.leave-application.edit', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -151,17 +85,6 @@ class LeaveApplicationController extends Controller
     {
         # code...
     }
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
