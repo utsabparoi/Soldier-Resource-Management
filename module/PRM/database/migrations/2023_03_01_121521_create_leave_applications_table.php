@@ -16,7 +16,13 @@ class CreateLeaveApplicationsTable extends Migration
         if(!Schema::hasTable('leave_applications')){
             Schema::create('leave_applications', function (Blueprint $table) {
                 $table->id();
-                $table->string('name');
+                $table->foreignId('parade_id')->constrained();
+                // $table->foreignId('camp_id')->constrained();
+                $table->foreignId('leave_category_id')->constrained();
+                $table->string('leave_duration');
+                // $table->string('contact_details')->nullable();
+                $table->string('emergency_contact')->nullable();
+                $table->string('attachment')->nullable();
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();
 

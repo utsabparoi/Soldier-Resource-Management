@@ -10,33 +10,57 @@
     <b class="arrow"></b>
     <ul class="submenu">
         {{-- Leave Details menu item --}}
-
-        <li class="{{ request()->routeIs('prm.leave-category*') ? 'open active' : ''}}">
+        <li class="{{ request()->routeIs('prm.leave-category*','prm.leave-applications*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-minus-circle red"></i>
-                <span class="menu-text">Leave Category</span>
+                Leave
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- 'Add Category' submenu of "Leave Category" --}}
-                <li class="{{ request()->routeIs('prm.leave-category.create') ? 'active' : '' }}">
-                    <a href="{{ route('prm.leave-category.create') }}">
-                        <i class=" fa fa-plus purple"></i>
-                        Add Category
+                <li class="{{ request()->routeIs('prm.leave-category*') ? 'open active' : ''}}">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-list-alt red"></i>
+                        <span class="menu-text">Type</span>
+                        <b class="arrow fa fa-angle-down"></b>
                     </a>
                     <b class="arrow"></b>
+                    <ul class="submenu">
+                        {{-- 'Add Category' submenu of "Leave Category" --}}
+                        <li class="{{ request()->routeIs('prm.leave-category.create') ? 'active' : '' }}">
+                            <a href="{{ route('prm.leave-category.create') }}">
+                                <i class=" fa fa-plus purple"></i>
+                                Add Type
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+
+                        {{-- 'Categories List' submenu of "Leave Category" --}}
+                        <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
+                            <a href="{{ route('prm.leave-category.index') }}">
+                                <i class=" fa fa-list blue"></i>
+                                Types List
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                {{-- Create a leave application submenu of leave --}}
+                <li class="{{ request()->routeIs('prm.leave-applications*') ? 'active' : '' }}">
+                    <a href="{{ route('prm.leave-applications.create') }}">
+                        <i class="fa fa-newspaper red"></i>
+                        Leave Application
+                    </a>
                 </li>
 
-                {{-- 'Categories List' submenu of "Leave Category" --}}
-                <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
-                    <a href="{{ route('prm.leave-category.index') }}">
-                        <i class=" fa fa-list red"></i>
-                        Categories List
+                <li class="{{ request()->routeIs('prm.leave-applications.index') ? 'active' : '' }}">
+                    <a href="">
+                        <i class="fa fa-tasks blue"></i>
+                        Leave Applications List
                     </a>
-                    <b class="arrow"></b>
                 </li>
             </ul>
+
         </li>
 
         {{-- Camp menu item --}}
@@ -55,7 +79,6 @@
                         <i class=" fa fa-plus purple"></i>
                         Assign Camp
                     </a>
-
                     <b class="arrow"></b>
                 </li>
                 {{-- 'Add Camp' submenu of "Camp" --}}
@@ -247,26 +270,6 @@
                     <b class="arrow"></b>
                 </li>
             </ul>
-        </li>
-
-        {{-- add punishment --}}
-
-        <li class="nav-item">
-            <a href="#">
-                <i class="menu-icon fa fa-minus-circle red"></i>
-                <span class="menu-text"> Leave Application </span>
-                <ul class="submenu">
-                    <li class="{{ request()->routeIs() ? 'active' : '' }}">
-                        <a href="">
-                            <i class="fa fa-add purple"></i>
-
-                        </a>
-                    </li>
-
-                </ul>
-            </a>
-
-            <b class="arrow"></b>
         </li>
 
         {{-- add punishment --}}

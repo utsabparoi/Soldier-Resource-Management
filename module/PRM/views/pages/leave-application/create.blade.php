@@ -1,5 +1,5 @@
 @extends('backend.layout.app')
-@section('title', 'Biodata')
+@section('title', 'Perfect Ten')
 @section('css')
 
 @endsection
@@ -36,13 +36,13 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Leave
+                                                    <i class="fa fa-minus-circle"></i> <span class="hide-in-sm">Leave
                                                         Application</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
-                                                    <a href="{{ route('website.biodata.index') }}" class="">
+                                                    <a href="{{ route('prm.leave-applications.index') }}" class="">
                                                         <i class="fa fa-list"></i> Leave Application <span
                                                             class="hide-in-sm">List</span>
                                                     </a>
@@ -53,100 +53,30 @@
                                             <div class="widget-body">
                                                 <div class="widget-main">
                                                     <div class="row">
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
+                                                        <!-- Parade Name -->
+                                                        <div class="col-sm-4">
                                                             <div align="left" class="form-group">
                                                                 <label>
-                                                                    <h5><strong>Company Name<sup
+                                                                    <h5><strong>Parade<sup
                                                                                 class="text-danger">*</sup></strong>
                                                                     </h5>
                                                                 </label>
                                                                 <div>
-                                                                    <input type="text" name="comanyName" id="comanyName"
-                                                                        value="Smart Software Ltd"
-                                                                        class="col-xs-10 col-sm-10" readonly>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
-                                                            <div align="left" class="form-group">
-                                                                <label>
-                                                                    <h5><strong>Department<sup
-                                                                                class="text-danger">*</sup></strong>
-                                                                    </h5>
-                                                                </label>
-                                                                <div>
-                                                                    <input type="text" name="comanyName" id="comanyName"
-                                                                        value="Department" class="col-xs-10 col-sm-10"
-                                                                        readonly>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
-                                                            <div align="left" class="form-group">
-                                                                <label>
-                                                                    <h5><strong>Designation<sup
-                                                                                class="text-danger">*</sup></strong>
-                                                                    </h5>
-                                                                </label>
-                                                                <div>
-                                                                    <select class="col-xs-10 col-sm-10">
-                                                                        <option>-Select Designation-</option>
-                                                                        <option>Major</option>
-                                                                        <option>Captain</option>
-                                                                        <option>Senior Officer</option>
-                                                                        <option>Officer</option>
-                                                                        <option>Junior Officer</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
-                                                            <div align="left" class="form-group">
-                                                                <label>
-                                                                    <h5><strong>Employee<sup
-                                                                                class="text-danger">*</sup></strong>
-                                                                    </h5>
-                                                                </label>
-                                                                <div>
-                                                                    <select class="col-xs-10 col-sm-10">
-                                                                        <option>-Select Employee-</option>
-                                                                        @foreach ($employees as $employee)
-                                                                            <option>{{ $employee->name }}</option>
+                                                                    <select name="parade_id" class="form-control multiselect">
+                                                                        <option>-Select Parade-</option>
+                                                                        @foreach ($parades as $parade)
+                                                                            <option>{{ $parade->name }}</option>
+                                                                        @endforeach
+                                                                        @foreach ($store_men as $man)
+                                                                            <option>{{ $man->name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                    </div>
-                                                    <br>
-                                                    <div class="row">
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
-                                                            <div align="left" class="form-group">
-                                                                <label>
-                                                                    <h5><strong>Year<sup
-                                                                                class="text-danger">*</sup></strong>
-                                                                    </h5>
-                                                                </label>
-                                                                <div>
-                                                                    <select class="col-xs-10 col-sm-10">
-                                                                        <option>-Select Year-</option>
-                                                                        <option>2020</option>
-                                                                        <option>2021</option>
-                                                                        <option>2022</option>
-                                                                        <option>2023</option>
-                                                                        <option>2024</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
+                                                        <!-- Leave Type -->
+                                                        <div class="col-sm-4">
                                                             <div align="left" class="form-group">
                                                                 <label>
                                                                     <h5><strong>Leave Type<sup
@@ -154,92 +84,67 @@
                                                                     </h5>
                                                                 </label>
                                                                 <div>
-                                                                    <select class="col-xs-10 col-sm-10">
-                                                                        <option>-Leave Type-</option>
-                                                                        <option>Privilege Leave</option>
-                                                                        <option>Casual Leave</option>
-                                                                        <option>Recreation Leave</option>
-                                                                        <option>Maternity Leave</option>
-                                                                        <option>Medical Leave</option>
-                                                                        <option>Others</option>
+                                                                    <select name="training_category_id"
+                                                                        class="form-control multiselect">
+                                                                        <option value="">--Select a Leave Type--
+                                                                        </option>
+                                                                        @foreach ($leave_categories as $category)
+                                                                            <option value="{{ $category->id }}">
+                                                                                {{ $category->name }}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <!-- Leave Duration -->
+                                                        <div class="col-sm-4">
+                                                            <div align="left" class="form-group">
+                                                                <label>
+                                                                    <h5><strong>Duration<sup
+                                                                                class="text-danger">*</sup> ( From - To )</strong>
+                                                                    </h5>
+                                                                </label>
+                                                                <div style="display: flex;">
+                                                                    <input type="date" name="comanyName" id="comanyName" placeholder="From"
+                                                                        class="form-control">
+                                                                    <span
+                                                                        style="font-size: 20px; background: #e5e5e5; border-top: 1px solid #d0d0d0; border-bottom: 1px solid #d0d0d0;">&#x21C6;</span>
+                                                                    <input type="date" name="comanyName" id="comanyName"
+                                                                        class="form-control">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+
                                                         <!-- Company Name -->
                                                         <div class="col-sm-4">
                                                             <div align="left" class="form-group">
                                                                 <label>
-                                                                    <h5><strong>From - To<sup
-                                                                                class="text-danger">*</sup></strong>
-                                                                    </h5>
-                                                                </label>
-                                                                <div style="display: flex;">
-                                                                    <input type="date" name="comanyName" id="comanyName"
-                                                                        class="col-xs-10 col-sm-4">
-                                                                    <span
-                                                                        style="font-weight: bolder; font-size: 20px; background: #e5e5e5; border-top: 1px solid #d0d0d0; border-bottom: 1px solid #d0d0d0;">&#x21C6;</span>
-                                                                    <input type="date" name="comanyName" id="comanyName"
-                                                                        class="col-xs-10 col-sm-4">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-2">
-                                                            <div align="left" class="form-group">
-                                                                <label>
-                                                                    <h5><strong>Image</strong></h5>
+                                                                    <h5><strong>Emergency Phone<sup
+                                                                        class="text-danger">*</sup></strong></h5>
                                                                 </label>
                                                                 <div>
-                                                                    <img src="{{ asset('backend/images/person.png') }}"
-                                                                        width="70px" height="70px">
+                                                                    <input type="text" name="comanyName" id="comanyName"
+                                                                        value="" placeholder="Emergency Contact Number" class="form-control">
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                    </div>
-                                                    <br>
-                                                    <div class="row">
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
-                                                            <div align="left" class="form-group">
-                                                                <label>
-                                                                    <h5><strong>Emergency Phone</strong></h5>
-                                                                </label>
-                                                                <div>
-                                                                    <input type="text" name="comanyName"
-                                                                        id="comanyName" value=""
-                                                                        class="col-xs-10 col-sm-10">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-6">
-                                                            <div align="left" class="form-group">
-                                                                <label>
-                                                                    <h5><strong>Contact Details</strong></h5>
-                                                                </label>
-                                                                <div>
-                                                                    <input type="text" name="comanyName"
-                                                                        id="comanyName" value=""
-                                                                        class="col-xs-12 col-sm-12">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Company Name -->
-                                                        <div class="col-sm-3">
+                                                        <!-- Attachment -->
+                                                        <div class="col-sm-4">
                                                             <div align="left" class="form-group">
                                                                 <label>
                                                                     <h5><strong>Attachment</strong></h5>
                                                                 </label>
-                                                                <div>
+                                                                <div >
                                                                     <input type="file" name="comanyName"
                                                                         id="comanyName" value=""
-                                                                        class="col-xs-10 col-sm-10">
+                                                                        class="form-control form-control-sm" id="formFileLg">
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                     <br>
                                                     <div class="row">
@@ -250,7 +155,7 @@
                                                                     <h5><strong>Reason</strong></h5>
                                                                 </label>
                                                                 <div>
-                                                                    <textarea name="comanyName" id="comanyName" rows="5" class="col-xs-10 col-sm-12"></textarea>
+                                                                    <textarea name="comanyName" id="comanyName" placeholder="Please write the reason for your leave-application" rows="5" class="col-xs-10 col-sm-12"></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>

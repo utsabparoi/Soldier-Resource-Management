@@ -81,40 +81,6 @@ class AppointmentHolderController extends Controller
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-     |--------------------------------------------------------------------------
-     | SHOW METHOD
-     |--------------------------------------------------------------------------
-    */
-    public function show($id)
-    {
-        # code...
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
      |--------------------------------------------------------------------------
      | EDIT METHOD
@@ -152,7 +118,7 @@ class AppointmentHolderController extends Controller
         $request->validate([
             'name' => 'required',
         ]);
-        
+
         try {
             $this->storeOrUpdate($request, $id);
 
