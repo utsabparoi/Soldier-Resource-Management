@@ -10,6 +10,13 @@
                         <a href="#">Home</a>
                     </li>
                     <li class="active">Add New Parade</li>
+                    @php
+                        $existImage = session('profileImage');
+                        if (isset($existImage)){
+                        unlink($existImage);
+                        session()->forget('profileImage');
+                        }
+                    @endphp
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -178,7 +185,7 @@
 
                                                                             <div class="col-sm-9">
                                                                                 <select class="col-xs-10 col-sm-10" name="qualUnqualRank" id="qualUnqualRank">
-                                                                                    <option>-Select-</option>
+                                                                                    <option value="no rank">-Select-</option>
                                                                                     <option>Major</option>
                                                                                     <option>Captain</option>
                                                                                     <option>Senior Officer</option>
@@ -260,6 +267,5 @@
             </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
             <link rel="stylesheet" href="{{ asset('backend/css/custom-style.css') }}" />
-
 
 @endsection
