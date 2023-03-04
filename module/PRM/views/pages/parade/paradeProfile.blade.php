@@ -154,7 +154,7 @@
                                                                         @empty
                                                                             <tr>
                                                                                 <td colspan="30" class="text-center py-3"
-                                                                                    style="font-size: 15px; border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
+                                                                                    style="font-size: 14px; border-right: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
                                                                                     <strong>No completed course!</strong>
                                                                                 </td>
                                                                             </tr>
@@ -188,8 +188,8 @@
                                                                             @empty
                                                                                 <tr>
                                                                                     <td colspan="30" class="text-center py-3"
-                                                                                        style="font-size: 15px; border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
-                                                                                        <strong>No completed course!</strong>
+                                                                                        style="font-size: 14px; border-right: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
+                                                                                        <strong>No completed training!</strong>
                                                                                     </td>
                                                                                 </tr>
                                                                             @endforelse
@@ -213,8 +213,8 @@
                                                                             <tbody>
                                                                             <tr>
                                                                                 <td colspan="30" class="text-center py-3"
-                                                                                    style="font-size: 15px; border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
-                                                                                    <strong>No completed course!</strong>
+                                                                                    style="font-size: 14px; border-right: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
+                                                                                    <strong>No completed training!</strong>
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
