@@ -49,7 +49,6 @@
                                                 <input type="text" name="name" value="{{$profileData['Name']}}" hidden>
                                                 <input type="text" name="presentLocation" value="{{$profileData['PresentLocation']}}" hidden>
                                                 <input type="date" name="dateOfJoin" value="{{$profileData['DateOfJoin']}}" hidden>
-                                                <input type="text" name="image" value="{{$profileData['Image']}}" style="display: none;" hidden>
                                                 <input type="date" name="dateOfEnrolment" value="{{$profileData['DateOfEnrolment']}}" hidden>
                                                 <input type="date" name="dateOfPresentRank" value="{{$profileData['DateOfPresentRank']}}" hidden>
                                                 <input type="date" name="dateOfRetirement" value="{{$profileData['DateOfRetirement']}}" hidden>
@@ -93,7 +92,7 @@
                                                                                 <tr class="remove_able_tr_course">
                                                                                     <td>
                                                                                         <select class="col-xs-12 col-sm-12" name="course[]" id="course">
-                                                                                            <option>-Select-</option>
+                                                                                            <option value="notSelect">-Select-</option>
                                                                                             @foreach($courses as $course)
                                                                                                 <option>{{ $course->name }}</option>
                                                                                             @endforeach
@@ -156,7 +155,7 @@
                                                                                 <tr class="remove_able_tr_training">
                                                                                     <td>
                                                                                         <select class="col-xs-12 col-sm-12" name="training[]">
-                                                                                            <option>-Select-</option>
+                                                                                            <option value="notSelect">-Select-</option>
                                                                                             @foreach($training as $trainings)
                                                                                                 <option>{{ $trainings->name }}</option>
                                                                                             @endforeach
@@ -296,5 +295,7 @@
                 });
             });
         </script>
+
+
 @endsection
 

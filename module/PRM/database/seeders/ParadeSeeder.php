@@ -43,8 +43,8 @@ class ParadeSeeder extends Seeder
                     'marital_status'                => $parades['marital_status'],
                     'children_number'               => $parades['children_number'],
                     'status'                        => $parades['status'],
-//                    'created_by'                    => $parades['created_by'],
-//                    'updated_by'                    => $parades['updated_by'],
+                    'created_by'                    => $parades['created_by'],
+                    'updated_by'                    => $parades['updated_by'],
                 ]
             );
         }

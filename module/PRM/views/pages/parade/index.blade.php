@@ -99,7 +99,7 @@
                                                                 <i class="fa fa-user"></i>
                                                             </a>
 
-                                                            <a href=""
+                                                            <a href="{{ route('prm.parade.edit', $parades->id) }}"
                                                                role="button" class="btn btn-xs btn-success bs-tooltip"
                                                                title="Edit">
                                                                 <i class="fa fa-edit"></i>

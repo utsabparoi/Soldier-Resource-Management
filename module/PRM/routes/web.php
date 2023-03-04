@@ -59,4 +59,5 @@ Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
 });
 //ajax axios routes
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
-Route::post('/profileStatusChange', [StoreController::class, 'getCampStore']);
+
+
