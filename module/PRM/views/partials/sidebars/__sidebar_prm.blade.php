@@ -21,7 +21,7 @@
                 <li class="{{ request()->routeIs('prm.leave-category*') ? 'open active' : ''}}">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-list-alt red"></i>
-                        <span class="menu-text">Type</span>
+                        <span class="menu-text">Category</span>
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
                     <b class="arrow"></b>
@@ -30,7 +30,7 @@
                         <li class="{{ request()->routeIs('prm.leave-category.create') ? 'active' : '' }}">
                             <a href="{{ route('prm.leave-category.create') }}">
                                 <i class=" fa fa-plus purple"></i>
-                                Add Type
+                                Add Category
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -39,7 +39,7 @@
                         <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
                             <a href="{{ route('prm.leave-category.index') }}">
                                 <i class=" fa fa-list blue"></i>
-                                Types List
+                                Categories List
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -54,7 +54,7 @@
                 </li>
 
                 <li class="{{ request()->routeIs('prm.leave-applications.index') ? 'active' : '' }}">
-                    <a href="">
+                    <a href="{{ route('prm.leave-applications.index') }}">
                         <i class="fa fa-tasks blue"></i>
                         Leave Applications List
                     </a>

@@ -19,10 +19,12 @@ class CreateLeaveApplicationsTable extends Migration
                 $table->foreignId('parade_id')->constrained();
                 // $table->foreignId('camp_id')->constrained();
                 $table->foreignId('leave_category_id')->constrained();
-                $table->string('leave_duration');
+                $table->string('start_date');
+                $table->string('end_date');
                 // $table->string('contact_details')->nullable();
                 $table->string('emergency_contact')->nullable();
                 $table->string('attachment')->nullable();
+                $table->longText('reason')->nullable();
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();
 
