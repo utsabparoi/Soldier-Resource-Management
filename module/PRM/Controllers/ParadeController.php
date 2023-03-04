@@ -147,7 +147,13 @@ class ParadeController extends Controller
     */
     public function edit($id)
     {
-        # code...
+        try {
+            $data['parade'] = ParadeModel::find($id);
+            $data['ranks'] = ParadeModel::find($id)->get('next_rank');
+            return view('pages.parade.edit', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
 
