@@ -136,104 +136,98 @@
                                                                     <table width="100%">
                                                                         <thead>
                                                                         <tr>
-                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>Name of Course</strong></td>
-                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>Result</strong></td>
-                                                                            <td  class="text-left" style=""><strong>Remarks</strong></td>
+                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>&nbsp;Name of Course</strong></td>
+                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>&nbsp; Result</strong></td>
+                                                                            <td  class="text-left" style=""><strong>&nbsp; Remarks</strong></td>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
 
+                                                                        @forelse($courses as $course)
                                                                         <tr>
                                                                             <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
-{{--                                                                                @foreach($allCourses as $allCourse)--}}
-{{--                                                                                    @if($allCourse->id == $course->course_id)--}}
-{{--                                                                                        {{ $allCourse->name }}--}}
-{{--                                                                                    @else--}}
-{{--                                                                                        <strong>No  enrolment course yet</strong>--}}
-{{--                                                                                    @endif--}}
-{{--                                                                                @endforeach--}}
-                                                                                ARMY COMMANDO COURSE
+                                                                                 &nbsp;{{ $course->course->name}}
                                                                             </td>
-                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">A+</td>
-                                                                            <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">Excelent</td>
+                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">&nbsp; {{ $course->result}}</td>
+                                                                            <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">&nbsp; {{ $course->remark}}</td>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
-                                                                                {{--                                                                                @foreach($allCourses as $allCourse)--}}
-                                                                                {{--                                                                                    @if($allCourse->id == $course->course_id)--}}
-                                                                                {{--                                                                                        {{ $allCourse->name }}--}}
-                                                                                {{--                                                                                    @else--}}
-                                                                                {{--                                                                                        <strong>No  enrolment course yet</strong>--}}
-                                                                                {{--                                                                                    @endif--}}
-                                                                                {{--                                                                                @endforeach--}}
-                                                                                BOMB & IED DISPOSAL COURSE
-                                                                            </td>
-                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">A</td>
-                                                                            <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">Good</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
-                                                                                {{--                                                                                @foreach($allCourses as $allCourse)--}}
-                                                                                {{--                                                                                    @if($allCourse->id == $course->course_id)--}}
-                                                                                {{--                                                                                        {{ $allCourse->name }}--}}
-                                                                                {{--                                                                                    @else--}}
-                                                                                {{--                                                                                        <strong>No  enrolment course yet</strong>--}}
-                                                                                {{--                                                                                    @endif--}}
-                                                                                {{--                                                                                @endforeach--}}
-                                                                                DRILL INSTRUCTOR COURSE
-                                                                            </td>
-                                                                            <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">A</td>
-                                                                            <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">Good</td>
-                                                                        </tr>
-
-
+                                                                        @empty
+                                                                            <tr>
+                                                                                <td colspan="30" class="text-center py-3"
+                                                                                    style="font-size: 15px; border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
+                                                                                    <strong>No completed course!</strong>
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endforelse
                                                                         </tbody>
                                                                     </table>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-left" width="4%" style="">14.</td>
+                                                                    <td class="text-center" width="4%" style="">14.</td>
+                                                                    <td width="20%" style="">Training:</td>
+                                                                    <td width="76%" style="">
+                                                                        <table width="100%">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>&nbsp;Name of Training</strong></td>
+                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>&nbsp; Result</strong></td>
+                                                                                <td  class="text-left" style=""><strong>&nbsp; Remarks</strong></td>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                            @forelse($trainings as $training)
+                                                                                <tr>
+                                                                                    <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
+                                                                                        &nbsp;{{ $training->training->name}}
+                                                                                    </td>
+                                                                                    <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">&nbsp; {{ $training->result}}</td>
+                                                                                    <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">&nbsp; {{ $training->remark}}</td>
+                                                                                </tr>
+                                                                            @empty
+                                                                                <tr>
+                                                                                    <td colspan="30" class="text-center py-3"
+                                                                                        style="font-size: 15px; border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
+                                                                                        <strong>No completed course!</strong>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            @endforelse
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-left" width="4%" style="">15.</td>
                                                                     <td width="20%" style="">Punishment Details:</td>
                                                                     <td width="76%" style="">
                                                                         <table width="100%">
                                                                             <thead>
                                                                             <tr>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>No of Punishment</strong></td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>BAA Section</strong></td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>Description Offence</strong></td>
-                                                                                <td  class="text-left" style=""><strong>Type of Punishment</strong></td>
+                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>&nbsp;No of Punishment</strong></td>
+                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>&nbsp; BAA Section</strong></td>
+                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1;"><strong>&nbsp; Description Offence</strong></td>
+                                                                                <td  class="text-left" style=""><strong>&nbsp; Type of Punishment</strong></td>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                             <tr>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
-                                                                                <td  class="text-left" style="border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">-</td>
+                                                                                <td colspan="30" class="text-center py-3"
+                                                                                    style="font-size: 15px; border-right: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
+                                                                                    <strong>No completed course!</strong>
+                                                                                </td>
                                                                             </tr>
                                                                             </tbody>
                                                                         </table>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-center" width="4%" style="padding-left: 5px;">15.</td>
+                                                                    <td class="text-center" width="4%" style="padding-left: 5px;">16.</td>
                                                                     <td width="20%" style="padding-left: 5px;">APR of Last 3Yrs:</td>
                                                                     <td width="76%" style="padding-left: 5px;">2020- <br> 2021- <br> 2022-</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-center" width="4%" style="padding-left: 5px;">16.</td>
+                                                                    <td class="text-center" width="4%" style="padding-left: 5px;">17.</td>
                                                                     <td width="20%" style="padding-left: 5px;">Paid Leave:</td>
                                                                     <td width="76%" style="padding-left: 5px;"></td>
                                                                 </tr>

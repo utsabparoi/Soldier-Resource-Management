@@ -7,4 +7,5 @@ class ParadeModel extends Model
 {
 
     protected $table = 'parades';
+
 }

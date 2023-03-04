@@ -18,7 +18,6 @@ class ParadeController extends Controller
     private $service;
     use FileSaver;
 
-
     /*
      |--------------------------------------------------------------------------
      | CONSTRUCTOR
@@ -27,17 +26,6 @@ class ParadeController extends Controller
     public function __construct()
     {
     }
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -59,21 +47,10 @@ class ParadeController extends Controller
     public function paradeProfile($id)
     {
         $data['parade'] = ParadeModel::find($id);
-//        $data['allCourses'] = CourseModel::all();
-//        $data['courses'] = EmployeeCourseResultModel::where('employee_id', '=', $id)->get();
+        $data['courses'] = ParadeCourseModel::where('parade_id', '=', $id)->get();
+        $data['trainings'] = ParadeTrainingModel::where('parade_id', '=', $id)->get();
         return view('pages.parade.paradeProfile', $data);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*
@@ -120,10 +97,6 @@ class ParadeController extends Controller
                 $profileData['Image']->move($directory, $new_file_name);
                 session()->put("profileImage", $directory.$new_file_name);
             }
-            else{
-                session()->put("profileImage", "backend/images/person.png");
-            }
-
             $data['courses'] = Course::all();
             $data['training'] = Training::all();
             return view('pages.parade.addExtraInformation', compact('profileData'), $data);
@@ -156,8 +129,6 @@ class ParadeController extends Controller
 
 
 
-
-
     /*
      |--------------------------------------------------------------------------
      | SHOW METHOD
@@ -167,17 +138,6 @@ class ParadeController extends Controller
     {
         # code...
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*
@@ -192,16 +152,6 @@ class ParadeController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
     /*
      |--------------------------------------------------------------------------
      | UPDATE METHOD
@@ -211,15 +161,6 @@ class ParadeController extends Controller
     {
         # code...
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -299,6 +240,13 @@ class ParadeController extends Controller
     public function storeOrUpdateWithExtraInfo($request, $id = null)
     {
         try {
+            $getProfileImage = session('profileImage');
+            if(isset($getProfileImage)){
+                $Image = $getProfileImage;
+            }
+            else{
+                $Image = "backend/images/person.png";
+            }
             $parade = ParadeModel::updateOrCreate([
                 'id'                        =>$id,
             ],
@@ -306,7 +254,7 @@ class ParadeController extends Controller
                 'name'                      =>$request->name,
                 'present_location'          =>$request->presentLocation,
                 'join_date_present_unit'    =>$request->dateOfJoin,
-                'image'                     =>session('profileImage'),
+                'image'                     =>$Image,
                 'enrolment_date'            =>$request->dateOfEnrolment,
                 'present_rank_date'         =>$request->dateOfPresentRank,
                 'retirement_date'           =>$request->dateOfRetirement,
