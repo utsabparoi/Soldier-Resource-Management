@@ -93,7 +93,7 @@ class LeaveApplicationController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'attachment' => 'file|mimes:jpg,jpeg,pdf,doc,docx|max:512',
+            'attachment' => 'file|mimes:jpg,jpeg,pdf,doc,docx|max:2048',
         ]);
 
         try {
