@@ -137,7 +137,7 @@
                                                             <div class="col-sm-4">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Attachment <small class="text-danger">(You can choose jpeg, jpg, pdf, doc, docx file)</small></strong></h5></strong></h5>
+                                                                        <h5><strong>Attachment <small class="text-danger">(Choose jpeg,jpg,pdf,doc,docx file and max:2MB))</small></strong></h5></strong></h5>
                                                                     </label>
                                                                     <div>
                                                                         <input type="file" name="attachment"
@@ -158,7 +158,7 @@
                                                                         <h5><strong>Previous Attachment</strong></h5>
                                                                     </label>
                                                                     <div>
-                                                                        <img class="pt-1" src="{{ asset($leave_application->attachment) }}" width="150" height="80" style="margin-left: 13px;">
+                                                                        <img class="pt-1" src="{{ asset($leave_application->attachment) }}" width="150" height="80">
                                                                     </div>
                                                                 </div>
                                                             </div>

@@ -83,9 +83,10 @@
                                                             id="storeId"
                                                             onmouseover="this.style.backgroundColor='#009e53'"
                                                             onmouseout="this.style.backgroundColor='#00BE67'"
-                                                            data-id="{{ $application->attachment }}"
+                                                            data-id="{{ $application->id }}"
+                                                            data-attachment="{{ $application->attachment }}"
                                                             data-name="{{$application->parade->name}}"
-                                                            onclick="viewStore(this)">View
+                                                            onclick="viewAttachment(this)">View
                                                         </button>
                                                         <!-- The Modal -->
                                                         <div id="myModal" class="modal">
@@ -93,8 +94,8 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <span class="close">&times;</span>
-                                                                    <div class="campName" id="campName">
-                                                                        Stores
+                                                                    <div id="paradeName">
+                                                                        Attachment
                                                                     </div>
                                                                 </div>
                                                                 <br>
@@ -164,7 +165,8 @@
     </div>
 
     <script>
-        function viewStore(element) {
+
+        function viewAttachment(element) {
             // Get the modal
             var modal = document.getElementById("myModal");
 
@@ -192,47 +194,17 @@
                 }
             }
 
-            let camp_id = $(element).attr("data-id");
-            let camp_name = $(element).attr("data-name");
-            document.getElementById('campName').innerHTML = camp_id;
+            let parade_id = $(element).attr("data-id");
+            let parade_name = $(element).attr("data-name");
+            document.getElementById('paradeName').innerHTML = parade_name;
+            // Get current hosting url
             var base_url = window.location.origin;
-            document.getElementById('paradeAttachment').src= base_url+"/"+camp_id;
+            let parade_attachment = $(element).attr("data-attachment");
+            document.getElementById('paradeAttachment').src= base_url+"/"+parade_attachment;
 
-
-            let url = "/camp_store";
-            let allData = {
-                CampId: camp_id
-            };
-
-            axios.post(url, allData).then(
-                function(response) {
-                    var responseData = response.data;
-                    var serialNumber = 1;
-                    $('#storeList').empty();
-                    $('#storeList').append("" +
-                        "<tr>\n" +
-                        "                                                                                    <th width=\"5%\">SL</th>\n" +
-                        "                                                                                    <th width=\"40%\">Store</th>\n" +
-                        "                                                                                    <th width=\"40%\">Store Man</th>\n" +
-                        "                                                                                </tr>");
-                    for (let i = 0; i < responseData.length; i++) {
-                        $('#storeList').append("" +
-                            "<tr align=\"left\">\n" +
-                            "                                                                                    <td>" +
-                            serialNumber + "</td>\n" +
-                            "                                                                                    <td>" +
-                            responseData[i].name + "</td>\n" +
-                            "                                                                                    <td>" +
-                            response.data[i].store_man + "</td>\n" +
-                            "                                                                                </tr>");
-                        serialNumber++;
-                    }
-                }
-            ).catch(
-                function(error) {
-                    alert("Error...try again");
-                }
-            )
+            var file_extension = (/[.]/.exec(parade_attachment)) ? /[^.]+$/.exec(parade_attachment) : undefined;
+            // alert(file_extension);
+            document.getElementById('fileExtension').innerHTML = file_extension;
         }
     </script>
 @endsection

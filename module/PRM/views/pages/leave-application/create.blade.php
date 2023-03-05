@@ -144,7 +144,7 @@
                                                             <div class="col-sm-4">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Attachment <small class="text-danger">(You can choose jpeg, jpg, pdf, doc, docx file)</small></strong></h5>
+                                                                        <h5><strong>Attachment <small class="text-danger">(Choose jpeg,jpg,pdf,doc,docx file and max:2MB)</small></strong></h5>
                                                                     </label>
                                                                     <div>
                                                                         <input type="file" name="attachment"
