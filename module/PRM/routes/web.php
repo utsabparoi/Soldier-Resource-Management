@@ -13,7 +13,7 @@ use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
 use Module\PRM\Controllers\LeaveApplicationController;
 
-Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
+Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
         Leave-Category Routes List
     =============================*/

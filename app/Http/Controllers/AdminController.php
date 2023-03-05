@@ -39,6 +39,6 @@ class AdminController extends Controller
 
     function Logout(Request $request){
         $request->session()->flush();
-        return redirect("/loginForm");
+        return redirect("/Login");
     }
 }

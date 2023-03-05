@@ -10,6 +10,16 @@ use Module\PRM\Models\Camp;
 class CampController extends Controller
 {
     use FileSaver;
+
+    /*
+     |--------------------------------------------------------------------------
+     | CONSTRUCTOR
+     |--------------------------------------------------------------------------
+    */
+    public function __construct(){
+        $this->middleware('AdminLogin');
+    }
+
     /*
      |--------------------------------------------------------------------------
      | INDEX METHOD

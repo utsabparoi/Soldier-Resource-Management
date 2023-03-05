@@ -22,7 +22,7 @@ class AdminLoginMiddleware
         }
         else
         {
-            return redirect("/loginForm");
+            return redirect("/Login");
         }
     }
 }

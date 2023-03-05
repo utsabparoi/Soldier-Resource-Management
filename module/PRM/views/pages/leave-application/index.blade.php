@@ -33,12 +33,12 @@
 
                     <!-- header -->
                     <div class="widget-header">
-                        <h4 class="widget-title"> <i class="fa fa-info-circle"></i> LeaveApplications List
+                        <h4 class="widget-title"> <i class="fa fa-info-circle"></i> Application List
                         </h4>
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
                             <a href="{{ route('prm.leave-applications.create') }}" class="">
-                                <i class="fa fa-plus"></i> Create <span class="hide-in-sm">New</span>
+                                <i class="fa fa-plus"></i> Apply <span class="hide-in-sm">Again</span>
                             </a>
                         </span>
                     </div>
@@ -94,6 +94,7 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <span class="close">&times;</span>
+                                                                    <span class="dark"><strong><u>Parade Name</u></strong></span>
                                                                     <div id="paradeName">
                                                                         Attachment
                                                                     </div>

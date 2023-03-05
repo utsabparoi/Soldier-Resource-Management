@@ -22,7 +22,7 @@ use App\Http\Controllers\LeaveApplicationController;
 Route::get('/', function () {
     return view('backend.page.dashboard.dashboard');
 })->middleware("AdminLogin");
-Route::get('/loginForm', [AdminController::class, 'LoginForm']);
+Route::get('/Login', [AdminController::class, 'LoginForm']);
 Route::post('/login',[AdminController::class, "Login"]);
 Route::get('/logout',[AdminController::class, "Logout"]);
 /* ===========================

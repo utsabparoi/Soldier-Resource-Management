@@ -10,6 +10,17 @@ use Module\PRM\Models\LeaveCategory;
 class LeaveCategoryController extends Controller
 {
     use FileSaver;
+
+    /*
+     |--------------------------------------------------------------------------
+     | CONSTRUCTOR
+     |--------------------------------------------------------------------------
+    */
+    public function __construct()
+    {
+        $this->middleware('AdminLogin');
+    }
+
     /*
      |--------------------------------------------------------------------------
      | INDEX METHOD

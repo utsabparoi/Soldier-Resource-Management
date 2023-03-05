@@ -36,14 +36,14 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-minus-circle"></i> <span class="hide-in-sm">Leave
-                                                        Application</span>
+                                                    <i class="fa fa-minus-circle"></i> <span class="hide-in-sm">Application
+                                                        Form</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
                                                     <a href="{{ route('prm.leave-applications.index') }}" class="">
-                                                        <i class="fa fa-list"></i> Leave Application <span
+                                                        <i class="fa fa-list"></i> Application <span
                                                             class="hide-in-sm">List</span>
                                                     </a>
                                                 </span>
