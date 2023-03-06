@@ -76,7 +76,7 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <select name="parade_id"
+                                                                        <select name="course_id"
                                                                             class="form-control multiselect">
                                                                             <option value="">-Select Course-</option>
                                                                             @foreach ($courses as $course)
