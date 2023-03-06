@@ -68,6 +68,17 @@
                             <span class="white" id="id-text2">TEN</span>
                         </h1>
                     </div>
+                    <audio style="display: none;" id="themesound" controls autoplay>
+                        <source src="{{ asset('audio/themsound.mp3') }}" type="audio/mpeg">
+                    </audio>
+
+                    <script>
+                        setInterval(playAudio);
+                        var x = document.getElementById("themesound");
+                        function playAudio() {
+                            x.play();
+                        }
+                    </script>
 
                     <div class="space-6"></div>
 
@@ -117,7 +128,7 @@
 
                                                 <button type="button" class="width-35 pull-right btn btn-sm btn-primary" onclick="login()">
                                                     <i class="ace-icon fa fa-key"></i>
-                                                    <span class="bigger-110">Login</span>
+                                                    <span class="bigger-110" onclick="playAudio()">Login</span>
                                                 </button>
                                             </div>
 
