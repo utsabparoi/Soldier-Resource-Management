@@ -5,7 +5,6 @@ namespace Module\PRM\Controllers;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use Module\PRM\Models\Course;
-use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
 
 class CourseController extends Controller
@@ -151,18 +150,5 @@ class CourseController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
-    }
-
-    /*
-     |--------------------------------------------------------------------------
-     | ASSIGN-CAMP METHOD
-     |--------------------------------------------------------------------------
-    */
-    public function assign_course()
-    {
-        $data['parades'] = ParadeModel::all();
-        $data['courses'] = Course::all();
-
-        return view('pages.course.assign-course', $data);
     }
 }

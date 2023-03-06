@@ -57,7 +57,7 @@
                                                                     </label>
                                                                     <div>
                                                                         <select name="parade_id"
-                                                                            class="form-control multiselect">
+                                                                            class="form-control" onchange="loadUnmatchedCourse(this)">
                                                                             <option value="">-Select Parade-</option>
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}">{{ $parade->name }}</option>
@@ -77,8 +77,8 @@
                                                                     </label>
                                                                     <div>
                                                                         <select name="course_id"
-                                                                            class="form-control multiselect">
-                                                                            <option value="">-Select Course-</option>
+                                                                            class="form-control unmatched-course">
+                                                                            <option value="">-First Select a Parade-</option>
                                                                             @foreach ($courses as $course)
                                                                                 <option value="{{ $course->id }}">{{ $course->name }}</option>
                                                                             @endforeach
@@ -192,24 +192,9 @@
             </div>
         </div>
     </div>
-    <script>
-        function loadPositionSerialId(object) {
+@endsection
 
-        let positionId = $(object).val();
-        // console.log(positionId);
-
-        let sl_name = $('.filter-serial');
-        sl_name.empty();
-        sl_name.append('<option value="">-Select a Serial-</option>');
-
-        $.get("/get-existing-course", {position_id: positionId}, function (data, status) {
-            // console.log(data);
-            $(data).each(function (index, item) {
-                sl_name.append('<option value="' + item.ads_serial.id + '">' + item.ads_serial.serial_name + '</option>')
-
-            });
-        });
-        }
-    </script>
+@section('js')
+    @include('pages.parade-course._include.script');
 @endsection
 

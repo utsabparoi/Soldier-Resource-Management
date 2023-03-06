@@ -196,10 +196,10 @@
 
         {{-- 'Course' menu item --}}
 
-        <li class="{{ request()->routeIs('prm.assign-course') ? 'open active' : ''}}">
+        <li class="{{ request()->routeIs('prm.parade-courses*', 'prm.assign-course') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-graduation-cap red"></i>
-                <span class="menu-text">Course</span>
+                <span class="menu-text">Parade Course</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
@@ -208,28 +208,19 @@
                 <li class="{{ request()->routeIs('prm.assign-course') ? 'active' : '' }}">
                     <a href="{{ route('prm.assign-course') }}">
                         <i class=" fa fa-plus purple"></i>
-                        Assign
+                        Assign Course
                     </a>
 
                     <b class="arrow"></b>
                 </li>
 
-                {{-- <li class="{{ request()->routeIs('prm.course.create') ? 'active' : '' }}">
-                    <a href="{{ route('prm.course.create') }}">
-                        <i class=" fa fa-plus purple"></i>
-                        Add Course
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-
-
-                <li class="{{ request()->routeIs('prm.course.index') ? 'active' : '' }}">
-                    <a href="{{ route('prm.course.index') }}">
+                <li class="{{ request()->routeIs('prm.parade-courses.index') ? 'active' : '' }}">
+                    <a href="{{ route('prm.parade-courses.index') }}">
                         <i class=" fa fa-list red"></i>
-                        Courses List
+                        Course List
                     </a>
                     <b class="arrow"></b>
-                </li> --}}
+                </li>
             </ul>
         </li>
 

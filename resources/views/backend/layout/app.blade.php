@@ -47,7 +47,6 @@
     {{-- datapicker-css --}}
     {{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"> --}}
     <link rel="stylesheet" href="{{ asset('backend/css/jquery-ui.min.css') }}">
-
     {{-- Select2 --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 

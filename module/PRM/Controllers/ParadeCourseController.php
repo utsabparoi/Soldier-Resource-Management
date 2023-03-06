@@ -2,9 +2,11 @@
 
 namespace Module\PRM\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Traits\FileSaver;
+use Illuminate\Http\Request;
+use Module\PRM\Models\Course;
+use Module\PRM\Models\ParadeModel;
+use App\Http\Controllers\Controller;
 use Module\PRM\Models\ParadeCourseModel;
 
 class ParadeCourseController extends Controller
@@ -36,6 +38,19 @@ class ParadeCourseController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
+    }
+
+    /*
+     |--------------------------------------------------------------------------
+     | ASSIGN-COURSE METHOD
+     |--------------------------------------------------------------------------
+    */
+    public function assign_course(Request $request)
+    {
+        $data['parades'] = ParadeModel::all();
+        $data['courses'] = Course::where($request->parade_id);
+
+        return view('pages.parade-course.assign-course', $data);
     }
 
     /*
@@ -138,12 +153,14 @@ class ParadeCourseController extends Controller
         }
     }
 
-    // public function unmatched_course(Request $request){
-    //     try{
-    //         $data = ParadeCourseModel::where('parade_id', $request->parade_id)->with('ads_serial')->get();
-    //         return $data;
-    //     }catch(\Throwable $th){
-    //         return redirect()->back()->with('error', $th->getMessage());
-    //     }
-    // }
+    public function unmatched_course(Request $request){
+        try{
+            $matchedCourses = ParadeCourseModel::where('parade_id', $request->parade_id)->get('course_id');
+            $data   = Course::whereNotIn('id', $matchedCourses)->get();
+
+            return response()->json($data);
+        }catch(\Throwable $th){
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
 }
