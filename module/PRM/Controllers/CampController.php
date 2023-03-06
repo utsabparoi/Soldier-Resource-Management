@@ -36,18 +36,6 @@ class CampController extends Controller
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     /*
      |--------------------------------------------------------------------------
      | CREATE METHOD
@@ -57,18 +45,6 @@ class CampController extends Controller
     {
         return view('pages.camp.create');
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -91,18 +67,6 @@ class CampController extends Controller
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
     /*
      |--------------------------------------------------------------------------
      | SHOW METHOD
@@ -112,18 +76,6 @@ class CampController extends Controller
     {
         # code...
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -139,18 +91,6 @@ class CampController extends Controller
             return redirect()->back()->with('error',$th->getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*
      |--------------------------------------------------------------------------
@@ -172,17 +112,6 @@ class CampController extends Controller
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
     /*
      |--------------------------------------------------------------------------
      | DELETE/DESTORY METHOD
@@ -200,15 +129,6 @@ class CampController extends Controller
         }
     }
 
-    /*
-     |--------------------------------------------------------------------------
-     | ASSIGN-CAMP METHOD
-     |--------------------------------------------------------------------------
-    */
-    public function assign_camp()
-    {
-        # code...
-    }
     /*
      |--------------------------------------------------------------------------
      | STORE/UPDATE METHOD

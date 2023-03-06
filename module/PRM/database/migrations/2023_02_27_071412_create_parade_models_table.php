@@ -30,9 +30,10 @@ class CreateParadeModelsTable extends Migration
                 $table -> string('marital_status')->nullable();
                 $table -> string('children_number')->nullable();
                 $table -> string('status');
+                $table -> timestamps();
+                
                 $table->foreignId('created_by')->constrained('users', 'id');
                 $table->foreignId('updated_by')->constrained('users', 'id');
-                $table -> timestamps();
             });
         }
 

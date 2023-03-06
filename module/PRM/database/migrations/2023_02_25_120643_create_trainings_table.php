@@ -20,6 +20,9 @@ class CreateTrainingsTable extends Migration
                 $table->string('name');
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();
+
+                $table->foreignId('created_by')->constrained('users', 'id');
+                $table->foreignId('updated_by')->constrained('users', 'id');
             });
         }
 

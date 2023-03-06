@@ -2,21 +2,23 @@
 
 namespace Module\PRM\Controllers;
 
-use App\Traits\FileSaver;
 use Illuminate\Http\Request;
-use Module\PRM\Models\Course;
-use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
+use App\Traits\FileSaver;
+use Module\PRM\Models\ParadeCourseModel;
 
-class CourseController extends Controller
+class ParadeCourseController extends Controller
 {
+    private $service;
     use FileSaver;
+
     /*
      |--------------------------------------------------------------------------
      | CONSTRUCTOR
      |--------------------------------------------------------------------------
     */
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('AdminLogin');
     }
 
@@ -28,22 +30,12 @@ class CourseController extends Controller
     public function index()
     {
         try {
-            $data['courses']  = Course::paginate(20);
-            $data['table']  = Course::getTableName();
-            return view('pages.course.index', $data);
+            $data['parade_courses']  = ParadeCourseModel::paginate(20);
+            $data['table']  = ParadeCourseModel::getTableName();
+            return view('pages.parade-course.index', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
-    }
-
-    /*
-     |--------------------------------------------------------------------------
-     | CREATE METHOD
-     |--------------------------------------------------------------------------
-    */
-    public function create()
-    {
-        return view('pages.course.create');
     }
 
     /*
@@ -53,14 +45,10 @@ class CourseController extends Controller
     */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
         try {
             $this->storeOrUpdate($request);
 
-            return redirect()->route('prm.course.index')->with('success','Course Created Successfully');
+            return redirect()->route('prm.parade-courses.index')->with('success','Course Created Successfully');
 
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
@@ -77,7 +65,6 @@ class CourseController extends Controller
         # code...
     }
 
-
     /*
      |--------------------------------------------------------------------------
      | EDIT METHOD
@@ -86,8 +73,8 @@ class CourseController extends Controller
     public function edit($id)
     {
         try {
-            $data['course'] = Course::find($id);
-            return view('pages.course.edit', $data);
+            $data['parade_course'] = ParadeCourseModel::find($id);
+            return view('pages.parade-course.edit', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -100,19 +87,14 @@ class CourseController extends Controller
     */
     public function update($id, Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
         try {
             $this->storeOrUpdate($request, $id);
 
-            return redirect()->route('prm.course.index')->with('success','Course Updated Success');
+            return redirect()->route('prm.parade-courses.index')->with('success','Course Updated Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
     }
-
 
     /*
      |--------------------------------------------------------------------------
@@ -122,8 +104,8 @@ class CourseController extends Controller
     public function destroy($id)
     {
         try {
-            $camp = Course::find($id);
-            $camp->delete();
+            $course = ParadeCourseModel::find($id);
+            $course->delete();
 
             return redirect()->back()->with('success','Course Deleted Success');
         } catch (\Throwable $th) {
@@ -138,30 +120,30 @@ class CourseController extends Controller
     */
     public function storeOrUpdate($request, $id = null)
     {
-
         try {
-            $camp= Course::updateOrCreate([
-                'id'                    =>$id,
+            $course= ParadeCourseModel::updateOrCreate([
+                'id'           =>$id,
             ],[
-                'name'                  =>$request->name,
-                'status'                =>$request->status ? 1: 0,
+                'course_id'    =>$request->course_id,
+                'parade_id'    =>$request->parade_id,
+                'serial_no'    =>$request->serial_no,
+                'duration'     =>$request->duration,
+                'result'       =>$request->result,
+                'remark'       =>$request->remark,
+                'status'       =>$request->status ? 1: 0,
             ]);
-            return $camp;
+            return $course;
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
     }
 
-    /*
-     |--------------------------------------------------------------------------
-     | ASSIGN-CAMP METHOD
-     |--------------------------------------------------------------------------
-    */
-    public function assign_course()
-    {
-        $data['parades'] = ParadeModel::all();
-        $data['courses'] = Course::all();
-
-        return view('pages.course.assign-course', $data);
-    }
+    // public function unmatched_course(Request $request){
+    //     try{
+    //         $data = ParadeCourseModel::where('parade_id', $request->parade_id)->with('ads_serial')->get();
+    //         return $data;
+    //     }catch(\Throwable $th){
+    //         return redirect()->back()->with('error', $th->getMessage());
+    //     }
+    // }
 }

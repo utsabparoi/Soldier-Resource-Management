@@ -23,9 +23,10 @@ class CreateParadeTrainingsTable extends Migration
                 $table->string('result')->nullable();
                 $table->string('remark')->nullable();
                 $table->tinyInteger('status')->default(1);
+                $table->timestamps();
+                
                 $table->foreignId('created_by')->constrained('users', 'id');
                 $table->foreignId('updated_by')->constrained('users', 'id');
-                $table->timestamps();
             });
         }
     }

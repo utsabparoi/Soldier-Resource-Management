@@ -4,14 +4,15 @@
 
 use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\CampController;
+use Module\PRM\Controllers\StoreController;
 use Module\PRM\Controllers\CourseController;
 use Module\PRM\Controllers\ParadeController;
-use Module\PRM\Controllers\StoreController;
 use Module\PRM\Controllers\TrainingController;
+use Module\PRM\Controllers\ParadeCourseController;
 use Module\PRM\Controllers\LeaveCategoryController;
+use Module\PRM\Controllers\LeaveApplicationController;
 use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
-use Module\PRM\Controllers\LeaveApplicationController;
 
 Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
@@ -26,7 +27,6 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
         Camp Routes List
     =============================*/
     Route::resource('camp', CampController::class);
-    Route::get('assign-camp', [CampController::class, 'assign_camp'])->name('assign-camp');
     /* ================================
         Appointment Holder Routes List
     ===================================*/
@@ -47,6 +47,7 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     =============================*/
     Route::resource('course', CourseController::class);
     Route::get('assign-course', [CourseController::class, 'assign_course'])->name('assign-course');
+    Route::get('/get-unmatched-course', [CourseController::class, 'unmatched_course'])->name('unmatched-course');
 
     //Store
     Route::resource('store', StoreController::class);
@@ -55,6 +56,8 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     Route::resource('parade', ParadeController::class);
     Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
 
+    // Parade Course Routes
+    Route::resource('parade-courses', ParadeCourseController::class);
 
 });
 //ajax axios routes

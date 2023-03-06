@@ -33,7 +33,7 @@
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
                                                     <a href="{{ route('prm.course.index') }}" class="">
-                                                        <i class="fa fa-list"></i> Course <span class="hide-in-sm">List</span>
+                                                        <i class="fa fa-list"></i>Parade Course <span class="hide-in-sm">List</span>
                                                     </a>
                                                 </span>
                                             </div>

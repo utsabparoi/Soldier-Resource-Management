@@ -19,6 +19,9 @@ class CreateAppointmentHoldersTable extends Migration
                 $table->string('name');
                 $table->tinyInteger('status');
                 $table->timestamps();
+
+                $table->foreignId('created_by')->constrained('users', 'id');
+                $table->foreignId('updated_by')->constrained('users', 'id');
             });
         }
 

@@ -21,6 +21,9 @@ class CreateStoresTable extends Migration
                 $table->foreignId('camp_id')->comment('camps id')->constrained('camps');
                 $table->tinyInteger('status');
                 $table->timestamps();
+
+                $table->foreignId('created_by')->constrained('users', 'id');
+                $table->foreignId('updated_by')->constrained('users', 'id');
             });
         }
     }
