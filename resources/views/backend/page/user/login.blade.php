@@ -68,14 +68,13 @@
                             <span class="white" id="id-text2">TEN</span>
                         </h1>
                     </div>
-                    <audio style="display: none;" id="myAudio" controls autoplay>
+                    <audio style="display: none;" id="themesound" controls autoplay>
                         <source src="{{ asset('audio/themsound.mp3') }}" type="audio/mpeg">
                     </audio>
 
                     <script>
-                        document.addEventListener("DOMContentLoaded", playAudio);
                         setInterval(playAudio);
-                        var x = document.getElementById("myAudio");
+                        var x = document.getElementById("themesound");
                         function playAudio() {
                             x.play();
                         }
