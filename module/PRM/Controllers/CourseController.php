@@ -53,6 +53,7 @@ class CourseController extends Controller
     */
     public function store(Request $request)
     {
+        // ddd($request);
         $request->validate([
             'name' => 'required',
         ]);

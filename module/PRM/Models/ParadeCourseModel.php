@@ -2,6 +2,8 @@
 
 namespace Module\PRM\Models;
 
+use Module\PRM\Models\Course;
+use Module\PRM\Models\ParadeModel;
 use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
 
 class ParadeCourseModel extends Model
@@ -15,7 +17,7 @@ class ParadeCourseModel extends Model
     }
 
     public function parade(){
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(ParadeModel::class);
     }
 
 }

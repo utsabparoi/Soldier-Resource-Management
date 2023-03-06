@@ -5,7 +5,6 @@ namespace Module\PRM\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\FileSaver;
-use Module\PRM\Models\Camp;
 use Module\PRM\Models\LeaveApplication;
 use Module\PRM\Models\LeaveCategory;
 use Module\PRM\Models\ParadeModel;

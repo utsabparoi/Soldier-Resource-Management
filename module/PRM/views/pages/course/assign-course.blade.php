@@ -71,8 +71,8 @@
                                                             <div class="col-sm-6">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Course<sup
-                                                                                    class="text-danger">*</sup></strong>
+                                                                        <h5><strong>Course <sup
+                                                                                    class="text-danger">*</sup><small class="text-success">(below course/'s not take yet)</small></strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>

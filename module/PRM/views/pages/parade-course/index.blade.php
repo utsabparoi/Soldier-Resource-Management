@@ -59,8 +59,8 @@
                                             <thead>
                                             <tr>
                                                 <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
-                                                <th width="20%">Parade Name</th>
-                                                <th width="20%">Course Name</th>
+                                                <th width="30%">Parade Name</th>
+                                                <th width="30%">Course Name</th>
                                                 <th class="text-center" width="10%">Status</th>
                                                 <th width="5%" class="text-center" style="width: 120px">Action</th>
                                             </tr>
