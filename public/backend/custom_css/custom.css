@@ -10,3 +10,7 @@
 .custom-input-field{
     border-radius:10px;
 }
+
+.widget-body .widget-main .box-resize{
+    border-color:#AAAAAA;height:28px;border-radius:4px !important;
+}

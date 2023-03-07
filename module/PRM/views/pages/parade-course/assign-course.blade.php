@@ -1,7 +1,7 @@
 @extends('backend.layout.app')
 @section('title', 'Course')
 @section('css')
-
+    
 @endsection
 @section('content')
     <div class="main-content">
@@ -57,30 +57,10 @@
                                                                     </label>
                                                                     <div>
                                                                         <select name="parade_id"
-                                                                            class="form-control" onchange="loadUnmatchedCourse(this)">
-                                                                            <option value="">-Select Parade-</option>
+                                                                            class="form-control multiselect" onchange="loadUnmatchedCourse(this)">
+                                                                            <option value="">-Select a Parade-</option>
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}">{{ $parade->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <!-- Course -->
-                                                            <div class="col-sm-6">
-                                                                <div align="left" class="form-group">
-                                                                    <label>
-                                                                        <h5><strong>Course <sup
-                                                                                    class="text-danger">*</sup><small class="text-success">(below course/'s not take yet)</small></strong>
-                                                                        </h5>
-                                                                    </label>
-                                                                    <div>
-                                                                        <select name="course_id"
-                                                                            class="form-control unmatched-course">
-                                                                            <option value="">-First Select a Parade-</option>
-                                                                            @foreach ($courses as $course)
-                                                                                <option value="{{ $course->id }}">{{ $course->name }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -91,21 +71,27 @@
                                                         <br>
 
                                                         <div class="row">
-                                                            {{-- Course SerialNo --}}
-                                                            <div class="col-sm-3">
+                                                            <!-- Course -->
+                                                            <div class="col-sm-6">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5>
-                                                                            <strong>Serial No</strong>
+                                                                        <h5><strong>Course <sup
+                                                                                    class="text-danger">*</sup><small class="text-success">(below course/'s not take yet)</small></strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <input class="form-control" type="number" name="serial_no">
+                                                                        <select name="course_id"
+                                                                            class="form-control multiselect unmatched-course">
+                                                                            <option value="">-First Select a Parade-</option>
+                                                                            @foreach ($courses as $course)
+                                                                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-2">
                                                                 <div align="left" class="form-group">
                                                                     <label>
                                                                         <h5>
@@ -113,12 +99,12 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <input class="form-control" type="text" name="duration">
+                                                                        <input class="form-control box-resize" type="text" name="duration">
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-2">
                                                                 <div align="left" class="form-group">
                                                                     <label>
                                                                         <h5>
@@ -126,12 +112,12 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <input class="form-control" type="text" name="result">
+                                                                        <input class="form-control box-resize" type="text" name="result">
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-sm-3">
+                                                            <div class="col-sm-2">
                                                                 <div align="left" class="form-group">
                                                                     <label>
                                                                         <h5>
@@ -139,7 +125,7 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <input class="form-control" type="text" name="remark">
+                                                                        <input class="form-control box-resize" type="text" name="remark">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -147,16 +133,13 @@
                                                         </div>
                                                         <br>
 
-                                                        {{-- Status --}}
-                                                        <div class="form-group">
-                                                            <div class="input-group width-90">
-                                                                <span class="input-group-addon width-20" style="text-align: left">
-                                                                    Status
-                                                                </span>
-                                                                <label style="margin: 5px 0 0 8px">
-                                                                    <input name="status" class="ace ace-switch ace-switch-6" type="checkbox">
-                                                                    <span class="lbl"></span>
-                                                                </label>
+                                                        <div class="row">
+                                                            <div class="col-xs-6 tableTitle">
+                                                                <div class="table-responsive" >
+                                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover new-table showTable">
+                                                                        {{-- Table data receive from script file --}}
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
 

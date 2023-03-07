@@ -32,7 +32,7 @@ class ParadeCourseController extends Controller
     public function index()
     {
         try {
-            $data['parade_courses']  = ParadeCourseModel::paginate(20);
+            $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(20);
             $data['table']  = ParadeCourseModel::getTableName();
             return view('pages.parade-course.index', $data);
         } catch (\Throwable $th) {
@@ -47,6 +47,7 @@ class ParadeCourseController extends Controller
     */
     public function assign_course(Request $request)
     {
+        $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(20);
         $data['parades'] = ParadeModel::all();
         $data['courses'] = Course::where($request->parade_id);
 
@@ -157,6 +158,17 @@ class ParadeCourseController extends Controller
         try{
             $matchedCourses = ParadeCourseModel::where('parade_id', $request->parade_id)->get('course_id');
             $data   = Course::whereNotIn('id', $matchedCourses)->get();
+
+            return response()->json($data);
+        }catch(\Throwable $th){
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
+
+    public function taken_course(Request $request){
+
+        try{
+            $data = ParadeCourseModel::where('parade_id', $request->parade_id)->with('course', 'parade')->get();
 
             return response()->json($data);
         }catch(\Throwable $th){

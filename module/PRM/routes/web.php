@@ -58,6 +58,7 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     Route::resource('parade-courses', ParadeCourseController::class);
     Route::get('assign-course', [ParadeCourseController::class, 'assign_course'])->name('assign-course');
     Route::get('/get-unmatched-course', [ParadeCourseController::class, 'unmatched_course']);
+    Route::get('/get-taken-course', [ParadeCourseController::class, 'taken_course']);
 
 });
 //ajax axios routes

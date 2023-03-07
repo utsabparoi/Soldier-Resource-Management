@@ -88,14 +88,14 @@
                                                         <!---------------  EDIT---------------->
                                                         <div class="btn-group btn-corner  action-span ">
 
-                                                            <a href="{{ route('prm.leave-applications.edit', $course->id) }}"
+                                                            <a href="{{ route('prm.parade-courses.edit', $course->id) }}"
                                                                role="button" class="btn btn-xs btn-success bs-tooltip"
                                                                title="Edit">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
 
                                                             <button type="button"
-                                                                    onclick="delete_item(`{{ route('prm.leave-applications.destroy', $course->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('prm.parade-courses.destroy', $course->id) }}`)"
                                                                     class="btn btn-xs btn-danger bs-tooltip" title="Delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
@@ -128,48 +128,5 @@
             {{-- main content end  --}}
         </div>
     </div>
-
-    <script>
-
-        function viewAttachment(element) {
-            // Get the modal
-            var modal = document.getElementById("myModal");
-
-            // Get the button that opens the modal
-            var callButton = document.getElementById("storeId");
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
-            // When the user clicks the button, open the modal
-            /*callButton.onclick = function() {
-                modal.style.display = "block";
-            }*/
-            modal.style.display = "block";
-
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            let parade_id = $(element).attr("data-id");
-            let parade_name = $(element).attr("data-name");
-            document.getElementById('paradeName').innerHTML = parade_name;
-            // Get current hosting url
-            var base_url = window.location.origin;
-            let parade_attachment = $(element).attr("data-attachment");
-            document.getElementById('paradeAttachment').src= base_url+"/"+parade_attachment;
-
-            var file_extension = (/[.]/.exec(parade_attachment)) ? /[^.]+$/.exec(parade_attachment) : undefined;
-            // alert(file_extension);
-            document.getElementById('fileExtension').innerHTML = file_extension;
-        }
-    </script>
+    
 @endsection
