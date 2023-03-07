@@ -116,6 +116,7 @@
     <!-- ace scripts -->
     <script src="{{ asset('backend/js/ace-elements.min.js') }}/"></script>
     <script src="{{ asset('backend/js/ace.min.js') }}"></script>
+    <script src="{{ asset('backend/js/bootstrap-datepicker.min.js') }}"></script>
 
     <!-- axios scripts -->
     <script src="{{ asset('backend/js/axios.min.js') }}"></script>

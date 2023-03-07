@@ -59,5 +59,6 @@ Route::group(['midleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
 });
 //ajax axios routes
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
+Route::get('/clear_image', [StoreController::class, 'imageUnlink']);
 
 

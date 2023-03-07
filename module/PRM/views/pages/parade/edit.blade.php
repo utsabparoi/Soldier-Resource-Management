@@ -70,10 +70,11 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Present Location<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Present Location</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <textarea name="presentLocation" id="presentLocation" class="col-xs-10 col-sm-10">{{ $parade->present_location }}</textarea>
+                                                                                <input type="text" value="{{ \Module\PRM\Models\Camp::where('id', $parade->present_location)->first()->name }}" class="col-xs-10 col-sm-10" readonly>
+                                                                                <input type="text" name="presentLocation" id="presentLocation" value="{{ $parade->present_location }}" class="col-xs-10 col-sm-10" hidden>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -82,7 +83,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Join<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Join</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="date" name="dateOfJoin" id="dateOfJoin" value="{{ $parade->join_date_present_unit }}" class="col-xs-10 col-sm-10">
@@ -94,39 +95,10 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Preview Image<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Photo</strong></h5> </label>
 
-                                                                            <div class="col-sm-6">
-                                                                                <div class="col-sm-12">
-                                                                                    <div class="widget-body">
-                                                                                        <div class="widget-main">
-                                                                                            <div class="form-group">
-                                                                                                <div class="col-xs-12">
-                                                                                                    <img src="{{ asset($parade->image) }}" class="col-xs-8 col-sm-8">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <br>
-                                                                <div align="center" class="row">
-                                                                    <div align="right" class="col-sm-3">
-                                                                        <br><h5><strong>Photo</strong></h5>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="widget-body">
-                                                                                <div class="widget-main">
-                                                                                    <div class="form-group">
-                                                                                        <div class="col-xs-12">
-                                                                                            <label class="ace-file-input ace-file-multiple"><input multiple="" type="file" name="image" id="image"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="col-sm-9" style="width: 415px !important;">
+                                                                                <label class="ace-file-input ace-file-multiple"><input class="" type="file" name="image" id="image"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -135,7 +107,19 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Enrolment <sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Preview Image</strong></h5> </label>
+
+                                                                            <div class="col-sm-9" style="width: 315px !important; margin-left: -12px;">
+                                                                                <img src="{{ asset($parade->image) }}" class="col-xs-8 col-sm-8">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <br>
+                                                                <div align="center" class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <div align="right" class="form-group">
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Enrolment</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="date" name="dateOfEnrolment" id="dateOfEnrolment" value="{{ $parade->enrolment_date }}" class="col-xs-10 col-sm-10">
@@ -151,7 +135,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Present Rk<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Present Rk</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="date" name="dateOfPresentRank" id="dateOfPresentRank" value="{{ $parade->present_rank_date }}" class="col-xs-10 col-sm-10">
@@ -164,7 +148,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Retirement<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Retirement</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="date" name="dateOfRetirement" id="dateOfRetirement" value="{{ $parade->retirement_date }}" class="col-xs-10 col-sm-10">
@@ -176,7 +160,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Civ Edn<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Civ Edn</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="text" name="cidEdn" id="cidEdn" value="{{ $parade->civ_edn }}" class="col-xs-10 col-sm-10">
@@ -188,7 +172,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Med Cat<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Med Cat</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="text" name="medCat" id="medCat" value="{{ $parade->med_cat }}" class="col-xs-10 col-sm-10">
@@ -200,7 +184,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><h5><strong>Qual/Unqual Rk<sup class="text-danger">*</sup></strong></h5>  </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><h5><strong>Qual/Unqual Rk</strong></h5>  </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <select class="col-xs-10 col-sm-10" name="qualUnqualRank" id="qualUnqualRank">
@@ -220,7 +204,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Permanent Address <sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Permanent Address</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <textarea name="permanentAddress" id="permanentAddress" class="col-xs-10 col-sm-10" rows="7" cols="50">{{ $parade->permanent_address }}</textarea>
@@ -232,7 +216,7 @@
                                                                 <div align="center" class="row">
                                                                     <div align="right" class="col-xs-12">
                                                                         <div class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Merital Status<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Merital Status</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <select class="col-xs-10 col-sm-10" name="meritalStatus" id="meritalStatus">
@@ -248,7 +232,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>No of Children<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>No of Children</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="number" name="noOfChildren" id="noOfChildren" value="{{ $parade->children_number }}" class="col-xs-10 col-sm-10">
@@ -262,13 +246,9 @@
                                                         <br>
                                                         <div align="right" class="row">
                                                             <div class="col-sm-12" style="padding-right: 102px;">
-                                                                <button class="btn" type="submit" name="submitButton" value="proceedToNext" style="background-color: #828282 !important; border: none;">
-                                                                    <i class="ace-icon fa fa-arrow-right bigger-110"></i>
-                                                                    Proceed to Next
-                                                                </button>
                                                                 <button class="btn" type="submit" name="submitButton" value="save" style="background-color: #431cff !important; border: none;">
                                                                     <i class="ace-icon fa fa-save bigger-110"></i>
-                                                                    Save
+                                                                    Update
                                                                 </button>
                                                             </div>
                                                         </div>

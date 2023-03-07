@@ -7,6 +7,7 @@ use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
+use Module\PRM\Models\Camp;
 use Module\PRM\Models\Course;
 use Module\PRM\Models\ParadeCourseModel;
 use Module\PRM\Models\ParadeModel;
@@ -60,7 +61,8 @@ class ParadeController extends Controller
     */
     public function create()
     {
-        return view('pages.parade.create');
+        $camp = Camp::all();
+        return view('pages.parade.create', compact('camp'));
     }
 
 
@@ -128,6 +130,15 @@ class ParadeController extends Controller
     }
 
 
+    public function imageUnlink(){
+        $existImage = session('profileImage');
+        if (isset($existImage)){
+            unlink($existImage);
+            session()->forget('profileImage');
+        }
+    }
+
+
 
     /*
      |--------------------------------------------------------------------------
@@ -165,7 +176,12 @@ class ParadeController extends Controller
     */
     public function update($id, Request $request)
     {
-        # code...
+        try {
+            $this->storeOrUpdate($request, $id);
+            return redirect()->route('prm.parade.index')->with('success','Parade Updated Success');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error',$th->getMessage());
+        }
     }
 
 
