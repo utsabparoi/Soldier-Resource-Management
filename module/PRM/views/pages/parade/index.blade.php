@@ -72,12 +72,12 @@
 
                                             @forelse($parade as $parades)
                                                 <tr>
-                                                    <td class="hide-in-sm"><span class="span">{{ $parades->id }}</span></td>
+                                                    <td class="hide-in-sm"><span class="span">{{ $loop->iteration }}</span></td>
                                                      <td>
                                                          <img src="{{ asset($parades->image) }}" width="50px" height="50px">
                                                     </td>
                                                     <td><span class="span">{{ $parades->name }}</span></td>
-                                                    <td><span class="span">{{ $parades->present_location }}</span></td>
+                                                    <td><span class="span">{{ \Module\PRM\Models\Camp::where('id', $parades->present_location)->first()->name }}</span></td>
                                                     <td class="left">
                                                         <!--------------- STATUS EDIT---------------->
                                                         <div>
