@@ -12,7 +12,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Update Parade</li>
+                    <li class="active">Edit Parade</li>
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -36,7 +36,7 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Update Parade</span>
+                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Edit Parade</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
@@ -110,7 +110,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Preview Image</strong></h5> </label>
 
                                                                             <div class="col-sm-9" style="width: 315px !important; margin-left: -12px;">
-                                                                                <img src="{{ asset($parade->image) }}" class="col-xs-8 col-sm-8">
+                                                                                <img src="@if($parade->image) {{ asset($parade->image) }} @else {{ asset('backend/images/person.png') }} @endif" class="col-xs-8 col-sm-8">
                                                                             </div>
                                                                         </div>
                                                                     </div>
