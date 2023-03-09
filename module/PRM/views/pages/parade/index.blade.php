@@ -14,13 +14,12 @@
 
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
-                        <span class="input-icon">
-                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input"
-                                   autocomplete="off" />
-                            <i class="ace-icon fa fa-search nav-search-icon"></i>
-                        </span>
+                                    <span class="input-icon">
+                                        <input type="text" placeholder="Search Parade ..." class="nav-search-input" id="searchParade" style="width: 200px !important;" autocomplete="off"/>
+                                             <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                        </span>
                     </form>
-                </div><!-- /.nav-search -->
+                </div>
             </div>
             {{-- main content start from here --}}
             <div class="page-content">
@@ -33,8 +32,10 @@
 
                     <!-- header -->
                     <div class="widget-header">
-                        <h4 class="widget-title"> <i class="fa fa-info-circle"></i> Parade
+                        <h4 class="widget-title"><i class="fa fa-users"></i> Parades
                         </h4>
+
+
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
                             <a href="{{ route('prm.parade.create') }}" class="">
@@ -42,7 +43,6 @@
                             </a>
                         </span>
                     </div>
-
 
 
                     <!-- body -->
@@ -59,31 +59,39 @@
                                                class="table table-striped table-bordered table-hover new-table">
                                             <thead>
                                             <tr>
-                                                <th width="5%" class="hide-in-sm">Sl</th>
-                                                <th width="15%">Image</th>
-                                                <th width="25%">Name</th>
-                                                <th width="30%">Location</th>
+                                                <th width="5%" class="hide-in-sm text-center">Sl</th>
+                                                <th width="10%" class="text-center">Image</th>
+                                                <th width="20%">Name</th>
+                                                <th width="20%">Rank</th>
+                                                <th width="20%">Location</th>
                                                 <th width="10%">Status</th>
                                                 <th width="15%" class="text-center" style="width: 120px">Action</th>
                                             </tr>
                                             </thead>
 
-                                            <tbody>
+                                            <tbody id="paradeTable">
 
                                             @forelse($parade as $parades)
                                                 <tr>
-                                                    <td class="hide-in-sm"><span class="span">{{ $loop->iteration }}</span></td>
-                                                     <td>
-                                                         <img src="{{ asset($parades->image) }}" width="50px" height="50px">
+                                                    <td class="hide-in-sm text-center"><span
+                                                            class="span">{{ $loop->iteration }}</span></td>
+                                                    <td class="text-center">
+                                                        <img
+                                                            src="@if($parades->image) {{ asset($parades->image) }} @else {{ asset('backend/images/person.png') }} @endif"
+                                                            width="50px" height="50px">
                                                     </td>
                                                     <td><span class="span">{{ $parades->name }}</span></td>
-                                                    <td><span class="span">{{ \Module\PRM\Models\Camp::where('id', $parades->present_location)->first()->name }}</span></td>
+                                                    <td><span class="span">{{ $parades->next_rank }}</span></td>
+                                                    <td><span
+                                                            class="span">{{ \Module\PRM\Models\Camp::where('id', $parades->present_location)->first()->name }}</span>
+                                                    </td>
                                                     <td class="left">
                                                         <!--------------- STATUS EDIT---------------->
                                                         <div>
                                                             <label>
                                                                 <span class="span">
-                                                            <x-status status="{{ $parades->status }}" id="{{ $parades->id }}" table="{{ $table }}" />
+                                                            <x-status status="{{ $parades->status }}"
+                                                                      id="{{ $parades->id }}" table="{{ $table }}"/>
                                                         </span>
                                                             </label>
                                                         </div>
@@ -108,7 +116,8 @@
 
                                                             <button type="button"
                                                                     onclick="delete_item(`{{ route('prm.parade.destroy', $parades->id) }}`)"
-                                                                    class="btn btn-xs btn-danger bs-tooltip" title="Delete">
+                                                                    class="btn btn-xs btn-danger bs-tooltip"
+                                                                    title="Delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
                                                         </div>
@@ -138,4 +147,15 @@
             {{-- main content end  --}}
         </div>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $("#searchParade").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#paradeTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 @endsection

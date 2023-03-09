@@ -61,7 +61,7 @@
                                                             <span><h3><strong><u style="text-underline-offset: 0.3em;">BIO DATA-JCO/OR</u></strong></h3></span>
                                                         </div>
                                                         <div class="col-lg-4">
-                                                            <img src="{{ asset($parade->image) }}" width="110px" height="110px">
+                                                            <img src="@if($parade->image) {{ asset($parade->image) }} @else {{ asset('backend/images/person.png') }} @endif" width="110px" height="110px">
                                                         </div>
                                                     </div>
                                                     <br>
