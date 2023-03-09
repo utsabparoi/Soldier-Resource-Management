@@ -38,6 +38,8 @@ class ParadeController extends Controller
     {
         try {
             $data['parade'] = ParadeModel::paginate(30);
+            $data['camp_name'] = Camp::all();
+            $data['all_parade'] = ParadeModel::all();
             $data['table'] = ParadeModel::getTableName();
             return view('pages.parade.index', $data);
         } catch (\Throwable $th) {
