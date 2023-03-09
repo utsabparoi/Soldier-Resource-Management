@@ -15,7 +15,8 @@
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
                                     <span class="input-icon">
-                                        <input type="text" placeholder="Search Parade ..." class="nav-search-input" id="searchParade" style="width: 200px !important;" autocomplete="off"/>
+                                        <input type="text" placeholder="Search Parade ..." class="nav-search-input"
+                                               id="searchParade" style="width: 200px !important;" autocomplete="off"/>
                                              <i class="ace-icon fa fa-search nav-search-icon"></i>
                                         </span>
                     </form>
@@ -27,19 +28,19 @@
                 <!-- DYNAIC CONTENT FROM VIEWS -->
 
 
-                <div class="widget-box">
+                <div class="widget-box" style="border: none !important;">
 
 
                     <!-- header -->
-                    <div class="widget-header">
-                        <h4 class="widget-title"><i class="fa fa-users"></i> Parades
+                    <div class="widget-header" style="background: white !important;">
+                        <h4 class="widget-title">Parade List <span class="badge badge-primary" style="margin-bottom: 5px;">Total: {{ $all_parade->count() }} </span>
                         </h4>
 
 
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
-                            <a href="{{ route('prm.parade.create') }}" class="">
-                                <i class="fa fa-plus"></i> Add <span class="hide-in-sm">New</span>
+                            <a href="{{ route('prm.parade.create') }}" class="btn-primary text-center" style="width: 110px;">
+                                <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Parade</span>
                             </a>
                         </span>
                     </div>
@@ -53,6 +54,83 @@
 
                             <div class="row">
                                 <div class="col-xs-12">
+                                    <div class="widget-body" style="border: 1px solid #e7e7e7">
+                                        <div class="widget-main">
+                                            <div class="row">
+                                                <!-- Company Name -->
+                                                <div class="col-sm-3">
+                                                    <div align="left" class="form-group">
+                                                        <div>
+                                                            <input type="text" name="comanyName" id="comanyName"
+                                                                   value="Perfect Ten"
+                                                                   class="col-xs-10 col-sm-10" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Company Name -->
+                                                <div class="col-sm-3">
+                                                    <div align="left" class="form-group">
+                                                        <div>
+                                                            <select class="col-xs-10 col-sm-10" id="paradeCamp" onchange="getRankInformation()">
+                                                                <option value="">-Select Camp-</option>
+                                                                @foreach($camp_name as $camp_names)
+                                                                         <option value="{{ $camp_names->name }}">{{ $camp_names->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Company Name -->
+                                                <div class="col-sm-3">
+                                                    <div align="left" class="form-group">
+                                                        <div>
+                                                            <select class="col-xs-10 col-sm-10" id="paradeRank">
+                                                                <option value="">-Select Rank-</option>
+                                                                <option value="Major">Major</option>
+                                                                <option value="Captain">Captain</option>
+                                                                <option value="Senior Officer">Senior Officer</option>
+                                                                <option value="Officer">Officer</option>
+                                                                <option value="Junior Officer">Junior Officer</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Company Name -->
+                                                <div class="col-sm-3">
+                                                    <div align="left" class="form-group">
+                                                        <div>
+                                                            <select class="col-xs-10 col-sm-10">
+                                                                <option value="">-Select Parade-</option>
+                                                                @foreach($all_parade as $all_parades)--}}
+                                                                        <option value="">{{ $all_parades->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div align="right" class="row" style="margin-right: 39px;">
+                                                <div class="col-sm-12">
+                                                    <a href="/">
+                                                        <button class="btn btn-primary" type="button"
+                                                                id="uploadPercent" style="background-color: #431cff !important; border: none;" \>
+                                                            <i class="ace-icon fa fa-search bigger-110"></i>
+                                                            Search
+                                                        </button>
+                                                    </a>
+                                                    <button class="btn btn-grey" type="button"
+                                                            id="uploadPercent" style="background-color: #828282 !important; border: none;" \>
+                                                        <i class="ace-icon fa fa-refresh bigger-110"></i>
+                                                        Refresh
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <br>
+
 
                                     <div class="table-responsive">
                                         <table id="dynamic-table"
@@ -60,10 +138,9 @@
                                             <thead>
                                             <tr>
                                                 <th width="5%" class="hide-in-sm text-center">Sl</th>
-                                                <th width="10%" class="text-center">Image</th>
-                                                <th width="20%">Name</th>
-                                                <th width="20%">Rank</th>
-                                                <th width="20%">Location</th>
+                                                <th width="30%">Name</th>
+                                                <th width="20%">Joining Date</th>
+                                                <th width="20%">Camp</th>
                                                 <th width="10%">Status</th>
                                                 <th width="15%" class="text-center" style="width: 120px">Action</th>
                                             </tr>
@@ -73,19 +150,21 @@
 
                                             @forelse($parade as $parades)
                                                 <tr>
-                                                    <td class="hide-in-sm text-center"><span
-                                                            class="span">{{ $loop->iteration }}</span></td>
-                                                    <td class="text-center">
-                                                        <img
-                                                            src="@if($parades->image) {{ asset($parades->image) }} @else {{ asset('backend/images/person.png') }} @endif"
-                                                            width="50px" height="50px">
-                                                    </td>
-                                                    <td><span class="span">{{ $parades->name }}</span></td>
-                                                    <td><span class="span">{{ $parades->next_rank }}</span></td>
-                                                    <td><span
+                                                    <td class="hide-in-sm text-center" style="display:table-cell; vertical-align:middle;"><span class="span">
+                                                            {{ $loop->iteration }}
+                                                        </span></td>
+                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">
+                                                            <img src="@if($parades->image) {{ asset($parades->image) }} @else {{ asset('backend/images/person.png') }} @endif" width="50px" height="50px"  style="float: left; margin-right: 3px; border: 1px solid rgba(0,193,255,0.42); border-radius: 100%">
+                                                            <ul style="list-style: none; margin-top: 7px;">
+                                                                <li style="font-weight: bold;">{{ $parades->name }}</li>
+                                                                <li style="font-weight: bold;">{{ $parades->next_rank }}</li>
+                                                            </ul>
+                                                        </span></td>
+                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">{{ $parades->join_date_present_unit }}</span></td>
+                                                    <td style="display:table-cell; vertical-align:middle;"><span
                                                             class="span">{{ \Module\PRM\Models\Camp::where('id', $parades->present_location)->first()->name }}</span>
                                                     </td>
-                                                    <td class="left">
+                                                    <td class="left" style="display:table-cell; vertical-align:middle;">
                                                         <!--------------- STATUS EDIT---------------->
                                                         <div>
                                                             <label>
@@ -96,7 +175,7 @@
                                                             </label>
                                                         </div>
                                                     </td>
-                                                    <td class="text-center">
+                                                    <td class="text-center" style="display:table-cell; vertical-align:middle;">
 
                                                         <!---------------  EDIT---------------->
                                                         <div class="btn-group btn-corner  action-span ">
@@ -149,13 +228,37 @@
     </div>
 
     <script>
-        $(document).ready(function(){
-            $("#searchParade").on("keyup", function() {
+        $(document).ready(function () {
+            $("#searchParade").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#paradeTable tr").filter(function() {
+                $("#paradeTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
         });
+    </script>
+
+
+
+    <script>
+        function getRankInformation(){
+            let camp = document.getElementById('paradeCamp').value;
+            $('#paradeRank').empty();
+            @foreach($all_parade as $all_parades)
+                @if('Major' == $all_parades->present_location)
+            $('#paradeRank').append('<option value="Major">'+ 'ok' +'</option>');
+                @endif
+            @endforeach
+            // $('#paradeRank').append('<option value="Major">'+  +'</option>');
+
+                // let url = "/getRank";
+                // let data = {};
+                //
+                // axios.post(url, data).then( function (response) {
+                //     alert('ok');
+                // }).catch(function (error) {
+                //     alert('error')
+                // })
+        }
     </script>
 @endsection
