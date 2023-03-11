@@ -47,6 +47,24 @@ class ParadeController extends Controller
         }
     }
 
+    public function getParadeSearch(Request $request){
+        $campId = $request->input('CampID');
+        $rank = $request->input('Rank');
+        if (isset($campId) && isset($rank)){
+            $searchedParades = ParadeModel::where('present_location', '=', $campId)->where('next_rank', '=', $rank)->get();
+        }
+        elseif (isset($campId)){
+            $searchedParades = ParadeModel::where('present_location', '=', $campId)->get();
+        }
+        elseif (isset($rank)){
+            $searchedParades = ParadeModel::where('next_rank', '=', $rank)->get();
+        }
+        else{
+            $searchedParades = '';
+        }
+        return response()->json($searchedParades);
+    }
+
 
     public function paradeProfile($id)
     {

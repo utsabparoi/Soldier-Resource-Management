@@ -212,7 +212,7 @@
                                                                                     <option>Senior Officer</option>
                                                                                     <option>Officer</option>
                                                                                     <option>Junior Officer</option>
-                                                                                    <option>Note</option>
+                                                                                    <option>Other</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
