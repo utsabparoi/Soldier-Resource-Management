@@ -36,12 +36,6 @@
                                                     <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Course Assign</span>
                                                 </h4>
 
-                                                <span class="widget-toolbar">
-                                                <!--------------- Slider List---------------->
-                                                <a href="{{ route('prm.parade.index') }}" class="">
-                                                    <i class="fa fa-list"></i> Parade <span class="hide-in-sm">List</span>
-                                                </a>
-                                            </span>
                                             </div>
 
                                             <form action="{{ route('prm.parade.store') }}" method="post" enctype="multipart/form-data" id="Form">
@@ -59,33 +53,41 @@
                                                 <input type="text" name="meritalStatus" value="{{$profileData['MeritalStatus']}}" hidden>
                                                 <input type="text" name="noOfChildren" value="{{$profileData['NoOfChildren']}}" hidden>
                                                 <div class="widget-body">
+                                                    <div class="widget-body">
+                                                        <div class="widget-main">
+                                                            <div id="fuelux-wizard-container">
+                                                                <div>
+                                                                    <ul class="steps">
+                                                                        <li data-step="1">
+                                                                            <span class="step">1</span>
+                                                                            <span class="title">Basic Information</span>
+                                                                        </li>
+
+                                                                        <li data-step="2" class="active">
+                                                                            <span class="step">2</span>
+                                                                            <span class="title">Course & Training</span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                                <hr />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                         <div class="row">
                                                             <br>
                                                             <div class="col-sm-12">
-                                                                <div align="center" class="row" style=" margin-right: 20%; margin-left: 20%;">
-                                                                    <div align="center" class="col-xs-12">
-                                                                        <div align="center"><label class="col-sm-12 control-label"><span style="font-size: 19px;"><strong>Add Additional Information for {{$profileData['Name']}} </strong></span> </label>
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr>
-
-
-
-                                                                <div align="center" class="row" style="border: 1px solid #d0d0d0; margin-right: 20%; margin-left: 20%;">
+                                                                <div align="center" class="row" style="border: 1px solid #d0d0d0; margin-right: 2%; margin-left: 2%;">
                                                                     <div align="center" class="col-xs-12">
                                                                         <div align="left"><label class="control-label no-padding-right" for="form-field-1"> <h4><strong>Add Course</strong></h4> </label></div>
                                                                         <div class="form-group">
                                                                             <table class="table" width="100%">
                                                                                 <thead>
                                                                                 <tr>
-                                                                                    <th width="20%">Name of Course</th>
-                                                                                    <th width="5%">Resut</th>
-                                                                                    <th width="5%">Remarks</th>
-                                                                                    <th width="5%">Duration</th>
-                                                                                    <th width="5%">Action</th>
+                                                                                    <th width="40%">Name of Course</th>
+                                                                                    <th width="10%">Resut</th>
+                                                                                    <th width="10%">Remarks</th>
+                                                                                    <th width="10%">Duration</th>
+                                                                                    <th width="5%"></th>
                                                                                 </tr>
                                                                                 </thead>
                                                                                 <tbody class="table_body_course">
@@ -136,7 +138,7 @@
                                                             <br>
 
                                                             <div class="col-sm-12">
-                                                                <div align="center" class="row" style="border: 1px solid #d0d0d0; margin-right: 20%; margin-left: 20%;">
+                                                                <div align="center" class="row" style="border: 1px solid #d0d0d0; margin-right: 2%; margin-left: 2%;">
                                                                     <div align="center" class="col-xs-12">
                                                                         <div align="left"><label class="control-label no-padding-right" for="form-field-1"> <h4><strong>Add Training</strong></h4> </label></div>
 
@@ -144,11 +146,11 @@
                                                                             <table class="table" width="100%">
                                                                                 <thead>
                                                                                 <tr>
-                                                                                    <th width="20%">Name of Training</th>
-                                                                                    <th width="5%">Resut</th>
-                                                                                    <th width="5%">Remarks</th>
-                                                                                    <th width="5%">Duration</th>
-                                                                                    <th width="5%">Action</th>
+                                                                                    <th width="40%">Name of Training</th>
+                                                                                    <th width="10%">Resut</th>
+                                                                                    <th width="10%">Remarks</th>
+                                                                                    <th width="10%">Duration</th>
+                                                                                    <th width="5%"></th>
                                                                                 </tr>
                                                                                 </thead>
                                                                                 <tbody class="table_body_training">
@@ -195,8 +197,12 @@
                                                             </div>
                                                         </div>
                                                         <br>
-                                                        <div align="right"class="row" style=" margin-right: 19.1%; margin-left: 20%;">
+                                                        <div align="right" class="row" style=" margin-right: 1.1%; margin-left: 25%;">
                                                             <div  class="col-sm-12">
+                                                                <button class="btn" onclick="history.back()" style="background-color: #828282 !important; border: none;">
+                                                                    <i class="ace-icon fa fa-arrow-left bigger-110"></i>
+                                                                    Back
+                                                                </button>
                                                                 <button class="btn btn-primary" type="submit" name="submitButton" value="saveWithExtraInfo" style="background-color: #431cff !important; border: none;">
                                                                     <i class="ace-icon fa fa-save bigger-110"></i>
                                                                     Save

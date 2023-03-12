@@ -43,12 +43,12 @@
                                                     <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Add New Parade</span>
                                                 </h4>
 
-                                                <span class="widget-toolbar">
-                                                <!--------------- Slider List---------------->
-                                                <a href="{{ route('prm.parade.index') }}" class="">
-                                                    <i class="fa fa-list"></i> Parade <span class="hide-in-sm">List</span>
-                                                </a>
-                                            </span>
+{{--                                                <span class="widget-toolbar">--}}
+{{--                                                <!--------------- Slider List---------------->--}}
+{{--                                                <a href="{{ route('prm.parade.index') }}" class="">--}}
+{{--                                                    <i class="fa fa-list"></i> Parade <span class="hide-in-sm">List</span>--}}
+{{--                                                </a>--}}
+{{--                                            </span>--}}
                                             </div>
 
                                             <form action="{{ route('prm.parade.store') }}" method="post" enctype="multipart/form-data" id="Form">
@@ -56,6 +56,28 @@
                                                 <div class="widget-body">
                                                     <div class="widget-main">
                                                         <div class="row">
+                                                            <div class="widget-body">
+                                                                <div class="widget-main">
+                                                                    <div id="fuelux-wizard-container">
+                                                                        <div>
+                                                                            <ul class="steps">
+                                                                                <li data-step="1" class="active">
+                                                                                    <span class="step">1</span>
+                                                                                    <span class="title">Basic Information</span>
+                                                                                </li>
+
+                                                                                <li data-step="2">
+                                                                                    <span class="step">2</span>
+                                                                                    <span class="title">Course & Training</span>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+
+                                                                        <hr />
+
+                                                                    </div>
+                                                                </div><!-- /.widget-main -->
+                                                            </div>
                                                             <br>
                                                             <div class="col-sm-6">
                                                                 <div align="center" class="row">
@@ -76,7 +98,12 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Present Location<sup class="text-danger">*</sup></strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <textarea name="presentLocation" id="presentLocation" class="col-xs-10 col-sm-10"></textarea>
+                                                                                <select name="presentLocation" id="presentLocation" class="col-xs-10 col-sm-10" required>
+                                                                                    <option value="">-Select-</option>
+                                                                                    @foreach($camp as $camps)
+                                                                                    <option value="{{ $camps->id }}">{{ $camps->name }}</option>
+                                                                                    @endforeach
+                                                                                </select>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -85,9 +112,10 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Join<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Join</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
+{{--                                                                                <input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />--}}
                                                                                 <input type="date" name="dateOfJoin" id="dateOfJoin" value="" class="col-xs-10 col-sm-10">
                                                                             </div>
                                                                         </div>
@@ -95,19 +123,12 @@
                                                                 </div>
                                                                 <br>
                                                                 <div align="center" class="row">
-                                                                    <div align="right" class="col-sm-3">
-                                                                        <br><h5><strong>Photo</strong></h5>
-                                                                    </div>
-                                                                    <div class="col-sm-6">
-                                                                        <div class="col-sm-12">
-                                                                            <div class="widget-body">
-                                                                                <div class="widget-main">
-                                                                                    <div class="form-group">
-                                                                                        <div class="col-xs-12">
-                                                                                            <label class="ace-file-input ace-file-multiple"><input multiple="" type="file" name="image" id="image"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                    <div class="col-xs-12">
+                                                                        <div align="right" class="form-group">
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Photo</strong></h5> </label>
+
+                                                                            <div class="col-sm-9" style="width: 415px !important;">
+                                                                                <label class="ace-file-input ace-file-multiple"><input class="" type="file" name="image" id="image"><span class="ace-file-container" data-title="Drop files here or click to choose"><span class="ace-file-name" data-title="No File ..."><i class=" ace-icon ace-icon fa fa-cloud-upload"></i></span></span><a class="remove" href="#"><i class=" ace-icon fa fa-times"></i></a></label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -116,7 +137,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Enrolment <sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Enrolment</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="date" name="dateOfEnrolment" id="dateOfEnrolment" value="" class="col-xs-10 col-sm-10">
@@ -128,7 +149,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Present Rk<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Present Rk</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="date" name="dateOfPresentRank" id="dateOfPresentRank" value="" class="col-xs-10 col-sm-10">
@@ -145,7 +166,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Retirement<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Date of Retirement</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="date" name="dateOfRetirement" id="dateOfRetirement" value="" class="col-xs-10 col-sm-10">
@@ -157,7 +178,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Civ Edn<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Civ Edn</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="text" name="cidEdn" id="cidEdn" value="" class="col-xs-10 col-sm-10">
@@ -169,7 +190,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Med Cat<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Med Cat</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="text" name="medCat" id="medCat" value="" class="col-xs-10 col-sm-10">
@@ -181,7 +202,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><h5><strong>Qual/Unqual Rk<sup class="text-danger">*</sup></strong></h5>  </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"><h5><strong>Qual/Unqual Rk</strong></h5>  </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <select class="col-xs-10 col-sm-10" name="qualUnqualRank" id="qualUnqualRank">
@@ -191,7 +212,7 @@
                                                                                     <option>Senior Officer</option>
                                                                                     <option>Officer</option>
                                                                                     <option>Junior Officer</option>
-                                                                                    <option>Note</option>
+                                                                                    <option>Other</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -201,7 +222,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Permanent Address <sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Permanent Address</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <textarea name="permanentAddress" id="permanentAddress" class="col-xs-10 col-sm-10" rows="4" cols="50"></textarea>
@@ -213,7 +234,7 @@
                                                                 <div align="center" class="row">
                                                                     <div align="right" class="col-xs-12">
                                                                         <div class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Merital Status<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Merital Status</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <select class="col-xs-10 col-sm-10" name="meritalStatus" id="meritalStatus">
@@ -228,7 +249,7 @@
                                                                 <div align="center" class="row">
                                                                     <div class="col-xs-12">
                                                                         <div align="right" class="form-group">
-                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>No of Children<sup class="text-danger">*</sup></strong></h5> </label>
+                                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>No of Children</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
                                                                                 <input type="number" name="noOfChildren" id="noOfChildren" value="" class="col-xs-10 col-sm-10">

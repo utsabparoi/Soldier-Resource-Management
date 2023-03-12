@@ -61,7 +61,7 @@
                                                             <span><h3><strong><u style="text-underline-offset: 0.3em;">BIO DATA-JCO/OR</u></strong></h3></span>
                                                         </div>
                                                         <div class="col-lg-4">
-                                                            <img src="{{ asset($parade->image) }}" width="110px" height="110px">
+                                                            <img src="@if($parade->image) {{ asset($parade->image) }} @else {{ asset('backend/images/person.png') }} @endif" width="110px" height="110px">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -77,7 +77,7 @@
                                                                 <tr>
                                                                     <td class="text-center" width="4%" style="padding-left: 5px;">2.</td>
                                                                     <td width="20%" style="padding-left: 5px;">Person Location:</td>
-                                                                    <td width="76%" style="padding-left: 5px;">{{$parade->present_location}}</td>
+                                                                    <td width="76%" style="padding-left: 5px;">{{ \Module\PRM\Models\Camp::where('id', $parade->present_location)->first()->name }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="text-center" width="4%" style="padding-left: 5px;">3.</td>
@@ -198,7 +198,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-left" width="4%" style="">15.</td>
+                                                                    <td class="text-left" width="4%" style="padding-left: 5px;"">15.</td>
                                                                     <td width="20%" style="">Punishment Details:</td>
                                                                     <td width="76%" style="">
                                                                         <table width="100%">
@@ -214,7 +214,7 @@
                                                                             <tr>
                                                                                 <td colspan="30" class="text-center py-3"
                                                                                     style="font-size: 14px; border-right: 1px solid #a1a1a1; border-top: 1px solid #a1a1a1;">
-                                                                                    <strong>No completed training!</strong>
+                                                                                    <strong>No punishment found!</strong>
                                                                                 </td>
                                                                             </tr>
                                                                             </tbody>
@@ -238,12 +238,10 @@
                                                     <br>
                                                     <div align="right" class="row"  style=" margin-right: 19%; margin-left: 20%;">
                                                         <div class="col-sm-12">
-                                                            <a href="{{ route('prm.parade.index') }}">
-                                                            <button class="btn btn-primary" type="submit" id="uploadPercent" onclick="PrintCourse()">
-                                                                <i class="ace-icon fa fa-save bigger-110"></i>
-                                                                Save
+                                                            <button class="btn" type="submit" style="background-color: #431cff !important; border: none;" id="uploadPercent" onclick="window.print()">
+                                                                <i class="ace-icon fa fa-print bigger-110"></i>
+                                                                Print
                                                             </button>
-                                                            </a>
                                                         </div>
                                                     </div>
                                             </div>
