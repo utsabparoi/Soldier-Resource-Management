@@ -280,21 +280,22 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <i class="ace-icon fa fa-user"></i>
                         <span class="user-info">
-									<small>Welcome &nbsp; <i class="ace-icon fa fa-caret-down"></i></small>
-                                    {{ session('AdminLoginSession') }}
-								</span>
+							<small>Welcome &nbsp; <i class="ace-icon fa fa-caret-down"></i></small>
+                            {{ session('AdminLoginSession') }}
+
+                        </span>
                     </a>
 
-                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                    <ul lass="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="#">
+                            <a href="">
                                 <i class="ace-icon fa fa-cog"></i>
                                 Settings
                             </a>
                         </li>
 
                         <li>
-                            <a href="../profile.php">
+                            <a href="">
                                 <i class="ace-icon fa fa-user"></i>
                                 Profile
                             </a>

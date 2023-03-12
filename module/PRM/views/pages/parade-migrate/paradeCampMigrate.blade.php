@@ -12,7 +12,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Assing Course</li>
+                    <li class="active">Parade Migration</li>
                 </ul><!-- /.breadcrumb -->
             </div>
             {{-- main content start from here --}}
@@ -26,13 +26,13 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Assign Course</span>
+                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Migrate Parade</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
                                                     <a href="{{ route('prm.parade-courses.index') }}" class="">
-                                                        <i class="fa fa-list"></i> Parade Course <span class="hide-in-sm">List</span>
+                                                        <i class="fa fa-list"></i> View <span class="hide-in-sm">Logs</span>
                                                     </a>
                                                 </span>
                                             </div>
@@ -41,7 +41,7 @@
                                             <div class="widget-body">
                                                 <div class="widget-main">
 
-                                                    <form action="{{ route('prm.parade-courses.store') }}" id="Form"
+                                                    <form action="{{ route('prm.parade-migrate.store') }}" id="Form"
                                                         method="post" enctype="multipart/form-data">
                                                         @csrf
 
@@ -67,43 +67,53 @@
                                                                 </div>
                                                             </div>
 
-                                                        </div>
-                                                        @include('pages.parade-course.add-multiple-course')
-                                                        {{-- <div class="row">
+                                                            {{-- <div class="col-sm-6" >
+                                                                <div class="form-group table-responsive">
+                                                                    <label class="tableTitle">
+
+                                                                    </label>
+                                                                    <table id="dynamic-table" class="table table-striped table-hover new-table showTable">
+
+                                                                    </table>
+                                                                </div>
+                                                            </div> --}}
                                                             <!-- Course -->
                                                             <div class="col-sm-6">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Course <sup
-                                                                                    class="text-danger">*</sup><small class="text-success">(below course/'s not take yet)</small></strong>
+                                                                        <h5><strong>Camp <sup
+                                                                                    class="text-danger">*</sup></strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <select name="course_id"
-                                                                            class="form-control multiselect unmatched-course">
+                                                                        <select name="camp_id"
+                                                                            class="form-control multiselect">
                                                                             <option value="">-First Select a Parade-</option>
-                                                                            @foreach ($courses as $course)
-                                                                                <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                                                            @foreach ($camps as $camp)
+                                                                                <option value="{{ $camp->id }}">{{ $camp->name }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
+                                                        </div>
+                                                        <div class="row">
+
                                                             <div class="col-sm-2">
                                                                 <div align="left" class="form-group">
                                                                     <label>
                                                                         <h5>
-                                                                            <strong>Duration <small class="red">(In month)</small></strong>
+                                                                            <strong>Date of Migration</strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <input class="form-control box-resize" type="text" name="duration">
+                                                                        <input class="form-control box-resize" type="date" name="migration_date">
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-sm-2">
+                                                            {{-- <div class="col-sm-2">
                                                                 <div align="left" class="form-group">
                                                                     <label>
                                                                         <h5>
@@ -127,10 +137,10 @@
                                                                         <input class="form-control box-resize" type="text" name="remark">
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
                                                         </div>
-                                                        <br> --}}
+                                                        <br>
 
                                                         <div class="form-group">
                                                             <!-- Add Page -->
@@ -141,24 +151,12 @@
                                                                         <button type="submit"
                                                                             class="btn btn-primary btn-sm btn-block"
                                                                             style="max-width: 150px">
-                                                                            <i class="fa fa-save"></i> Assign
+                                                                            <i class="fa fa-save"></i> Migrate
                                                                         </button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="space-10"></div>
                                                             </h5>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-6" >
-                                                                <div class="form-group table-responsive">
-                                                                    <label class="tableTitle">
-
-                                                                    </label>
-                                                                    <table id="dynamic-table" class="table table-striped table-hover new-table showTable">
-                                                                        {{-- Table data receive from script file --}}
-                                                                    </table>
-                                                                </div>
-                                                            </div>
                                                         </div>
 
                                                     </form>

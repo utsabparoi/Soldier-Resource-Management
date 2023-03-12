@@ -13,6 +13,7 @@ use Module\PRM\Controllers\LeaveCategoryController;
 use Module\PRM\Controllers\LeaveApplicationController;
 use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
+use Module\PRM\Controllers\ParadeCampMigrateController;
 
 Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
@@ -27,6 +28,13 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
         Camp Routes List
     =============================*/
     Route::resource('camp', CampController::class);
+
+    Route::resource('parade-migrate', ParadeCampMigrateController::class);
+    Route::get('parade-camp-migrate', [ParadeCampMigrateController::class, 'paradeCampMigrate'])->name('parade-camp-migrate');
+
+    Route::get('/previous-camp', [CampController::class, 'previous_camp']);
+
+
     /* ================================
         Appointment Holder Routes List
     ===================================*/

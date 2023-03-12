@@ -2,12 +2,14 @@
 
 namespace Module\PRM\Controllers;
 
-use App\Traits\FileSaver;
 use Module\PRM\Models\Camp;
 use Illuminate\Http\Request;
+use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
+use App\Traits\FileSaver;
+use Module\PRM\Models\ParadeCampMigration;
 
-class CampController extends Controller
+class ParadeCampMigrateController extends Controller
 {
     use FileSaver;
 
@@ -16,7 +18,8 @@ class CampController extends Controller
      | CONSTRUCTOR
      |--------------------------------------------------------------------------
     */
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('AdminLogin');
     }
 
@@ -28,9 +31,9 @@ class CampController extends Controller
     public function index()
     {
         try {
-            $data['camps']  = Camp::paginate(20);
-            $data['table']  = Camp::getTableName();
-            return view('pages.camp.index', $data);
+            $data['parade_migrations']  = ParadeCampMigration::paginate(20);
+            $data['table']  = ParadeCampMigration::getTableName();
+            return view('pages.parade-migrate.index', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -41,9 +44,12 @@ class CampController extends Controller
      | CREATE METHOD
      |--------------------------------------------------------------------------
     */
-    public function create()
+    public function paradeCampMigrate()
     {
-        return view('pages.camp.create');
+        $data['parades'] = ParadeModel::all();
+        $data['camps'] = Camp::all();
+
+        return view('pages.parade-migrate.paradeCampMigrate', $data);
     }
 
     /*
@@ -53,14 +59,11 @@ class CampController extends Controller
     */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
+        // ddd($request);
         try {
             $this->storeOrUpdate($request);
 
-            return redirect()->route('prm.camp.index')->with('success','Camp Created Successfully');
+            return redirect()->route('prm.parade-migrate.index')->with('success','Parade Migrate Successful');
 
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
@@ -85,8 +88,8 @@ class CampController extends Controller
     public function edit($id)
     {
         try {
-            $data['camp'] = Camp::find($id);
-            return view('pages.camp.edit', $data);
+            $data['parade_migration'] = ParadeCampMigration::find($id);
+            return view('pages.parade-migrate.edit', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -99,14 +102,10 @@ class CampController extends Controller
     */
     public function update($id, Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
         try {
             $this->storeOrUpdate($request, $id);
 
-            return redirect()->route('prm.camp.index')->with('success','Camp Updated Success');
+            return redirect()->route('prm.parade-migrate.index')->with('success','Course Updated Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -120,10 +119,10 @@ class CampController extends Controller
     public function destroy($id)
     {
         try {
-            $camp = Camp::find($id);
-            $camp->delete();
+            $parade_migration = ParadeCampMigration::find($id);
+            $parade_migration->delete();
 
-            return redirect()->back()->with('success','Camp Deleted Success');
+            return redirect()->back()->with('success','Parade Migration Deleted Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
@@ -136,19 +135,28 @@ class CampController extends Controller
     */
     public function storeOrUpdate($request, $id = null)
     {
-
         try {
-            $camp= Camp::updateOrCreate([
-                'id'                    =>$id,
+            $parade_migration= ParadeCampMigration::updateOrCreate([
+                'id'           =>$id,
             ],[
-                'name'                  =>$request->name,
-                'capacity'              =>$request->capacity,
-                'status'                =>$request->status ? 1: 0,
+                'parade_id'          =>$request->parade_id,
+                'camp_id'            =>$request->camp_id,
+                'migration_date'     =>$request->migration_date,
+                'status'             =>$request->status ? 1: 0,
             ]);
-            return $camp;
+            return $parade_migration;
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
     }
 
+    public function previous_camp(Request $request){
+        try{
+            $data = Camp::where('parade_id', $request->parade_id)->with('course', 'parade')->get();
+
+            return response()->json($data);
+        }catch(\Throwable $th){
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
 }

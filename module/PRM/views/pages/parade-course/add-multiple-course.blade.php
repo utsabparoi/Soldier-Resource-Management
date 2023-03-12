@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class="col-sm-12">
         <div align="center" class="row" style="border: 1px solid #d0d0d0; margin-right: 2px; margin-left: 2px;">
@@ -20,7 +19,8 @@
                         <tbody class="table_body_course">
                             <tr class="remove_able_tr_course">
                                 <td>
-                                    <select class="col-xs-12 col-sm-12 multiselect unmatched-course" name="course[]" id="course">
+                                    <select class="col-xs-12 col-sm-12 multiselect unmatched-course" name="course[]"
+                                        id="course">
                                         <option value="notSelect">-Select-</option>
                                         @foreach ($courses as $course)
                                             <option>{{ $course->name }}</option>
@@ -28,13 +28,16 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control box-resize" name="course_result[]" id="">
+                                    <input type="text" class="form-control box-resize" name="course_result[]"
+                                        id="">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control box-resize" name="course_remark[]" id="">
+                                    <input type="text" class="form-control box-resize" name="course_remark[]"
+                                        id="">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control box-resize" name="course_duration[]" id="">
+                                    <input type="text" class="form-control box-resize" name="course_duration[]"
+                                        id="">
                                 </td>
                                 <td>
                                     <button type="button" class="removeEventCourse"
@@ -74,30 +77,32 @@
     $(document).ready(function() {
         var counter = 0;
         $(document).on("click", ".addEventCourse", function() {
-            var whole_extra_item_add = `<tr class="remove_able_tr_course">
-                                                                                <td>
-                                                                                    <select class="col-xs-12 col-sm-12 multiselect unmatched-course" name="course[]">
-                                                                                        <option>-Select-</option>
-                                                                                        @foreach ($courses as $course)
-                <option>{{ $course->name }}</option>
-                                                                                        @endforeach
-                </select>
-            </td>
-            <td>
-                <input type="text" class="form-control box-resize" name="course_result[]" id="">
-            </td>
-            <td>
-                <input type="text" class="form-control box-resize" name="course_remark[]" id="">
-            </td>
-            <td>
-                <input type="text" class="form-control box-resize" name="course_duration[]" id="">
-            </td>
-            <td>
-                <button type="button" class="removeEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
-            </td>
-        </tr>`;
+            var whole_extra_item_add =
+                `<tr class="remove_able_tr_course">
+                <td>
+                    <select class="col-xs-12 col-sm-12 multiselect unmatched-course" name="course[]">
+                        <option>-Select-</option>
+                        @foreach ($courses as $course)
+                            <option>{{ $course->name }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control box-resize" name="course_result[]" id="">
+                </td>
+                <td>
+                    <input type="text" class="form-control box-resize" name="course_remark[]" id="">
+                </td>
+                <td>
+                    <input type="text" class="form-control box-resize" name="course_duration[]" id="">
+                </td>
+                <td>
+                    <button type="button" class="removeEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
+                </td>
+            </tr>`;
             // console.log(whole_extra_item_add);
             $(".table_body_course").append(whole_extra_item_add);
+            $('.multiselect').select2();
             counter++;
         });
 

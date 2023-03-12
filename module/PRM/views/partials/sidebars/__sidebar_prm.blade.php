@@ -65,7 +65,7 @@
 
         {{-- Camp menu item --}}
 
-        <li class="{{ request()->routeIs('') ? 'open active' : ''}}">
+        <li class="{{ request()->routeIs('prm.parade-camp-migrate') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-campground red"></i>
                 <span class="menu-text">Camp</span>
@@ -74,10 +74,10 @@
             <b class="arrow"></b>
             <ul class="submenu">
                 {{-- 'Assing Camp' submenu of "Camp" --}}
-                <li class="{{ request()->routeIs('') ? 'active' : '' }}">
-                    <a href="#">
+                <li class="{{ request()->routeIs('prm.parade-camp-migrate') ? 'active' : '' }}">
+                    <a href="{{ route('prm.parade-camp-migrate') }}">
                         <i class=" fa fa-plus purple"></i>
-                        Assign
+                        Parade-Camp Migration
                     </a>
                     <b class="arrow"></b>
                 </li>

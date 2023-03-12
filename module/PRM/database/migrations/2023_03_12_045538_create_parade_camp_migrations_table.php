@@ -16,6 +16,9 @@ class CreateParadeCampMigrationsTable extends Migration
         if(!Schema::hasTable('parade_camp_migrations')){
             Schema::create('parade_camp_migrations', function (Blueprint $table) {
                 $table->id();
+                $table->foreignId('parade_id')->constrained();
+                $table->foreignId('camp_id')->constrained();
+                $table->string('migration_date');
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();
 
