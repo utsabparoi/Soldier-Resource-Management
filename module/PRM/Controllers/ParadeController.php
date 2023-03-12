@@ -97,23 +97,23 @@ class ParadeController extends Controller
         //click proceed to next button work
         if ($request->submitButton == 'proceedToNext') {
             $profileData = array(
-                'Name'                  => $request->name,
-                'PresentLocation'       => $request->presentLocation,
-                'DateOfJoin'            => $request->dateOfJoin,
-                'Image'                 => $request->image,
-                'DateOfEnrolment'       => $request->dateOfEnrolment,
-                'DateOfPresentRank'     => $request->dateOfPresentRank,
-                'DateOfRetirement'      => $request->dateOfRetirement,
-                'CidEdn'                => $request->cidEdn,
-                'MedCat'                => $request->medCat,
-                'QualUnqualRank'        => $request->qualUnqualRank,
-                'PermanentAddress'      => $request->permanentAddress,
-                'MeritalStatus'         => $request->meritalStatus,
-                'NoOfChildren'          => $request->noOfChildren,
+                'Name' => $request->name,
+                'PresentLocation' => $request->presentLocation,
+                'DateOfJoin' => $request->dateOfJoin,
+                'Image' => $request->image,
+                'DateOfEnrolment' => $request->dateOfEnrolment,
+                'DateOfPresentRank' => $request->dateOfPresentRank,
+                'DateOfRetirement' => $request->dateOfRetirement,
+                'CidEdn' => $request->cidEdn,
+                'MedCat' => $request->medCat,
+                'QualUnqualRank' => $request->qualUnqualRank,
+                'PermanentAddress' => $request->permanentAddress,
+                'MeritalStatus' => $request->meritalStatus,
+                'NoOfChildren' => $request->noOfChildren,
             );
 
             if (isset($profileData['Image'])) {
-                $new_file_name   = time() . '.' . $profileData['Image']->getClientOriginalExtension();
+                $new_file_name = time() . '.' . $profileData['Image']->getClientOriginalExtension();
                 $month = Carbon::now()->format('M');
                 $directory = './assets/' . 'images/paradeProfile' . '/' . date('Y') . '/' . $month . '/';
                 $profileData['Image']->move($directory, $new_file_name);
@@ -122,8 +122,7 @@ class ParadeController extends Controller
             $data['courses'] = Course::all();
             $data['training'] = Training::all();
             return view('pages.parade.addExtraInformation', compact('profileData'), $data);
-        }
-        //click save button work
+        } //click save button work
         else if ($request->submitButton == 'save') {
             try {
                 $existImage = session('profileImage');
@@ -133,11 +132,11 @@ class ParadeController extends Controller
                 }
                 $this->storeOrUpdate($request);
                 return redirect()->route('prm.parade.index')->with('success', 'Parade Created Successfully');
+
             } catch (\Throwable $th) {
                 return redirect()->back()->with('error', $th->getMessage());
             }
-        }
-        //click save with extra info work
+        } //click save with extra info work
         else if ($request->submitButton == 'saveWithExtraInfo') {
             try {
                 $this->storeOrUpdateWithExtraInfo($request);
@@ -222,55 +221,27 @@ class ParadeController extends Controller
     public function storeOrUpdate($request, $id = null)
     {
         try {
-            if (isset($request->image)) {
-                $parade = ParadeModel::updateOrCreate(
-                    [
-                        'id'                        => $id,
-                    ],
-                    [
-                        'name'                      => $request->name,
-                        'present_location'          => $request->presentLocation,
-                        'join_date_present_unit'    => $request->dateOfJoin,
-                        'enrolment_date'            => $request->dateOfEnrolment,
-                        'present_rank_date'         => $request->dateOfPresentRank,
-                        'retirement_date'           => $request->dateOfRetirement,
-                        'civ_edn'                   => $request->cidEdn,
-                        'med_cat'                   => $request->medCat,
-                        'next_rank'                 => $request->qualUnqualRank,
-                        'permanent_address'         => $request->permanentAddress,
-                        'marital_status'            => $request->meritalStatus,
-                        'children_number'           => $request->noOfChildren,
-                        'status'                    => 1,
-                        'created_by'                => session('AdminId'),
-                        'updated_by'                => session('AdminId'),
-                    ]
-                );
-                $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
-            } else {
-                $parade = ParadeModel::updateOrCreate(
-                    [
-                        'id'                        => $id,
-                    ],
-                    [
-                        'name'                      => $request->name,
-                        'present_location'          => $request->presentLocation,
-                        'join_date_present_unit'    => $request->dateOfJoin,
-                        'image'                     => "backend/images/person.png",
-                        'enrolment_date'            => $request->dateOfEnrolment,
-                        'present_rank_date'         => $request->dateOfPresentRank,
-                        'retirement_date'           => $request->dateOfRetirement,
-                        'civ_edn'                   => $request->cidEdn,
-                        'med_cat'                   => $request->medCat,
-                        'next_rank'                 => $request->qualUnqualRank,
-                        'permanent_address'         => $request->permanentAddress,
-                        'marital_status'            => $request->meritalStatus,
-                        'children_number'           => $request->noOfChildren,
-                        'status'                    => 1,
-                        'created_by'                => session('AdminId'),
-                        'updated_by'                => session('AdminId'),
-                    ]
-                );
-            }
+            $parade = ParadeModel::updateOrCreate([
+                'id' => $id,
+            ],
+                [
+                    'name' => $request->name,
+                    'present_location' => $request->presentLocation,
+                    'join_date_present_unit' => $request->dateOfJoin,
+                    'enrolment_date' => $request->dateOfEnrolment,
+                    'present_rank_date' => $request->dateOfPresentRank,
+                    'retirement_date' => $request->dateOfRetirement,
+                    'civ_edn' => $request->cidEdn,
+                    'med_cat' => $request->medCat,
+                    'next_rank' => $request->qualUnqualRank,
+                    'permanent_address' => $request->permanentAddress,
+                    'marital_status' => $request->meritalStatus,
+                    'children_number' => $request->noOfChildren,
+                    'status' => 1,
+                    'created_by' => session('AdminId'),
+                    'updated_by' => session('AdminId'),
+                ]);
+            $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
 
             return $parade;
         } catch (\Throwable $th) {
@@ -315,10 +286,9 @@ class ParadeController extends Controller
             if ($request->course[0] == "notSelect") {
             } else {
                 foreach ($request->course as $key => $value) {
-                    $paradeCourse = ParadeCourseModel::updateOrCreate(
-                        [
-                            'id' => $id,
-                        ],
+                    $paradeCourse = ParadeCourseModel::updateOrCreate([
+                        'id' => $id,
+                    ],
                         [
                             'course_id' => Course::where('name', '=', $request->course[$key])->first()->id,
                             'parade_id' => $parade->id,
@@ -337,21 +307,19 @@ class ParadeController extends Controller
             if ($request->training[0] == "notSelect") {
             } else {
                 foreach ($request->training as $key => $value) {
-                    $paradeTraining = ParadeTrainingModel::updateOrCreate(
-                        [
-                            'id' => $id,
-                        ],
+                    $paradeTraining = ParadeTrainingModel::updateOrCreate([
+                        'id' => $id,
+                    ],
                         [
                             'training_id' => Training::where('name', '=', $request->training[$key])->first()->id,
-                            'parade_id'   => $parade->id,
-                            'remark'      => $request->training_remark[$key],
-                            'duration'    => $request->training_duration[$key],
-                            'result'      => $request->training_result[$key],
-                            'status'      => 1,
-                            'created_by'  => session('AdminId'),
-                            'updated_by'  => session('AdminId'),
-                        ]
-                    );
+                            'parade_id' => $parade->id,
+                            'remark' => $request->training_remark[$key],
+                            'duration' => $request->training_duration[$key],
+                            'result' => $request->training_result[$key],
+                            'status' => 1,
+                            'created_by' => session('AdminId'),
+                            'updated_by' => session('AdminId'),
+                        ]);
                 }
             }
 
@@ -361,4 +329,5 @@ class ParadeController extends Controller
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
+
 }
