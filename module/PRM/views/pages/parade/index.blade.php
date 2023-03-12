@@ -250,7 +250,7 @@
         function getCampParadeInformation() {
             //let campID = document.getElementById('paradeCamp').value;
             $('#paradeRank').empty();
-            $('#paradeRank').append('<option value="">' + "-Select Rank" + '</option>');
+            $('#paradeRank').append('<option value="">' + "-Select Rank-" + '</option>');
             $('#paradeRank').append('<option value="Major">' + "Major" + '</option>');
             $('#paradeRank').append('<option value="Captain">' + "Captain" + '</option>');
             $('#paradeRank').append('<option value="Senior Officer">' + "Senior Officer" + '</option>');
@@ -318,7 +318,7 @@
                         '                                                            </ul>\n' +
                         '                                                        </span></td>\n' +
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">'+responseData[i].join_date_present_unit+'</span></td>\n' +
-                        '                                                    <td style="display:table-cell; vertical-align:middle;"><span\n' +
+                        '                                                    <td style="display:table-cell; vertical-align:middle;">Camp Name<span\n' +
                         '                                                            class="span"></span>\n' +
                         '                                                    </td>\n' +
                         '                                                    <td class="left" style="display:table-cell; vertical-align:middle;">\n' +
@@ -327,7 +327,7 @@
                         '                                                            <label>\n' +
                         '                                                                <span class="span">\n' +
                         '                                                            <x-status status="'+responseData[i].status+'"\n' +
-                        '                                                                      id="'+responseData[i].id+'" table=""/>\n' +
+                        '                                                                      id="'+responseData[i].id+'" table="parades"/>\n' +
                         '                                                        </span>\n' +
                         '                                                            </label>\n' +
                         '                                                        </div>\n' +
@@ -343,7 +343,7 @@
                         '                                                                <i class="fa fa-user"></i>\n' +
                         '                                                            </a>\n' +
                         '\n' +
-                        '                                                            <a href=""\n' +
+                        '                                                            <a href="parade/'+responseData[i].id+'/edit/"\n' +
                         '                                                               role="button" class="btn btn-xs btn-success bs-tooltip"\n' +
                         '                                                               title="Edit">\n' +
                         '                                                                <i class="fa fa-edit"></i>\n' +
@@ -351,7 +351,7 @@
                         '\n' +
                         '\n' +
                         '                                                            <button type="button"\n' +
-                        '                                                                    onclick="delete_item(``)"\n' +
+                        '                                                                    onclick="delete_item(`parade/'+responseData[i].id+'`)"\n' +
                         '                                                                    class="btn btn-xs btn-danger bs-tooltip"\n' +
                         '                                                                    title="Delete">\n' +
                         '                                                                <i class="fa fa-trash"></i>\n' +
