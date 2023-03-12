@@ -136,21 +136,43 @@ class ParadeCourseController extends Controller
     */
     public function storeOrUpdate($request, $id = null)
     {
-        try {
-            $course= ParadeCourseModel::updateOrCreate([
-                'id'           =>$id,
-            ],[
-                'course_id'    =>$request->course_id,
-                'parade_id'    =>$request->parade_id,
-                'serial_no'    =>$request->serial_no,
-                'duration'     =>$request->duration,
-                'result'       =>$request->result,
-                'remark'       =>$request->remark,
-                'status'       =>$request->status ? 1: 0,
-            ]);
-            return $course;
-        } catch (\Throwable $th) {
-            return redirect()->back()->with('error',$th->getMessage());
+        // try {
+        //     $course= ParadeCourseModel::updateOrCreate([
+        //         'id'           =>$id,
+        //     ],[
+        //         'course_id'    =>$request->course_id,
+        //         'parade_id'    =>$request->parade_id,
+        //         'serial_no'    =>$request->serial_no,
+        //         'duration'     =>$request->duration,
+        //         'result'       =>$request->result,
+        //         'remark'       =>$request->remark,
+        //         'status'       =>$request->status ? 1: 0,
+        //     ]);
+        //     return $course;
+        // } catch (\Throwable $th) {
+        //     return redirect()->back()->with('error',$th->getMessage());
+        // }
+
+        //course add
+        if ($request->course[0] == "notSelect") {
+        }
+        else {
+            foreach ($request->course as $key => $value) {
+                $paradeCourse = ParadeCourseModel::updateOrCreate(
+                    [
+                        'id' => $id,
+                    ],
+                    [
+                        // 'course_id' => Course::where('name', '=', $request->course[$key])->first()->id,
+                        'course_id' => $request->course[$key],
+                        'parade_id' => $request->parade_id,
+                        'remark'    => $request->course_remark[$key],
+                        'duration'  => $request->course_duration[$key],
+                        'result'    => $request->course_result[$key],
+                        'status'    => $request->status ? 1: 0,
+                    ]
+                );
+            }
         }
     }
 
