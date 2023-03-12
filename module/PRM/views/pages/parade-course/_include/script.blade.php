@@ -15,8 +15,8 @@
             });
         });
 
-        // let table_title = $('.tableTitle').empty();
-        // table_title.append('<h3>Taken Course List</h3>');
+        let table_title = $('.tableTitle').empty();
+        table_title.append('<h5>Taken Course List</h5>');
 
         let table_info = $('.showTable').empty();
         table_info.append("<thead>\n" +
