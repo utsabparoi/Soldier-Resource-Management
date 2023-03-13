@@ -65,7 +65,7 @@ class LeaveApplicationController extends Controller
         $request->validate([
             'start_date' => 'required|date_format:Y-m-d|before_or_equal:end_date',
             'end_date'   => 'required|date_format:Y-m-d|after_or_equal:start_date',
-            'attachment' => 'file|mimes:jpg,jpeg,pdf,doc,docx',
+            'attachment' => 'file|mimes:jpg,jpeg,pdf,doc or docx',
         ]);
 
         try {

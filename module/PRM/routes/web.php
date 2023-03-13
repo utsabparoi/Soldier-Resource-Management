@@ -31,8 +31,10 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
 
     Route::resource('parade-migrate', ParadeCampMigrateController::class);
     Route::get('parade-camp-migrate', [ParadeCampMigrateController::class, 'paradeCampMigrate'])->name('parade-camp-migrate');
+    // Route::get('parade-rank-migrate', [ParadeCampMigrateController::class, 'paradeRankMigrate'])->name('parade-camp-migrate');
 
-    Route::get('/previous-camp', [CampController::class, 'previous_camp']);
+
+    Route::get('/get-current-camp', [ParadeCampMigrateController::class, 'currentCamp'])->name('current-camp');
 
 
     /* ================================

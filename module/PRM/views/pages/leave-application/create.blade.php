@@ -71,9 +71,6 @@
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}">{{ $parade->name }}</option>
                                                                             @endforeach
-                                                                            {{-- @foreach ($store_men as $man)
-                                                                                <option value="{{ $man->id }}">{{ $man->name }}</option>
-                                                                            @endforeach --}}
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -112,12 +109,15 @@
                                                                     <div style="display: flex;">
                                                                         <input type="date" name="start_date"
                                                                             id="comanyName" placeholder="From"
-                                                                            class="form-control">
+                                                                            class="form-control box-resize">
                                                                         <span
-                                                                            style="font-size: 20px; background: #e5e5e5; border-top: 1px solid #d0d0d0; border-bottom: 1px solid #d0d0d0;">&#x21C6;</span>
+                                                                            style="font-size: 20px; background: #e5e5e5; border-radius:4px">&#x21C6;</span>
                                                                         <input type="date" name="end_date"
-                                                                            id="comanyName" class="form-control">
+                                                                            id="comanyName" class="form-control box-resize">
                                                                     </div>
+                                                                    @if ($errors->has('start_date','end_date'))
+                                                                        <span class="text-danger">The start date must be earlier than the end one</span>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -135,7 +135,7 @@
                                                                         <input type="text" name="emergency_contact"
                                                                             id="comanyName" value=""
                                                                             placeholder="Emergency Contact Number"
-                                                                            class="form-control">
+                                                                            class="form-control box-resize">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -144,12 +144,12 @@
                                                             <div class="col-sm-4">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Attachment <small class="text-danger">(Choose jpeg,jpg,pdf,doc,docx file and max:2MB)</small></strong></h5>
+                                                                        <h5><strong>Attachment <small class="text-danger">(Choose jpeg,jpg,pdf,doc,docx file. max-size:2MB)</small></strong></h5>
                                                                     </label>
                                                                     <div>
                                                                         <input type="file" name="attachment"
                                                                             id="comanyName" value=""
-                                                                            class="form-control form-control-sm"
+                                                                            class="form-control box-resize"
                                                                             id="formFileLg">
                                                                     </div>
                                                                     @if ($errors->has('attachment'))
@@ -158,7 +158,7 @@
                                                                 </div>
                                                             </div>
                                                             {{-- Status --}}
-                                                            <div class="col-sm-4">
+                                                            {{-- <div class="col-sm-4">
                                                                 <div align="center" class="form-group">
                                                                     <label>
                                                                         <h5><strong>Status</strong></h5>
@@ -170,7 +170,7 @@
                                                                         <span class="lbl"></span>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
                                                         </div>
                                                         <br>
                                                         <div class="row">
@@ -197,7 +197,7 @@
                                                                         <button type="submit"
                                                                             class="btn btn-primary btn-sm btn-block"
                                                                             style="max-width: 150px">
-                                                                            <i class="fa fa-save"></i> Create
+                                                                            <i class="fa fa-save"></i> Submit
                                                                         </button>
                                                                     </div>
                                                                 </div>

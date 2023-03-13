@@ -8,6 +8,7 @@ use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
 use App\Traits\FileSaver;
 use Module\PRM\Models\ParadeCampMigration;
+use Module\PRM\Models\ParadeCurrentProfileModel;
 
 class ParadeCampMigrateController extends Controller
 {
@@ -48,6 +49,7 @@ class ParadeCampMigrateController extends Controller
     {
         $data['parades'] = ParadeModel::all();
         $data['camps'] = Camp::all();
+        $data['current_camp'] = ParadeCurrentProfileModel::latest();
 
         return view('pages.parade-migrate.paradeCampMigrate', $data);
     }
@@ -136,7 +138,7 @@ class ParadeCampMigrateController extends Controller
     public function storeOrUpdate($request, $id = null)
     {
         try {
-            $parade_migration= ParadeCampMigration::updateOrCreate([
+            $parade_migration_data = ParadeCampMigration::updateOrCreate([
                 'id'           =>$id,
             ],[
                 'parade_id'          =>$request->parade_id,
@@ -144,16 +146,30 @@ class ParadeCampMigrateController extends Controller
                 'migration_date'     =>$request->migration_date,
                 'status'             =>$request->status ? 1: 0,
             ]);
-            return $parade_migration;
+
+            $current_profile_data = ParadeCurrentProfileModel::updateOrCreate([
+                'id'           =>$id,
+            ],[
+                'parade_id'          =>$request->parade_id,
+                'camp_id'            =>$request->camp_id,
+                'status'             =>$request->status ? 1: 0,
+            ]);
+            return compact($parade_migration_data, $current_profile_data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }
+
     }
 
-    public function previous_camp(Request $request){
+    public function currentCamp(Request $request){
         try{
-            $data = Camp::where('parade_id', $request->parade_id)->with('course', 'parade')->get();
-
+            $current_data = ParadeCurrentProfileModel::where('parade_id', $request->parade_id)->with('camp')->get();
+            if (!$current_data->isEmpty()) {
+                $data = $current_data;
+            }else {
+                $base_profile_data = ParadeModel::where('id',$request->parade_id)->with('camp')->get();
+                $data = $base_profile_data;
+            }
             return response()->json($data);
         }catch(\Throwable $th){
             return redirect()->back()->with('error', $th->getMessage());

@@ -67,38 +67,29 @@
 
         <li class="{{ request()->routeIs('prm.parade-camp-migrate') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-campground red"></i>
-                <span class="menu-text">Camp</span>
+                <i class="menu-icon fa fa-exchange red"></i>
+                <span class="menu-text">Soldier Migration</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- 'Assing Camp' submenu of "Camp" --}}
+                {{-- 'Migrate Camp' submenu of "Migration" --}}
                 <li class="{{ request()->routeIs('prm.parade-camp-migrate') ? 'active' : '' }}">
                     <a href="{{ route('prm.parade-camp-migrate') }}">
-                        <i class=" fa fa-plus purple"></i>
-                        Parade-Camp Migration
+                        <i class="fa fa-exchange blue"></i>
+                        Soldier-Camp Migration
                     </a>
                     <b class="arrow"></b>
                 </li>
-                {{-- 'Add Camp' submenu of "Camp" --}}
-                {{-- <li class="{{ request()->routeIs('prm.camp.create') ? 'active' : '' }}">
+                {{-- 'Migrate Rank' submenu of "Migration" --}}
+                <li class="{{ request()->routeIs('prm.camp.create') ? 'active' : '' }}">
                     <a href="{{ route('prm.camp.create') }}">
-                        <i class=" fa fa-plus purple"></i>
-                        Add Camp
+                        <i class="fa fa-exchange blue"></i>
+                        Soldier-Rank Migration
                     </a>
 
                     <b class="arrow"></b>
                 </li>
-
-                <li class="{{ request()->routeIs('prm.camp.index') ? 'active' : '' }}">
-                    <a href="{{ route('prm.camp.index') }}">
-                        <i class=" fa fa-list red"></i>
-                        Camp List
-                    </a>
-
-                    <b class="arrow"></b>
-                </li> --}}
             </ul>
         </li>
 
@@ -256,7 +247,7 @@
                 <li class="{{ request()->routeIs('prm.leave-category*') ? 'open active' : ''}}">
                     <a href="" class="dropdown-toggle">
                         <i class="menu-icon fa fa-minus-circle red"></i>
-                        <span class="menu-text">Leave</span>
+                        <span class="menu-text">Leave Category</span>
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
 
@@ -265,7 +256,7 @@
                         <li class="{{ request()->routeIs('prm.leave-category.create') ? 'active' : '' }}">
                             <a href="{{ route('prm.leave-category.create') }}">
                                 <i class=" fa fa-plus purple"></i>
-                                Add New Category
+                                Add New
                             </a>
 
                         </li>
@@ -274,7 +265,7 @@
                         <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
                             <a href="{{ route('prm.leave-category.index') }}">
                                 <i class=" fa fa-list blue"></i>
-                                Show Category List
+                                Show List
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -311,7 +302,7 @@
                 <li class="{{ request()->routeIs('prm.training-category*') ? 'open active' : ''}}">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-list-alt red"></i>
-                        <span class="menu-text">Training</span>
+                        <span class="menu-text">Training Category</span>
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
                     {{-- <b class="arrow"></b> --}}
@@ -320,7 +311,7 @@
                         <li class="{{ request()->routeIs('prm.training-category.create') ? 'active' : '' }}">
                             <a href="{{ route('prm.training-category.create') }}">
                                 <i class=" fa fa-plus purple"></i>
-                                Add New Category
+                                Add New
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -329,7 +320,7 @@
                         <li class="{{ request()->routeIs('prm.training-category.index') ? 'active' : '' }}">
                             <a href="{{ route('prm.training-category.index') }}">
                                 <i class=" fa fa-list red"></i>
-                                Show Category List
+                                Show List
                             </a>
                             <b class="arrow"></b>
                         </li>

@@ -31,8 +31,8 @@
 
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
-                                                    <a href="{{ route('prm.parade-courses.index') }}" class="">
-                                                        <i class="fa fa-list"></i> View <span class="hide-in-sm">Logs</span>
+                                                    <a href="{{ route('prm.parade-courses.index') }}" style="color:white !important;background-color: #51a3e7;padding:2px 2px; border-radius:4px;">
+                                                        <i class="fa fa-list"></i> Migration <span class="hide-in-sm">List</span>
                                                     </a>
                                                 </span>
                                             </div>
@@ -56,13 +56,26 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <select align="center" name="parade_id"
-                                                                            class="form-control multiselect" onchange="loadUnmatchedCourse(this)">
+                                                                        <select align="left" name="parade_id"
+                                                                            class="form-control multiselect" onchange="loadCurrentCamp(this)">
                                                                             <option value="">-Select a Parade-</option>
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}">{{ $parade->name }}</option>
                                                                             @endforeach
                                                                         </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-6">
+                                                                <div align="left" class="form-group">
+                                                                    <label for="">
+                                                                        <h5>
+                                                                            <strong>Current Camp(Location)</strong>
+                                                                        </h5>
+                                                                    </label>
+                                                                    <div>
+                                                                       <strong> <span class="current-camp">Select a soldier to see his/her current location</span></strong>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -77,18 +90,22 @@
                                                                     </table>
                                                                 </div>
                                                             </div> --}}
+
+
+                                                        </div>
+                                                        <div class="row">
                                                             <!-- Course -->
                                                             <div class="col-sm-6">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Camp <sup
+                                                                        <h5><strong>Migrate to <sup
                                                                                     class="text-danger">*</sup></strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>
                                                                         <select name="camp_id"
                                                                             class="form-control multiselect">
-                                                                            <option value="">-First Select a Parade-</option>
+                                                                            <option value="">-Select a Camp(Location)-</option>
                                                                             @foreach ($camps as $camp)
                                                                                 <option value="{{ $camp->id }}">{{ $camp->name }}</option>
                                                                             @endforeach
@@ -96,9 +113,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-                                                        </div>
-                                                        <div class="row">
 
                                                             <div class="col-sm-2">
                                                                 <div align="left" class="form-group">
@@ -177,6 +191,6 @@
 @endsection
 
 @section('js')
-    @include('pages.parade-course._include.script');
+    @include('pages.parade-migrate._include.script')
 @endsection
 

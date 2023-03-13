@@ -18,7 +18,7 @@ class CreateParadeCampMigrationsTable extends Migration
                 $table->id();
                 $table->foreignId('parade_id')->constrained();
                 $table->foreignId('camp_id')->constrained();
-                $table->string('migration_date');
+                $table->string('migration_date')->nullable();
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();
 

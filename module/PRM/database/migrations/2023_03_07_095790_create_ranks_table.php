@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCurrentProfilesTable extends Migration
+class CreateRanksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateCurrentProfilesTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('parade_current_profiles')){
-            Schema::create('parade_current_profiles', function (Blueprint $table) {
+        if(!Schema::hasTable('ranks')){
+            Schema::create('ranks', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('parade_id')->constrained();
-                $table->foreignId('camp_id')->nullable()->constrained();
-                $table->foreignId('rank_id')->nullable()->constrained();
-                $table->foreignId('parade_state_id')->nullable()->constrained();
-                $table->foreignId('leave_application_id')->nullable()->constrained();
+                $table->string('name');
                 $table->tinyInteger('status')->default(1);
                 $table->timestamps();
 
@@ -40,6 +36,6 @@ class CreateCurrentProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parade_current_profiles');
+        Schema::dropIfExists('ranks');
     }
 }
