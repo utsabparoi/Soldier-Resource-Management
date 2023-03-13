@@ -224,12 +224,12 @@
                                                                 <tr>
                                                                     <td class="text-center" width="4%" style="padding-left: 5px;">16.</td>
                                                                     <td width="20%" style="padding-left: 5px;">APR of Last 3Yrs:</td>
-                                                                    <td width="76%" style="padding-left: 5px;">2020- <br> 2021- <br> 2022-</td>
+                                                                    <td width="76%" style="padding-left: 5px;">@foreach($aprs as $apr){{ $apr->annual_report }}<br> @endforeach</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="text-center" width="4%" style="padding-left: 5px;">17.</td>
                                                                     <td width="20%" style="padding-left: 5px;">Last Leave:</td>
-                                                                    <td width="76%" style="padding-left: 5px;">@if(isset($lastLeave->end_date)) {{ $lastLeave->end_date }} @else  @endif</td>
+                                                                    <td width="76%" style="padding-left: 5px;">@if(isset($lastLeave->end_date)) {{ date('d M Y', strtotime($lastLeave->end_date)) }}, {{ $lastLeave->leave_category->name }} @else  @endif</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>

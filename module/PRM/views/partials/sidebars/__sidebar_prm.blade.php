@@ -355,7 +355,7 @@
                 </li>
 
                 {{-- 'Trainings List' submenu of "Training Management" --}}
-                <li class="{{ request()->routeIs('prm.leave-category*') ? 'open active' : ''}}">
+                <li class="">
                     <a href="" class="dropdown-toggle">
                         <i class="menu-icon fa fa-minus-circle red"></i>
                         <span class="menu-text">APR</span>
@@ -364,8 +364,8 @@
 
                     <ul class="submenu">
                         {{-- 'Add Category' submenu of "Leave Category" --}}
-                        <li class="{{ request()->routeIs('prm.leave-category.create') ? 'active' : '' }}">
-                            <a href="{{ route('prm.leave-category.create') }}">
+                        <li class="">
+                            <a href="{{ route('prm.apr.create') }}">
                                 <i class=" fa fa-plus purple"></i>
                                 Add Report
                             </a>
@@ -373,8 +373,8 @@
                         </li>
 
                         {{-- 'Categories List' submenu of "Leave Category" --}}
-                        <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
-                            <a href="{{ route('prm.leave-category.index') }}">
+                        <li class="">
+                            <a href="{{ route('prm.apr.index') }}">
                                 <i class=" fa fa-list blue"></i>
                                 All Report
                             </a>

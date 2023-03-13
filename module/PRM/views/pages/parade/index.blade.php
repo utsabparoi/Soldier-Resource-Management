@@ -69,7 +69,7 @@
                                                                 <option value="">-Select Camp-</option>
                                                                 @foreach($camp_name as $camp_names)
                                                                     <option
-                                                                        value="{{ $camp_names->name }}">{{ $camp_names->name }}</option>
+                                                                        value="{{ $camp_names->id }}">{{ $camp_names->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -166,7 +166,7 @@
                                                             class="span">{{ $parades->join_date_present_unit }}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;"><span
-                                                            class="span">{{ $parades->present_location }}</span>
+                                                            class="span">{{ $parades->camp->name}}</span>
                                                     </td>
                                                     <td class="text-center"
                                                         style="display:table-cell; vertical-align:middle;">
@@ -312,7 +312,7 @@
                         '                                                        </span></td>\n' +
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">' + responseData[i].join_date_present_unit + '</span></td>\n' +
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span\n' +
-                        '                                                            class="span">' + responseData[i].present_location + '</span>\n' +
+                        '                                                            class="span">' + responseData[i].camp.name + '</span>\n' +
                         '                                                    </td>\n' +
                         '                                                    <td class="text-center" style="display:table-cell; vertical-align:middle;">\n' +
                         '\n' +

@@ -3,6 +3,7 @@
 // namespace Module\PRM\routes;
 
 use Illuminate\Support\Facades\Route;
+use Module\PRM\Controllers\APRController;
 use Module\PRM\Controllers\CampController;
 use Module\PRM\Controllers\StoreController;
 use Module\PRM\Controllers\CourseController;
@@ -69,6 +70,9 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     Route::get('assign-course', [ParadeCourseController::class, 'assign_course'])->name('assign-course');
     Route::get('/get-unmatched-course', [ParadeCourseController::class, 'unmatched_course']);
     Route::get('/get-taken-course', [ParadeCourseController::class, 'taken_course']);
+
+    //APR
+    Route::resource('apr', APRController::class);
 
 });
 //ajax axios routes
