@@ -354,6 +354,35 @@
                     </ul>
                 </li>
 
+                {{-- 'Trainings List' submenu of "Training Management" --}}
+                <li class="{{ request()->routeIs('prm.leave-category*') ? 'open active' : ''}}">
+                    <a href="" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-minus-circle red"></i>
+                        <span class="menu-text">APR</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        {{-- 'Add Category' submenu of "Leave Category" --}}
+                        <li class="{{ request()->routeIs('prm.leave-category.create') ? 'active' : '' }}">
+                            <a href="{{ route('prm.leave-category.create') }}">
+                                <i class=" fa fa-plus purple"></i>
+                                Add Report
+                            </a>
+
+                        </li>
+
+                        {{-- 'Categories List' submenu of "Leave Category" --}}
+                        <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
+                            <a href="{{ route('prm.leave-category.index') }}">
+                                <i class=" fa fa-list blue"></i>
+                                All Report
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </li>
     </ul>

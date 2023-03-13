@@ -101,7 +101,7 @@
                                                                                 <select name="presentLocation" id="presentLocation" class="col-xs-10 col-sm-10" required>
                                                                                     <option value="">-Select-</option>
                                                                                     @foreach($camp as $camps)
-                                                                                    <option value="{{ $camps->id }}">{{ $camps->name }}</option>
+                                                                                    <option value="{{ $camps->name }}">{{ $camps->name }}</option>
                                                                                     @endforeach
                                                                                 </select>
                                                                             </div>
