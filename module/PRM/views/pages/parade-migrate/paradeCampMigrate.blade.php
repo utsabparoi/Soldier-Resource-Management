@@ -1,5 +1,5 @@
 @extends('backend.layout.app')
-@section('title', 'Course')
+@section('title', 'Parade Migrate')
 @section('css')
 
 @endsection
@@ -31,7 +31,7 @@
 
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
-                                                    <a href="{{ route('prm.parade-courses.index') }}" style="color:white !important;background-color: #51a3e7;padding:2px 2px; border-radius:4px;">
+                                                    <a href="{{ route('prm.parade-migrate.index') }}" style="color:white !important;background-color: #51a3e7;padding:2px 2px; border-radius:4px;">
                                                         <i class="fa fa-list"></i> Migration <span class="hide-in-sm">List</span>
                                                     </a>
                                                 </span>
@@ -122,7 +122,7 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <input class="form-control box-resize" type="date" name="migration_date">
+                                                                        <input class="form-control box-resize" type="date" name="migration_date" required>
                                                                     </div>
                                                                 </div>
                                                             </div>

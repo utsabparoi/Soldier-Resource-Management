@@ -32,7 +32,7 @@ class ParadeCampMigrateController extends Controller
     public function index()
     {
         try {
-            $data['parade_migrations']  = ParadeCampMigration::paginate(20);
+            $data['parade_migrations']  = ParadeCampMigration::with('camp','parade')->paginate(20);
             $data['table']  = ParadeCampMigration::getTableName();
             return view('pages.parade-migrate.index', $data);
         } catch (\Throwable $th) {
@@ -91,6 +91,8 @@ class ParadeCampMigrateController extends Controller
     {
         try {
             $data['parade_migration'] = ParadeCampMigration::find($id);
+            $data['parades'] = ParadeModel::all();
+            $data['camps'] = Camp::all();
             return view('pages.parade-migrate.edit', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
@@ -122,7 +124,10 @@ class ParadeCampMigrateController extends Controller
     {
         try {
             $parade_migration = ParadeCampMigration::find($id);
+            $current_profile = ParadeCurrentProfileModel::find($id);
+
             $parade_migration->delete();
+            $current_profile->delete();
 
             return redirect()->back()->with('success','Parade Migration Deleted Success');
         } catch (\Throwable $th) {
