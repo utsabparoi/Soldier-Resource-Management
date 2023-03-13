@@ -73,7 +73,7 @@
                                                                             <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <h5><strong>Present Location</strong></h5> </label>
 
                                                                             <div class="col-sm-9">
-                                                                                <input type="text" value="{{ \Module\PRM\Models\Camp::where('id', $parade->present_location)->first()->name }}" class="col-xs-10 col-sm-10" readonly>
+                                                                                <input type="text" value="{{ $parade->present_location }}" class="col-xs-10 col-sm-10" readonly>
                                                                                 <input type="text" name="presentLocation" id="presentLocation" value="{{ $parade->present_location }}" class="col-xs-10 col-sm-10" hidden>
                                                                             </div>
                                                                         </div>

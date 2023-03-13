@@ -33,15 +33,15 @@
 
                     <!-- header -->
                     <div class="widget-header" style="background: white !important;">
-                        <h4 class="widget-title">Parade List <span class="badge badge-primary"
-                                                                   style="margin-bottom: 5px;">Total: {{ $all_parade->count() }} </span>
+                        <h4 class="widget-title">Parade List <span class="badge"
+                                                                   style="margin-bottom: 5px; background-color: #2595dc !important; color: #ffffff !important;">Total: {{ $all_parade->count() }} </span>
                         </h4>
 
 
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
-                            <a href="{{ route('prm.parade.create') }}" class="btn-primary text-center"
-                               style="width: 110px;">
+                            <a href="{{ route('prm.parade.create') }}" class="text-center"
+                               style="width: 110px; background-color: #2595dc !important; color: #ffffff !important;">
                                 <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Parade</span>
                             </a>
                         </span>
@@ -63,12 +63,13 @@
                                                 <div class="col-sm-3">
                                                     <div align="left" class="form-group">
                                                         <div>
-                                                            <select class="col-xs-10 col-sm-10 multiselect" id="paradeCamp"
+                                                            <select class="col-xs-10 col-sm-10 multiselect"
+                                                                    id="paradeCamp"
                                                                     onchange="getCampParadeInformation()">
                                                                 <option value="">-Select Camp-</option>
                                                                 @foreach($camp_name as $camp_names)
                                                                     <option
-                                                                        value="{{ $camp_names->id }}">{{ $camp_names->name }}</option>
+                                                                        value="{{ $camp_names->name }}">{{ $camp_names->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -78,7 +79,8 @@
                                                 <div class="col-sm-3">
                                                     <div align="left" class="form-group">
                                                         <div>
-                                                            <select class="col-xs-10 col-sm-10 multiselect" id="paradeRank"
+                                                            <select class="col-xs-10 col-sm-10 multiselect"
+                                                                    id="paradeRank"
                                                                     onchange="getParadeInformation()">
                                                                 <option value="">-Select Rank-</option>
                                                                 <option value="Major">Major</option>
@@ -134,9 +136,8 @@
                                             <tr>
                                                 <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                 <th width="30%">Name</th>
-                                                <th width="20%">Joining Date</th>
-                                                <th width="20%">Camp</th>
-                                                <th width="10%">Status</th>
+                                                <th width="25%">Joining Date</th>
+                                                <th width="30%">Camp</th>
                                                 <th width="15%" class="text-center" style="width: 120px">Action</th>
                                             </tr>
                                             </thead>
@@ -165,18 +166,7 @@
                                                             class="span">{{ $parades->join_date_present_unit }}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;"><span
-                                                            class="span">{{ \Module\PRM\Models\Camp::where('id', $parades->present_location)->first()->name }}</span>
-                                                    </td>
-                                                    <td class="left" style="display:table-cell; vertical-align:middle;">
-                                                        <!--------------- STATUS EDIT---------------->
-                                                        <div>
-                                                            <label>
-                                                                <span class="span">
-                                                            <x-status status="{{ $parades->status }}"
-                                                                      id="{{ $parades->id }}" table="{{ $table }}"/>
-                                                        </span>
-                                                            </label>
-                                                        </div>
+                                                            class="span">{{ $parades->present_location }}</span>
                                                     </td>
                                                     <td class="text-center"
                                                         style="display:table-cell; vertical-align:middle;">
@@ -185,13 +175,15 @@
                                                         <div class="btn-group btn-corner  action-span ">
 
                                                             <a href="{{ route('prm.paradeProfile', $parades->id) }}"
-                                                               role="button" class="btn btn-xs btn-grey bs-tooltip"
+                                                               role="button" class="btn btn-xs bs-tooltip"
+                                                               style="background-color: #00d8ff !important; border: 1px solid #00d8ff !important;"
                                                                title="Full Biodata">
                                                                 <i class="fa fa-user"></i>
                                                             </a>
 
                                                             <a href="{{ route('prm.parade.edit', $parades->id) }}"
-                                                               role="button" class="btn btn-xs btn-success bs-tooltip"
+                                                               role="button" class="btn btn-xs bs-tooltip"
+                                                               style="background-color: limegreen !important; border: 1px solid limegreen !important;"
                                                                title="Edit">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
@@ -199,7 +191,8 @@
 
                                                             <button type="button"
                                                                     onclick="delete_item(`{{ route('prm.parade.destroy', $parades->id) }}`)"
-                                                                    class="btn btn-xs btn-danger bs-tooltip"
+                                                                    class="btn btn-xs bs-tooltip"
+                                                                    style="background-color: #ff0084 !important; border: 1px solid #ff0084 !important;"
                                                                     title="Delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
@@ -258,10 +251,10 @@
             $('#paradeRank').append('<option value="Junior Officer">' + "Junior Officer" + '</option>');
             $('#paradeRank').append('<option value="Other">' + "Other" + '</option>');
 
-            let campID = document.getElementById('paradeCamp').value;
+            let campName = document.getElementById('paradeCamp').value;
             let rank = document.getElementById('paradeRank').value;
             let url = "/parade_search";
-            let data = {CampID: campID, Rank: rank};
+            let data = {CampName: campName, Rank: rank};
             axios.post(url, data).then(function (response) {
                 var responseData = response.data;
                 var serialNumber = 1;
@@ -276,10 +269,10 @@
         }
 
         function getParadeInformation() {
-            let campID = document.getElementById('paradeCamp').value;
+            let campName = document.getElementById('paradeCamp').value;
             let rank = document.getElementById('paradeRank').value;
             let url = "/parade_search";
-            let data = {CampID: campID, Rank: rank};
+            let data = {CampName: campName, Rank: rank};
             axios.post(url, data).then(function (response) {
                 var responseData = response.data;
                 var serialNumber = 1;
@@ -295,64 +288,56 @@
 
 
         function paradeSearchResult() {
-            let campID = document.getElementById('paradeCamp').value;
+            let campName = document.getElementById('paradeCamp').value;
             let rank = document.getElementById('paradeRank').value;
             let url = "/parade_search";
-            let data = {CampID: campID, Rank: rank};
+            let data = {CampName: campName, Rank: rank};
             axios.post(url, data).then(function (response) {
                 var responseData = response.data;
                 var serialNumber = 1;
                 $('#paradeTable').empty();
                 $('#paginateID').empty();
-                document.getElementById('searchResulInfo').innerHTML = responseData.length+" Parade Found!";
+                document.getElementById('searchResulInfo').innerHTML = responseData.length + " Parade Found!";
                 for (let i = 0; i < responseData.length; i++) {
                     $('#paradeTable').append('<tr>\n' +
                         '                                                    <td class="hide-in-sm text-center" style="display:table-cell; vertical-align:middle;"><span class="span">\n' +
-                        '                                                            '+serialNumber+'\n' +
+                        '                                                            ' + serialNumber + '\n' +
                         '                                                        </span></td>\n' +
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">\n' +
-                        '                                                            <img src="{{asset('')}}'+responseData[i].image+'" width="50px" height="50px"  style="float: left; margin-right: 3px; border: 1px solid rgba(0,193,255,0.42); border-radius: 100%">\n' +
+                        '                                                            <img src="{{asset('')}}' + responseData[i].image + '" width="50px" height="50px"  style="float: left; margin-right: 3px; border: 1px solid rgba(0,193,255,0.42); border-radius: 100%">\n' +
                         '                                                            <ul style="list-style: none; margin-top: 7px;">\n' +
-                        '                                                                <li style="font-weight: bold;">'+responseData[i].name+'</li>\n' +
-                        '                                                                <li style="font-weight: bold;">'+responseData[i].next_rank+'</li>\n' +
+                        '                                                                <li style="font-weight: bold;">' + responseData[i].name + '</li>\n' +
+                        '                                                                <li style="font-weight: bold;">' + responseData[i].next_rank + '</li>\n' +
                         '                                                            </ul>\n' +
                         '                                                        </span></td>\n' +
-                        '                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">'+responseData[i].join_date_present_unit+'</span></td>\n' +
-                        '                                                    <td style="display:table-cell; vertical-align:middle;">Camp Name<span\n' +
-                        '                                                            class="span"></span>\n' +
-                        '                                                    </td>\n' +
-                        '                                                    <td class="left" style="display:table-cell; vertical-align:middle;">\n' +
-                        '                                                        <!--------------- STATUS EDIT---------------->\n' +
-                        '                                                        <div>\n' +
-                        '                                                            <label>\n' +
-                        '                                                                <span class="span">\n' +
-                        '                                                            <x-status status="'+responseData[i].status+'"\n' +
-                        '                                                                      id="'+responseData[i].id+'" table="parades"/>\n' +
-                        '                                                        </span>\n' +
-                        '                                                            </label>\n' +
-                        '                                                        </div>\n' +
+                        '                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">' + responseData[i].join_date_present_unit + '</span></td>\n' +
+                        '                                                    <td style="display:table-cell; vertical-align:middle;"><span\n' +
+                        '                                                            class="span">' + responseData[i].present_location + '</span>\n' +
                         '                                                    </td>\n' +
                         '                                                    <td class="text-center" style="display:table-cell; vertical-align:middle;">\n' +
                         '\n' +
                         '                                                        <!---------------  EDIT---------------->\n' +
                         '                                                        <div class="btn-group btn-corner  action-span ">\n' +
                         '\n' +
-                        '                                                            <a href="{{ route('prm.paradeProfile', '') }}'+"/"+responseData[i].id+'"\n' +
-                        '                                                               role="button" class="btn btn-xs btn-grey bs-tooltip"\n' +
+                        '                                                            <a href="{{ route('prm.paradeProfile', '') }}' + "/" + responseData[i].id + '"\n' +
+                        '                                                               role="button" class="btn btn-xs bs-tooltip"\n' +
+                        '                                                               style="background-color: #00d8ff !important; border: 1px solid #00d8ff !important;"\n' +
                         '                                                               title="Full Biodata">\n' +
                         '                                                                <i class="fa fa-user"></i>\n' +
                         '                                                            </a>\n' +
                         '\n' +
-                        '                                                            <a href="parade/'+responseData[i].id+'/edit/"\n' +
-                        '                                                               role="button" class="btn btn-xs btn-success bs-tooltip"\n' +
+                        '                                                            <a href="parade/' + responseData[i].id + '/edit/"\n' +
+                        '                                                               role="button" class="btn btn-xs bs-tooltip"\n' +
+                        '                                                               style="background-color: limegreen !important; border: 1px solid limegreen !important;"\n' +
                         '                                                               title="Edit">\n' +
                         '                                                                <i class="fa fa-edit"></i>\n' +
                         '                                                            </a>\n' +
                         '\n' +
                         '\n' +
                         '                                                            <button type="button"\n' +
-                        '                                                                    onclick="delete_item(`parade/'+responseData[i].id+'`)"\n' +
-                        '                                                                    class="btn btn-xs btn-danger bs-tooltip"\n' +
+                        '                                                                    onclick="delete_item(`parade/' + responseData[i].id + '`)"\n' +
+                        '                                                                    class="btn btn-xs bs-tooltip"\n' +
+                        '                                                                    style="background-color: #ff0084 !important; border: 1px solid #ff0084 !important;"\n' +
                         '                                                                    title="Delete">\n' +
                         '                                                                <i class="fa fa-trash"></i>\n' +
                         '                                                            </button>\n' +
@@ -366,7 +351,6 @@
 
             })
         }
-
 
 
         function refreshPage() {

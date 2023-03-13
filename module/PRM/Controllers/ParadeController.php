@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use Module\PRM\Models\Camp;
 use Module\PRM\Models\Course;
+use Module\PRM\Models\LeaveApplication;
 use Module\PRM\Models\ParadeCourseModel;
 use Module\PRM\Models\ParadeModel;
 use Module\PRM\Models\ParadeTrainingModel;
@@ -48,13 +49,13 @@ class ParadeController extends Controller
     }
 
     public function getParadeSearch(Request $request){
-        $campId = $request->input('CampID');
+        $campName = $request->input('CampName');
         $rank = $request->input('Rank');
-        if (isset($campId) && isset($rank)){
-            $searchedParades = ParadeModel::where('present_location', '=', $campId)->where('next_rank', '=', $rank)->get();
+        if (isset($campName) && isset($rank)){
+            $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->get();
         }
-        elseif (isset($campId)){
-            $searchedParades = ParadeModel::where('present_location', '=', $campId)->get();
+        elseif (isset($campName)){
+            $searchedParades = ParadeModel::where('present_location', '=', $campName)->get();
         }
         elseif (isset($rank)){
             $searchedParades = ParadeModel::where('next_rank', '=', $rank)->get();
@@ -62,6 +63,7 @@ class ParadeController extends Controller
         else{
             $searchedParades = '';
         }
+
         return response()->json($searchedParades);
     }
 
@@ -71,6 +73,7 @@ class ParadeController extends Controller
         $data['parade'] = ParadeModel::find($id);
         $data['courses'] = ParadeCourseModel::where('parade_id', '=', $id)->get();
         $data['trainings'] = ParadeTrainingModel::where('parade_id', '=', $id)->get();
+        $data['lastLeave'] = LeaveApplication::where('parade_id', '=', $id)->orderBy('end_date', 'desc')->first();
         return view('pages.parade.paradeProfile', $data);
     }
 
