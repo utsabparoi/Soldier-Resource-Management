@@ -10,7 +10,7 @@
         $.get("/prm/get-current-camp", {
             parade_id: paradeId
         }, function(data, status) {
-            // console.log(data);
+            console.log(data);
             if (data == '') {
                 camp_name.append('<span class="text-danger">This soldier not in a camp yet</span>')
             }else{
@@ -18,8 +18,6 @@
                     camp_name.append('<h4 class="blue" style="margin:3px;">' + item.camp.name + '</h4>')
                 });
             }
-
         });
-
     }
 </script>

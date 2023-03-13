@@ -49,7 +49,7 @@ class ParadeCampMigrateController extends Controller
     {
         $data['parades'] = ParadeModel::all();
         $data['camps'] = Camp::all();
-        $data['current_camp'] = ParadeCurrentProfileModel::latest();
+        // $data['current_camp'] = ParadeCurrentProfileModel::latest();
 
         return view('pages.parade-migrate.paradeCampMigrate', $data);
     }
@@ -168,13 +168,14 @@ class ParadeCampMigrateController extends Controller
 
     public function currentCamp(Request $request){
         try{
-            $current_data = ParadeCurrentProfileModel::where('parade_id', $request->parade_id)->with('camp')->get();
-            if (!$current_data->isEmpty()) {
+            $current_data = ParadeCurrentProfileModel::where('parade_id', $request->parade_id)->with('camp')->latest()->first();
+            if ($current_data) {
                 $data = $current_data;
             }else {
                 $base_profile_data = ParadeModel::where('id',$request->parade_id)->with('camp')->get();
                 $data = $base_profile_data;
             }
+            // $data = $current_data;
             return response()->json($data);
         }catch(\Throwable $th){
             return redirect()->back()->with('error', $th->getMessage());

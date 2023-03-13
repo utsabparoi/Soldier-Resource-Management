@@ -61,7 +61,7 @@
                                                                             <option value="">-Select a Parade-</option>
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}"
-                                                                                    @if($parade->id == $parade_migration->parade_id) selected @endif >{{ $parade->name }}
+                                                                                    @if($parade->id == $parade_migration->parade_id) selected @endif>{{ $parade->name }}
                                                                                 </option>
                                                                             @endforeach
                                                                         </select>
@@ -109,7 +109,9 @@
                                                                             class="form-control multiselect">
                                                                             <option value="">-Select a Camp(Location)-</option>
                                                                             @foreach ($camps as $camp)
-                                                                                <option value="{{ $camp->id }}">{{ $camp->name }}</option>
+                                                                                <option value="{{ $camp->id }}"
+                                                                                    @if($camp->id == $parade_migration->camp_id) selected @endif>{{ $camp->name }}
+                                                                                </option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
@@ -167,7 +169,7 @@
                                                                         <button type="submit"
                                                                             class="btn btn-primary btn-sm btn-block"
                                                                             style="max-width: 150px">
-                                                                            <i class="fa fa-save"></i> Migrate
+                                                                            <i class="fa fa-save"></i> Update Migrate
                                                                         </button>
                                                                     </div>
                                                                 </div>

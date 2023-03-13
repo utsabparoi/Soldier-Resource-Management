@@ -80,18 +80,6 @@
                                                                 </div>
                                                             </div>
 
-                                                            {{-- <div class="col-sm-6" >
-                                                                <div class="form-group table-responsive">
-                                                                    <label class="tableTitle">
-
-                                                                    </label>
-                                                                    <table id="dynamic-table" class="table table-striped table-hover new-table showTable">
-
-                                                                    </table>
-                                                                </div>
-                                                            </div> --}}
-
-
                                                         </div>
                                                         <div class="row">
                                                             <!-- Course -->
