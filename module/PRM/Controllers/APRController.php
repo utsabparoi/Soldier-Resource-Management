@@ -46,7 +46,7 @@ class APRController extends Controller
             return view('pages.annual-progress-report.index', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
-        }$data = [];
+        }
         return view('', $data);
     }
 
@@ -137,7 +137,12 @@ class APRController extends Controller
     */
     public function edit($id)
     {
-        # code...
+        try {
+            $data['soldier'] = ParadeModel::all();
+            return view('pages.annual-progress-report.edit', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
 
@@ -180,7 +185,13 @@ class APRController extends Controller
     */
     public function destroy($id)
     {
-        # code...
+        try {
+            $store = APRModel::find($id);
+            $store->delete();
+            return redirect()->back()->with('success', 'APR Deleted Success');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
 
