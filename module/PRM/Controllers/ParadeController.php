@@ -2,7 +2,6 @@
 
 namespace Module\PRM\Controllers;
 
-use App\Models\User;
 use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
