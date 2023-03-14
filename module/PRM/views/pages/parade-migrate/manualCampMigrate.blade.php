@@ -115,32 +115,6 @@
                                                                 </div>
                                                             </div>
 
-                                                            {{-- <div class="col-sm-2">
-                                                                <div align="left" class="form-group">
-                                                                    <label>
-                                                                        <h5>
-                                                                            <strong>Result</strong>
-                                                                        </h5>
-                                                                    </label>
-                                                                    <div>
-                                                                        <input class="form-control box-resize" type="text" name="result">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-sm-2">
-                                                                <div align="left" class="form-group">
-                                                                    <label>
-                                                                        <h5>
-                                                                            <strong>Remark</strong>
-                                                                        </h5>
-                                                                    </label>
-                                                                    <div>
-                                                                        <input class="form-control box-resize" type="text" name="remark">
-                                                                    </div>
-                                                                </div>
-                                                            </div> --}}
-
                                                         </div>
                                                         <br>
 

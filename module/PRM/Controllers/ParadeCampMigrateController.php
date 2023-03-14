@@ -45,13 +45,13 @@ class ParadeCampMigrateController extends Controller
      | CREATE METHOD
      |--------------------------------------------------------------------------
     */
-    public function paradeCampMigrate()
+    public function manualCampMigrate()
     {
         $data['parades'] = ParadeModel::all();
         $data['camps'] = Camp::all();
         // $data['current_camp'] = ParadeCurrentProfileModel::latest();
 
-        return view('pages.parade-migrate.paradeCampMigrate', $data);
+        return view('pages.parade-migrate.manualCampMigrate', $data);
     }
 
     /*
@@ -61,7 +61,7 @@ class ParadeCampMigrateController extends Controller
     */
     public function store(Request $request)
     {
-        // ddd($request);
+
         try {
             $this->storeOrUpdate($request);
 
@@ -181,4 +181,45 @@ class ParadeCampMigrateController extends Controller
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
+
+    //bulk parade camp migrate view function
+    public function bulkCampMigrate()
+    {
+        try {
+            $data['parade'] = ParadeModel::with('camp')->paginate(30);
+            $data['camp_name'] = Camp::all();
+            $data['all_parade'] = ParadeModel::all();
+            $data['table'] = ParadeModel::getTableName();
+            return view('pages.parade-migrate.bulkCampMigrate', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+
+    }
+
+    //bulk parade camp migrate store function
+    public function bulkDataStore(Request $request, $id=null){
+        //bulk input
+        foreach($request->bulk_id as $key => $value){
+            $bulk_migrateToCampMigrationTable = ParadeCampMigration::updateOrCreate([
+                'id'           =>$id,
+            ],[
+                'parade_id'          =>$request->bulk_id[$key],
+                'camp_id'            =>2,
+                'migration_date'     =>"2023-03-17",
+                'status'             =>$request->status ? 1: 0,
+            ]);
+
+            $bulk_migrateToCurrentProfileTable = ParadeCurrentProfileModel::updateOrCreate([
+                'id'           =>$id,
+            ],[
+                'parade_id'          =>$request->bulk_id[$key],
+                'camp_id'            =>2,
+                'status'             =>$request->status ? 1: 0,
+            ]);
+        }
+        return redirect()->route('prm.parade-migrate.index',compact($bulk_migrateToCampMigrationTable, $bulk_migrateToCurrentProfileTable))
+        ->with('success','Soldier Migrate Successful');
+    }
+
 }

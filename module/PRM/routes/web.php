@@ -31,8 +31,10 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     Route::resource('camp', CampController::class);
 
     Route::resource('parade-migrate', ParadeCampMigrateController::class);
-    Route::get('parade-camp-migrate', [ParadeCampMigrateController::class, 'paradeCampMigrate'])->name('parade-camp-migrate');
-    // Route::get('parade-rank-migrate', [ParadeCampMigrateController::class, 'paradeRankMigrate'])->name('parade-camp-migrate');
+    Route::get('parade-camp-migrate', [ParadeCampMigrateController::class, 'manualCampMigrate'])->name('parade-camp-migrate');
+    Route::get('bulk-camp-migrate', [ParadeCampMigrateController::class, 'bulkCampMigrate'])->name('bulk-camp-migrate');
+    Route::post('bulk-import',[ParadeCampMigrateController::class, 'bulkDataStore'])->name('bulk-import');
+
 
 
     Route::get('/get-current-camp', [ParadeCampMigrateController::class, 'currentCamp'])->name('current-camp');

@@ -54,6 +54,7 @@ class ParadeController extends Controller
     {
         $campName = $request->input('CampName');
         $rank = $request->input('Rank');
+
         if (isset($campName) && isset($rank)) {
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->get();
         } elseif (isset($campName)) {
