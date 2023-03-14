@@ -66,6 +66,7 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     //Soldier
     Route::resource('parade', ParadeController::class);
     Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
+    Route::get('/dowaload_file', [ParadeController::class, 'downloads'])->name('dowaload_file');
 
     // Soldier Course Routes
     Route::resource('parade-courses', ParadeCourseController::class);
