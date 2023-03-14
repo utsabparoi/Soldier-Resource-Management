@@ -216,6 +216,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <a href="{{ route('prm.dowaload_file') }}"><i class="fa fa-file-excel-o" style="font-size: 28px; color: #005cff;"></i></a> &nbsp;&nbsp;
+                            <a href="{{ route('prm.dowaload_file') }}"><i class="fa fa-file-pdf-o" style="font-size: 28px; color: red;"></i></a>
                         </div>
                     </div>
 

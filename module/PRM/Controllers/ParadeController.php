@@ -48,19 +48,17 @@ class ParadeController extends Controller
         }
     }
 
-    public function getParadeSearch(Request $request){
+    public function getParadeSearch(Request $request)
+    {
         $campName = $request->input('CampName');
         $rank = $request->input('Rank');
-        if (isset($campName) && isset($rank)){
+        if (isset($campName) && isset($rank)) {
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->get();
-        }
-        elseif (isset($campName)){
+        } elseif (isset($campName)) {
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->with('camp')->get();
-        }
-        elseif (isset($rank)){
+        } elseif (isset($rank)) {
             $searchedParades = ParadeModel::where('next_rank', '=', $rank)->with('camp')->get();
-        }
-        else{
+        } else {
             $searchedParades = '';
         }
 
@@ -264,25 +262,25 @@ class ParadeController extends Controller
             }
             $parade = ParadeModel::updateOrCreate(
                 [
-                    'id'                        => $id,
+                    'id' => $id,
                 ],
                 [
-                    'name'                      => $request->name,
-                    'present_location'          => $request->presentLocation,
-                    'join_date_present_unit'    => $request->dateOfJoin,
-                    'image'                     => $Image,
-                    'enrolment_date'            => $request->dateOfEnrolment,
-                    'present_rank_date'         => $request->dateOfPresentRank,
-                    'retirement_date'           => $request->dateOfRetirement,
-                    'civ_edn'                   => $request->cidEdn,
-                    'med_cat'                   => $request->medCat,
-                    'next_rank'                 => $request->qualUnqualRank,
-                    'permanent_address'         => $request->permanentAddress,
-                    'marital_status'            => $request->meritalStatus,
-                    'children_number'           => $request->noOfChildren,
-                    'status'                    => 1,
-                    'created_by'                => session('AdminId'),
-                    'updated_by'                => session('AdminId'),
+                    'name' => $request->name,
+                    'present_location' => $request->presentLocation,
+                    'join_date_present_unit' => $request->dateOfJoin,
+                    'image' => $Image,
+                    'enrolment_date' => $request->dateOfEnrolment,
+                    'present_rank_date' => $request->dateOfPresentRank,
+                    'retirement_date' => $request->dateOfRetirement,
+                    'civ_edn' => $request->cidEdn,
+                    'med_cat' => $request->medCat,
+                    'next_rank' => $request->qualUnqualRank,
+                    'permanent_address' => $request->permanentAddress,
+                    'marital_status' => $request->meritalStatus,
+                    'children_number' => $request->noOfChildren,
+                    'status' => 1,
+                    'created_by' => session('AdminId'),
+                    'updated_by' => session('AdminId'),
                 ]
             );
 
@@ -296,10 +294,10 @@ class ParadeController extends Controller
                         [
                             'course_id' => Course::where('name', '=', $request->course[$key])->first()->id,
                             'parade_id' => $parade->id,
-                            'remark'    => $request->course_remark[$key],
-                            'duration'  => $request->course_duration[$key],
-                            'result'    => $request->course_result[$key],
-                            'status'    => 1,
+                            'remark' => $request->course_remark[$key],
+                            'duration' => $request->course_duration[$key],
+                            'result' => $request->course_result[$key],
+                            'status' => 1,
                             'created_by' => session('AdminId'),
                             'updated_by' => session('AdminId'),
                         ]
@@ -316,13 +314,13 @@ class ParadeController extends Controller
                     ],
                         [
                             'training_id' => Training::where('name', '=', $request->training[$key])->first()->id,
-                            'parade_id' => $parade->id,
-                            'remark' => $request->training_remark[$key],
-                            'duration' => $request->training_duration[$key],
-                            'result' => $request->training_result[$key],
-                            'status' => 1,
-                            'created_by' => session('AdminId'),
-                            'updated_by' => session('AdminId'),
+                            'parade_id'   => $parade->id,
+                            'remark'      => $request->training_remark[$key],
+                            'duration'    => $request->training_duration[$key],
+                            'result'      => $request->training_result[$key],
+                            'status'      => 1,
+                            'created_by'  => session('AdminId'),
+                            'updated_by'  => session('AdminId'),
                         ]);
                 }
             }
@@ -332,6 +330,20 @@ class ParadeController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
+    }
+
+    public function downloads()
+    {
+//        $PageName = "excelpage";
+//        $filePathDirectory = "../resources/views/download/";
+//        $fileName = $PageName;
+//        $fileExtension = ".txt";
+//        $fileOpen = fopen($filePathDirectory . $fileName . $fileExtension, 'w');
+//        $parades = ParadeModel::get();
+//        $fileWrite = fwrite($fileOpen, '');
+//
+//        fclose($fileOpen);
+        return redirect('prm.parade.index');
     }
 
 }
