@@ -77,19 +77,19 @@
                 <li class="{{ request()->routeIs('prm.parade-camp-migrate') ? 'active' : '' }}">
                     <a href="{{ route('prm.parade-camp-migrate') }}">
                         <i class="fa fa-exchange blue"></i>
-                        Soldier-Camp Migration
+                        Manual Camp-Migration
                     </a>
                     <b class="arrow"></b>
                 </li>
                 {{-- 'Migrate Rank' submenu of "Migration" --}}
-                {{-- <li class="{{ request()->routeIs('prm.camp.create') ? 'active' : '' }}">
-                    <a href="{{ route('prm.camp.create') }}">
+                <li class="{{ request()->routeIs('') ? 'active' : '' }}">
+                    <a href="#">
                         <i class="fa fa-exchange blue"></i>
-                        Soldier-Rank Migration
+                        Bulk Camp-Migration
                     </a>
 
                     <b class="arrow"></b>
-                </li> --}}
+                </li>
             </ul>
         </li>
 

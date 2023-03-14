@@ -3,17 +3,19 @@
 namespace Module\PRM\Controllers;
 
 use App\Traits\FileSaver;
+use Module\PRM\Models\Camp;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Module\PRM\Models\Course;
 use Illuminate\Support\Carbon;
 use Module\PRM\Models\APRModel;
-use Module\PRM\Models\Camp;
-use Module\PRM\Models\Course;
-use Module\PRM\Models\LeaveApplication;
-use Module\PRM\Models\ParadeCourseModel;
-use Module\PRM\Models\ParadeModel;
-use Module\PRM\Models\ParadeTrainingModel;
 use Module\PRM\Models\Training;
+use Module\PRM\Models\ParadeModel;
+use App\Http\Controllers\Controller;
+use Module\PRM\Models\LeaveApplication;
+use Module\PRM\Models\ParadeCampMigration;
+use Module\PRM\Models\ParadeCourseModel;
+use Module\PRM\Models\ParadeTrainingModel;
+use Module\PRM\Models\ParadeCurrentProfileModel;
 
 class ParadeController extends Controller
 {
@@ -48,19 +50,17 @@ class ParadeController extends Controller
         }
     }
 
-    public function getParadeSearch(Request $request){
+    public function getParadeSearch(Request $request)
+    {
         $campName = $request->input('CampName');
         $rank = $request->input('Rank');
-        if (isset($campName) && isset($rank)){
+        if (isset($campName) && isset($rank)) {
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->get();
-        }
-        elseif (isset($campName)){
+        } elseif (isset($campName)) {
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->with('camp')->get();
-        }
-        elseif (isset($rank)){
+        } elseif (isset($rank)) {
             $searchedParades = ParadeModel::where('next_rank', '=', $rank)->with('camp')->get();
-        }
-        else{
+        } else {
             $searchedParades = '';
         }
 
@@ -71,10 +71,23 @@ class ParadeController extends Controller
     public function paradeProfile($id)
     {
         $data['parade'] = ParadeModel::find($id);
-        $data['courses'] = ParadeCourseModel::where('parade_id', '=', $id)->get();
+        $data['courses'] = ParadeCourseModel::where('parade_id', '=', $id)->with('course')->get();
         $data['trainings'] = ParadeTrainingModel::where('parade_id', '=', $id)->get();
         $data['aprs'] = APRModel::where('parade_id', '=', $id)->get();
         $data['lastLeave'] = LeaveApplication::where('parade_id', '=', $id)->orderBy('end_date', 'desc')->first();
+
+        $current_location = ParadeCurrentProfileModel::where('parade_id', $id)
+            ->with('camp')->latest()->first();
+
+        $migrate_date = ParadeCampMigration::whereDate('migration_date','=',Carbon::today()->format("Y-m-d") )->where('parade_id', $id)->get();
+
+        if ((!$migrate_date->isEmpty()) && $current_location) {
+            $data['location'] = $current_location;
+        } else {
+            $base_profile_data = ParadeModel::where('id', $id)->with('camp')->first();
+            $data['location'] = $base_profile_data;
+        }
+
         return view('pages.parade.paradeProfile', $data);
     }
 
@@ -136,7 +149,6 @@ class ParadeController extends Controller
                 }
                 $this->storeOrUpdate($request);
                 return redirect()->route('prm.parade.index')->with('success', 'Parade Created Successfully');
-
             } catch (\Throwable $th) {
                 return redirect()->back()->with('error', $th->getMessage());
             }
@@ -225,9 +237,10 @@ class ParadeController extends Controller
     public function storeOrUpdate($request, $id = null)
     {
         try {
-            $parade = ParadeModel::updateOrCreate([
-                'id' => $id,
-            ],
+            $parade = ParadeModel::updateOrCreate(
+                [
+                    'id' => $id,
+                ],
                 [
                     'name' => $request->name,
                     'present_location' => $request->presentLocation,
@@ -244,7 +257,8 @@ class ParadeController extends Controller
                     'status' => 1,
                     'created_by' => session('AdminId'),
                     'updated_by' => session('AdminId'),
-                ]);
+                ]
+            );
             $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
 
             return $parade;
@@ -290,9 +304,10 @@ class ParadeController extends Controller
             if ($request->course[0] == "notSelect") {
             } else {
                 foreach ($request->course as $key => $value) {
-                    $paradeCourse = ParadeCourseModel::updateOrCreate([
-                        'id' => $id,
-                    ],
+                    $paradeCourse = ParadeCourseModel::updateOrCreate(
+                        [
+                            'id' => $id,
+                        ],
                         [
                             'course_id' => Course::where('name', '=', $request->course[$key])->first()->id,
                             'parade_id' => $parade->id,
@@ -311,9 +326,10 @@ class ParadeController extends Controller
             if ($request->training[0] == "notSelect") {
             } else {
                 foreach ($request->training as $key => $value) {
-                    $paradeTraining = ParadeTrainingModel::updateOrCreate([
-                        'id' => $id,
-                    ],
+                    $paradeTraining = ParadeTrainingModel::updateOrCreate(
+                        [
+                            'id' => $id,
+                        ],
                         [
                             'training_id' => Training::where('name', '=', $request->training[$key])->first()->id,
                             'parade_id' => $parade->id,
@@ -323,7 +339,8 @@ class ParadeController extends Controller
                             'status' => 1,
                             'created_by' => session('AdminId'),
                             'updated_by' => session('AdminId'),
-                        ]);
+                        ]
+                    );
                 }
             }
 
@@ -333,5 +350,4 @@ class ParadeController extends Controller
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
-
 }

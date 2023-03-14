@@ -2,11 +2,11 @@
 
 namespace Module\PRM\Controllers;
 
+use App\Traits\FileSaver;
 use Module\PRM\Models\Camp;
 use Illuminate\Http\Request;
 use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
-use App\Traits\FileSaver;
 use Module\PRM\Models\ParadeCampMigration;
 use Module\PRM\Models\ParadeCurrentProfileModel;
 

@@ -53,7 +53,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-4" style="margin-top: 22px;">
                                                             <div style="border: 1px solid #a3a3a3; width: 50%; padding-left: 8px;">
-                                                            <span><h5><strong>Present Loc: {{ $parade->present_location }}</strong></h5></span>
+                                                            <span><h5><strong>Present Loc: {{ $location->camp->name }}</strong></h5></span>
                                                             <span><h5><strong>Last Lve: 12/12/2022</strong></h5></span>
                                                             </div>
                                                         </div>
@@ -77,7 +77,7 @@
                                                                 <tr>
                                                                     <td class="text-center" width="4%" style="padding-left: 5px;">2.</td>
                                                                     <td width="20%" style="padding-left: 5px;">Person Location:</td>
-                                                                    <td width="76%" style="padding-left: 5px;">{{ $parade->present_location }}</td>
+                                                                    <td width="76%" style="padding-left: 5px;">{{ $location->camp->name }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="text-center" width="4%" style="padding-left: 5px;">3.</td>

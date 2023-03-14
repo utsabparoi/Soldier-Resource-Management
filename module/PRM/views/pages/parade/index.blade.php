@@ -136,7 +136,7 @@
                                             <tr>
                                                 <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                 <th width="30%">Name</th>
-                                                <th width="25%">Joining Date</th>
+                                                <th width="20%">Joining Date</th>
                                                 <th width="30%">Camp</th>
                                                 <th width="15%" class="text-center" style="width: 120px">Action</th>
                                             </tr>
