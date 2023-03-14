@@ -278,25 +278,25 @@ class ParadeController extends Controller
             }
             $parade = ParadeModel::updateOrCreate(
                 [
-                    'id'                        => $id,
+                    'id' => $id,
                 ],
                 [
-                    'name'                      => $request->name,
-                    'present_location'          => $request->presentLocation,
-                    'join_date_present_unit'    => $request->dateOfJoin,
-                    'image'                     => $Image,
-                    'enrolment_date'            => $request->dateOfEnrolment,
-                    'present_rank_date'         => $request->dateOfPresentRank,
-                    'retirement_date'           => $request->dateOfRetirement,
-                    'civ_edn'                   => $request->cidEdn,
-                    'med_cat'                   => $request->medCat,
-                    'next_rank'                 => $request->qualUnqualRank,
-                    'permanent_address'         => $request->permanentAddress,
-                    'marital_status'            => $request->meritalStatus,
-                    'children_number'           => $request->noOfChildren,
-                    'status'                    => 1,
-                    'created_by'                => session('AdminId'),
-                    'updated_by'                => session('AdminId'),
+                    'name' => $request->name,
+                    'present_location' => $request->presentLocation,
+                    'join_date_present_unit' => $request->dateOfJoin,
+                    'image' => $Image,
+                    'enrolment_date' => $request->dateOfEnrolment,
+                    'present_rank_date' => $request->dateOfPresentRank,
+                    'retirement_date' => $request->dateOfRetirement,
+                    'civ_edn' => $request->cidEdn,
+                    'med_cat' => $request->medCat,
+                    'next_rank' => $request->qualUnqualRank,
+                    'permanent_address' => $request->permanentAddress,
+                    'marital_status' => $request->meritalStatus,
+                    'children_number' => $request->noOfChildren,
+                    'status' => 1,
+                    'created_by' => session('AdminId'),
+                    'updated_by' => session('AdminId'),
                 ]
             );
 
@@ -311,10 +311,10 @@ class ParadeController extends Controller
                         [
                             'course_id' => Course::where('name', '=', $request->course[$key])->first()->id,
                             'parade_id' => $parade->id,
-                            'remark'    => $request->course_remark[$key],
-                            'duration'  => $request->course_duration[$key],
-                            'result'    => $request->course_result[$key],
-                            'status'    => 1,
+                            'remark' => $request->course_remark[$key],
+                            'duration' => $request->course_duration[$key],
+                            'result' => $request->course_result[$key],
+                            'status' => 1,
                             'created_by' => session('AdminId'),
                             'updated_by' => session('AdminId'),
                         ]
