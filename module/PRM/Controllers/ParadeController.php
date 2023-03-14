@@ -6,6 +6,7 @@ use App\Traits\FileSaver;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
+use Module\PRM\Models\APRModel;
 use Module\PRM\Models\Camp;
 use Module\PRM\Models\Course;
 use Module\PRM\Models\LeaveApplication;
@@ -37,7 +38,7 @@ class ParadeController extends Controller
     public function index()
     {
         try {
-            $data['parade'] = ParadeModel::paginate(30);
+            $data['parade'] = ParadeModel::with('camp')->paginate(30);
             $data['camp_name'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
             $data['table'] = ParadeModel::getTableName();
@@ -51,13 +52,13 @@ class ParadeController extends Controller
         $campName = $request->input('CampName');
         $rank = $request->input('Rank');
         if (isset($campName) && isset($rank)){
-            $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->get();
+            $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->get();
         }
         elseif (isset($campName)){
-            $searchedParades = ParadeModel::where('present_location', '=', $campName)->get();
+            $searchedParades = ParadeModel::where('present_location', '=', $campName)->with('camp')->get();
         }
         elseif (isset($rank)){
-            $searchedParades = ParadeModel::where('next_rank', '=', $rank)->get();
+            $searchedParades = ParadeModel::where('next_rank', '=', $rank)->with('camp')->get();
         }
         else{
             $searchedParades = '';
@@ -72,6 +73,7 @@ class ParadeController extends Controller
         $data['parade'] = ParadeModel::find($id);
         $data['courses'] = ParadeCourseModel::where('parade_id', '=', $id)->get();
         $data['trainings'] = ParadeTrainingModel::where('parade_id', '=', $id)->get();
+        $data['aprs'] = APRModel::where('parade_id', '=', $id)->get();
         $data['lastLeave'] = LeaveApplication::where('parade_id', '=', $id)->orderBy('end_date', 'desc')->first();
         return view('pages.parade.paradeProfile', $data);
     }

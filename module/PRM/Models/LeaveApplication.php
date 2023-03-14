@@ -26,7 +26,7 @@ class LeaveApplication extends Model
         return $this->belongsTo(LeaveCategory::class);
     }
 
-    
+
 
     function user(){
         return $this->belongsTo(User::class);
