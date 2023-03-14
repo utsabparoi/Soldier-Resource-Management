@@ -148,7 +148,7 @@ class ParadeController extends Controller
                     session()->forget('profileImage');
                 }
                 $this->storeOrUpdate($request);
-                return redirect()->route('prm.parade.index')->with('success', 'Parade Created Successfully');
+                return redirect()->route('prm.parade.index')->with('success', 'Soldier Created Successfully');
             } catch (\Throwable $th) {
                 return redirect()->back()->with('error', $th->getMessage());
             }
@@ -156,7 +156,7 @@ class ParadeController extends Controller
         else if ($request->submitButton == 'saveWithExtraInfo') {
             try {
                 $this->storeOrUpdateWithExtraInfo($request);
-                return redirect()->route('prm.parade.index')->with('success', 'Parade Created Successfully');
+                return redirect()->route('prm.parade.index')->with('success', 'Soldier Created Successfully');
             } catch (\Throwable $th) {
                 return redirect()->back()->with('error', $th->getMessage());
             }
@@ -211,7 +211,7 @@ class ParadeController extends Controller
     {
         try {
             $this->storeOrUpdate($request, $id);
-            return redirect()->route('prm.parade.index')->with('success', 'Parade Updated Success');
+            return redirect()->route('prm.parade.index')->with('success', 'Soldier Updated Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
@@ -228,7 +228,7 @@ class ParadeController extends Controller
         try {
             $store = ParadeModel::find($id);
             $store->delete();
-            return redirect()->back()->with('success', 'Parade Deleted Success');
+            return redirect()->back()->with('success', 'Soldier Deleted Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

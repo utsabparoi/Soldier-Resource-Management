@@ -32,7 +32,7 @@
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
                                                     <a href="{{ route('prm.parade-courses.index') }}" class="">
-                                                        <i class="fa fa-list"></i> Parade Course <span class="hide-in-sm">List</span>
+                                                        <i class="fa fa-list"></i> Soldier Course <span class="hide-in-sm">List</span>
                                                     </a>
                                                 </span>
                                             </div>
@@ -47,18 +47,18 @@
 
                                                         <div class="row">
 
-                                                            <!-- Parade Name -->
+                                                            <!-- Soldier Name -->
                                                             <div class="col-sm-6">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Parade<sup
+                                                                        <h5><strong>Soldier<sup
                                                                                     class="text-danger">*</sup></strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>
                                                                         <select align="center" name="parade_id"
                                                                             class="form-control multiselect" onchange="loadUnmatchedCourse(this)">
-                                                                            <option value="">-Select a Parade-</option>
+                                                                            <option value="">-Select a Soldier-</option>
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}">{{ $parade->name }}</option>
                                                                             @endforeach
@@ -81,7 +81,7 @@
                                                                     <div>
                                                                         <select name="course_id"
                                                                             class="form-control multiselect unmatched-course">
-                                                                            <option value="">-First Select a Parade-</option>
+                                                                            <option value="">-First Select a Soldier-</option>
                                                                             @foreach ($courses as $course)
                                                                                 <option value="{{ $course->id }}">{{ $course->name }}</option>
                                                                             @endforeach

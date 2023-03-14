@@ -9,7 +9,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Parade Migration List</li>
+                    <li class="active">Soldier Migration List</li>
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -37,7 +37,7 @@
                         </h4>
                         <span class="widget-toolbar">
                             <a href="{{ route('prm.parade-camp-migrate') }}" class="">
-                                <i class="fa fa-plus"></i> Migrate Parade
+                                <i class="fa fa-plus"></i> Migrate Soldier
                             </a>
                         </span>
                     </div>
@@ -59,7 +59,7 @@
                                             <thead>
                                             <tr>
                                                 <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
-                                                <th width="40%">Parade Name</th>
+                                                <th width="40%">Soldier Name</th>
                                                 <th width="30%">Camp Name</th>
                                                 <th width="10%" class="text-center">Migration Date</th>
                                                 {{-- <th class="text-center" width="10%">Status</th> --}}

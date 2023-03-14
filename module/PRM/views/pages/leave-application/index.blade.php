@@ -60,7 +60,7 @@
                                             <thead>
                                             <tr>
                                                 <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
-                                                <th width="20%">Parade Name</th>
+                                                <th width="20%">Soldier Name</th>
                                                 <th width="20%">Leave Type</th>
                                                 <th width="20%">Emergency Contact</th>
                                                 <th width="10%" class="text-center">Attachment</th>
@@ -94,7 +94,7 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <span class="close">&times;</span>
-                                                                    <span class="dark"><strong><u>Parade Name</u></strong></span>
+                                                                    <span class="dark"><strong><u>Soldier Name</u></strong></span>
                                                                     <div id="paradeName">
                                                                         Attachment
                                                                     </div>

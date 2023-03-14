@@ -56,7 +56,7 @@
                                                           method="POST" enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="row">
-                                                            <!-- Parade Name -->
+                                                            <!-- Soldier Name -->
                                                             <div class="col-sm-4">
                                                                 <div align="left" class="form-group">
                                                                     <label>

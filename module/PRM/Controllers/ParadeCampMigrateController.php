@@ -65,7 +65,7 @@ class ParadeCampMigrateController extends Controller
         try {
             $this->storeOrUpdate($request);
 
-            return redirect()->route('prm.parade-migrate.index')->with('success','Parade Migrate Successful');
+            return redirect()->route('prm.parade-migrate.index')->with('success','Soldier Migrate Successful');
 
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
@@ -129,7 +129,7 @@ class ParadeCampMigrateController extends Controller
             $parade_migration->delete();
             $current_profile->delete();
 
-            return redirect()->back()->with('success','Parade Migration Deleted Success');
+            return redirect()->back()->with('success','Soldier Migration Deleted Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
         }

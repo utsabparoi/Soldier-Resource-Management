@@ -9,7 +9,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">All Parade Courses</li>
+                    <li class="active">All Soldier Courses</li>
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -59,7 +59,7 @@
                                             <thead>
                                             <tr>
                                                 <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
-                                                <th width="30%">Parade Name</th>
+                                                <th width="30%">Soldier Name</th>
                                                 <th width="30%">Course Name</th>
                                                 <th class="text-center" width="10%">Status</th>
                                                 <th width="5%" class="text-center" style="width: 120px">Action</th>
@@ -128,5 +128,5 @@
             {{-- main content end  --}}
         </div>
     </div>
-    
+
 @endsection

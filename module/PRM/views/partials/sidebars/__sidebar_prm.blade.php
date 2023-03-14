@@ -129,7 +129,7 @@
         <li class="{{ request()->routeIs('prm.parade*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-user"></i>
-                <span class="menu-text">Parade</span>
+                <span class="menu-text">Soldier</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
@@ -190,7 +190,7 @@
         <li class="{{ request()->routeIs('prm.parade-courses*', 'prm.assign-course') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-graduation-cap red"></i>
-                <span class="menu-text">Parade Course</span>
+                <span class="menu-text">Soldier Course</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>

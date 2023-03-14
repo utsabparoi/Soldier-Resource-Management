@@ -61,11 +61,11 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     //Store
     Route::resource('store', StoreController::class);
 
-    //Parade
+    //Soldier
     Route::resource('parade', ParadeController::class);
     Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
 
-    // Parade Course Routes
+    // Soldier Course Routes
     Route::resource('parade-courses', ParadeCourseController::class);
     Route::get('assign-course', [ParadeCourseController::class, 'assign_course'])->name('assign-course');
     Route::get('/get-unmatched-course', [ParadeCourseController::class, 'unmatched_course']);

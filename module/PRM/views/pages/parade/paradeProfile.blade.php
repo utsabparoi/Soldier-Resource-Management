@@ -12,7 +12,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Parade</li>
+                    <li class="active">Soldier</li>
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
@@ -36,13 +36,13 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Parade Profile </span>
+                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Soldier Profile </span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
                                                 <!--------------- Slider List---------------->
                                                 <a href="{{ route('prm.parade.index') }}" class="">
-                                                    <i class="fa fa-list"></i> Parade <span class="hide-in-sm">List</span>
+                                                    <i class="fa fa-list"></i> Soldier <span class="hide-in-sm">List</span>
                                                 </a>
                                             </span>
                                             </div>

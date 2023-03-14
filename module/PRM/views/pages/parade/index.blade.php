@@ -9,13 +9,13 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">All Parade</li>
+                    <li class="active">All Soldier</li>
                 </ul><!-- /.breadcrumb -->
 
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
                                     <span class="input-icon">
-                                        <input type="text" placeholder="Search Parade ..." class="nav-search-input"
+                                        <input type="text" placeholder="Search Soldier ..." class="nav-search-input"
                                                id="searchParade" style="width: 200px !important;" autocomplete="off"/>
                                              <i class="ace-icon fa fa-search nav-search-icon"></i>
                                         </span>
@@ -33,7 +33,7 @@
 
                     <!-- header -->
                     <div class="widget-header" style="background: white !important;">
-                        <h4 class="widget-title">Parade List <span class="badge"
+                        <h4 class="widget-title">Soldier List <span class="badge"
                                                                    style="margin-bottom: 5px; background-color: #2595dc !important; color: #ffffff !important;">Total: {{ $all_parade->count() }} </span>
                         </h4>
 
@@ -42,7 +42,7 @@
                             <!--------------- CREATE---------------->
                             <a href="{{ route('prm.parade.create') }}" class="text-center"
                                style="width: 110px; background-color: #2595dc !important; color: #ffffff !important;">
-                                <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Parade</span>
+                                <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Soldier</span>
                             </a>
                         </span>
                     </div>
@@ -98,7 +98,7 @@
                                                     <div align="left" class="form-group">
                                                         <div>
                                                             <select class="col-xs-10 col-sm-10 multiselect" id="parade">
-                                                                <option value="">-Select Parade-</option>
+                                                                <option value="">-Select Soldier-</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -297,7 +297,7 @@
                 var serialNumber = 1;
                 $('#paradeTable').empty();
                 $('#paginateID').empty();
-                document.getElementById('searchResulInfo').innerHTML = responseData.length + " Parade Found!";
+                document.getElementById('searchResulInfo').innerHTML = responseData.length + " Soldier Found!";
                 for (let i = 0; i < responseData.length; i++) {
                     $('#paradeTable').append('<tr>\n' +
                         '                                                    <td class="hide-in-sm text-center" style="display:table-cell; vertical-align:middle;"><span class="span">\n' +

@@ -47,18 +47,18 @@
                                                         @method('PUT')
 
                                                         <div class="row">
-                                                            <!-- Parade Name -->
+                                                            <!-- Soldier Name -->
                                                             <div class="col-sm-4">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Parade<sup
+                                                                        <h5><strong>Soldier<sup
                                                                                     class="text-danger">*</sup></strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>
                                                                         <select name="parade_id"
                                                                             class="form-control multiselect">
-                                                                            <option value="">-Select Parade-</option>
+                                                                            <option value="">-Select Soldier-</option>
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}"
                                                                                     @if($parade->id == $leave_application->parade->id) selected @endif >{{ $parade->name }}

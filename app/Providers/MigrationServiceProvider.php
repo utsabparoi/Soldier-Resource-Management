@@ -35,7 +35,7 @@ class MigrationServiceProvider extends ServiceProvider
 
         /*
          |--------------------------------------------------------------------------
-         | Parade/Person Resource Management(PRM)
+         | Soldier/Person Resource Management(PRM)
          |--------------------------------------------------------------------------
         */
         $this->loadMigrationsFrom([

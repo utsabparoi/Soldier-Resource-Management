@@ -102,7 +102,7 @@ class RouteServiceProvider extends ServiceProvider
 
             /*
             |--------------------------------------------------------------------------
-            | Parade/Person Resource Management(PRM)
+            | Soldier/Person Resource Management(PRM)
             |--------------------------------------------------------------------------
             */
             Route::namespace($this->prm)->group(base_path('/module/PRM/routes/web.php'));

@@ -12,7 +12,7 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Parade Migration</li>
+                    <li class="active">Soldier Migration</li>
                 </ul><!-- /.breadcrumb -->
             </div>
             {{-- main content start from here --}}
@@ -26,7 +26,7 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Migrate Parade</span>
+                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Migrate Soldier</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
@@ -47,18 +47,18 @@
 
                                                         <div class="row">
 
-                                                            <!-- Parade Name -->
+                                                            <!-- Soldier Name -->
                                                             <div class="col-sm-6">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Parade<sup
+                                                                        <h5><strong>Soldier<sup
                                                                                     class="text-danger">*</sup></strong>
                                                                         </h5>
                                                                     </label>
                                                                     <div>
                                                                         <select align="left" name="parade_id"
                                                                             class="form-control multiselect" onchange="loadCurrentCamp(this)">
-                                                                            <option value="">-Select a Parade-</option>
+                                                                            <option value="">-Select a Soldier-</option>
                                                                             @foreach ($parades as $parade)
                                                                                 <option value="{{ $parade->id }}"
                                                                                     @if($parade->id == $parade_migration->parade_id) selected @endif>{{ $parade->name }}
