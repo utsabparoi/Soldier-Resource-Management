@@ -97,7 +97,7 @@
                                                         <!---------------  EDIT---------------->
                                                         <div class="btn-group btn-corner  action-span ">
 
-                                                            <a href="{{ route('prm.paradeProfile', $annual_report->id) }}"
+                                                            <a href="{{ route('prm.paradeProfile', $annual_report->parade_id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
                                                                style="background-color: #00d8ff !important; border: 1px solid #00d8ff !important;"
                                                                title="Full Biodata">

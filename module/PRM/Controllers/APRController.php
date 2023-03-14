@@ -138,7 +138,7 @@ class APRController extends Controller
     public function edit($id)
     {
         try {
-            $data['soldier'] = ParadeModel::all();
+            $data['report'] = APRModel::find($id);
             return view('pages.annual-progress-report.edit', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
@@ -164,7 +164,8 @@ class APRController extends Controller
     */
     public function update($id, Request $request)
     {
-        # code...
+        $this->storeOrUpdate($request, $id);
+        return redirect()->route('prm.apr.index')->with('success', 'Soldier APR Update Successfully');
     }
 
 
@@ -204,7 +205,7 @@ class APRController extends Controller
             ],
                 [
                     'parade_id'         => $request->paradeID,
-                    'annual_report'    => $request->annualReport,
+                    'annual_report'     => $request->annualReport,
                     'status'            => 1,
                     'created_by'        => session('AdminId'),
                     'updated_by'        => session('AdminId'),

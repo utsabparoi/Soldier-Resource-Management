@@ -52,9 +52,9 @@
 
                                             <div class="widget-body">
                                                 <div class="widget-main">
-                                                    <form action="{{ route('prm.apr.store') }}" id="Form"
-                                                          method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('prm.apr.update',$report->id) }}" id="Form" method="post" enctype="multipart/form-data">
                                                         @csrf
+                                                        @method('PUT')
                                                         <div class="row">
                                                             <!-- Parade Name -->
                                                             <div class="col-sm-4">
@@ -65,14 +65,8 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <select name="paradeID"
-                                                                                class="form-control multiselect" id="soldiers">
-                                                                            <option value="">-No Soldier Select-</option>
-
-                                                                            @foreach ($soldier as $soldiers)
-                                                                                <option value="{{ $soldiers->id }}">{{ $soldiers->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
+                                                                        <input type="text" name="" value="{{ $report->parade->name }}"  id="" readonly>
+                                                                        <input type="text" name="paradeID" value="{{ $report->parade_id }}"  id="soldiers" hidden>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -103,7 +97,7 @@
                                                                     </label>
                                                                     <div>
                                                                         <textarea name="annualReport" id="annualReport" placeholder="Please write the annual report for this soldier"
-                                                                                  rows="5" class="col-xs-10 col-sm-12"></textarea>
+                                                                                  rows="5" class="col-xs-10 col-sm-12">{{ $report->annual_report }}</textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -118,7 +112,7 @@
                                                                         <button type="submit"
                                                                                 class="btn btn-primary btn-sm btn-block"
                                                                                 style="max-width: 150px">
-                                                                            <i class="fa fa-save"></i> Create
+                                                                            <i class="fa fa-save"></i> Update
                                                                         </button>
                                                                     </div>
                                                                 </div>
