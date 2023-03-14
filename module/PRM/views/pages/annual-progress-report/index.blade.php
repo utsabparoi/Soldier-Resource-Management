@@ -97,14 +97,14 @@
                                                         <!---------------  EDIT---------------->
                                                         <div class="btn-group btn-corner  action-span ">
 
-                                                            <a href="{{ route('prm.paradeProfile', $annual_report->id) }}"
+                                                            <a href="{{ route('prm.paradeProfile', $annual_report->parade_id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
                                                                style="background-color: #00d8ff !important; border: 1px solid #00d8ff !important;"
                                                                title="Full Biodata">
                                                                 <i class="fa fa-user"></i>
                                                             </a>
 
-                                                            <a href="{{ route('prm.parade.edit', $annual_report->id) }}"
+                                                            <a href="{{ route('prm.apr.edit', $annual_report->id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
                                                                style="background-color: limegreen !important; border: 1px solid limegreen !important;"
                                                                title="Edit">
@@ -113,7 +113,7 @@
 
 
                                                             <button type="button"
-                                                                    onclick="delete_item(`{{ route('prm.parade.destroy', $annual_report->id) }}`)"
+                                                                    onclick="delete_item(`{{ route('prm.apr.destroy', $annual_report->id) }}`)"
                                                                     class="btn btn-xs bs-tooltip"
                                                                     style="background-color: #ff0084 !important; border: 1px solid #ff0084 !important;"
                                                                     title="Delete">

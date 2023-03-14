@@ -46,7 +46,7 @@ class APRController extends Controller
             return view('pages.annual-progress-report.index', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
-        }$data = [];
+        }
         return view('', $data);
     }
 
@@ -137,7 +137,12 @@ class APRController extends Controller
     */
     public function edit($id)
     {
-        # code...
+        try {
+            $data['report'] = APRModel::find($id);
+            return view('pages.annual-progress-report.edit', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
 
@@ -159,7 +164,8 @@ class APRController extends Controller
     */
     public function update($id, Request $request)
     {
-        # code...
+        $this->storeOrUpdate($request, $id);
+        return redirect()->route('prm.apr.index')->with('success', 'Soldier APR Update Successfully');
     }
 
 
@@ -180,7 +186,13 @@ class APRController extends Controller
     */
     public function destroy($id)
     {
-        # code...
+        try {
+            $store = APRModel::find($id);
+            $store->delete();
+            return redirect()->back()->with('success', 'APR Deleted Success');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
     }
 
 
@@ -193,7 +205,7 @@ class APRController extends Controller
             ],
                 [
                     'parade_id'         => $request->paradeID,
-                    'annual_report'    => $request->annualReport,
+                    'annual_report'     => $request->annualReport,
                     'status'            => 1,
                     'created_by'        => session('AdminId'),
                     'updated_by'        => session('AdminId'),
