@@ -67,9 +67,9 @@
                                                                     id="paradeCamp"
                                                                     onchange="getCampParadeInformation()">
                                                                 <option value="">-Select Camp-</option>
-                                                                @foreach($camp_name as $camp_names)
+                                                                @foreach($camps as $camp)
                                                                     <option
-                                                                        value="{{ $camp_names->id }}">{{ $camp_names->name }}</option>
+                                                                        value="{{ $camp->id }}">{{ $camp->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -129,7 +129,7 @@
 
                                     <span id="searchResulInfo" style="color: #00BE67;"></span>
 
-                                    <div class="table-responsive">
+                                    <div class="table">
                                         <form action="{{ route('prm.bulk-import') }}" id="Form"
                                             method="post" enctype="multipart/form-data">
                                             @csrf
@@ -146,7 +146,7 @@
 
                                                 <tbody id="paradeTable">
 
-                                                @forelse($parade as $parades)
+                                                @forelse($parades as $parade)
                                                     <tr>
                                                         <td class="hide-in-sm text-center"
                                                             style="display:table-cell; vertical-align:middle;"><span
@@ -154,21 +154,21 @@
                                                                 {{ $loop->iteration }}
                                                             </span></td>
                                                         <td style="display:table-cell; vertical-align:middle;" class="text-center">
-                                                            <input type="checkbox" id="" name="bulk_id[]" value="{{ $parades->id }}">
+                                                            <input type="checkbox" id="" name="bulk_id[]" value="{{ $parade->id }}">
                                                         </td>
                                                         <td style="display:table-cell; vertical-align:middle;"><span
                                                                 class="span">
                                                                 <img
-                                                                    src="@if($parades->image) {{ asset($parades->image) }} @else {{ asset('backend/images/person.png') }} @endif"
+                                                                    src="@if($parade->image) {{ asset($parade->image) }} @else {{ asset('backend/images/person.png') }} @endif"
                                                                     width="50px" height="50px"
                                                                     style="float: left; margin-right: 3px; border: 1px solid rgba(0,193,255,0.42); border-radius: 100%">
                                                                 <ul style="list-style: none; margin-top: 7px;">
-                                                                    <li style="font-weight: bold;">{{ $parades->name }}</li>
-                                                                    <li style="font-weight: bold;">{{ $parades->next_rank }}</li>
+                                                                    <li style="font-weight: bold;">{{ $parade->name }}</li>
+                                                                    <li style="font-weight: bold;">{{ $parade->next_rank }}</li>
                                                                 </ul>
                                                             </span></td>
                                                         <td style="display:table-cell; vertical-align:middle;"><span
-                                                                class="span">{{ $parades->camp->name}}</span>
+                                                                class="span">{{ $parade->camp->name}}</span>
                                                         </td>
 
                                                     </tr>
@@ -182,51 +182,74 @@
                                                 @endforelse
                                                 </tbody>
                                             </table>
-                                            <div class="form-group">
-                                                <!-- Add Page -->
-                                                <h5 class="widget-title">
-                                                    <div class="row"
-                                                        style="margin-top: 10px;padding:5px">
-                                                        <div class="col-md-12 text-center pr-2">
-                                                            <button type="submit"
-                                                                class="btn btn-primary btn-sm btn-block"
-                                                                style="max-width: 150px">
-                                                                <i class="fa fa-save"></i> Migrate
-                                                            </button>
+
+                                            <div class="row">
+                                                <!-- Course -->
+                                                <div class="col-sm-4">
+                                                    <div align="left" class="form-group">
+                                                        <label>
+                                                            <h5><strong>Migrate to <sup
+                                                                        class="text-danger">*</sup></strong>
+                                                            </h5>
+                                                        </label>
+                                                        <div>
+                                                            <select name="camp_id"
+                                                                class="form-control multiselect">
+                                                                <option value="">-Select a Camp(Location)-</option>
+                                                                @foreach ($camps as $camp)
+                                                                    <option value="{{ $camp->id }}">{{ $camp->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
-                                                    <div class="space-10"></div>
-                                                </h5>
+                                                </div>
+
+                                                <div class="col-sm-3">
+                                                    <div align="left" class="form-group">
+                                                        <label>
+                                                            <h5>
+                                                                <strong>Date of Migration</strong>
+                                                            </h5>
+                                                        </label>
+                                                        <div>
+                                                            <input class="form-control box-resize" type="date" name="migration_date" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-3">
+                                                    <!-- Add Page -->
+                                                    <h5 class="widget-title">
+                                                        <div class="form-group"
+                                                            style="margin-top: 30px;padding:5px">
+                                                            <div align="right" class="col-md-12 pr-2">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary btn-sm btn-block"
+                                                                    style="max-width: 150px">
+                                                                    <i class="fa fa-save"></i> Migrate
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="space-10"></div>
+                                                    </h5>
+                                                </div>
+
                                             </div>
+                                            <br>
+
                                         </form>
-                                        <span id="paginateID">
-                                        @include('partials._paginate',['data'=> $parade])
-                                        </span>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
                 </div>
             </div>
             {{-- main content end  --}}
         </div>
     </div>
-
-    <script>
-        // $(document).ready(function () {
-        //     $("#searchParade").on("keyup", function () {
-        //         var value = $(this).val().toLowerCase();
-        //         $("#paradeTable tr").filter(function () {
-        //             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        //         });
-        //     });
-        // });
-    </script>
-
-
 
     <script>
         function getCampParadeInformation() {

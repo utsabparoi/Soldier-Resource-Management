@@ -23,8 +23,10 @@
                 </div>
             </div>
             {{-- main content start from here --}}
-            <div class="page-content">
-
+            <div class="page-content" style="position: relative">
+                <span class="background-logo" style="position: absolute;">
+                    {{-- <img src="{{ asset('logo.png') }}" alt=""> --}}
+                </span>
                 <!-- DYNAIC CONTENT FROM VIEWS -->
 
 
@@ -57,7 +59,7 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="widget-body" style="border: 1px solid #e7e7e7">
-                                        <div class="widget-main">
+                                        <div class="widget-main" style="margin-bottom: -35px !important;">
                                             <div class="row">
                                                 <!-- Company Name -->
                                                 <div class="col-sm-3">
@@ -104,10 +106,10 @@
                                                     </div>
                                                 </div>
                                                 <!-- search and refresh button Name -->
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-3" style="display:flex;justify-content:space-evenly; border-color:#AAAAAA;height:28px;border-radius:4px !important;">
                                                     <button class="btn btn-primary" type="button"
                                                             id="uploadPercent" onclick="paradeSearchResult()"
-                                                            style="background-color: #431cff !important; border: none;"
+                                                            style="background-color: #431cff !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px"
                                                             \>
                                                         <i class="ace-icon fa fa-search bigger-110"></i>
                                                         Search
@@ -115,7 +117,7 @@
                                                     <button class="btn btn-grey" type="button"
                                                             id="uploadPercent"
                                                             onclick="refreshPage()"
-                                                            style="background-color: #828282 !important; border: none;"
+                                                            style="background-color: #828282 !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px"
                                                             \>
                                                         <i class="ace-icon fa fa-refresh bigger-110"></i>
                                                         Refresh
@@ -129,23 +131,23 @@
 
                                     <span id="searchResulInfo" style="color: #00BE67;"></span>
 
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" >
                                         <table id="dynamic-table"
-                                               class="table table-striped table-bordered table-hover new-table">
-                                            <thead>
-                                            <tr>
-                                                <th width="5%" class="hide-in-sm text-center">Sl</th>
-                                                <th width="30%">Name</th>
-                                                <th width="20%">Joining Date</th>
-                                                <th width="30%">Camp</th>
-                                                <th width="15%" class="text-center" style="width: 120px">Action</th>
-                                            </tr>
+                                               class="table table-bordered table-hover new-table">
+                                            <thead style="font-family: Merienda" style="background:rgb(57, 6, 152) !important;">
+                                                <tr style="background-color:rgba(0, 0, 0, 0.1);color:black !important">
+                                                    <th width="5%" class="hide-in-sm text-center">Sl</th>
+                                                    <th width="30%">Name</th>
+                                                    <th width="20%">Joining Date</th>
+                                                    <th width="30%">Camp</th>
+                                                    <th width="15%" class="text-center" style="width: 120px">Action</th>
+                                                </tr>
                                             </thead>
 
                                             <tbody id="paradeTable">
 
                                             @forelse($parade as $parades)
-                                                <tr>
+                                                <tr  style="background-color:rgba(0, 0, 0, 0.1);color:#000000 !important">
                                                     <td class="hide-in-sm text-center"
                                                         style="display:table-cell; vertical-align:middle;"><span
                                                             class="span">

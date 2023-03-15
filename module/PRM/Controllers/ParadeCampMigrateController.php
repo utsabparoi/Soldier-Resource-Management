@@ -186,8 +186,8 @@ class ParadeCampMigrateController extends Controller
     public function bulkCampMigrate()
     {
         try {
-            $data['parade'] = ParadeModel::with('camp')->paginate(30);
-            $data['camp_name'] = Camp::all();
+            $data['parades'] = ParadeModel::with('camp')->paginate(30);
+            $data['camps'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
             $data['table'] = ParadeModel::getTableName();
             return view('pages.parade-migrate.bulkCampMigrate', $data);
@@ -205,8 +205,8 @@ class ParadeCampMigrateController extends Controller
                 'id'           =>$id,
             ],[
                 'parade_id'          =>$request->bulk_id[$key],
-                'camp_id'            =>2,
-                'migration_date'     =>"2023-03-17",
+                'camp_id'            =>$request->camp_id,
+                'migration_date'     =>$request->migration_date,
                 'status'             =>$request->status ? 1: 0,
             ]);
 
@@ -214,7 +214,7 @@ class ParadeCampMigrateController extends Controller
                 'id'           =>$id,
             ],[
                 'parade_id'          =>$request->bulk_id[$key],
-                'camp_id'            =>2,
+                'camp_id'            =>$request->camp_id,
                 'status'             =>$request->status ? 1: 0,
             ]);
         }

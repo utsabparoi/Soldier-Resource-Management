@@ -55,7 +55,17 @@
 
     {{-- custom-css --}}
     <link rel="stylesheet" href="{{ asset('backend/custom_css/custom.css') }}">
+    <style>
+        @font-face {
+            font-family: Merienda;
+            src: url("{{ asset('/backend/fonts/Merienda/Merienda-VariableFont_wght.ttf') }}");
+        }
 
+        @font-face{
+            font-family: MariendaBold;
+            src: url("{{ asset('/backend/fonts/Merienda/static/Merienda-SemiBold.ttf') }}");
+        }
+    </style>
     <!-- inline styles related to this page -->
 
     <!-- ace settings handler -->
@@ -168,12 +178,11 @@
     </script> --}}
 
     {{-- Datepicker --}}
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> --}}
     <script src="{{ asset('/backend/js/jquery-ui.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#datepicker").datepicker({
-                dateFormat: 'd M, yy'
+            $(".date-picker").datepicker({
+                dateFormat: 'Y-m-d'
             });
         });
     </script>
@@ -186,11 +195,6 @@
             $('.multiselect').select2();
         });
     </script>
-
-    <script src="{{ asset('frontend/js/lord-icon-2.1.0.js') }}"></script>
-    <script src="{{ asset('frontend/js/lottie-player.js') }}"></script>
-
-
 
     <!-- inline scripts related to this page -->
     <script type="text/javascript">

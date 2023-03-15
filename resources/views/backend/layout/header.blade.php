@@ -1,4 +1,4 @@
-<div id="navbar" class="navbar navbar-default          ace-save-state">
+<div id="navbar" class="navbar navbar-default          ace-save-state"  style="background:rgb(57, 6, 152) !important;">
     <div class="navbar-container ace-save-state" id="navbar-container">
         <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
             <span class="sr-only">Toggle sidebar</span>
@@ -10,10 +10,11 @@
             <span class="icon-bar"></span>
         </button>
 
-        <div class="navbar-header pull-left">
-            <a href="/" class="navbar-brand">
+        <div class="navbar-header">
+            <img class="pull-left" src="{{ asset('logo.png') }}" alt="" style="width: 35px;height:100%;margin-top:4px">
+            <a href="/" class="navbar-brand" style="font-family: MariendaBold">
                 <small>
-                    <i class="fa fa-user"></i>
+                    {{-- <i class="fa fa-user"></i> --}}
                     PERFECT TEN
                 </small>
             </a>
@@ -277,11 +278,11 @@
 {{--                </li>--}}
 
                 <li class="light-blue dropdown-modal">
-                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <i class="ace-icon fa fa-user"></i>
+                    <a data-toggle="dropdown" href="#" class="dropdown-toggle" style="background-color: rgb(50, 8, 129) !important;">
+                        <i class="ace-icon fa fa-user blue"></i>
                         <span class="user-info">
-                                    <small>Welcome &nbsp; <i class="ace-icon fa fa-caret-down"></i></small>
-                                    {{ session('AdminLoginSession') }}
+                                    <small style="font-family:Merienda">Welcome &nbsp; <i class="ace-icon fa fa-caret-down"></i></small>
+                                    <span>{{ session('AdminLoginSession') }}</span>
                                 </span>
                     </a>
 

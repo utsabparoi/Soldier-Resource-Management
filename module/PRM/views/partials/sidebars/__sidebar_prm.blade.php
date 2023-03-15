@@ -1,5 +1,5 @@
 {{-- biodata module --}}
-<li class="{{ request()->routeIs('prm*') ? 'open active' : '' }}">
+<li class="{{ request()->url('/') ? 'open active' : '' }}">
     <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-user-secret red"></i>
         <span class="menu-text">
@@ -49,14 +49,14 @@
                 <li class="{{ request()->routeIs('prm.leave-applications.create') ? 'active' : '' }}">
                     <a href="{{ route('prm.leave-applications.create') }}">
                         <i class="fa fa-paper-plane blue"></i>
-                        Apply
+                        Application
                     </a>
                 </li>
 
                 <li class="{{ request()->routeIs('prm.leave-applications.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.leave-applications.index') }}">
                         <i class="fa fa-tasks blue"></i>
-                        Show List
+                        List
                     </a>
                 </li>
             </ul>
@@ -77,7 +77,7 @@
                 <li class="{{ request()->routeIs('prm.parade-camp-migrate') ? 'active' : '' }}">
                     <a href="{{ route('prm.parade-camp-migrate') }}">
                         <i class="fa fa-exchange blue"></i>
-                        Manual Camp-Migration
+                        Soldier Camp-Migration
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -116,7 +116,7 @@
                 <li class="{{ request()->routeIs('prm.appointment-holder.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.appointment-holder.index') }}">
                         <i class=" fa fa-list red"></i>
-                        Show List
+                        List
                     </a>
 
                     <b class="arrow"></b>
@@ -147,7 +147,7 @@
                 <li class="{{ request()->routeIs('prm.parade.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.parade.index') }}">
                         <i class=" fa fa-list red"></i>
-                        Show List
+                        List
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -177,7 +177,7 @@
                 <li class="{{ request()->routeIs('prm.training.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.training.index') }}">
                         <i class=" fa fa-list red"></i>
-                        Show List
+                        List
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -208,7 +208,7 @@
                 <li class="{{ request()->routeIs('prm.parade-courses.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.parade-courses.index') }}">
                         <i class=" fa fa-list red"></i>
-                        Course List
+                        List
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -265,7 +265,7 @@
                         <li class="{{ request()->routeIs('prm.leave-category.index') ? 'active' : '' }}">
                             <a href="{{ route('prm.leave-category.index') }}">
                                 <i class=" fa fa-list blue"></i>
-                                Show List
+                                List
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -291,7 +291,7 @@
                         <li class="{{ request()->routeIs('prm.camp.index') ? 'active' : '' }}">
                             <a href="{{ route('prm.camp.index') }}">
                                 <i class=" fa fa-list red"></i>
-                                Show List
+                                List
                             </a>
 
                             <b class="arrow"></b>
@@ -320,7 +320,7 @@
                         <li class="{{ request()->routeIs('prm.training-category.index') ? 'active' : '' }}">
                             <a href="{{ route('prm.training-category.index') }}">
                                 <i class=" fa fa-list red"></i>
-                                Show List
+                                List
                             </a>
                             <b class="arrow"></b>
                         </li>
@@ -347,7 +347,7 @@
                         <li class="{{ request()->routeIs('prm.course.index') ? 'active' : '' }}">
                             <a href="{{ route('prm.course.index') }}">
                                 <i class=" fa fa-list red"></i>
-                                Show List
+                                List
                             </a>
                             <b class="arrow"></b>
                         </li>

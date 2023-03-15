@@ -1,9 +1,35 @@
 @extends('backend.layout.app')
 @section('title', 'Biodata')
 @section('content')
-<div class="main-content">
-    <div class="main-content-inner" style="padding:320px 0;text-align:center">
-        <h2 style="display: block;margin-left:auto;margin-right:auto">Welcome to Dashboard</h2>
+<style>
+    .square {
+    background-image: url("logo.png");
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    margin-top:2%;
+    margin-left:38%;
+    width: 500px;
+    height: 500px;
+    /* transform: rotateY(45deg);
+    animation: rotateAnimation 2.5s linear infinite;
+    }
+
+    @keyframes rotateAnimation {
+    from {
+        transform: rotateY(45deg);
+    }
+    to {
+        transform: rotateY(225deg);
+    } */
+}
+</style>
+
+<div class="main-content" >
+    <div class="main-content-inner" style="margin-top:-180px;text-align:center">
+        <h1 style="display: block;margin-left:13%;margin-right:auto;font-family:MariendaBold;font-size:35px">Welcome to Dashboard</h1>
+    </div>
+    <div class="square">
+
     </div>
 </div>
 @endsection

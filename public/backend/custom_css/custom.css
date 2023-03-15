@@ -14,3 +14,24 @@
 .widget-body .widget-main .box-resize{
     border-color:#AAAAAA;height:28px;border-radius:4px !important;
 }
+
+.background-logo {
+    /* background-image: url("logo.png");
+    background-repeat: no-repeat; */
+    opacity: 0.05;
+    margin-top:15%;
+    margin-left:28%;
+    width: 100%;
+    height: 0;
+    /* transform: rotateY(45deg);
+    animation: rotateAnimation 2.5s linear infinite;
+    }
+
+    @keyframes rotateAnimation {
+    from {
+        transform: rotateY(45deg);
+    }
+    to {
+        transform: rotateY(225deg);
+    } */
+}

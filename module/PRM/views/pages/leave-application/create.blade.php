@@ -101,19 +101,17 @@
                                                             <div class="col-sm-4">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Duration<sup class="text-danger">*</sup>
-                                                                                (
-                                                                                From - To )</strong>
+                                                                        <h5><strong>Duration<sup class="text-danger">*</sup></strong>
                                                                         </h5>
                                                                     </label>
-                                                                    <div style="display: flex;">
-                                                                        <input type="date" name="start_date"
-                                                                            id="comanyName" placeholder="From"
-                                                                            class="form-control box-resize">
+                                                                    <div class="input-group">
+                                                                        <input type="text" name="start_date"
+                                                                            id="start_date" placeholder="&#x09;&#x09;From"
+                                                                            class="form-control date-picker box-resize" >
                                                                         <span
-                                                                            style="font-size: 20px; background: #e5e5e5; border-radius:4px">&#x21C6;</span>
-                                                                        <input type="date" name="end_date"
-                                                                            id="comanyName" class="form-control box-resize">
+                                                                            class="input-group-addon box-resize">&#x21C6;</span>
+                                                                        <input type="text" name="end_date"
+                                                                            id="end_date" placeholder="&#x09;&#x09;&#160;To" class="form-control date-picker box-resize">
                                                                     </div>
                                                                     @if ($errors->has('start_date','end_date'))
                                                                         <span class="text-danger">The start date must be earlier than the end one</span>
