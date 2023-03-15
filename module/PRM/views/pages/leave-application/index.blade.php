@@ -16,7 +16,7 @@
                     <form class="form-search">
                         <span class="input-icon">
                             <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input"
-                                   autocomplete="off" />
+                                autocomplete="off" />
                             <i class="ace-icon fa fa-search nav-search-icon"></i>
                         </span>
                     </form>
@@ -56,102 +56,112 @@
 
                                     <div class="table-responsive" style="border: 1px #cdd9e8 solid;">
                                         <table id="dynamic-table"
-                                               class="table table-striped table-bordered table-hover new-table">
+                                            class="table table-striped table-bordered table-hover new-table">
                                             <thead>
-                                            <tr>
-                                                <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
-                                                <th width="20%">Soldier Name</th>
-                                                <th width="20%">Leave Type</th>
-                                                <th width="20%">Emergency Contact</th>
-                                                <th width="10%" class="text-center">Attachment</th>
-                                                <th class="text-center" width="10%">Status</th>
-                                                <th width="5%" class="text-center" style="width: 120px">Action</th>
-                                            </tr>
+                                                <tr class="thead-redesign">
+                                                    <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
+                                                    <th width="20%">Soldier Name</th>
+                                                    <th width="20%">Leave Type</th>
+                                                    <th width="20%">Emergency Contact</th>
+                                                    <th width="10%" class="text-center">Attachment</th>
+                                                    <th class="text-center" width="10%">Status</th>
+                                                    <th width="5%" class="text-center" style="width: 120px">Action</th>
+                                                </tr>
                                             </thead>
 
                                             <tbody>
-                                            @php $serialNo = 1; @endphp
-                                            @forelse($leave_applications as $application)
-                                                <tr>
-                                                    <td class="text-center" class="hide-in-sm"><span class="span">@php echo $serialNo; @endphp</span></td>
-                                                    <td><span class="span">{{$application->parade->name}}</span></td>
-                                                    <td><span class="span">{{$application->leave_category->name}}</span></td>
-                                                    <td><span class="span">{{$application->emergency_contact}}</span></td>
-                                                    <td class="text-center">
-                                                        <button
-                                                            style="width: 70px; height: 25px; background-color: #00BE67; color: white; border: none; border-radius: 5px;"
-                                                            id="storeId"
-                                                            onmouseover="this.style.backgroundColor='#009e53'"
-                                                            onmouseout="this.style.backgroundColor='#00BE67'"
-                                                            data-id="{{ $application->id }}"
-                                                            data-attachment="{{ $application->attachment }}"
-                                                            data-name="{{$application->parade->name}}"
-                                                            onclick="viewAttachment(this)">View
-                                                        </button>
-                                                        <!-- The Modal -->
-                                                        <div id="myModal" class="modal">
-                                                            <!-- Modal content -->
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <span class="close">&times;</span>
-                                                                    <span class="dark"><strong><u>Soldier Name</u></strong></span>
-                                                                    <div id="paradeName">
-                                                                        Attachment
+                                                @php $serialNo = 1; @endphp
+                                                @forelse($leave_applications as $application)
+                                                    <tr>
+                                                        <td class="text-center" class="hide-in-sm"><span
+                                                                class="span">@php echo $serialNo; @endphp</span></td>
+                                                        <td><span class="span">{{ $application->parade->name }}</span>
+                                                        </td>
+                                                        <td><span
+                                                                class="span">{{ $application->leave_category->name }}</span>
+                                                        </td>
+                                                        <td><span
+                                                                class="span">{{ $application->emergency_contact }}</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button
+                                                                style="width: 70px; height: 25px; background-color: #00BE67; color: white; border: none; border-radius: 5px;"
+                                                                id="storeId"
+                                                                onmouseover="this.style.backgroundColor='#009e53'"
+                                                                onmouseout="this.style.backgroundColor='#00BE67'"
+                                                                data-id="{{ $application->id }}"
+                                                                data-attachment="{{ $application->attachment }}"
+                                                                data-name="{{ $application->parade->name }}"
+                                                                onclick="viewAttachment(this)">View
+                                                            </button>
+                                                            <!-- The Modal -->
+                                                            <div id="myModal" class="modal">
+                                                                <!-- Modal content -->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <span class="close">&times;</span>
+                                                                        <span class="dark"><strong><u>Soldier
+                                                                                    Name</u></strong></span>
+                                                                        <div id="paradeName">
+                                                                            Attachment
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <br>
-                                                                <div class="modal-body">
-                                                                    <div class="row">
-                                                                        <iframe id="paradeAttachment" width="100%" height="500"></iframe>
+                                                                    <br>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <iframe id="paradeAttachment" width="100%"
+                                                                                height="500"></iframe>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <!-- Call button work end-->
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <!--------------- STATUS EDIT---------------->
-                                                        <div>
-                                                            <label>
-                                                                <span class="span">
-                                                            <x-status status="{{ $application->status }}" id="{{ $application->id }}" table="{{ $table }}" />
-                                                        </span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td class="text-center">
+                                                            <!-- Call button work end-->
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <!--------------- STATUS EDIT---------------->
+                                                            <div>
+                                                                <label>
+                                                                    <span class="span">
+                                                                        <x-status status="{{ $application->status }}"
+                                                                            id="{{ $application->id }}"
+                                                                            table="{{ $table }}" />
+                                                                    </span>
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
 
-                                                        <!---------------  EDIT---------------->
-                                                        <div class="btn-group btn-corner  action-span ">
+                                                            <!---------------  EDIT---------------->
+                                                            <div class="btn-group btn-corner  action-span ">
 
-                                                            <a href="{{ route('prm.leave-applications.edit', $application->id) }}"
-                                                               role="button" class="btn btn-xs btn-success bs-tooltip"
-                                                               title="Edit">
-                                                                <i class="fa fa-edit"></i>
-                                                            </a>
+                                                                <a href="{{ route('prm.leave-applications.edit', $application->id) }}"
+                                                                    role="button" class="btn btn-xs btn-success bs-tooltip"
+                                                                    title="Edit">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </a>
 
-                                                            <button type="button"
+                                                                <button type="button"
                                                                     onclick="delete_item(`{{ route('prm.leave-applications.destroy', $application->id) }}`)"
                                                                     class="btn btn-xs btn-danger bs-tooltip" title="Delete">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </div>
 
-                                                    </td>
-                                                </tr>
-                                                @php $serialNo++; @endphp
-                                            @empty
-                                                <tr>
-                                                    <td colspan="30" class="text-center text-danger py-3"
-                                                        style="background: #eaf4fa80 !important; font-size: 18px">
-                                                        <strong>No records found!</strong>
-                                                    </td>
-                                                </tr>
-                                            @endforelse
+                                                        </td>
+                                                    </tr>
+                                                    @php $serialNo++; @endphp
+                                                @empty
+                                                    <tr>
+                                                        <td colspan="30" class="text-center text-danger py-3"
+                                                            style="background: #eaf4fa80 !important; font-size: 18px">
+                                                            <strong>No records found!</strong>
+                                                        </td>
+                                                    </tr>
+                                                @endforelse
 
                                             </tbody>
                                         </table>
-                                        @include('partials._paginate',['data'=> $leave_applications])
+                                        @include('partials._paginate', ['data' => $leave_applications])
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +176,6 @@
     </div>
 
     <script>
-
         function viewAttachment(element) {
             // Get the modal
             var modal = document.getElementById("myModal");
@@ -201,7 +210,7 @@
             // Get current hosting url
             var base_url = window.location.origin;
             let parade_attachment = $(element).attr("data-attachment");
-            document.getElementById('paradeAttachment').src= base_url+"/"+parade_attachment;
+            document.getElementById('paradeAttachment').src = base_url + "/" + parade_attachment;
 
             var file_extension = (/[.]/.exec(parade_attachment)) ? /[^.]+$/.exec(parade_attachment) : undefined;
             // alert(file_extension);

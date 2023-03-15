@@ -97,20 +97,21 @@
                                                             <div class="col-sm-4">
                                                                 <div align="left" class="form-group">
                                                                     <label>
-                                                                        <h5><strong>Duration<sup class="text-danger">*</sup>
-                                                                                (
-                                                                                From - To )</strong>
+                                                                        <h5><strong>Duration<sup class="text-danger">*</sup></strong>
                                                                         </h5>
                                                                     </label>
-                                                                    <div style="display: flex;">
-                                                                        <input type="date" name="start_date"
-                                                                            id="comanyName" value="{{ old('start_date', $leave_application->start_date) }}"
-                                                                            class="form-control">
+                                                                    <div class="input-group">
+                                                                        <input type="text" name="start_date"
+                                                                            id="start_date" placeholder="&#x09;&#x09;From" value="{{ old('start_date', $leave_application->start_date) }}"
+                                                                            class="form-control date-picker box-resize" >
                                                                         <span
-                                                                            style="font-size: 20px; background: #e5e5e5; border-top: 1px solid #d0d0d0; border-bottom: 1px solid #d0d0d0;">&#x21C6;</span>
-                                                                        <input type="date" name="end_date"
-                                                                            id="comanyName" value="{{ old('end_date', $leave_application->end_date) }}" class="form-control">
+                                                                            class="input-group-addon box-resize">&#x21C6;</span>
+                                                                        <input type="text" name="end_date"
+                                                                            id="end_date" placeholder="&#x09;&#x09;&#160;To" value="{{ old('end_date', $leave_application->end_date) }}" class="form-control date-picker box-resize">
                                                                     </div>
+                                                                    @if ($errors->has('start_date','end_date'))
+                                                                        <span class="text-danger">The start date must be earlier than the end one</span>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -128,7 +129,7 @@
                                                                         <input type="text" name="emergency_contact"
                                                                             id="comanyName" value="{{ old('name', $leave_application->emergency_contact) }}"
                                                                             placeholder="Emergency Contact Number"
-                                                                            class="form-control">
+                                                                            class="form-control box-resize">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -142,8 +143,8 @@
                                                                     <div>
                                                                         <input type="file" name="attachment"
                                                                             id="comanyName" value="{{ old('attachment', $leave_application->attachment) }}"
-                                                                            class="form-control form-control-sm"
-                                                                            id="formFileLg">
+                                                                            class="form-control box-resize"
+                                                                            id="formFileLg" style="padding:2px">
                                                                     </div>
                                                                     @if ($errors->has('attachment'))
                                                                         <span class="text-danger">{{ $errors->first('attachment') }}</span>

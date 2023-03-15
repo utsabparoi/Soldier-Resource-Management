@@ -148,7 +148,7 @@
                                                                         <input type="file" name="attachment"
                                                                             id="comanyName" value=""
                                                                             class="form-control box-resize"
-                                                                            id="formFileLg">
+                                                                            id="formFileLg" style="padding:2px">
                                                                     </div>
                                                                     @if ($errors->has('attachment'))
                                                                         <span class="text-danger">{{ $errors->first('attachment') }}</span>

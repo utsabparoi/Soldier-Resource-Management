@@ -35,3 +35,23 @@
         transform: rotateY(225deg);
     } */
 }
+
+@font-face {
+    font-family: Merienda;
+    src: url("{{ asset('/backend/fonts/Merienda/Merienda-VariableFont_wght.ttf') }}");
+}
+
+@font-face{
+    font-family: MariendaBold;
+    src: url("{{ asset('/backend/fonts/Merienda/static/Merienda-SemiBold.ttf') }}");
+}
+@font-face{
+    font-family: TiltNeon;
+    src: url("{{ asset('/backend/fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT,YROT.ttf') }}");
+}
+div table thead .thead-redesign{
+    background-color:#1B2B55 !important;
+    color:white;
+    font-family: Merienda;
+}
+
