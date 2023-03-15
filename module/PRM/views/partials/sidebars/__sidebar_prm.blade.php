@@ -65,7 +65,7 @@
 
         {{-- Camp menu item --}}
 
-        <li class="{{ request()->routeIs('prm.parade-camp-migrate','prm.bulk-camp-migrate') ? 'open active' : ''}}">
+        <li class="{{ request()->routeIs('prm.parade-camp-migrate','prm.bulk-camp-migrate', 'prm.parade-migrate*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-exchange red"></i>
                 <span class="menu-text">Soldier Migration</span>
@@ -86,6 +86,15 @@
                     <a href="{{ route('prm.bulk-camp-migrate') }}">
                         <i class="fa fa-exchange blue"></i>
                         Bulk Camp-Migration
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="{{ request()->routeIs('prm.parade-migrate.index') ? 'active' : '' }}">
+                    <a href="{{ route('prm.parade-migrate.index') }}">
+                        <i class="fa fa-exchange blue"></i>
+                        All Migration List
                     </a>
 
                     <b class="arrow"></b>

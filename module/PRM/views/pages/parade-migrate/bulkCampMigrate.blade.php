@@ -138,7 +138,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th width="5%" class="hide-in-sm text-center">Sl</th>
-                                                    <th width="5%" class="text-center">Select</th>
+                                                    <th width="5%" class="text-center"><input type="checkbox" class="select-all"></th>
                                                     <th width="30%">Name</th>
                                                     <th width="30%">Present Camp(Location)</th>
                                                 </tr>
@@ -154,7 +154,7 @@
                                                                 {{ $loop->iteration }}
                                                             </span></td>
                                                         <td style="display:table-cell; vertical-align:middle;" class="text-center">
-                                                            <input type="checkbox" id="" name="bulk_id[]" value="{{ $parade->id }}">
+                                                            <input type="checkbox" id="" class="select-item" name="bulk_id[]" value="{{ $parade->id }}">
                                                         </td>
                                                         <td style="display:table-cell; vertical-align:middle;"><span
                                                                 class="span">
@@ -252,6 +252,20 @@
     </div>
 
     <script>
+
+        $('.select-all').click(function(event) {
+            if(this.checked) {
+                // Iterate each checkbox
+                $(':checkbox').each(function() {
+                    this.checked = true;
+                });
+            } else {
+                $(':checkbox').each(function() {
+                    this.checked = false;
+                });
+            }
+        });
+
         function getCampParadeInformation() {
             //let campID = document.getElementById('paradeCamp').value;
             $('#paradeRank').empty();

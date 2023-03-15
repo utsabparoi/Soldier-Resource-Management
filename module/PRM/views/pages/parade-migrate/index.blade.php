@@ -57,11 +57,11 @@
                                         <table id="dynamic-table"
                                                class="table table-striped table-bordered table-hover new-table">
                                             <thead>
-                                            <tr>
+                                            <tr class="thead-redesign">
                                                 <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
                                                 <th width="40%">Soldier Name</th>
                                                 <th width="30%">Camp Name</th>
-                                                <th width="10%" class="text-center">Migration Date</th>
+                                                <th width="15%" class="text-center">Migration Date</th>
                                                 {{-- <th class="text-center" width="10%">Status</th> --}}
                                                 <th width="5%" class="text-center" style="width: 120px">Action</th>
                                             </tr>
