@@ -215,7 +215,7 @@
                                         <span id="paginateID">
                                             @include('partials._paginate', ['data' => $parade])
                                         </span>
-                                    </div>
+                                </div>
                                 </div>
                             </div>
                             <span>
