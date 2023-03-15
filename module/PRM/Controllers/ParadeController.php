@@ -3,6 +3,7 @@
 namespace Module\PRM\Controllers;
 
 use App\Traits\FileSaver;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Module\PRM\Models\Camp;
 use Illuminate\Http\Request;
 use Module\PRM\Models\Course;
@@ -16,9 +17,13 @@ use Module\PRM\Models\ParadeCampMigration;
 use Module\PRM\Models\ParadeCourseModel;
 use Module\PRM\Models\ParadeTrainingModel;
 use Module\PRM\Models\ParadeCurrentProfileModel;
+use Maatwebsite\Excel\Excel;
+use App\Exports\ParadeExport;
+
 
 class ParadeController extends Controller
 {
+    private $excel;
     private $service;
     use FileSaver;
 
@@ -31,6 +36,7 @@ class ParadeController extends Controller
     {
         $this->middleware('AdminLogin');
     }
+
 
     /*
      |--------------------------------------------------------------------------
@@ -350,5 +356,18 @@ class ParadeController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }
+    }
+
+
+    public function exportExcelCSV(Excel $excel){
+        return $excel->download(new ParadeExport , 'Parades.csv');
+    }
+
+    public function exportPDF()
+    {
+        $parade = ParadeModel::all();
+        $pdf = PDF::loadView('pages.pdf-pattern.parade_pdf', array('parade' =>  $parade))
+            ->setPaper('a4', 'portrait');
+        return $pdf->download('parades.pdf');
     }
 }
