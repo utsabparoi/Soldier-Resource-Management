@@ -16,12 +16,25 @@ class ParadeExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        $parades = ParadeModel::select('name',
-            'present_location', 'join_date_present_unit',
-            'enrolment_date', 'present_rank_date', 'retirement_date',
-            'next_rank', 'permanent_address', 'marital_status',
-            'children_number', 'created_at', 'updated_at', 'name')
+        $parades = ParadeModel::query()
+            ->withCount(['camp as camp' =>fn($q) => $q->select('name')])
             ->get()
+            ->map(function($item){
+                return [
+                    'name'                       => $item->name,
+                    'camp'                       => $item->camp,
+                    'next_rank'                  => $item->next_rank,
+                    'join_date_present_unit'     => $item->join_date_present_unit,
+                    'enrolment_date'             => $item->enrolment_date,
+                    'present_rank_date'          => $item->present_rank_date,
+                    'retirement_date'            => $item->retirement_date,
+                    'permanent_address'          => $item->permanent_address,
+                    'marital_status'             => $item->marital_status,
+                    'children_number'            => $item->children_number,
+                    'created_at'                 => $item->created_at,
+                    'updated_at'                 => $item->updated_at,
+                ];
+            })
             ->toArray();
         return collect($parades);
     }
@@ -31,11 +44,11 @@ class ParadeExport implements FromCollection, WithHeadings
         return [
             'Name',
             'Camp',
+            'Rank',
             'Joining Date',
             'Enrolment Date',
             'Present Rank Date',
             'Retirement Date',
-            'Rank',
             'Permanent Address',
             'Marital Status',
             'Total Children',

@@ -211,15 +211,15 @@
                                             </tbody>
                                         </table>
                                         <span id="paginateID">
-                                            @include('partials._paginate',['data'=> $parade])
+                                            <div align="center" style=" width: 150px; height: 40px; padding-top: 5px;">
+                                Downloads:
+                            <a href="{{ route('prm.export_parade_csv') }}"><i class="fa fa-file-excel-o" style="font-size: 28px; color: #005cff;"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="{{ route('prm.export_parade_pdf') }}"><i class="fa fa-file-pdf-o" style="font-size: 28px; color: red;"></i></a>
+                            </div> @include('partials._paginate',['data'=> $parade])
                                         </span>
-                                    </div>
+                                </div>
                                 </div>
                             </div>
-                            <span>
-                            <a href="{{ route('prm.export_parade_csv') }}"><i class="fa fa-file-excel-o" style="font-size: 28px; color: #005cff;"></i></a> &nbsp;&nbsp;
-                            <a href="{{ route('prm.export_parade_pdf') }}"><i class="fa fa-file-pdf-o" style="font-size: 28px; color: red;"></i></a>
-                            </span>
                         </div>
                     </div>
 
