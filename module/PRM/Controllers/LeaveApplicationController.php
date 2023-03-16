@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Traits\FileSaver;
 use Module\PRM\Models\LeaveApplication;
 use Module\PRM\Models\LeaveCategory;
+use Module\PRM\Models\ParadeCurrentProfileModel;
 use Module\PRM\Models\ParadeModel;
 use Module\PRM\Models\StoreModel;
 
@@ -154,6 +155,14 @@ class LeaveApplicationController extends Controller
                 'end_date'              =>$request->end_date,
                 'emergency_contact'     =>$request->emergency_contact,
                 'reason'                =>$request->reason,
+                'status'                =>$request->status ? 1: 0,
+            ]);
+
+            $current_profile_data = ParadeCurrentProfileModel::updateOrCreate([
+                'id'           =>$id,
+            ],[
+                'parade_id'             =>$request->parade_id,
+                'leave_application_id'  =>$leave_aplication->id,
                 'status'                =>$request->status ? 1: 0,
             ]);
 

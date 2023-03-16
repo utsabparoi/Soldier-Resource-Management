@@ -95,7 +95,7 @@
                                                             @elseif(isset($historys->parade_state_id))
                                                                 {{ $historys->parade_state_id }}
                                                             @elseif(isset($historys->leave_application_id))
-                                                                {{ $historys->leaveCategory->name }}
+                                                                
                                                             @endif</span>
                                                     </td>
                                                 </tr>
