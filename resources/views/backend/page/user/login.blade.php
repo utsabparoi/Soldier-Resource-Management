@@ -21,16 +21,9 @@
     <!-- ace styles -->
     <link rel="stylesheet" href="{{ asset('backend/css/ace.min.css') }}" class="ace-main-stylesheet"
         id="main-ace-style" />
-
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('backend/css/ace-part2.min.css') }}" class="ace-main-stylesheet" />
-    <![endif]-->
     <link rel="stylesheet" href="{{ asset('backend/css/ace-skins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/css/ace-rtl.min.css') }}" />
-
-    <!--[if lte IE 9]>
-    <link rel="stylesheet" href="{{ asset('backend/css/ace-ie.min.css') }}" />
-    <![endif]-->
+    
     <style>
         /* lottie or lord-icon position center */
         .lotti-icon-center {
@@ -97,13 +90,6 @@
 
     <!-- ace settings handler -->
     <script src="{{ asset('backend/js/ace-extra.min.js') }}"></script>
-
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-    <script src="{{ asset('backend/js/html5shiv.min.js') }}"></script>
-    <script src="{{ asset('backend/js/respond.min.js') }}"></script>
-    <![endif]-->
 </head>
 
 <body class="login-layout">
@@ -113,7 +99,6 @@
                 <div class="col-sm-10 col-sm-offset-1" style="margin-top: 80px">
                     <div class="login-container">
                         <div class="center">
-
                             <h1 style="font-family:MariendaBold">
                                 {{-- <i class="ace-icon fa fa-user green"></i> --}}
                                 <img src="{{ asset('logo.png') }}" alt="" style="width: 40px;height:100%;">
@@ -142,10 +127,6 @@
                                 <div class="widget-body">
                                     <div class="widget-main">
                                         <h4 class="lighter bigger text-center">
-                                            {{-- <lottie-player src="{{ asset('/frontend/lord-icon/96957-lock.json') }}"
-                                        background="transparent" speed="1" class="lotti-icon-center" style="width: 70px; height: 70px;" loop
-                                        autoplay></lottie-player>
-                                        Sign in --}}
                                             <lottie-player
                                                 src="{{ asset('/frontend/lord-icon/25344-army-soldiers.json') }}"
                                                 background="transparent" speed="1" class="lotti-icon-center"
@@ -199,48 +180,8 @@
                                                 <div class="space-4"></div>
                                             </fieldset>
                                         </form>
-                                        {{-- <div>
-                                        <lottie-player src="{{ asset('/frontend/lord-icon/25344-army-soldiers.json') }}"
-                                        background="transparent" speed="1" class="lotti-icon-center" style="width: 220px; height: 200px;" loop
-                                        autoplay></lottie-player>
 
-                                    </div> --}}
-                                        {{-- <div class="social-or-login center">
-                                        <span class="bigger-110">Or Login Using</span>
-                                    </div> --}}
-
-                                        {{-- <div class="space-6"></div> --}}
-
-                                        {{-- <div class="social-login center">
-                                        <a class="btn btn-primary">
-                                            <i class="ace-icon fa fa-facebook"></i>
-                                        </a>
-
-                                        <a class="btn btn-info">
-                                            <i class="ace-icon fa fa-twitter"></i>
-                                        </a>
-
-                                        <a class="btn btn-danger">
-                                            <i class="ace-icon fa fa-google-plus"></i>
-                                        </a>
-                                    </div> --}}
                                     </div><!-- /.widget-main -->
-
-                                    {{-- <div class="toolbar clearfix">
-                                    <div>
-                                        <a href="#" data-target="#forgot-box" class="forgot-password-link">
-                                            <i class="ace-icon fa fa-arrow-left"></i>
-                                            I forgot my password
-                                        </a>
-                                    </div>
-
-                                    <div>
-                                        <a href="#" data-target="#signup-box" class="user-signup-link">
-                                            I want to register
-                                            <i class="ace-icon fa fa-arrow-right"></i>
-                                        </a>
-                                    </div>
-                                </div> --}}
                                 </div><!-- /.widget-body -->
                             </div><!-- /.login-box -->
 
