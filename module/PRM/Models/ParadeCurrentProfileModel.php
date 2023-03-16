@@ -14,4 +14,13 @@ class ParadeCurrentProfileModel extends Model
     public function camp(){
         return $this->belongsTo(Camp::class);
     }
+    public function rank(){
+        return $this->belongsTo(Rank::class);
+    }
+    public function state(){
+        return $this->belongsTo(ParadeStateModel::class);
+    }
+    public function leaveCategory(){
+        return $this->belongsTo(LeaveCategory::class, 'leave_application_id');
+    }
 }
