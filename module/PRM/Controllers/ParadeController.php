@@ -370,4 +370,10 @@ class ParadeController extends Controller
             ->setPaper('a4', 'portrait');
         return $pdf->download('parades.pdf');
     }
+
+    public function paradeHistory($id){
+        $history = ParadeCurrentProfileModel::where('parade_id', '=', $id)->get();
+        $parade = ParadeModel::where('id', '=', $id)->pluck('name');
+        return view('pages.parade.paradeHistory', compact('history', 'parade'));
+    }
 }

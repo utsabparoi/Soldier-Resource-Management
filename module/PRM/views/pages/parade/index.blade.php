@@ -135,7 +135,7 @@
                                         <table id="dynamic-table"
                                                class="table table-bordered table-hover new-table">
                                             <thead style="font-family: Merienda" style="background:rgb(57, 6, 152) !important;">
-                                                <tr style="background-color:rgba(0, 0, 0, 0.1);color:black !important">
+                                                <tr class="thead-redesign">
                                                     <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                     <th width="30%">Name</th>
                                                     <th width="20%">Joining Date</th>
@@ -147,7 +147,7 @@
                                             <tbody id="paradeTable">
 
                                             @forelse($parade as $parades)
-                                                <tr  style="background-color:rgba(0, 0, 0, 0.1);color:#000000 !important">
+                                                <tr>
                                                     <td class="hide-in-sm text-center"
                                                         style="display:table-cell; vertical-align:middle;"><span
                                                             class="span">
@@ -179,8 +179,15 @@
                                                             <a href="{{ route('prm.paradeProfile', $parades->id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
                                                                style="background-color: #00d8ff !important; border: 1px solid #00d8ff !important;"
-                                                               title="Full Biodata">
+                                                               title="Current Profile">
                                                                 <i class="fa fa-user"></i>
+                                                            </a>
+
+                                                            <a href="{{ route('prm.parade_history', $parades->id) }}"
+                                                               role="button" class="btn btn-xs bs-tooltip"
+                                                               style="background-color: #ff6500 !important; border: 1px solid #ff6500 !important;"
+                                                               title="Employment History">
+                                                                <i class="fa fa-history"></i>
                                                             </a>
 
                                                             <a href="{{ route('prm.parade.edit', $parades->id) }}"
@@ -215,8 +222,8 @@
                                         <span id="paginateID">
                                             <div align="center" style=" width: 150px; height: 40px; padding-top: 5px;">
                                 Downloads:
-                            <a href="{{ route('prm.export_parade_csv') }}"><i class="fa fa-file-excel-o" style="font-size: 28px; color: #005cff;"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="{{ route('prm.export_parade_pdf') }}"><i class="fa fa-file-pdf-o" style="font-size: 28px; color: red;"></i></a>
+                            <a href="{{ route('prm.export_parade_csv') }}" title="CSV file download"><i class="fa fa-file-excel-o" style="font-size: 28px; color: #005cff;"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="{{ route('prm.export_parade_pdf') }}" title="PDF file download"><i class="fa fa-file-pdf-o" style="font-size: 28px; color: red;"></i></a>
                             </div> @include('partials._paginate',['data'=> $parade])
                                         </span>
                                 </div>
