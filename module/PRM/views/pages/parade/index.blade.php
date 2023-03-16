@@ -41,10 +41,10 @@
                         </h4>
 
 
-                        <span class="widget-toolbar box-resize">
+                        <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
                             <a href="{{ route('prm.parade.create') }}" class="text-center"
-                                style="background-color: #2595dc !important; color: #ffffff !important; padding: 2px">
+                                style="background-color: #2595dc !important; color: #ffffff !important; padding: 3px">
                                 <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Soldier</span>
                             </a>
                         </span>
@@ -106,7 +106,7 @@
                                                 </div>
                                                 <!-- search and refresh button Name -->
                                                 <div class="col-sm-3"
-                                                    style="display:flex;justify-content:space-evenly; border-color:#AAAAAA;height:28px;border-radius:4px !important;">
+                                                    style="display:flex;justify-content:space-evenly;">
                                                     <button class="btn btn-primary" type="button" id="uploadPercent"
                                                         onclick="paradeSearchResult()"
                                                         style="background-color: #431cff !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px"
@@ -226,7 +226,6 @@
                             </span>
                         </div>
                     </div>
-
 
                 </div>
             </div>

@@ -41,7 +41,7 @@
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
                             <a href="{{ route('prm.parade.create') }}" class="text-center"
-                               style="width: 110px; background-color: #2595dc !important; color: #ffffff !important;">
+                               style="background-color: #2595dc !important; color: #ffffff !important; padding:3px">
                                 <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Soldier</span>
                             </a>
                         </span>
@@ -57,7 +57,7 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="widget-body" style="border: 1px solid #e7e7e7">
-                                        <div class="widget-main">
+                                        <div class="widget-main" style="margin-bottom: -35px !important;">
                                             <div class="row">
                                                 <!-- Company Name -->
                                                 <div class="col-sm-3">
@@ -104,10 +104,10 @@
                                                     </div>
                                                 </div>
                                                 <!-- search and refresh button Name -->
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-3" style="display: flex;justify-content:space-evenly">
                                                     <button class="btn btn-primary" type="button"
                                                             id="uploadPercent" onclick="paradeSearchResult()"
-                                                            style="background-color: #431cff !important; border: none;"
+                                                            style="background-color: #431cff !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px""
                                                             \>
                                                         <i class="ace-icon fa fa-search bigger-110"></i>
                                                         Search
@@ -115,7 +115,7 @@
                                                     <button class="btn btn-grey" type="button"
                                                             id="uploadPercent"
                                                             onclick="refreshPage()"
-                                                            style="background-color: #828282 !important; border: none;"
+                                                            style="background-color: #828282 !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px""
                                                             \>
                                                         <i class="ace-icon fa fa-refresh bigger-110"></i>
                                                         Refresh
@@ -137,8 +137,8 @@
                                                 class="table table-striped table-bordered table-hover new-table">
                                                 <thead>
                                                 <tr>
+                                                    <th width="3%" class="text-center"><input onclick="selectAll(this)" type="checkbox"></th>
                                                     <th width="5%" class="hide-in-sm text-center">Sl</th>
-                                                    <th width="5%" class="text-center"><input type="checkbox" class="select-all"></th>
                                                     <th width="30%">Name</th>
                                                     <th width="30%">Present Camp(Location)</th>
                                                 </tr>
@@ -148,14 +148,14 @@
 
                                                 @forelse($parades as $parade)
                                                     <tr>
+                                                        <td style="display:table-cell; vertical-align:middle;" class="text-center">
+                                                            <input type="checkbox" class="bulk-ids" name="bulk_id[]" value="{{ $parade->id }}">
+                                                        </td>
                                                         <td class="hide-in-sm text-center"
                                                             style="display:table-cell; vertical-align:middle;"><span
                                                                 class="span">
                                                                 {{ $loop->iteration }}
                                                             </span></td>
-                                                        <td style="display:table-cell; vertical-align:middle;" class="text-center">
-                                                            <input type="checkbox" id="" class="select-item" name="bulk_id[]" value="{{ $parade->id }}">
-                                                        </td>
                                                         <td style="display:table-cell; vertical-align:middle;"><span
                                                                 class="span">
                                                                 <img
@@ -212,21 +212,21 @@
                                                             </h5>
                                                         </label>
                                                         <div>
-                                                            <input class="form-control box-resize" type="date" name="migration_date" required>
+                                                            <input class="form-control date-picker box-resize" type="text" name="migration_date" placeholder="Select date when want to migrate" required>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-5" style="display: flex;justify-content:end">
                                                     <!-- Add Page -->
                                                     <h5 class="widget-title">
                                                         <div class="form-group"
-                                                            style="margin-top: 30px;padding:5px">
+                                                            style="margin-top: 21px;">
                                                             <div align="right" class="col-md-12 pr-2">
                                                                 <button type="submit"
-                                                                    class="btn btn-primary btn-sm btn-block"
-                                                                    style="max-width: 150px">
-                                                                    <i class="fa fa-save"></i> Migrate
+                                                                    class="button-submit"
+                                                                    style="max-width: 150px;padding:10px 25px 10px 25px;font-size:18px">
+                                                                    Migrate
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -253,18 +253,21 @@
 
     <script>
 
-        $('.select-all').click(function(event) {
-            if(this.checked) {
-                // Iterate each checkbox
-                $(':checkbox').each(function() {
-                    this.checked = true;
-                });
-            } else {
-                $(':checkbox').each(function() {
-                    this.checked = false;
-                });
-            }
-        });
+        // function selectAll(){
+        //     // alert("Success");
+        //     var ele=document.getElementsByName('bulk_id[]');
+        //     console.log(ele);
+
+        //     for(var i=0; i<ele.length; i++){
+        //         if(ele[i].type=='checkbox')
+        //             ele[i].checked=true;
+        //     }
+        // }
+
+        function selectAll(obj)
+        {
+            $('.bulk-ids').prop('checked', $(obj).is(":checked"));
+        }
 
         function getCampParadeInformation() {
             //let campID = document.getElementById('paradeCamp').value;
@@ -326,10 +329,10 @@
                 document.getElementById('searchResulInfo').innerHTML = responseData.length + " Soldier Found!";
                 for (let i = 0; i < responseData.length; i++) {
                     $('#paradeTable').append('<tr>\n' +
+                        '                                                    <td style="display:table-cell; vertical-align:middle;" class="text-center"><input type="checkbox" class="bulk-ids" name="bulk_id[]" value="' + responseData[i].id + '"></td>\n' +
                         '                                                    <td class="hide-in-sm text-center" style="display:table-cell; vertical-align:middle;"><span class="span">\n' +
                         '                                                            ' + serialNumber + '\n' +
                         '                                                        </span></td>\n' +
-                        '                                                    <td style="display:table-cell; vertical-align:middle;" class="text-center"><input type="checkbox" id="" name="bulk_id[]" value="' + responseData[i].id + '"></td>\n' +
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span class="span">\n' +
                         '                                                            <img src="{{asset('')}}' + responseData[i].image + '" width="50px" height="50px"  style="float: left; margin-right: 3px; border: 1px solid rgba(0,193,255,0.42); border-radius: 100%">\n' +
                         '                                                            <ul style="list-style: none; margin-top: 7px;">\n' +

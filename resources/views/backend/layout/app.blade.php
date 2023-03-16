@@ -182,7 +182,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $(".date-picker").datepicker({
-                dateFormat: 'Y-m-d'
+                dateFormat: 'yy-mm-dd'
             });
         });
     </script>

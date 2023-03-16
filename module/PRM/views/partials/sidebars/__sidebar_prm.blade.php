@@ -1,5 +1,5 @@
 {{-- biodata module --}}
-<li class="{{ request()->url('/') ? 'open active' : '' }}">
+<li class="{{ request()->url('/') ? 'open active' : '' }} custom-item-color" style="font-family:Varela;font-size:14px;">
     <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-user-secret red"></i>
         <span class="menu-text">
@@ -10,7 +10,7 @@
     <b class="arrow"></b>
     <ul class="submenu">
         {{-- Leave Details menu item --}}
-        <li class="{{ request()->routeIs('prm.leave-applications*') ? 'open active' : ''}}">
+        <li class="{{ request()->routeIs('prm.leave-applications*') ? 'open active' : ''}} ">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-minus-circle red"></i>
                 Leave

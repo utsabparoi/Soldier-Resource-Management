@@ -51,9 +51,56 @@
     font-family: TiltNeon;
     src: url("{{ asset('/backend/fonts/Tilt_Neon/TiltNeon-Regular-VariableFont_XROT,YROT.ttf') }}");
 }
+
+@font-face{
+    font-family: Varela;
+    src: url("{{ asset('/backend/fonts/Varela/Varela-Regular.ttf') }}");
+}
+
 div table thead .thead-redesign{
     background-color:#1B2B55 !important;
     color:white;
     font-family: Merienda;
 }
+
+/* custom-desing button */
+@media (min-width: 768px){
+
+}
+.button-submit {
+    font-size: 1.5rem;
+    padding: 0.75rem 2rem;
+}
+.button-submit {
+    appearance: none;
+    background-color: #f2f2f2;
+    border-radius: 40em;
+    border-style: none;
+    box-shadow: #adcfff 0 -12px 6px inset;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -.24px;
+    margin: 0;
+    outline: none;
+    padding: 1rem 1.3rem;
+    quotes: auto;
+    text-align: center;
+    text-decoration: none;
+    transition: all .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-submit:hover {
+    background-color: #FFC229;
+    box-shadow: #ff6314 0 -6px 8px inset;
+    /* transform: scale(1.125); */
+}
+
 
