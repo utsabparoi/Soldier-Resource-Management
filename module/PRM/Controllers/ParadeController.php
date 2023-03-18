@@ -45,6 +45,8 @@ class ParadeController extends Controller
     */
     public function index()
     {
+        // $last_leave = LeaveApplication::with('parade')->whereBetween('end_date',[Carbon::now('+06.00')->subMonth(3), Carbon::now('+06.00')])->get();
+        // ddd($last_leave);
         try {
             $data['parade'] = ParadeModel::with('camp')->paginate(30);
             $data['camp_name'] = Camp::all();
@@ -60,6 +62,7 @@ class ParadeController extends Controller
     {
         $campName = $request->input('CampName');
         $rank = $request->input('Rank');
+        $last_leave_duration = $request->input('LastLeave');
 
         if (isset($campName) && isset($rank)) {
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->get();
@@ -67,7 +70,18 @@ class ParadeController extends Controller
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->with('camp')->get();
         } elseif (isset($rank)) {
             $searchedParades = ParadeModel::where('next_rank', '=', $rank)->with('camp')->get();
-        } else {
+        } elseif (isset($last_leave_duration)) {
+            if($last_leave_duration == 3){
+                $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now('+06.00')->subMonth(3), Carbon::now('+06.00')])->with('parade')->get('parade_id');
+                // return $last_leave;
+                $searchedParades = $last_leave;
+            }elseif($last_leave_duration == 2){
+                $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now('+06.00')->subMonth(2), Carbon::now('+06.00')])->with('parade')->get('parade_id');
+                // return $last_leave;
+                $searchedParades = $last_leave;
+            }
+            // $searchedParades = ParadeModel::where('id', $last_leave->parade_id)->get();
+        }else {
             $searchedParades = '';
         }
 

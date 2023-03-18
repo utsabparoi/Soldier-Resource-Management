@@ -60,43 +60,55 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <div class="widget-body" style="border: 1px solid #e7e7e7">
-                                        <div class="widget-main" style="margin-bottom: -35px !important;">
-                                            <div class="row">
+                                        <div class="widget-main" style="margin-bottom:-15px">
+                                            <div class="row" style="display: flex;justify-content:flex-start">
                                                 <!-- Company Name -->
                                                 <div class="col-sm-3">
-                                                    <div align="left" class="form-group">
-                                                        <div>
-                                                            <select class="col-xs-10 col-sm-10 multiselect" id="paradeCamp"
-                                                                onchange="getCampParadeInformation()">
-                                                                <option value="">-Select Camp-</option>
-                                                                @foreach ($camp_name as $camp_names)
-                                                                    <option value="{{ $camp_names->id }}">
-                                                                        {{ $camp_names->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <select class="col-xs-10 col-sm-10 multiselect" id="paradeCamp"
+                                                            onchange="getCampParadeInformation()">
+                                                            <option value="">-Select Camp-</option>
+                                                            @foreach ($camp_name as $camp_names)
+                                                                <option value="{{ $camp_names->id }}">
+                                                                    {{ $camp_names->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- Last Leave -->
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <select class="col-xs-10 col-sm-10 multiselect" id="lastLeave"
+                                                            onchange="getSoldierLastLeave()">
+                                                            <option value="">-Select Last Leave-</option>
+                                                            <option value="3">within 3 months</option>
+                                                            <option value="2">within 2 months</option>
+
+                                                            {{-- @foreach ($camp_name as $camp_names)
+                                                                <option value="{{ $camp_names->id }}">
+                                                                    {{ $camp_names->name }}</option>
+                                                            @endforeach --}}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <!-- Rank Name -->
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <select class="col-xs-10 col-sm-10 multiselect" id="paradeRank"
+                                                            onchange="getParadeInformation()">
+                                                            <option value="">-Select Rank-</option>
+                                                            <option value="Major">Major</option>
+                                                            <option value="Captain">Captain</option>
+                                                            <option value="Senior Officer">Senior Officer</option>
+                                                            <option value="Officer">Officer</option>
+                                                            <option value="Junior Officer">Junior Officer</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <!-- Company Name -->
                                                 <div class="col-sm-3">
-                                                    <div align="left" class="form-group">
-                                                        <div>
-                                                            <select class="col-xs-10 col-sm-10 multiselect" id="paradeRank"
-                                                                onchange="getParadeInformation()">
-                                                                <option value="">-Select Rank-</option>
-                                                                <option value="Major">Major</option>
-                                                                <option value="Captain">Captain</option>
-                                                                <option value="Senior Officer">Senior Officer</option>
-                                                                <option value="Officer">Officer</option>
-                                                                <option value="Junior Officer">Junior Officer</option>
-                                                                <option value="Other">Other</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Company Name -->
-                                                <div class="col-sm-3">
-                                                    <div align="left" class="form-group">
+                                                    <div class="form-group">
                                                         <div>
                                                             <select class="col-xs-10 col-sm-10 multiselect" id="parade">
                                                                 <option value="">-Select Soldier-</option>
@@ -105,8 +117,7 @@
                                                     </div>
                                                 </div>
                                                 <!-- search and refresh button Name -->
-                                                <div class="col-sm-3"
-                                                    style="display:flex;justify-content:space-evenly;">
+                                                <div class="col-sm-3">
                                                     <button class="btn btn-primary" type="button" id="uploadPercent"
                                                         onclick="paradeSearchResult()"
                                                         style="background-color: #431cff !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px"
@@ -123,8 +134,11 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <br>
+
+
+
                                         </div>
+
                                     </div>
                                     <br>
 
@@ -260,10 +274,13 @@
 
             let campName = document.getElementById('paradeCamp').value;
             let rank = document.getElementById('paradeRank').value;
+            let lastLeave = document.getElementById('lastLeave').value;
+
             let url = "/parade_search";
             let data = {
                 CampName: campName,
-                Rank: rank
+                Rank: rank,
+                LastLeave:lastLeave
             };
             axios.post(url, data).then(function(response) {
                 var responseData = response.data;
@@ -271,6 +288,28 @@
                 $('#parade').empty();
                 for (let i = 0; i < responseData.length; i++) {
                     $('#parade').append('<option value="">' + responseData[i].name + '</option>');
+                    serialNumber++;
+                }
+            }).catch(function(error) {
+
+            })
+        }
+
+        function getSoldierLastLeave() {
+            let campName = document.getElementById('paradeCamp').value;
+            let lastLeave = document.getElementById('lastLeave').value;
+
+            let url = "/parade_search";
+            let data = {
+                CampName: campName,
+                LastLeave: lastLeave
+            };
+            axios.post(url, data).then(function(response) {
+                var responseData = response.data;
+                var serialNumber = 1;
+                $('#parade').empty();
+                for (let i = 0; i < responseData.length; i++) {
+                    $('#parade').append('<option value="">' + responseData[i].parade.name + '</option>');
                     serialNumber++;
                 }
             }).catch(function(error) {
@@ -303,11 +342,15 @@
         function paradeSearchResult() {
             let campName = document.getElementById('paradeCamp').value;
             let rank = document.getElementById('paradeRank').value;
+            let lastLeave = document.getElementById('lastLeave').value;
+
             let url = "/parade_search";
             let data = {
                 CampName: campName,
-                Rank: rank
+                Rank: rank,
+                LastLeave: lastLeave
             };
+
             axios.post(url, data).then(function(response) {
                 var responseData = response.data;
                 var serialNumber = 1;

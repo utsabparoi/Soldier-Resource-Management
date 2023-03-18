@@ -63,7 +63,7 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     //Store
     Route::resource('store', StoreController::class);
 
-    //Soldier
+    //Soldier all routes
     Route::resource('parade', ParadeController::class);
     Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
     Route::get('/export_parade_csv', [ParadeController::class, 'exportExcelCSV'])->name('export_parade_csv');

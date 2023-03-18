@@ -17,7 +17,6 @@ class LeaveApplication extends Model
     function parade(){
         return $this->belongsTo(ParadeModel::class);
     }
-
     function camp(){
         return $this->belongsTo(Camp::class);
     }

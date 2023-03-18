@@ -2,36 +2,171 @@
 @section('title', 'Biodata')
 @section('content')
 <style>
-    .square {
-    background-image: url("logo.png");
-    background-repeat: no-repeat;
-    opacity: 0.2;
-    margin-top:2%;
-    margin-left:38%;
-    width: 500px;
-    height: 500px;
-    /* transform: rotateY(45deg);
-    animation: rotateAnimation 2.5s linear infinite;
+    .small-box .inner > h3,
+    .main-content-inner > a .custom-color{
+        font-family:MariendaBold;
+        color: rgb(139, 10, 10) !important;
     }
 
-    @keyframes rotateAnimation {
-    from {
-        transform: rotateY(45deg);
+    .main-content .main-content-inner .custom-alignment{
+        margin-left:14%;
+        margin-right:auto;
+        display:flex;
+        justify-content:space-between;
     }
-    to {
-        transform: rotateY(225deg);
-    } */
-}
+
+    .square {
+        background-image: url("logo.png");
+        background-repeat: no-repeat;
+        opacity: 0.1;
+        margin-top:2%;
+        margin-left:38%;
+        width: 500px;
+        height: 500px;
+        /* transform: rotateY(45deg);
+        animation: rotateAnimation 2.5s linear infinite;
+        }
+
+        @keyframes rotateAnimation {
+        from {
+            transform: rotateY(45deg);
+        }
+        to {
+            transform: rotateY(225deg);
+        } */
+    }
+    .lotti-icon-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -35px;
+        margin-bottom: -20px;
+        width: 50%;
+    }
 </style>
 
 <div class="main-content" >
-    <div class="main-content-inner" style="margin-top:-180px;text-align:center">
+    {{-- <div class="main-content-inner" style="margin-top:-180px;text-align:center">
         <h1 style="display: block;margin-left:13%;margin-right:auto;font-family:MariendaBold;font-size:35px">Welcome to Dashboard</h1>
+    </div> --}}
+    <div class="main-content-inner"  style="margin-top:-410px;text-align:center;font-family:MariendaBold;font-size:16px;color:#130059">
+        <div class="row custom-alignment">
+
+            <div class="col-sm-3 col-mb-3">
+                <!-- small box -->
+                <div class="small-box bg-info custom-color" style="border: 1px #a29999 solid; box-shadow: 2px 4px 8px rgb(52, 72, 200);">
+                    <div class="inner">
+                        <h3>2200</h3>
+
+                        <h4>Total Soldier</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-sm-3">
+                <!-- small box -->
+                <div class="small-box bg-success" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
+                    <div class="inner">
+                        <h3 clas>30</h3>
+
+                        <h4>Total Camp</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-campground"></i>
+                        {{-- <lottie-player
+                            src="{{ asset('/frontend/lord-icon/121268-tent.json') }}"
+                            background="transparent" speed="1" class="lotti-icon-center"
+                            style="width: 60px; height: 100%;" loop autoplay>
+                        </lottie-player> --}}
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row custom-alignment">
+            <h1 class="text-center" style="color: #130059;margin-right:20px !;font-family:Marienda;font-size:40px">Soldier States Information</h1>
+        </div>
+
+        <div class="row custom-alignment">
+            <div class="col-sm-3">
+
+                <div class="small-box bg-danger" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(52, 72, 200);">
+                    <div class="inner">
+                        <h3>120 Soldier</h3>
+
+                        <h4>In Authorized State</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-shield-check"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+
+                <div class="small-box bg-info" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
+                    <div class="inner">
+                        <h3>112 Soldier</h3>
+
+                        <h4>In Held State</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-certificate"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+
+                <div class="small-box bg-success" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(52, 72, 200);">
+                    <div class="inner">
+                        <h3>290 Soldier</h3>
+
+                        <h4>In Off Ration</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+
+                <div class="small-box bg-warrning" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
+                    <div class="inner">
+                        <h3>335 Soldier</h3>
+
+                        <h4>In On Ration</h4>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-file-certificate"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="square">
 
     </div>
+
 </div>
+
 @endsection
 {{-- @section('content')
     <div class="main-content">
