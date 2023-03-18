@@ -77,7 +77,7 @@
                                                 <!-- Last Leave -->
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
-                                                        <select class="col-xs-10 col-sm-10 multiselect" id="lastLeave"
+                                                        <select name="last_leave_months" class="col-xs-10 col-sm-10 multiselect" id="lastLeave"
                                                             onchange="getSoldierLastLeave()">
                                                             <option value="">-Select Last Leave-</option>
                                                             <option value="3">within 3 months</option>
@@ -289,6 +289,7 @@
             };
             axios.post(url, data).then(function(response) {
                 var responseData = response.data;
+                console.log(responseData);
                 var serialNumber = 1;
                 $('#parade').empty();
                 for (let i = 0; i < responseData.length; i++) {
@@ -359,7 +360,10 @@
                 $('#paradeTable').empty();
                 $('#paginateID').empty();
                 document.getElementById('searchResulInfo').innerHTML = responseData.length + " Soldier Found!";
+                console.log(responseData);
+
                 for (let i = 0; i < responseData.length; i++) {
+
                     $('#paradeTable').append('<tr>\n' +
                         '                                                    <td class="hide-in-sm text-center" style="display:table-cell; vertical-align:middle;"><span class="span">\n' +
                         '                                                            ' + serialNumber + '\n' +

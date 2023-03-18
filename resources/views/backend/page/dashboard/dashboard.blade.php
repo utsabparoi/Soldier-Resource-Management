@@ -49,7 +49,7 @@
     {{-- <div class="main-content-inner" style="margin-top:-180px;text-align:center">
         <h1 style="display: block;margin-left:13%;margin-right:auto;font-family:MariendaBold;font-size:35px">Welcome to Dashboard</h1>
     </div> --}}
-    <div class="main-content-inner"  style="margin-top:-410px;text-align:center;font-family:MariendaBold;font-size:16px;color:#130059">
+    <div class="main-content-inner"  style="margin-top:-485px;text-align:center;font-family:MariendaBold;font-size:16px;color:#130059">
         <div class="row custom-alignment">
 
             <div class="col-sm-3 col-mb-3">
@@ -160,8 +160,8 @@
             </div>
         </div>
 
-    </div>
-    <div class="square">
+        </div>
+        <div class="square">
 
     </div>
 

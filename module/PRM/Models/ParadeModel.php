@@ -11,7 +11,7 @@ class ParadeModel extends Model
     protected $table = 'parades';
 
     function leave_application(){
-        return $this->hasMany(LeaveApplication::class);
+        return $this->belongsTo(LeaveApplication::class);
     }
 
     public function camp(){

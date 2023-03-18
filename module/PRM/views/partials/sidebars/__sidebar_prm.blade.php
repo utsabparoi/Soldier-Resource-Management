@@ -9,6 +9,37 @@
     </a>
     <b class="arrow"></b>
     <ul class="submenu">
+        <li>
+            <a href="" >
+                <i class="menu-icon fa fa-info"></i>
+                Website Infos
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-user"></i>
+                Admin-User
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu" >
+                <li>
+                    <a href="" >
+                        <i class="menu-icon fa fa-plus"></i>
+                        Add
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="menu-icon fa fa-list"></i>
+                        List
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                </li>
+            </ul>
+        </li>
         {{-- Leave Details menu item --}}
         <li class="{{ request()->routeIs('prm.leave-applications*') ? 'open active' : ''}} ">
             <a href="#" class="dropdown-toggle">
