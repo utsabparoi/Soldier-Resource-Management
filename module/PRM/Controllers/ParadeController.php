@@ -379,4 +379,11 @@ class ParadeController extends Controller
         $parade = ParadeModel::find($id);
         return view('pages.parade.paradeHistory', compact('history', 'parade'));
     }
+
+    public function stateChange(Request $request){
+//        $parade_id = $request->input("Parade");
+//        $state_id = $request->input("State");
+//        ParadeController::where("id", "=", $parade_id)->update(["state_id"=>$state_id]);
+        return 1;
+    }
 }

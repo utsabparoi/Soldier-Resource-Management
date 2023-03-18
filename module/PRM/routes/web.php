@@ -84,5 +84,6 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
 Route::post('/parade_search', [ParadeController::class, 'getParadeSearch']);
 Route::get('/clear_image', [ParadeController::class, 'imageUnlink']);
+Route::post('/change_state', [ParadeController::class, 'stateChange']);
 
 

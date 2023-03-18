@@ -15,9 +15,9 @@
                 <div class="nav-search" id="nav-search">
                     <form class="form-search">
                                     <span class="input-icon">
-                                        <input type="text" placeholder="Search Soldier ..." class="nav-search-input"
-                                               id="searchParade" style="width: 200px !important;" autocomplete="off"/>
-                                             <i class="ace-icon fa fa-search nav-search-icon"></i>
+{{--                                        <input type="text" placeholder="Search Soldier ..." class="nav-search-input"--}}
+{{--                                               id="searchParade" style="width: 200px !important;" autocomplete="off"/>--}}
+{{--                                             <i class="ace-icon fa fa-search nav-search-icon"></i>--}}
                                         </span>
                     </form>
                 </div>
@@ -151,7 +151,7 @@
                                                 <tr>
                                                     <td class="hide-in-sm text-center"
                                                         style="display:table-cell; vertical-align:middle;"><span
-                                                            class="span">
+                                                            class="span" style=" font-size: 14px !important;">
                                                             {{ $loop->iteration }}
                                                         </span></td>
                                                     <td style="display:table-cell; vertical-align:middle;"><span
@@ -165,15 +165,15 @@
                                                                 <li style="font-weight: bold;">{{ $parades->next_rank }}</li>
                                                             </ul>
                                                         </span></td>
-                                                    <td style="display:table-cell; vertical-align:middle;"><span
+                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;"><span
                                                             class="span">{{ $parades->join_date_present_unit }}</span>
                                                     </td>
-                                                    <td style="display:table-cell; vertical-align:middle;"><span
+                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;"><span
                                                             class="span">{{ $parades->camp->name}}</span>
                                                     </td>
-                                                    <td style="display:table-cell; vertical-align:middle;" data-id="{{ $parades->id}}" id="state">
-                                                        <span onclick="stateChange(this)"
-                                                            class="label label-sm label-primary arrowed-in arrowed arrowed-right" style="cursor: pointer !important;">{{ $parades->state->name}}</span>
+                                                    <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">
+                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)"
+                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(252,0,0) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">{{ $parades->state->name}}</span>
                                                     </td>
                                                     <td class="text-center"
                                                         style="display:table-cell; vertical-align:middle;">
@@ -191,7 +191,7 @@
                                                             <a href="{{ route('prm.parade_history', $parades->id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
                                                                style="background-color: #ff6500 !important; border: 1px solid #ff6500 !important;"
-                                                               title="Employment History">
+                                                               title="Soilder History">
                                                                 <i class="fa fa-history"></i>
                                                             </a>
 
@@ -367,15 +367,28 @@
     </script>
 
     <script>
-        function stateChange(element) {
+        function stateSelect(element) {
             let id = $(element).attr("data-id");
-            let state = document.getElementById('state');
-            state.innerHTML = "<select>" +
-                "<option>Authorised</option>" +
-                "<option>Held</option>" +
-                "<option>On Ration</option>" +
-                "<option>Off Ration</option>" +
-                "</select>";
+            let state = document.getElementById(id);
+            state.innerHTML = "<select id='stateValue'>" +
+                "<option value='Authorised'>Authorised</option>" +
+                "<option value='Held'>Held</option>" +
+                "<option value='On Ration'>On Ration</option>" +
+                "</select> &nbsp;&nbsp;&nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' onclick='changeState()'></i> ";
+        }
+        function changeState() {
+            let paradeId = $(element).attr("data-id");
+            let newState = document.getElementById('stateValue').value;
+            let url = '/change_state';
+            let data = {Parade:paradeId, State:newState};
+            axios.post(url, data).then(function (response) {
+
+                document.getElementById(paradeId).innerHTML = '<span data-id="{{ $parades->id }}" onclick="stateSelect(this)"\n' +
+                    '                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(252,0,0) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">{{ $parades->state->name}}</span>';
+            }).catch(function (error) {
+                alert('Error Try again...');
+            })
+
         }
     </script>
 @endsection
