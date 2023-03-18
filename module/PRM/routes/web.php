@@ -68,6 +68,7 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
     Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
     Route::get('/export_parade_csv', [ParadeController::class, 'exportExcelCSV'])->name('export_parade_csv');
     Route::get('/export_parade_pdf', [ParadeController::class, 'exportPDF'])->name('export_parade_pdf');
+    Route::get('/parade_history/{id}', [ParadeController::class, 'paradeHistory'])->name('parade_history');
 
     // Soldier Course Routes
     Route::resource('parade-courses', ParadeCourseController::class);
