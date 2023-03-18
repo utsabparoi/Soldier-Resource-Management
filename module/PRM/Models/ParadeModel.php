@@ -17,4 +17,8 @@ class ParadeModel extends Model
     public function camp(){
         return $this->belongsTo(Camp::class, 'present_location');
     }
+
+    public function state(){
+        return $this->belongsTo(ParadeStateModel::class, 'state_id');
+    }
 }

@@ -20,7 +20,8 @@ class ParadeCurrentProfileModel extends Model
     public function state(){
         return $this->belongsTo(ParadeStateModel::class);
     }
-    public function leaveCategory(){
-        return $this->hasManyThrough(LeaveCategory::class, LeaveApplication::class, 'leave_application_id', '	leave_category_id');
+    public function leaveApplication(){
+        return $this->belongsTo(LeaveApplication::class);
     }
+
 }

@@ -15,8 +15,8 @@ class ParadeStateSeeder extends Seeder
     public function run()
     {
         $parade_states = array(
-            array('id' => '1','name' => 'AUTHORIZED STATE', 'status' => '1'),
-            array('id' => '2','name' => 'HELD STATE', 'status' => '1'),
+            array('id' => '1','name' => 'AUTHORIZED', 'status' => '1'),
+            array('id' => '2','name' => 'HELD', 'status' => '1'),
             array('id' => '3','name' => 'OFF RATION', 'status' => '1'),
             array('id' => '4','name' => 'ON RATION', 'status' => '1'),
         );

@@ -138,8 +138,9 @@
                                                 <tr class="thead-redesign">
                                                     <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                     <th width="30%">Name</th>
-                                                    <th width="20%">Joining Date</th>
-                                                    <th width="30%">Camp</th>
+                                                    <th width="15%">Joining Date</th>
+                                                    <th width="20%">Camp</th>
+                                                    <th width="15%">State</th>
                                                     <th width="15%" class="text-center" style="width: 120px">Action</th>
                                                 </tr>
                                             </thead>
@@ -169,6 +170,10 @@
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;"><span
                                                             class="span">{{ $parades->camp->name}}</span>
+                                                    </td>
+                                                    <td style="display:table-cell; vertical-align:middle;" data-id="{{ $parades->id}}" id="state">
+                                                        <span onclick="stateChange(this)"
+                                                            class="label label-sm label-primary arrowed-in arrowed arrowed-right" style="cursor: pointer !important;">{{ $parades->state->name}}</span>
                                                     </td>
                                                     <td class="text-center"
                                                         style="display:table-cell; vertical-align:middle;">
@@ -239,16 +244,6 @@
         </div>
     </div>
 
-    <script>
-        // $(document).ready(function () {
-        //     $("#searchParade").on("keyup", function () {
-        //         var value = $(this).val().toLowerCase();
-        //         $("#paradeTable tr").filter(function () {
-        //             $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        //         });
-        //     });
-        // });
-    </script>
 
 
 
@@ -368,6 +363,19 @@
 
         function refreshPage() {
             location.reload();
+        }
+    </script>
+
+    <script>
+        function stateChange(element) {
+            let id = $(element).attr("data-id");
+            let state = document.getElementById('state');
+            state.innerHTML = "<select>" +
+                "<option>Authorised</option>" +
+                "<option>Held</option>" +
+                "<option>On Ration</option>" +
+                "<option>Off Ration</option>" +
+                "</select>";
         }
     </script>
 @endsection

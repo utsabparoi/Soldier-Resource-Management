@@ -83,6 +83,6 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
 //ajax axios routes
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
 Route::post('/parade_search', [ParadeController::class, 'getParadeSearch']);
-Route::get('/clear_image', [StoreController::class, 'imageUnlink']);
+Route::get('/clear_image', [ParadeController::class, 'imageUnlink']);
 
 
