@@ -2,6 +2,7 @@
 
 namespace Module\PRM\Controllers;
 
+use App\Traits\AutoCreatedUpdated;
 use App\Traits\FileSaver;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Module\PRM\Models\Camp;
@@ -9,6 +10,7 @@ use Illuminate\Http\Request;
 use Module\PRM\Models\Course;
 use Illuminate\Support\Carbon;
 use Module\PRM\Models\APRModel;
+use Module\PRM\Models\ParadeStateModel;
 use Module\PRM\Models\Training;
 use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
@@ -25,17 +27,7 @@ class ParadeController extends Controller
 {
     private $excel;
     private $service;
-    use FileSaver;
-
-    /*
-     |--------------------------------------------------------------------------
-     | CONSTRUCTOR
-     |--------------------------------------------------------------------------
-    */
-    public function __construct()
-    {
-        $this->middleware('AdminLogin');
-    }
+    use FileSaver, AutoCreatedUpdated;
 
 
     /*
@@ -45,12 +37,11 @@ class ParadeController extends Controller
     */
     public function index()
     {
-        // $last_leave = LeaveApplication::with('parade')->whereBetween('end_date',[Carbon::now('+06.00')->subMonth(3), Carbon::now('+06.00')])->get();
-        // ddd($last_leave);
         try {
             $data['parade'] = ParadeModel::with('camp')->paginate(30);
             $data['camp_name'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
+            $data['all_states'] = ParadeStateModel::all();
             $data['table'] = ParadeModel::getTableName();
             return view('pages.parade.index', $data);
         } catch (\Throwable $th) {
@@ -65,23 +56,23 @@ class ParadeController extends Controller
         $last_leave_duration = $request->input('LastLeave');
 
         if (isset($campName) && isset($rank)) {
-            $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->get();
+            $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->with('state')->get();
         } elseif (isset($campName)) {
-            $searchedParades = ParadeModel::where('present_location', '=', $campName)->with('camp')->get();
+            $searchedParades = ParadeModel::where('present_location', '=', $campName)->with('camp')->with('state')->get();
         } elseif (isset($rank)) {
-            $searchedParades = ParadeModel::where('next_rank', '=', $rank)->with('camp')->get();
+            $searchedParades = ParadeModel::where('next_rank', '=', $rank)->with('camp')->with('state')->get();
         } elseif (isset($last_leave_duration)) {
             if($last_leave_duration == 3){
                 $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(3), Carbon::now()])->with('parade_')->pluck('parade_id');
                 // return $last_leave;
-                $parade_info = ParadeModel::where('id', $last_leave)->with('camp')->get();
+                $parade_info = ParadeModel::where('id', $last_leave)->with('camp')->with('state')->get();
                 $searchedParades = $parade_info;
                 // return compact($last_leave,$searchedParades);
             }elseif($last_leave_duration == 2){
                 $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(2), Carbon::now()])->with('parade')->pluck('parade_id');
                 // return $last_leave;
 
-                $parade_info = ParadeModel::where('id', $last_leave)->with('camp')->get();
+                $parade_info = ParadeModel::where('id', $last_leave)->with('camp')->with('state')->get();
                 $searchedParades = $parade_info;
                 // return compact($last_leave,$searchedParades);
                 // $searchedParades = $last_leave;
@@ -284,8 +275,8 @@ class ParadeController extends Controller
                     'children_number' => $request->noOfChildren,
                     'state_id' => 1,
                     'status' => 1,
-                    'created_by' => session('AdminId'),
-                    'updated_by' => session('AdminId'),
+                    'created_by' => auth()->id(),
+                    'updated_by' => auth()->id(),
                 ]
             );
             $this->upload_file($request->image, $parade, 'image', 'images/paradeProfile');
@@ -325,8 +316,8 @@ class ParadeController extends Controller
                     'children_number' => $request->noOfChildren,
                     'state_id' => 1,
                     'status' => 1,
-                    'created_by' => session('AdminId'),
-                    'updated_by' => session('AdminId'),
+                    'created_by' => auth()->id(),
+                    'updated_by' => auth()->id(),
                 ]
             );
 
@@ -345,8 +336,8 @@ class ParadeController extends Controller
                             'duration' => $request->course_duration[$key],
                             'result' => $request->course_result[$key],
                             'status' => 1,
-                            'created_by' => session('AdminId'),
-                            'updated_by' => session('AdminId'),
+                            'created_by' => auth()->id(),
+                            'updated_by' => auth()->id(),
                         ]
                     );
                 }
@@ -367,8 +358,8 @@ class ParadeController extends Controller
                             'duration' => $request->training_duration[$key],
                             'result' => $request->training_result[$key],
                             'status' => 1,
-                            'created_by' => session('AdminId'),
-                            'updated_by' => session('AdminId'),
+                            'created_by' => auth()->id(),
+                            'updated_by' => auth()->id(),
                         ]
                     );
                 }
@@ -401,9 +392,9 @@ class ParadeController extends Controller
     }
 
     public function stateChange(Request $request){
-//        $parade_id = $request->input("Parade");
-//        $state_id = $request->input("State");
-//        ParadeController::where("id", "=", $parade_id)->update(["state_id"=>$state_id]);
+        $parade_id = $request->input("Parade");
+        $state_id = $request->input("State");
+        ParadeModel::where("id", "=", $parade_id)->update(["state_id" => $state_id]);
         return 1;
     }
 }

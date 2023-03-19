@@ -282,7 +282,7 @@
                         <i class="ace-icon fa fa-user blue"></i>
                         <span class="user-info">
                                     <small style="font-family:Merienda">Welcome &nbsp; <i class="ace-icon fa fa-caret-down"></i></small>
-                                    <span>{{ session('AdminLoginSession') }}</span>
+                                    <span>{{ auth()->user()->name }}</span>
                                 </span>
                     </a>
 
@@ -304,10 +304,13 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="/logout">
-                                <i class="ace-icon fa fa-power-off"></i>
-                                Logout
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="ace-icon fa fa-power-off"></i> <span>Logout</span>
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </li>
