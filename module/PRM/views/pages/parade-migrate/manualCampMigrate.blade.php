@@ -31,7 +31,7 @@
 
                                                 <span class="widget-toolbar">
                                                     <!--------------- Slider List---------------->
-                                                    <a href="{{ route('prm.parade-migrate.index') }}" style="color:white !important;background-color: #51a3e7;padding:2px 2px; border-radius:4px;">
+                                                    <a href="{{ route('prm.parade-migrate.index') }}">
                                                         <i class="fa fa-list"></i> Migration <span class="hide-in-sm">List</span>
                                                     </a>
                                                 </span>
@@ -131,9 +131,9 @@
                                                                     style="margin-top: 10px;padding:5px">
                                                                     <div class="col-md-12 text-center pr-2">
                                                                         <button type="submit"
-                                                                            class="btn btn-primary btn-sm btn-block"
-                                                                            style="max-width: 150px">
-                                                                            <i class="fa fa-save"></i> Migrate
+                                                                            class="button-submit"
+                                                                            style="max-width: 150px;padding:8px 20px 8px 20px;font-size:18px">
+                                                                            Migrate
                                                                         </button>
                                                                     </div>
                                                                 </div>

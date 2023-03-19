@@ -31,7 +31,7 @@
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
                             <a href="{{ route('prm.parade-migrate.index') }}" class="text-center">
-                                <i class="fa fa-list"></i> <strong> Migration List</strong></span>
+                                <i class="fa fa-list"></i> Migration <span class="hide-in-sm">List</span>
                             </a>
                         </span>
                     </div>
@@ -175,7 +175,7 @@
                                                 @include('partials._paginate',['data'=> $parades])
                                             </span><br><br><br>
 
-                                            <div class="row">
+                                            <div class="row" style="border:1px solid rgb(171, 168, 168)">
                                                 <!-- Course -->
                                                 <div class="col-sm-4">
                                                     <div align="left" class="form-group">
@@ -196,7 +196,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-4">
                                                     <div align="left" class="form-group">
                                                         <label>
                                                             <h5>
@@ -209,14 +209,14 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-5" style="display: flex;justify-content:end">
+                                                <div class="col-sm-4" style="display: flex;justify-content:end">
                                                     <!-- Add Page -->
                                                     <h5 class="widget-title">
                                                         <div class="form-group">
                                                             <div align="right" class="col-md-12 pr-2">
                                                                 <button type="submit"
                                                                     class="button-submit"
-                                                                    style="max-width: 150px;padding:8px 20px 8px 20px;font-size:18px">
+                                                                    style="max-width: 150px;padding:8px 20px 8px 20px;font-size:18px;margin-top:6px">
                                                                     Migrate
                                                                 </button>
                                                             </div>

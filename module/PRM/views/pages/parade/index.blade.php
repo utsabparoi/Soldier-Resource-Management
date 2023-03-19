@@ -11,16 +11,6 @@
                     </li>
                     <li class="active">All Soldier</li>
                 </ul><!-- /.breadcrumb -->
-
-                <div class="nav-search" id="nav-search">
-                    <form class="form-search">
-                                    <span class="input-icon">
-{{--                                        <input type="text" placeholder="Search Soldier ..." class="nav-search-input"--}}
-{{--                                               id="searchParade" style="width: 200px !important;" autocomplete="off"/>--}}
-{{--                                             <i class="ace-icon fa fa-search nav-search-icon"></i>--}}
-                                        </span>
-                    </form>
-                </div>
             </div>
             {{-- main content start from here --}}
             <div class="page-content" style="position: relative">
@@ -36,7 +26,7 @@
                     <!-- header -->
                     <div class="widget-header" style="background: white !important;">
                         <h4 class="widget-title">Soldier List <span class="badge"
-                                                                   style="margin-bottom: 5px; background-color: #2595dc !important; color: #ffffff !important;">Total: {{ $all_parade->count() }} </span>
+                            style="margin-bottom: 5px; background-color: #2595dc !important; color: #ffffff !important;">Total: {{ $all_parade->count() }} </span>
                         </h4>
 
 
@@ -82,11 +72,6 @@
                                                             <option value="">-Select Last Leave-</option>
                                                             <option value="3">within 3 months</option>
                                                             <option value="2">within 2 months</option>
-
-                                                            {{-- @foreach ($camp_name as $camp_names)
-                                                                <option value="{{ $camp_names->id }}">
-                                                                    {{ $camp_names->name }}</option>
-                                                            @endforeach --}}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -175,18 +160,20 @@
                                                                 style="float: left; margin-right: 3px; border: 1px solid rgba(0,193,255,0.42); border-radius: 100%">
                                                             <ul style="list-style: none; margin-top: 7px;">
                                                                 <li style="font-weight: bold;">{{ $parades->name }}</li>
-                                                                <li style="font-weight: bold;">{{ $parades->next_rank }}</li>
+                                                                <li style="font-weight: bold;font-family:MareindaBold">{{ $parades->next_rank }}</li>
                                                             </ul>
                                                         </span></td>
                                                     <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;"><span
                                                             class="span">{{ $parades->join_date_present_unit }}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;"><span
-                                                            class="span">{{ $parades->camp->name}}</span>
+                                                            class="span">{{ $location->camp->name}}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">
-                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)"
-                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(252,0,0) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">{{ $parades->state->name}}</span>
+                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)" class="label label-sm"
+                                                            style="cursor: pointer !important; background-color: rgb(13, 138, 187) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">
+                                                            {{ $parades->state->name}}
+                                                        </span>
                                                     </td>
                                                     <td class="text-center"
                                                         style="display:table-cell; vertical-align:middle;">

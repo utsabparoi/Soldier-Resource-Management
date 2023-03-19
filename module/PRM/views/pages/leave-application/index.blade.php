@@ -60,11 +60,11 @@
                                             <thead>
                                                 <tr class="thead-redesign">
                                                     <th class="text-center" width="5%" class="hide-in-sm">Sl</th>
-                                                    <th width="20%">Soldier Name</th>
-                                                    <th width="20%">Leave Type</th>
-                                                    <th width="20%">Emergency Contact</th>
+                                                    <th width="25%">Soldier Name</th>
+                                                    <th width="15%">Leave Type</th>
+                                                    <th width="15%">Emergency Contact</th>
+                                                    <th class="text-center" width="20%">Leave Duration</th>
                                                     <th width="10%" class="text-center">Attachment</th>
-                                                    <th class="text-center" width="10%">Status</th>
                                                     <th width="5%" class="text-center" style="width: 120px">Action</th>
                                                 </tr>
                                             </thead>
@@ -82,6 +82,11 @@
                                                         </td>
                                                         <td><span
                                                                 class="span">{{ $application->emergency_contact }}</span>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span class="span">
+                                                                {{ $application->start_date .' to '. $application->end_date}}
+                                                            </span>
                                                         </td>
                                                         <td class="text-center">
                                                             <button
@@ -117,18 +122,7 @@
                                                             </div>
                                                             <!-- Call button work end-->
                                                         </td>
-                                                        <td class="text-center">
-                                                            <!--------------- STATUS EDIT---------------->
-                                                            <div>
-                                                                <label>
-                                                                    <span class="span">
-                                                                        <x-status status="{{ $application->status }}"
-                                                                            id="{{ $application->id }}"
-                                                                            table="{{ $table }}" />
-                                                                    </span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
+
                                                         <td class="text-center">
 
                                                             <!---------------  EDIT---------------->
