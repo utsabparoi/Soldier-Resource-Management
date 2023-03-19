@@ -1,12 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CourseController;
-// use App\Http\Controllers\BiodataController;
-use App\Http\Controllers\PunishmentController;
-use App\Http\Controllers\AssignCourseController;
-use App\Http\Controllers\LeaveApplicationController;
 
 /*
 |--------------------------------------------------------------------------

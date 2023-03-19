@@ -2,6 +2,7 @@
 
 // namespace Module\PRM\routes;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\APRController;
 use Module\PRM\Controllers\CampController;
@@ -16,7 +17,7 @@ use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
 use Module\PRM\Controllers\ParadeCampMigrateController;
 
-Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], function(){
+Route::group(['middleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
         Leave-Category Routes List
     =============================*/
@@ -84,9 +85,10 @@ Route::group(['midleware'=>'AdminLogin', 'prefix' =>'prm','as' => 'prm.'], funct
 
 });
 //ajax axios routes
+Route::post('/change_state', [ParadeController::class, 'stateChange']);
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
 Route::post('/parade_search', [ParadeController::class, 'getParadeSearch']);
 Route::get('/clear_image', [ParadeController::class, 'imageUnlink']);
-Route::post('/change_state', [ParadeController::class, 'stateChange']);
+
 
 
