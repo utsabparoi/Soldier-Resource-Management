@@ -186,7 +186,7 @@
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">
                                                         <span data-id="{{ $parades->id }}" onclick="stateSelect(this)"
-                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(252,0,0) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">{{ $parades->state->name}}</span>
+                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(0, 147, 252) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">{{ $parades->state->name}}</span>
                                                     </td>
                                                     <td class="text-center"
                                                         style="display:table-cell; vertical-align:middle;">
@@ -374,6 +374,10 @@
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span\n' +
                         '                                                            class="span">' + responseData[i].camp.name + '</span>\n' +
                         '                                                    </td>\n' +
+                        '                                                    <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">\n' +
+                        '                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)"\n' +
+                        '                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(0, 147, 252) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">' + responseData[i].state.name + '</span>\n' +
+                        '                                                    </td>\n' +
                         '                                                    <td class="text-center" style="display:table-cell; vertical-align:middle;">\n' +
                         '\n' +
                         '                                                        <!---------------  EDIT---------------->\n' +
@@ -422,21 +426,19 @@
         function stateSelect(element) {
             let id = $(element).attr("data-id");
             let state = document.getElementById(id);
-            state.innerHTML = "<select id='stateValue'>" +
-                "<option value='Authorised'>Authorised</option>" +
-                "<option value='Held'>Held</option>" +
-                "<option value='On Ration'>On Ration</option>" +
-                "</select> &nbsp;&nbsp;&nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' onclick='changeState()'></i> ";
+            state.innerHTML = "<select id='stateValue' style=''>" +
+                "@foreach($all_states->take(3) as $all_state)" +
+                "<option value='{{ $all_state->id}}'>{{ $all_state->name}}</option>" +
+                "@endforeach" +
+                "</select> &nbsp;&nbsp;&nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' data-solder-id='"+id+"' onclick='changeState(this)'></i> ";
         }
-        function changeState() {
-            let paradeId = $(element).attr("data-id");
+        function changeState(element) {
+            let paradeId = $(element).attr("data-solder-id");
             let newState = document.getElementById('stateValue').value;
             let url = '/change_state';
             let data = {Parade:paradeId, State:newState};
             axios.post(url, data).then(function (response) {
-
-                document.getElementById(paradeId).innerHTML = '<span data-id="{{ $parades->id }}" onclick="stateSelect(this)"\n' +
-                    '                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(252,0,0) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">{{ $parades->state->name}}</span>';
+                location.reload();
             }).catch(function (error) {
                 alert('Error Try again...');
             })

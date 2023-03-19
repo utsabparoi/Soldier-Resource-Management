@@ -1,29 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta charset="utf-8" />
-    <title>@yield('title')</title>
-
-    <meta name="description" content="overview &amp; stats" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="{{ asset('backend/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('backend/font-awesome/4.5.0/css/font-awesome.min.css') }}" />
-
-    <!-- page specific plugin styles -->
-
-    <!-- text fonts -->
-    <link rel="stylesheet" href="{{ asset('backend/css/fonts.googleapis.com.css') }}" />
-
-    <!-- ace styles -->
-    <link rel="stylesheet" href="{{ asset('backend/css/ace.min.css') }}" class="ace-main-stylesheet"
-        id="main-ace-style" />
-    <link rel="stylesheet" href="{{ asset('backend/css/ace-skins.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('backend/css/ace-rtl.min.css') }}" />
-
+@section('content')
     <style>
         /* lottie or lord-icon position center */
         .lotti-icon-center {
@@ -86,13 +63,7 @@
         }
     </style>
 
-    <!-- inline styles related to this page -->
-
-    <!-- ace settings handler -->
-    <script src="{{ asset('backend/js/ace-extra.min.js') }}"></script>
-</head>
-
-<body class="login-layout">
+    <div class="login-layout">
     <div class="main-container">
         <div class="main-content">
             <div class="row">
@@ -123,7 +94,7 @@
 
                         <div class="position-relative" style="font-family: Merienda !important">
                             <div id="login-box" class="login-box visible widget-box no-border"
-                                style="border-radius:10px;">
+                                 style="border-radius:10px;">
                                 <div class="widget-body">
                                     <div class="widget-main">
                                         <h4 class="lighter bigger text-center">
@@ -147,8 +118,8 @@
                                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                                                value="{{ old('email') }}" name="email" id="email"
                                                                required autocomplete="email" autofocus
-                                                            placeholder="Username"
-                                                            style="border-radius:10px !important; box-shadow: inset 0 0 10px #6c7075!important;" />
+                                                               placeholder="Username"
+                                                               style="border-radius:10px !important; box-shadow: inset 0 0 10px #6c7075!important;" />
                                                         @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -161,8 +132,8 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password"
-                                                            placeholder="Password" required autocomplete="current-password"
-                                                            style="border-radius:10px !important; box-shadow: inset 0 0 10px #6c7075!important;" />
+                                                               placeholder="Password" required autocomplete="current-password"
+                                                               style="border-radius:10px !important; box-shadow: inset 0 0 10px #6c7075!important;" />
                                                         @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -181,14 +152,14 @@
                                                     </label>
 
                                                     <button type="submit" class="button-submit pull-right"
-                                                        style="font-family:Merienda !important;margin-top:-8px; padding: 5px 10px 5px 10px;font-size:12px;">
+                                                            style="font-family:Merienda !important;margin-top:-8px; padding: 5px 10px 5px 10px;font-size:12px;">
                                                         <i class="ace-icon fa fa-key"></i>
                                                         <span class="bigger-110" onclick="playAudio()">{{ __('Login') }}</span>
                                                     </button>
                                                     @if (Route::has('password.request'))
-                                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                            {{ __('Forgot Your Password?') }}
-                                                        </a>
+{{--                                                        <a class="btn btn-link" href="{{ route('password.request') }}">--}}
+{{--                                                            {{ __('Forgot Your Password?') }}--}}
+{{--                                                        </a>--}}
                                                     @endif
                                                 </div>
 
@@ -218,14 +189,14 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="email" class="form-control"
-                                                            placeholder="Email" />
+                                                               placeholder="Email" />
                                                         <i class="ace-icon fa fa-envelope"></i>
                                                     </span>
                                                 </label>
 
                                                 <div class="clearfix">
                                                     <button type="button"
-                                                        class="width-35 pull-right btn btn-sm btn-danger">
+                                                            class="width-35 pull-right btn btn-sm btn-danger">
                                                         <i class="ace-icon fa fa-lightbulb-o"></i>
                                                         <span class="bigger-110">Send Me!</span>
                                                     </button>
@@ -259,7 +230,7 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="email" class="form-control" id="email"
-                                                            placeholder="Email" />
+                                                               placeholder="Email" />
                                                         <i class="ace-icon fa fa-envelope"></i>
                                                     </span>
                                                 </label>
@@ -267,7 +238,7 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="text" class="form-control" id="username"
-                                                            placeholder="Username" />
+                                                               placeholder="Username" />
                                                         <i class="ace-icon fa fa-user"></i>
                                                     </span>
                                                 </label>
@@ -275,7 +246,7 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="password" class="form-control" id="password"
-                                                            placeholder="Password" />
+                                                               placeholder="Password" />
                                                         <i class="ace-icon fa fa-lock"></i>
                                                     </span>
                                                 </label>
@@ -283,7 +254,7 @@
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
                                                         <input type="password" class="form-control"
-                                                            id="repeatPassword" placeholder="Repeat password" />
+                                                               id="repeatPassword" placeholder="Repeat password" />
                                                         <i class="ace-icon fa fa-retweet"></i>
                                                     </span>
                                                 </label>
@@ -305,8 +276,8 @@
                                                     </button>
 
                                                     <button type="button"
-                                                        class="width-65 pull-right btn btn-sm btn-success"
-                                                        onclick="registerSuperAdmin()">
+                                                            class="width-65 pull-right btn btn-sm btn-success"
+                                                            onclick="registerSuperAdmin()">
                                                         <span class="bigger-110">Register</span>
 
                                                         <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -326,30 +297,28 @@
                             </div><!-- /.signup-box -->
                         </div><!-- /.position-relative -->
 
-                        <div class="navbar-fixed-top align-right">
-                            <br />
-                            &nbsp;
-                            <a id="btn-login-dark" href="#">Dark</a>
-                            &nbsp;
-                            <span class="blue">/</span>
-                            &nbsp;
-                            <a id="btn-login-blur" href="#">Blur</a>
-                            &nbsp;
-                            <span class="blue">/</span>
-                            &nbsp;
-                            <a id="btn-login-light" href="#">Light</a>
-                            &nbsp; &nbsp; &nbsp;
-                        </div>
+{{--                        <div class="navbar-fixed-top align-right">--}}
+{{--                            <br />--}}
+{{--                            &nbsp;--}}
+{{--                            <a id="btn-login-dark" href="#">Dark</a>--}}
+{{--                            &nbsp;--}}
+{{--                            <span class="blue">/</span>--}}
+{{--                            &nbsp;--}}
+{{--                            <a id="btn-login-blur" href="#">Blur</a>--}}
+{{--                            &nbsp;--}}
+{{--                            <span class="blue">/</span>--}}
+{{--                            &nbsp;--}}
+{{--                            <a id="btn-login-light" href="#">Light</a>--}}
+{{--                            &nbsp; &nbsp; &nbsp;--}}
+{{--                        </div>--}}
                     </div>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.main-content -->
     </div><!-- /.main-container -->
+    </div>
 
 
-    <script src="{{ asset('/backend/js/axios.min.js') }}"></script>
     <script src="{{ asset('frontend/js/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ asset('frontend/js/lottie-player.js') }}"></script>
-</body>
-
-</html>
+@endsection

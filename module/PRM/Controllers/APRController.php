@@ -19,7 +19,7 @@ class APRController extends Controller
     */
     public function __construct()
     {
-        $this->middleware('AdminLogin');
+        //
     }
 
 
@@ -207,8 +207,8 @@ class APRController extends Controller
                     'parade_id'         => $request->paradeID,
                     'annual_report'     => $request->annualReport,
                     'status'            => 1,
-                    'created_by'        => session('AdminId'),
-                    'updated_by'        => session('AdminId'),
+                    'created_by'        => auth()->id(),
+                    'updated_by'        => auth()->id(),
                 ]);
             return $annual_report;
         } catch (\Throwable $th) {
