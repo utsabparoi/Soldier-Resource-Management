@@ -35,7 +35,7 @@
 
                     <!-- header -->
                     <div class="widget-header" style="background: white !important;">
-                        <h4 class="widget-title">Soldier Employment History <span class="badge"
+                        <h4 class="widget-title">{{ $parade->name }}'s History <span class="badge"
                                                                     style="margin-bottom: 5px; background-color: #2595dc !important; color: #ffffff !important;">Total:  {{$history->count()}} </span>
                         </h4>
                     </div>
@@ -59,7 +59,7 @@
                                                 <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                 <th width="30%">Date</th>
                                                 <th width="20%">Log Type</th>
-                                                <th width="20%">Migration To </th>
+                                                <th width="20%">Description </th>
                                             </tr>
                                             </thead>
 
@@ -95,7 +95,7 @@
                                                             @elseif(isset($historys->parade_state_id))
                                                                 {{ $historys->parade_state_id }}
                                                             @elseif(isset($historys->leave_application_id))
-                                                                
+                                                                {{ $historys->leaveApplication->leave_category->name }}
                                                             @endif</span>
                                                     </td>
                                                 </tr>

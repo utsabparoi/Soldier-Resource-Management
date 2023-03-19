@@ -199,7 +199,7 @@
                                                         <br>
                                                         <div align="right" class="row" style=" margin-right: 1.1%; margin-left: 25%;">
                                                             <div  class="col-sm-12">
-                                                                <button class="btn" onclick="history.back()" style="background-color: #828282 !important; border: none;">
+                                                                <button class="btn" onclick="deleteImage()" style="background-color: #828282 !important; border: none;">
                                                                     <i class="ace-icon fa fa-arrow-left bigger-110"></i>
                                                                     Back
                                                                 </button>
@@ -303,5 +303,14 @@
         </script>
 
 
+    <script>
+        function deleteImage() {
+            axios.get('/clear_image').then(function (response) {
+                history.back();
+            }).catch(function (error) {
+                history.back();
+            })
+        }
+    </script>
 @endsection
 

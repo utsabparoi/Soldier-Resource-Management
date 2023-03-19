@@ -194,6 +194,7 @@ class ParadeController extends Controller
             unlink($existImage);
             session()->forget('profileImage');
         }
+        return 1;
     }
 
 
@@ -277,6 +278,7 @@ class ParadeController extends Controller
                     'permanent_address' => $request->permanentAddress,
                     'marital_status' => $request->meritalStatus,
                     'children_number' => $request->noOfChildren,
+                    'state_id' => 1,
                     'status' => 1,
                     'created_by' => session('AdminId'),
                     'updated_by' => session('AdminId'),
@@ -317,6 +319,7 @@ class ParadeController extends Controller
                     'permanent_address' => $request->permanentAddress,
                     'marital_status' => $request->meritalStatus,
                     'children_number' => $request->noOfChildren,
+                    'state_id' => 1,
                     'status' => 1,
                     'created_by' => session('AdminId'),
                     'updated_by' => session('AdminId'),
@@ -389,7 +392,14 @@ class ParadeController extends Controller
 
     public function paradeHistory($id){
         $history = ParadeCurrentProfileModel::where('parade_id', '=', $id)->get();
-        $parade = ParadeModel::where('id', '=', $id)->pluck('name');
+        $parade = ParadeModel::find($id);
         return view('pages.parade.paradeHistory', compact('history', 'parade'));
+    }
+
+    public function stateChange(Request $request){
+//        $parade_id = $request->input("Parade");
+//        $state_id = $request->input("State");
+//        ParadeController::where("id", "=", $parade_id)->update(["state_id"=>$state_id]);
+        return 1;
     }
 }
