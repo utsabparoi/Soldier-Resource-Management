@@ -45,6 +45,13 @@
     }
 </style>
 
+<?php
+$total_soldiers = DB::table('parades')->count('id');
+$total_camps = DB::table('camps')->count('id');
+// $authorizedStates = DB::table('parades')->with('state_id')->count('id');
+
+?>
+
 <div class="main-content" >
     {{-- <div class="main-content-inner" style="margin-top:-180px;text-align:center">
         <h1 style="display: block;margin-left:13%;margin-right:auto;font-family:MariendaBold;font-size:35px">Welcome to Dashboard</h1>
@@ -56,9 +63,9 @@
                 <!-- small box -->
                 <div class="small-box bg-info custom-color" style="border: 1px #a29999 solid; box-shadow: 2px 4px 8px rgb(52, 72, 200);">
                     <div class="inner">
-                        <h3>2200</h3>
+                        <h3>{!! $total_soldiers !!}</h3>
 
-                        <h4>Total Soldier</h4>
+                        <h4>Total Soldiers</h4>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users"></i>
@@ -72,9 +79,9 @@
                 <!-- small box -->
                 <div class="small-box bg-success" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
                     <div class="inner">
-                        <h3 clas>30</h3>
+                        <h3>{!! $total_camps !!}</h3>
 
-                        <h4>Total Camp</h4>
+                        <h4>Total Camps</h4>
                     </div>
                     <div class="icon">
                         <i class="fa fa-campground"></i>
@@ -96,10 +103,9 @@
 
         <div class="row custom-alignment">
             <div class="col-sm-3">
-
                 <div class="small-box bg-danger" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(52, 72, 200);">
                     <div class="inner">
-                        <h3>120 Soldier</h3>
+                        <h3>122 Soldiers</h3>
 
                         <h4>In Authorized State</h4>
                     </div>
@@ -115,7 +121,7 @@
 
                 <div class="small-box bg-info" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
                     <div class="inner">
-                        <h3>112 Soldier</h3>
+                        <h3>112 Soldiers</h3>
 
                         <h4>In Held State</h4>
                     </div>
@@ -131,7 +137,7 @@
 
                 <div class="small-box bg-success" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(52, 72, 200);">
                     <div class="inner">
-                        <h3>290 Soldier</h3>
+                        <h3>290 Soldiers</h3>
 
                         <h4>In Off Ration</h4>
                     </div>
@@ -147,7 +153,7 @@
 
                 <div class="small-box bg-warrning" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
                     <div class="inner">
-                        <h3>335 Soldier</h3>
+                        <h3>335 Soldiers</h3>
 
                         <h4>In On Ration</h4>
                     </div>

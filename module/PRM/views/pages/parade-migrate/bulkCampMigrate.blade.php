@@ -11,16 +11,6 @@
                     </li>
                     <li class="active">All Soldier</li>
                 </ul><!-- /.breadcrumb -->
-
-                <div class="nav-search" id="nav-search">
-                    <form class="form-search">
-                                    <span class="input-icon">
-                                        <input type="text" placeholder="Search Soldier ..." class="nav-search-input"
-                                               id="searchParade" style="width: 200px !important;" autocomplete="off"/>
-                                             <i class="ace-icon fa fa-search nav-search-icon"></i>
-                                        </span>
-                    </form>
-                </div>
             </div>
             {{-- main content start from here --}}
             <div class="page-content">
@@ -40,9 +30,8 @@
 
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
-                            <a href="{{ route('prm.parade.create') }}" class="text-center"
-                               style="background-color: #2595dc !important; color: #ffffff !important; padding:3px">
-                                <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Soldier</span>
+                            <a href="{{ route('prm.parade-migrate.index') }}" class="text-center">
+                                <i class="fa fa-list"></i> <strong> Migration List</strong></span>
                             </a>
                         </span>
                     </div>
@@ -136,7 +125,7 @@
                                             <table id="dynamic-table"
                                                 class="table table-striped table-bordered table-hover new-table">
                                                 <thead>
-                                                <tr>
+                                                <tr class="thead-redesign">
                                                     <th width="3%" class="text-center"><input onclick="selectAll(this)" type="checkbox"></th>
                                                     <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                     <th width="30%">Name</th>
@@ -182,6 +171,9 @@
                                                 @endforelse
                                                 </tbody>
                                             </table>
+                                            <span>
+                                                @include('partials._paginate',['data'=> $parades])
+                                            </span><br><br><br>
 
                                             <div class="row">
                                                 <!-- Course -->
@@ -220,12 +212,11 @@
                                                 <div class="col-sm-5" style="display: flex;justify-content:end">
                                                     <!-- Add Page -->
                                                     <h5 class="widget-title">
-                                                        <div class="form-group"
-                                                            style="margin-top: 21px;">
+                                                        <div class="form-group">
                                                             <div align="right" class="col-md-12 pr-2">
                                                                 <button type="submit"
                                                                     class="button-submit"
-                                                                    style="max-width: 150px;padding:10px 25px 10px 25px;font-size:18px">
+                                                                    style="max-width: 150px;padding:8px 20px 8px 20px;font-size:18px">
                                                                     Migrate
                                                                 </button>
                                                             </div>
@@ -252,17 +243,6 @@
     </div>
 
     <script>
-
-        // function selectAll(){
-        //     // alert("Success");
-        //     var ele=document.getElementsByName('bulk_id[]');
-        //     console.log(ele);
-
-        //     for(var i=0; i<ele.length; i++){
-        //         if(ele[i].type=='checkbox')
-        //             ele[i].checked=true;
-        //     }
-        // }
 
         function selectAll(obj)
         {

@@ -7,6 +7,7 @@ use Module\PRM\Models\Camp;
 use Illuminate\Http\Request;
 use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Module\PRM\Models\ParadeCampMigration;
 use Module\PRM\Models\ParadeCurrentProfileModel;
 
@@ -31,6 +32,8 @@ class ParadeCampMigrateController extends Controller
     */
     public function index()
     {
+        // dd(auth()->user()->id);
+
         try {
             $data['parade_migrations']  = ParadeCampMigration::with('camp','parade')->paginate(20);
             $data['table']  = ParadeCampMigration::getTableName();
@@ -61,6 +64,11 @@ class ParadeCampMigrateController extends Controller
     */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'parade_id'       => 'unique_with:parade_camp_migrations, camp_id, migration_date',
+            'camp_id'         => 'required',
+            'migration_date'  => 'required'
+        ]);
 
         try {
             $this->storeOrUpdate($request);
@@ -186,11 +194,11 @@ class ParadeCampMigrateController extends Controller
     public function bulkCampMigrate()
     {
         try {
-            $data['parades'] = ParadeModel::with('camp')->paginate(30);
+            $data['parades'] = ParadeModel::with('camp')->paginate(5);
             $data['camps'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
             $data['table'] = ParadeModel::getTableName();
-            return view('pages.parade-migrate.bulkCampMigrate', $data);
+            return view('pages/parade-migrate/bulkCampMigrate', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

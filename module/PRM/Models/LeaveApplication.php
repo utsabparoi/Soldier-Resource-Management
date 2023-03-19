@@ -15,8 +15,9 @@ class LeaveApplication extends Model
 
     // Relationship
     function parade(){
-        return $this->belongsTo(ParadeModel::class);
+        return $this->belongsTo(ParadeModel::class,'parade_id');
     }
+
     function camp(){
         return $this->belongsTo(Camp::class);
     }

@@ -64,6 +64,9 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
+                                                                    @if ($errors->has('parade_id'))
+                                                                        <span class="text-danger">The Soldier already migrated in the selected camp with same migration date</span>
+                                                                    @endif
                                                                 </div>
                                                             </div>
 
@@ -110,8 +113,11 @@
                                                                         </h5>
                                                                     </label>
                                                                     <div>
-                                                                        <input class="form-control box-resize" type="date" name="migration_date" required>
+                                                                        <input class="form-control date-picker box-resize" type="text" name="migration_date" placeholder="When to Migrate">
                                                                     </div>
+                                                                    @if ($errors->has('migration_date'))
+                                                                        <span class="text-danger">{{ $errors->first('migration_date') }}</span>
+                                                                    @endif
                                                                 </div>
                                                             </div>
 

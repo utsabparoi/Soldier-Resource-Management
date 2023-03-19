@@ -36,8 +36,11 @@
                         <h4 class="widget-title"> <i class="fa fa-info-circle"></i> ParadeMigration List
                         </h4>
                         <span class="widget-toolbar">
-                            <a href="{{ route('prm.parade-camp-migrate') }}" class="">
-                                <i class="fa fa-plus"></i> Migrate Soldier
+                            <a href="{{ route('prm.parade-camp-migrate') }}" style="border: 1px solid #D9D9D9;padding:2px 4px 2px 4px;border-radius:4px">
+                                Migrate Soldier
+                            </a>
+                            <a href="{{ route('prm.bulk-camp-migrate') }}" style="border: 1px solid #D9D9D9;padding:2px 4px 2px 4px;border-radius:4px">
+                                Bulk Migrate
                             </a>
                         </span>
                     </div>
