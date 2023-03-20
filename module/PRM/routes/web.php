@@ -16,7 +16,7 @@ use Module\PRM\Controllers\LeaveApplicationController;
 use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
 use Module\PRM\Controllers\ParadeCampMigrateController;
-
+Auth::routes();
 Route::group(['middleware'=>'auth', 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
         Leave-Category Routes List
