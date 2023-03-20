@@ -170,7 +170,7 @@
                                                             class="span">{{ $location->camp->name}}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">
-                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)" class="label label-sm"
+                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)" class="label label-sm" title="Click for change"
                                                             style="cursor: pointer !important; background-color: rgb(13, 138, 187) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">
                                                             {{ $parades->state->name}}
                                                         </span>
@@ -361,9 +361,9 @@
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span\n' +
                         '                                                            class="span">' + responseData[i].camp.name + '</span>\n' +
                         '                                                    </td>\n' +
-                        '                                                    <td style="display:table-cell; vertical-align:middle;" id="' + responseData[i].name + '">\n' +
-                        '                                                        <span data-id="' + responseData[i].name + '" onclick="stateSelect(this)"\n' +
-                        '                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(0, 147, 252) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">' + responseData[i].state.name + '</span>\n' +
+                        '                                                    <td style="display:table-cell; vertical-align:middle;" id="' + responseData[i].id + '">\n' +
+                        '                                                        <span data-id="' + responseData[i].id + '" onclick="stateSelect(this)"\n' +
+                        '                                                            class="label label-sm"  title="Click for change" style="cursor: pointer !important; background-color: rgb(0, 147, 252) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">' + responseData[i].state.name + '</span>\n' +
                         '                                                    </td>\n' +
                         '                                                    <td class="text-center" style="display:table-cell; vertical-align:middle;">\n' +
                         '\n' +
@@ -417,7 +417,8 @@
                 "@foreach($all_states->take(3) as $all_state)" +
                 "<option value='{{ $all_state->id}}'>{{ $all_state->name}}</option>" +
                 "@endforeach" +
-                "</select> &nbsp;&nbsp;&nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' data-solder-id='"+id+"' onclick='changeState(this)'></i> ";
+                "</select> &nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' data-solder-id='"+id+"' onclick='changeState(this)'></i> " +
+                "&nbsp; <i class='fa fa-close bigger-150' style='cursor: pointer !important; color: red !important;' onclick='refreshPage()'></i>";
         }
         function changeState(element) {
             let paradeId = $(element).attr("data-solder-id");
