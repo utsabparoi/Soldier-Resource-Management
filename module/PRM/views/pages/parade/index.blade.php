@@ -64,17 +64,6 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!-- Last Leave -->
-                                                <div class="col-sm-3">
-                                                    <div class="form-group">
-                                                        <select name="last_leave_months" class="col-xs-10 col-sm-10 multiselect" id="lastLeave"
-                                                            onchange="getSoldierLastLeave()">
-                                                            <option value="">-Select Last Leave-</option>
-                                                            <option value="3">within 3 months</option>
-                                                            <option value="2">within 2 months</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
                                                 <!-- Rank Name -->
                                                 <div class="col-sm-3">
                                                     <div class="form-group">
@@ -98,6 +87,17 @@
                                                                 <option value="">-Select Soldier-</option>
                                                             </select>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Last Leave -->
+                                                <div class="col-sm-3">
+                                                    <div class="form-group">
+                                                        <select name="last_leave_months" class="col-xs-10 col-sm-10 multiselect" id="lastLeave"
+                                                            onchange="getSoldierLastLeave()">
+                                                            <option value="">-Select Last Leave-</option>
+                                                            <option value="3">within 3 months</option>
+                                                            <option value="2">within 2 months</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <!-- search and refresh button Name -->
