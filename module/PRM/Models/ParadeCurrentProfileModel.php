@@ -4,11 +4,11 @@ namespace Module\PRM\Models;
 
 use Module\PRM\Models\Camp;
 use Module\PRM\Models\Model;
-use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
+use App\Traits\AutoCreatedUpdated;
 
 class ParadeCurrentProfileModel extends Model
 {
-    use AutoCreatedUpdatedforCustomMiddleware;
+    use AutoCreatedUpdated;
     protected $table = 'parade_current_profiles';
 
     public function camp(){

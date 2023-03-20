@@ -2,11 +2,11 @@
 
 namespace Module\PRM\Models;
 
-use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
+use App\Traits\AutoCreatedUpdated;
 
 class ParadeTrainingModel extends Model
 {
-    use AutoCreatedUpdatedforCustomMiddleware;
+    use AutoCreatedUpdated;
     protected $table = 'parade_trainings';
 
     function training(){

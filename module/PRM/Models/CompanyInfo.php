@@ -3,11 +3,11 @@
 namespace Module\PRM\Models;
 
 use Module\PRM\Models\Model;
-use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
+use App\Traits\AutoCreatedUpdated;
 
 class CompanyInfo extends Model
 {
-    use AutoCreatedUpdatedforCustomMiddleware;
+    use AutoCreatedUpdated;
 
     protected $table = 'courses';
 

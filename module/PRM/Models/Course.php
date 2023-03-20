@@ -4,11 +4,11 @@ namespace Module\PRM\Models;
 
 use App\Models\User;
 use Module\PRM\Models\Model;
-use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
+use App\Traits\AutoCreatedUpdated;
 
 class Course extends Model
 {
-    use AutoCreatedUpdatedforCustomMiddleware;
+    use AutoCreatedUpdated;
 
     protected $table = 'courses';
 
@@ -19,7 +19,7 @@ class Course extends Model
     public function parade_course(){
         return $this->belongsTo(ParadeCourseModel::class);
     }
-    
+
 }
 
 

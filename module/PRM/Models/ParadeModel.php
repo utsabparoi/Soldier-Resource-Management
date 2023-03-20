@@ -2,11 +2,11 @@
 
 namespace Module\PRM\Models;
 
-use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
+use App\Traits\AutoCreatedUpdated;
 
 class ParadeModel extends Model
 {
-    use AutoCreatedUpdatedforCustomMiddleware;
+    use AutoCreatedUpdated;
 
     protected $table = 'parades';
 

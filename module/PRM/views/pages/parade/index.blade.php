@@ -136,7 +136,7 @@
                                                 <tr class="thead-redesign">
                                                     <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                     <th width="30%">Name</th>
-                                                    <th width="15%">Joining Date</th>
+                                                    <th class="text-center" width="10%">Joining Date</th>
                                                     <th width="20%">Camp</th>
                                                     <th width="15%">State</th>
                                                     <th width="15%" class="text-center" style="width: 120px">Action</th>
@@ -159,14 +159,14 @@
                                                                 width="50px" height="50px"
                                                                 style="float: left; margin-right: 3px; border: 1px solid rgba(0,193,255,0.42); border-radius: 100%">
                                                             <ul style="list-style: none; margin-top: 7px;">
-                                                                <li style="font-weight: bold;">{{ $parades->name }}</li>
-                                                                <li style="font-weight: bold;font-family:MareindaBold">{{ $parades->next_rank }}</li>
+                                                                <li style="font-weight: bold;font-family:Marienda;font-size:14px">{{ $parades->name }}</li>
+                                                                <li style="font-weight: bold;font-family:MareindaBold;font-style:italic">{{ $parades->next_rank }}</li>
                                                             </ul>
                                                         </span></td>
-                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;"><span
+                                                    <td class="text-center" style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda"><span
                                                             class="span">{{ $parades->join_date_present_unit }}</span>
                                                     </td>
-                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;"><span
+                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda"><span
                                                             class="span">{{ $location->camp->name}}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">

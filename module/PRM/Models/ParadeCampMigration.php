@@ -3,11 +3,11 @@
 namespace Module\PRM\Models;
 
 use Module\PRM\Models\Model;
-use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
+use App\Traits\AutoCreatedUpdated;
 
 class ParadeCampMigration extends Model
 {
-    use AutoCreatedUpdatedforCustomMiddleware;
+    use AutoCreatedUpdated;
 
     protected $table = 'parade_camp_migrations';
 

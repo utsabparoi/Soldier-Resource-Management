@@ -5,11 +5,11 @@ namespace Module\PRM\Models;
 use App\Models\User;
 use Module\PRM\Models\Model;
 use Module\PRM\Models\ParadeModel;
-use App\Traits\AutoCreatedUpdatedforCustomMiddleware;
+use App\Traits\AutoCreatedUpdated;
 
 class LeaveApplication extends Model
 {
-    use AutoCreatedUpdatedforCustomMiddleware;
+    use AutoCreatedUpdated;
 
     protected $table = 'leave_applications';
 
