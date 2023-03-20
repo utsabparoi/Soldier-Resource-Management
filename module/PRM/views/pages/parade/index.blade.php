@@ -50,9 +50,9 @@
                                 <div class="col-xs-12">
                                     <div class="widget-body" style="border: 1px solid #e7e7e7">
                                         <div class="widget-main" style="margin-bottom:-15px">
-                                            <div class="row" style="display: flex;justify-content:flex-start">
+                                            <div class="row">
                                                 <!-- Company Name -->
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <select class="col-xs-10 col-sm-10 multiselect" id="paradeCamp"
                                                             onchange="getCampParadeInformation()">
@@ -64,8 +64,21 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <!-- ParadeState Name -->
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <select class="col-xs-10 col-sm-10 multiselect" id="paradeState"
+                                                            onchange="getParadeStates()">
+                                                            <option value="">-Select State-</option>
+                                                            @foreach ($all_states as $state)
+                                                                <option value="{{ $state->id }}">
+                                                                    {{ $state->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <!-- Rank Name -->
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <select class="col-xs-10 col-sm-10 multiselect" id="paradeRank"
                                                             onchange="getParadeInformation()">
@@ -80,7 +93,7 @@
                                                     </div>
                                                 </div>
                                                 <!-- Company Name -->
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <div>
                                                             <select class="col-xs-10 col-sm-10 multiselect" id="parade">
@@ -90,7 +103,7 @@
                                                     </div>
                                                 </div>
                                                 <!-- Last Leave -->
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <select name="last_leave_months" class="col-xs-10 col-sm-10 multiselect" id="lastLeave"
                                                             onchange="getSoldierLastLeave()">
@@ -100,27 +113,27 @@
                                                         </select>
                                                     </div>
                                                 </div>
+
                                                 <!-- search and refresh button Name -->
-                                                <div class="col-sm-3">
-                                                    <button class="btn btn-primary" type="button" id="uploadPercent"
+                                                <div class="col-sm-2" style="display:flex;justify-content:flex-start">
+                                                    <button class="btn btn-primary btn-sm" type="button" id="uploadPercent"
                                                         onclick="paradeSearchResult()"
-                                                        style="background-color: #431cff !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px"
+                                                        style="background-color: #431cff !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px;margin-right:1px;"
                                                         \>
                                                         <i class="ace-icon fa fa-search bigger-110"></i>
                                                         Search
                                                     </button>
-                                                    <button class="btn btn-grey" type="button"
+                                                    <button class="btn btn-grey btn-sm" type="button"
                                                             id="uploadPercent"
                                                             onclick="refreshPage()"
-                                                            style="background-color: #828282 !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px !important;padding:2px 6px 2px 6px"
+                                                            style="background-color: #828282 !important; border: none;border-color:#AAAAAA;height:28px !important;border-radius:4px"
                                                             \>
                                                         <i class="ace-icon fa fa-refresh bigger-110"></i>
                                                         Refresh
                                                     </button>
                                                 </div>
+
                                             </div>
-
-
 
                                         </div>
 

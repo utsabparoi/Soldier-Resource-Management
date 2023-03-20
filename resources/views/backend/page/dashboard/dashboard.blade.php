@@ -2,8 +2,8 @@
 @section('title', 'Biodata')
 @section('content')
     <style>
-        .small-box .inner > h3,
-        .main-content-inner > a .custom-color {
+        .small-box .inner>h3,
+        .main-content-inner>a .custom-color {
             font-family: MariendaBold;
             color: rgb(139, 10, 10) !important;
         }
@@ -36,6 +36,10 @@
     </style>
 
     <?php
+    // use App\Models\User;
+    use Carbon\Carbon;
+    use Carbon\CarbonPeriod;
+
     $total_soldiers = DB::table('parades')->count('id');
     $total_camps = DB::table('camps')->count('id');
     $AuthorizedStates = DB::table('parades')
@@ -44,9 +48,28 @@
     $heldStates = DB::table('parades')
         ->where('state_id', 2)
         ->count('id');
-    
+
+    $start_dates = DB::table('leave_applications')->pluck('start_date');
+    $end_dates = DB::table('leave_applications')->pluck('end_date');
+    $leave_count = 0;
+    for($i=0; $i < count($start_dates); $i++){
+        $startDate = Carbon::createFromFormat('Y-m-d', $start_dates[$i]);
+        $endDate = Carbon::createFromFormat('Y-m-d', $end_dates[$i]);
+
+        $dateRange = CarbonPeriod::create($startDate, $endDate);
+        $dates = array_map(fn ($date) => $date->format('Y-m-d'), iterator_to_array($dateRange));
+        for($j=0; $j < count($dates); $j++){
+            if($dates[$j]  == date("Y-m-d")){
+                $leave_count = $leave_count + 1;
+            }
+        }
+    }
+
+    // print_r($leave_count);
+
+
     $offRation = DB::table('leave_applications')
-        ->whereDate('start_date', date("Y-m-d"))
+        ->whereDate('start_date', date('Y-m-d'))
         ->count('id');
     $onRation = DB::table('parades')
         ->where('state_id', 4)
@@ -97,7 +120,8 @@
             </div>
 
             <div class="row custom-alignment">
-                <h1 class="text-center" style="color: #130059;margin-right:20px !;font-family:Marienda;font-size:36px;text-shadow: 2px 2px 2px rgb(205, 143, 205);">
+                <h1 class="text-center"
+                    style="color: #130059;margin-right:20px !;font-family:Marienda;font-size:36px;text-shadow: 2px 2px 2px rgb(205, 143, 205);">
                     Today's Soldier States Information</h1>
             </div>
 
@@ -121,7 +145,7 @@
 
                     <div class="small-box bg-info" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
                         <div class="inner">
-                            <h3>112 Soldiers</h3>
+                            <h3>{!! $heldStates !!} Soldiers</h3>
 
                             <h4>In Held State</h4>
                         </div>
@@ -137,7 +161,7 @@
                     <div class="small-box bg-success"
                         style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(52, 72, 200);">
                         <div class="inner">
-                            <h3>{!! $offRation !!} Soldiers</h3>
+                            <h3>{!! $leave_count !!} Soldiers</h3>
 
                             <h4>In Off Ration</h4>
                         </div>
@@ -152,7 +176,7 @@
 
                     <div class="small-box bg-warrning" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
                         <div class="inner">
-                            <h3>335 Soldiers</h3>
+                            <h3>{!! $onRation !!} Soldiers</h3>
 
                             <h4>In On Ration</h4>
                         </div>
