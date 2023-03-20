@@ -282,7 +282,7 @@
                         <i class="ace-icon fa fa-user blue"></i>
                         <span class="user-info">
                                     <small style="font-family:Merienda">Welcome &nbsp; <i class="ace-icon fa fa-caret-down"></i></small>
-                                    {{-- <span>{{ auth()->user()->name }}</span> --}}
+                                     <span>{{ auth()->user()->name }}</span>
                                 </span>
                     </a>
 
