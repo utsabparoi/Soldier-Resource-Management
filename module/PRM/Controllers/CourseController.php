@@ -9,15 +9,6 @@ use App\Http\Controllers\Controller;
 
 class CourseController extends Controller
 {
-    use FileSaver;
-    /*
-     |--------------------------------------------------------------------------
-     | CONSTRUCTOR
-     |--------------------------------------------------------------------------
-    */
-    public function __construct(){
-        $this->middleware('AdminLogin');
-    }
 
     /*
      |--------------------------------------------------------------------------

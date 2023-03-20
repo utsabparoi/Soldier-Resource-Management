@@ -14,13 +14,13 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('backend.page.dashboard.dashboard');
-})->middleware("AdminLogin");
-Route::get('/Login', [AdminController::class, 'LoginForm']);
-Route::post('/login',[AdminController::class, "Login"]);
-Route::get('/logout',[AdminController::class, "Logout"]);
+});
+// Route::get('/Login', [AdminController::class, 'LoginForm']);
+// Route::post('/login',[AdminController::class, "Login"]);
+// Route::get('/logout',[AdminController::class, "Logout"]);
 
 /*=======================
     update-status route

@@ -10,16 +10,7 @@ use Module\PRM\Models\AppointmentHolder;
 class AppointmentHolderController extends Controller
 {
     use FileSaver;
-    /*
-     |--------------------------------------------------------------------------
-     | CONSTRUCTOR
-     |--------------------------------------------------------------------------
-    */
-    public function __construct()
-    {
-        $this->middleware('AdminLogin');
-    }
-    
+
     /*
      |--------------------------------------------------------------------------
      | INDEX METHOD
