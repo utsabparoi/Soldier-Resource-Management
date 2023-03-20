@@ -42,19 +42,16 @@ class ParadeController extends Controller
             $data['camp_name'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
             $data['all_states'] = ParadeStateModel::all();
+            $data['table'] = ParadeModel::getTableName();
             //get soldier migrate camp name on today's date
             $current_location = ParadeCurrentProfileModel::with('camp')->latest()->first();
-
             $migrate_date = ParadeCampMigration::whereDate('migration_date','=',Carbon::today()->format("Y-m-d") )->get();
-
             if ((!$migrate_date->isEmpty()) && $current_location) {
                 $data['location'] = $current_location;
             } else {
                 $base_profile_data = ParadeModel::with('camp')->first();
                 $data['location'] = $base_profile_data;
             }
-
-            $data['table'] = ParadeModel::getTableName();
             return view('pages.parade.index', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());

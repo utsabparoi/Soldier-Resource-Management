@@ -20,5 +20,5 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         return view('backend.page.dashboard.dashboard');
     });
     Route::post('/update-status/{table}', 'Controller@updateStatus')->name('update-status');
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
