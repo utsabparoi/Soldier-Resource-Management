@@ -16,7 +16,7 @@ class CourseController extends Controller
      |--------------------------------------------------------------------------
     */
     public function __construct(){
-        $this->middleware('AdminLogin');
+        //
     }
 
     /*
