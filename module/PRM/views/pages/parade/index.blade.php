@@ -11,6 +11,13 @@
                     </li>
                     <li class="active">All Soldier</li>
                 </ul><!-- /.breadcrumb -->
+
+                <div class="widget-toolbar" >
+                    <a href="{{ route('prm.parade.create') }}" class="text-center"
+                            style="width: 100px; background-color: #2595dc !important; color: #ffffff !important;border-radius:4px !important">
+                            <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Soldier</span>
+                        </a>
+                </div><!-- /.nav-search -->
             </div>
             {{-- main content start from here --}}
             <div class="page-content" style="position: relative">
@@ -24,20 +31,20 @@
 
 
                     <!-- header -->
-                    <div class="widget-header" style="background: white !important;">
+                    {{-- <div class="widget-header" style="background: white !important;">
                         <h4 class="widget-title">Soldier List <span class="badge"
                             style="margin-bottom: 5px; background-color: #2595dc !important; color: #ffffff !important;">Total: {{ $all_parade->count() }} </span>
                         </h4>
 
 
                         <span class="widget-toolbar">
-                            <!--------------- CREATE---------------->
+
                             <a href="{{ route('prm.parade.create') }}" class="text-center"
                                style="width: 110px; background-color: #2595dc !important; color: #ffffff !important;">
                                 <i class="fa fa-plus"></i> Add <span class="hide-in-sm">Soldier</span>
                             </a>
                         </span>
-                    </div>
+                    </div> --}}
 
 
                     <!-- body -->
@@ -48,7 +55,10 @@
 
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <div class="widget-body" style="border: 1px solid #e7e7e7">
+                                    <h5 style="font-family: Marienda;margin-top:-10px;">Filter by
+                                        <span id="searchResulInfo" style="font-family: MariendaBold;font-size:13px;color: #00BE67;">Total: {{ $all_parade->count() }} </span>
+                                    </h5>
+                                    <div class="widget-body" style="border: 0.5px solid #ffffff;box-shadow: 2px 4px 8px #1B2B55;">
                                         <div class="widget-main" style="margin-bottom:-15px">
                                             <div class="row">
                                                 <!-- Company Name -->
