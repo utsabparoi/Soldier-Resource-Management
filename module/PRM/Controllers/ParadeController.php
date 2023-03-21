@@ -221,6 +221,16 @@ class ParadeController extends Controller
         }
     }
 
+    public function editCourse($id){
+        try {
+            $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(20);
+            $data['parades'] = ParadeModel::all();
+            return view('pages.parade.editCourse', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
+
 
     /*
      |--------------------------------------------------------------------------

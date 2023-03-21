@@ -376,6 +376,12 @@
                         '                                                               title="Full Biodata">\n' +
                         '                                                                <i class="fa fa-user"></i>\n' +
                         '                                                            </a>\n' +
+                        '                                                            <a href="{{ route('prm.parade_history', '') }}' + "/" + responseData[i].id + '"\n' +
+                        '                                                               role="button" class="btn btn-xs bs-tooltip"\n' +
+                        '                                                               style="background-color: #ff6500 !important; border: 1px solid #ff6500 !important;"\n' +
+                        '                                                               title="Soilder History">\n' +
+                        '                                                                <i class="fa fa-history"></i>\n' +
+                        '                                                            </a>       \n' +
                         '\n' +
                         '                                                            <a href="parade/' + responseData[i].id + '/edit/"\n' +
                         '                                                               role="button" class="btn btn-xs bs-tooltip"\n' +
@@ -413,12 +419,13 @@
         function stateSelect(element) {
             let id = $(element).attr("data-id");
             let state = document.getElementById(id);
-            state.innerHTML = "<select id='stateValue' style=''>" +
+            state.innerHTML = "<select id='stateValue'>" +
                 "@foreach($all_states->take(3) as $all_state)" +
                 "<option value='{{ $all_state->id}}'>{{ $all_state->name}}</option>" +
                 "@endforeach" +
                 "</select> &nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' data-solder-id='"+id+"' onclick='changeState(this)'></i> " +
                 "&nbsp; <i class='fa fa-close bigger-150' style='cursor: pointer !important; color: red !important;' onclick='refreshPage()'></i>";
+
         }
         function changeState(element) {
             let paradeId = $(element).attr("data-solder-id");
@@ -430,7 +437,6 @@
             }).catch(function (error) {
                 alert('Error Try again...');
             })
-
         }
     </script>
 @endsection

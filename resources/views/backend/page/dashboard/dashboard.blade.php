@@ -44,7 +44,7 @@
     $heldStates = DB::table('parades')
         ->where('state_id', 2)
         ->count('id');
-    
+
     $offRation = DB::table('leave_applications')
         ->whereDate('start_date', date("Y-m-d"))
         ->count('id');
