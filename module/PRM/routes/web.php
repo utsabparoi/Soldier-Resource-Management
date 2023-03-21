@@ -16,6 +16,8 @@ use Module\PRM\Controllers\LeaveApplicationController;
 use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
 use Module\PRM\Controllers\ParadeCampMigrateController;
+use Module\PRM\Models\ParadeCourseModel;
+
 Auth::routes();
 Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
@@ -86,6 +88,7 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
 
 });
 //ajax axios routes
+Route::post('/update_course', [ParadeCourseController::class, 'updateCourse']);
 Route::post('/change_state', [ParadeController::class, 'stateChange']);
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
 Route::post('/parade_search', [ParadeController::class, 'getParadeSearch']);

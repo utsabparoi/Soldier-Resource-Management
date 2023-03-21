@@ -10,7 +10,7 @@
                         <thead>
                             <tr>
                                 <th width="20%">Not Yet Course</th>
-                                <th width="10%">Resut</th>
+                                <th width="10%">Result</th>
                                 <th width="10%">Remarks</th>
                                 <th width="10%">Duration</th>
                                 <th width="10%">Action</th>
@@ -19,11 +19,11 @@
                         <tbody class="table_body_course">
                             <tr class="remove_able_tr_course">
                                 <td>
-                                    <select class="col-xs-12 col-sm-12 multiselect unmatched-course" name="course[]"
+                                    <select class="multiselect" name="course[]"
                                         id="course">
                                         <option value="notSelect">-Select-</option>
-                                        @foreach ($courses as $course)
-                                            <option>{{ $course->name }}</option>
+                                        @foreach ($coursesNotTaken as $courseNotTaken)
+                                            <option value="{{ $courseNotTaken->id }}">{{ $courseNotTaken->name }}</option>
                                         @endforeach
                                     </select>
                                 </td>
@@ -80,10 +80,10 @@
             var whole_extra_item_add =
                 `<tr class="remove_able_tr_course">
                 <td>
-                    <select class="col-xs-12 col-sm-12 multiselect unmatched-course" name="course[]">
+                    <select class="multiselect" name="course[]">
                         <option>-Select-</option>
-                        @foreach ($courses as $course)
-                            <option>{{ $course->name }}</option>
+                        @foreach ($coursesNotTaken as $courseNotTaken)
+                            <option  value="{{ $courseNotTaken->id }}">{{ $courseNotTaken->name }}</option>
                         @endforeach
                     </select>
                 </td>

@@ -242,10 +242,13 @@ class ParadeController extends Controller
         }
     }
 
-    public function editCourse($id){
+    public function editCourse(Request $request, $id){
         try {
-            $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(20);
-            $data['parades'] = ParadeModel::all();
+            $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(30);
+            $data['parade'] = ParadeModel::find($id);
+            $data['coursesTaken'] = ParadeCourseModel::where('parade_id', $id)->with('course', 'parade')->get();
+            $data['courses'] = ParadeCourseModel::where('parade_id', $id)->pluck('course_id');
+            $data['coursesNotTaken'] = Course::whereNotIn('id', $data['courses'])->get();
             return view('pages.parade.editCourse', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
