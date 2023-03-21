@@ -64,7 +64,7 @@ class ParadeCourseController extends Controller
         try {
             $this->storeOrUpdate($request);
 
-            return redirect()->route('prm.parade-courses.index')->with('success','Course Created Successfully');
+            return redirect()->route('prm.parade.index')->with('success','Course Created Successfully');
 
         } catch (\Throwable $th) {
             return redirect()->back()->with('error',$th->getMessage());
@@ -196,5 +196,15 @@ class ParadeCourseController extends Controller
         }catch(\Throwable $th){
             return redirect()->back()->with('error', $th->getMessage());
         }
+    }
+
+    public function updateCourse(Request $request){
+        ParadeCourseModel::where('id', $request->input('ParadeCourseID'))->
+            update([
+                "duration" => $request->input('Duration'),
+                "result" => $request->input('Result'),
+                "remark" => $request->input('Remark'),
+        ]);
+        return 1;
     }
 }

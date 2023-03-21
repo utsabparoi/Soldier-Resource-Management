@@ -17,6 +17,8 @@ use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
 use Module\PRM\Controllers\OrganizationInfoController;
 use Module\PRM\Controllers\ParadeCampMigrateController;
+use Module\PRM\Models\ParadeCourseModel;
+
 Auth::routes();
 Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], function(){
     /* ===========================
@@ -71,6 +73,7 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
     //Soldier all routes
     Route::resource('parade', ParadeController::class);
     Route::get('/paradeProfile/{id}', [ParadeController::class, 'paradeProfile'])->name('paradeProfile');
+    Route::get('/paradeCourseEdit/{id}', [ParadeController::class, 'editCourse'])->name('paradeCourseEdit');
     Route::get('/export_parade_csv', [ParadeController::class, 'exportExcelCSV'])->name('export_parade_csv');
     Route::get('/export_parade_pdf', [ParadeController::class, 'exportPDF'])->name('export_parade_pdf');
     Route::get('/parade_history/{id}', [ParadeController::class, 'paradeHistory'])->name('parade_history');
@@ -91,6 +94,7 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
 
 });
 //ajax axios routes
+Route::post('/update_course', [ParadeCourseController::class, 'updateCourse']);
 Route::post('/change_state', [ParadeController::class, 'stateChange']);
 Route::post('/camp_store', [StoreController::class, 'getCampStore']);
 Route::post('/parade_search', [ParadeController::class, 'getParadeSearch']);

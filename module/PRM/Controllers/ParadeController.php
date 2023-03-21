@@ -42,19 +42,16 @@ class ParadeController extends Controller
             $data['camp_name'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
             $data['all_states'] = ParadeStateModel::all();
+            $data['table'] = ParadeModel::getTableName();
             //get soldier migrate camp name on today's date
             $current_location = ParadeCurrentProfileModel::with('camp')->latest()->first();
-
             $migrate_date = ParadeCampMigration::whereDate('migration_date','=',Carbon::today()->format("Y-m-d") )->get();
-
             if ((!$migrate_date->isEmpty()) && $current_location) {
                 $data['location'] = $current_location;
             } else {
                 $base_profile_data = ParadeModel::with('camp')->first();
                 $data['location'] = $base_profile_data;
             }
-
-            $data['table'] = ParadeModel::getTableName();
             return view('pages.parade.index', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
@@ -245,6 +242,19 @@ class ParadeController extends Controller
             $data['parade'] = ParadeModel::find($id);
             $data['ranks'] = ParadeModel::find($id)->get('next_rank');
             return view('pages.parade.edit', $data);
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
+
+    public function editCourse(Request $request, $id){
+        try {
+            $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(30);
+            $data['parade'] = ParadeModel::find($id);
+            $data['coursesTaken'] = ParadeCourseModel::where('parade_id', $id)->with('course', 'parade')->get();
+            $data['courses'] = ParadeCourseModel::where('parade_id', $id)->pluck('course_id');
+            $data['coursesNotTaken'] = Course::whereNotIn('id', $data['courses'])->get();
+            return view('pages.parade.editCourse', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

@@ -115,7 +115,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <!-- Call button work end-->
+                                                            <!-- Modal work end-->
                                                         </td>
                                                         <td class="text-center">
                                                             <!--------------- STATUS EDIT---------------->
