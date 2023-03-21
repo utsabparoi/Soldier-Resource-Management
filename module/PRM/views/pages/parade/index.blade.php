@@ -68,7 +68,7 @@
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <select class="col-xs-10 col-sm-10 multiselect" id="paradeState"
-                                                            onchange="getParadeStates()">
+                                                            onchange="getSoldierState()">
                                                             <option value="">-Select State-</option>
                                                             @foreach ($all_states as $state)
                                                                 <option value="{{ $state->id }}">
@@ -179,8 +179,8 @@
                                                     <td class="text-center" style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda"><span
                                                             class="span">{{ $parades->join_date_present_unit }}</span>
                                                     </td>
-                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda"><span
-                                                            class="span">{{ $location->camp->name}}</span>
+                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda">
+                                                        <span class="span">{{ $parades->camp->name}}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">
                                                         <span data-id="{{ $parades->id }}" onclick="stateSelect(this)" class="label label-sm"
@@ -296,6 +296,29 @@
             })
         }
 
+        function getSoldierState() {
+            let campName = document.getElementById('paradeCamp').value;
+            let paradeState = document.getElementById('paradeState').value;
+
+            let url = "/parade_search";
+            let data = {
+                CampName: campName,
+                ParadeState: paradeState
+            };
+
+            axios.post(url, data).then(function(response) {
+                var responseData = response.data;
+                var serialNumber = 1;
+                $('#parade').empty();
+                for (let i = 0; i < responseData.length; i++) {
+                    $('#parade').append('<option value="">' + responseData[i].name + '</option>');
+                    serialNumber++;
+                }
+            }).catch(function(error) {
+
+            })
+        }
+
         function getSoldierLastLeave() {
             let campName = document.getElementById('paradeCamp').value;
             let lastLeave = document.getElementById('lastLeave').value;
@@ -310,7 +333,7 @@
                 var serialNumber = 1;
                 $('#parade').empty();
                 for (let i = 0; i < responseData.length; i++) {
-                    $('#parade').append('<option value="">' + responseData[i].parade.name + '</option>');
+                    $('#parade').append('<option value="">' + responseData[i].name + '</option>');
                     serialNumber++;
                 }
             }).catch(function(error) {
@@ -341,12 +364,14 @@
             let campName = document.getElementById('paradeCamp').value;
             let rank = document.getElementById('paradeRank').value;
             let lastLeave = document.getElementById('lastLeave').value;
+            let paradeState = document.getElementById('paradeState').value;
 
             let url = "/parade_search";
             let data = {
                 CampName: campName,
                 Rank: rank,
-                LastLeave: lastLeave
+                LastLeave: lastLeave,
+                ParadeState: paradeState
             };
 
             axios.post(url, data).then(function(response) {

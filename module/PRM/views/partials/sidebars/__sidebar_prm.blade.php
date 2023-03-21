@@ -1,9 +1,10 @@
 {{-- biodata module --}}
-<li class="{{ request()->url('/') ? 'open active' : '' }} custom-item-color" style="font-family:Varela;font-size:14px;">
+<li class="{{ request()->url('/') ? 'open active' : '' }} custom-item-color" style="font-family:Varela;">
     <a href="#" class="dropdown-toggle">
         <i class="menu-icon fa fa-user-secret red"></i>
         <span class="menu-text">
-            PRM
+            {{-- PRM --}}
+            Perfect Ten
         </span>
         {{-- <b class="arrow fa fa-angle-down"></b> --}}
     </a>
@@ -392,39 +393,6 @@
                     </ul>
                 </li>
 
-
-
-            </ul>
-        </li>
-        <li>
-            <a href="" >
-                <i class="menu-icon fa fa-info"></i>
-                Organization Info
-                <b class="arrow fa fa-angle-down"></b>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-user"></i>
-                Admin-User
-                <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu" >
-                <li>
-                    <a href="" >
-                        <i class="menu-icon fa fa-plus"></i>
-                        Add
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <i class="menu-icon fa fa-list"></i>
-                        List
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-                </li>
             </ul>
         </li>
     </ul>

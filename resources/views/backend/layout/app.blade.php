@@ -55,6 +55,11 @@
             font-family: MariendaBold;
             src: url("{{ asset('/backend/fonts/Merienda/static/Merienda-SemiBold.ttf') }}");
         }
+
+        @font-face{
+            font-family: Varela;
+            src: url("{{ asset('/backend/fonts/Varela/Varela-Regular.ttf') }}");
+        }
     </style>
     <!-- inline styles related to this page -->
 

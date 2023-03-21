@@ -60,51 +60,56 @@ class ParadeController extends Controller
             return redirect()->back()->with('error', $th->getMessage());
         }
     }
-
+    /*=============================================
+        Parade al kind of search filter function
+    ===============================================*/
     public function getParadeSearch(Request $request)
     {
         $campName = $request->input('CampName');
         $rank = $request->input('Rank');
         $last_leave_duration = $request->input('LastLeave');
+        $state = $request->input('ParadeState');
 
         if (isset($campName) && isset($rank)) {
 
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('next_rank', '=', $rank)->with('camp')->with('state')->get();
-        } elseif (isset($campName)) {
+        }elseif (isset($campName) &&isset($state)) {
+            /* search parade with camp and state */
+            $searchedParades = ParadeModel::where('present_location', '=', $campName)->where('state_id', '=', $state)->with('camp')->with('state')->get();
+        }elseif (isset($campName) && isset($last_leave_duration)) {
+            /* search parade with camp and last leave */
+            if($last_leave_duration == 3){
+
+                $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(3), Carbon::now()])->pluck('parade_id');
+
+                $searchedParades = ParadeModel::whereIn('id', $last_leave)->where('present_location', '=', $campName)->with('camp','state')->get();
+            }elseif($last_leave_duration == 2){
+
+                $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(2), Carbon::now()])->pluck('parade_id');
+
+                $searchedParades = ParadeModel::whereIn('id', $last_leave)->where('present_location', '=', $campName)->with('camp','state')->get();
+            }
+        }elseif (isset($campName)) {
 
             $searchedParades = ParadeModel::where('present_location', '=', $campName)->with('camp')->with('state')->get();
-        } elseif (isset($rank)) {
+        }elseif (isset($state)) {
+
+            $searchedParades = ParadeModel::where('state_id', '=', $state)->with('camp')->with('state')->get();
+        }elseif (isset($rank)) {
 
             $searchedParades = ParadeModel::where('next_rank', '=', $rank)->with('camp')->with('state')->get();
-        } elseif (isset($campName) && isset($last_leave_duration)) {
-
-            if($last_leave_duration == 3){
-
-                $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(3), Carbon::now()])->pluck('parade_id');
-
-                $searchedParades = ParadeModel::whereIn('id', $last_leave)->where('present_location', '=', $campName)->with('camp','state')->get();
-                // $searchedParades = $parade_info;
-            }elseif($last_leave_duration == 2){
-
-                $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(2), Carbon::now()])->pluck('parade_id');
-
-                $searchedParades = ParadeModel::whereIn('id', $last_leave)->where('present_location', '=', $campName)->with('camp','state')->get();
-                // $searchedParades = $parade_info;
-            }
         }elseif (isset($last_leave_duration)) {
-
+            /** Search condition of parade who took leave between last 3 or 2 months */
             if($last_leave_duration == 3){
 
                 $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(3), Carbon::now()])->pluck('parade_id');
 
                 $searchedParades = ParadeModel::whereIn('id', $last_leave)->with('camp','state')->get();
-                // $searchedParades = $parade_info;
             }elseif($last_leave_duration == 2){
 
                 $last_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(2), Carbon::now()])->pluck('parade_id');
 
                 $searchedParades = ParadeModel::whereIn('id', $last_leave)->with('camp','state')->get();
-                // $searchedParades = $parade_info;
             }
         }
         return response()->json($searchedParades);
