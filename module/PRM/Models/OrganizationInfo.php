@@ -5,13 +5,14 @@ namespace Module\PRM\Models;
 use Module\PRM\Models\Model;
 use App\Traits\AutoCreatedUpdated;
 
-class CompanyInfo extends Model
+class OrganizationInfo extends Model
 {
     use AutoCreatedUpdated;
 
-    protected $table = 'courses';
+    protected $table = 'organization_infos';
 
     function user(){
         return $this->belongsTo(User::class);
     }
+
 }

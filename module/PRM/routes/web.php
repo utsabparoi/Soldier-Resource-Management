@@ -15,6 +15,7 @@ use Module\PRM\Controllers\LeaveCategoryController;
 use Module\PRM\Controllers\LeaveApplicationController;
 use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
+use Module\PRM\Controllers\OrganizationInfoController;
 use Module\PRM\Controllers\ParadeCampMigrateController;
 Auth::routes();
 Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], function(){
@@ -82,6 +83,11 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
 
     //APR
     Route::resource('apr', APRController::class);
+
+    // organization-info routes
+    // Route::resource('organization-infos', OrganizationInfoController::class);
+    Route::get('/organization-infos', [OrganizationInfoController::class, "OrganizationInformation"])->name("organizationInformation");
+    Route::post("/organization-infos-update", [OrganizationInfoController::class, "OrganizationInformationUpdate"]);
 
 });
 //ajax axios routes

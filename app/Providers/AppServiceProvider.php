@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Module\PRM\Models\OrganizationInfo;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +28,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        Paginator::useBootstrap();
+
+        if ( !app()->runningInConsole() ){
+            $OrganizationInformation = OrganizationInfo::find(1);
+
+            View::Share(compact('OrganizationInformation'));
+
+        }
     }
 }

@@ -21,7 +21,7 @@
         @include('partials.sidebars.__sidebar_prm')
 
         <li>
-            <a href="">
+            <a href="{{ route('prm.organizationInformation') }}">
                 <i class="menu-icon fa fa-info"></i>
                 Organization Info
                 {{-- <b class="arrow fa fa-angle-down"></b> --}}
