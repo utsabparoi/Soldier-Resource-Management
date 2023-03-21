@@ -183,7 +183,7 @@
                                                             class="span">{{ $location->camp->name}}</span>
                                                     </td>
                                                     <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">
-                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)" class="label label-sm"
+                                                        <span data-id="{{ $parades->id }}" onclick="stateSelect(this)" class="label label-sm" title="Click for change"
                                                             style="cursor: pointer !important; background-color: rgb(13, 138, 187) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">
                                                             {{ $parades->state->name}}
                                                         </span>
@@ -374,9 +374,9 @@
                         '                                                    <td style="display:table-cell; vertical-align:middle;"><span\n' +
                         '                                                            class="span">' + responseData[i].camp.name + '</span>\n' +
                         '                                                    </td>\n' +
-                        '                                                    <td style="display:table-cell; vertical-align:middle;" id="' + responseData[i].name + '">\n' +
-                        '                                                        <span data-id="' + responseData[i].name + '" onclick="stateSelect(this)"\n' +
-                        '                                                            class="label label-sm" style="cursor: pointer !important; background-color: rgb(0, 147, 252) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">' + responseData[i].state.name + '</span>\n' +
+                        '                                                    <td style="display:table-cell; vertical-align:middle;" id="' + responseData[i].id + '">\n' +
+                        '                                                        <span data-id="' + responseData[i].id + '" onclick="stateSelect(this)"\n' +
+                        '                                                            class="label label-sm"  title="Click for change" style="cursor: pointer !important; background-color: rgb(0, 147, 252) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">' + responseData[i].state.name + '</span>\n' +
                         '                                                    </td>\n' +
                         '                                                    <td class="text-center" style="display:table-cell; vertical-align:middle;">\n' +
                         '\n' +
@@ -389,6 +389,12 @@
                         '                                                               title="Full Biodata">\n' +
                         '                                                                <i class="fa fa-user"></i>\n' +
                         '                                                            </a>\n' +
+                        '                                                            <a href="{{ route('prm.parade_history', '') }}' + "/" + responseData[i].id + '"\n' +
+                        '                                                               role="button" class="btn btn-xs bs-tooltip"\n' +
+                        '                                                               style="background-color: #ff6500 !important; border: 1px solid #ff6500 !important;"\n' +
+                        '                                                               title="Soilder History">\n' +
+                        '                                                                <i class="fa fa-history"></i>\n' +
+                        '                                                            </a>       \n' +
                         '\n' +
                         '                                                            <a href="parade/' + responseData[i].id + '/edit/"\n' +
                         '                                                               role="button" class="btn btn-xs bs-tooltip"\n' +
@@ -426,11 +432,13 @@
         function stateSelect(element) {
             let id = $(element).attr("data-id");
             let state = document.getElementById(id);
-            state.innerHTML = "<select id='stateValue' style=''>" +
+            state.innerHTML = "<select id='stateValue'>" +
                 "@foreach($all_states->take(3) as $all_state)" +
                 "<option value='{{ $all_state->id}}'>{{ $all_state->name}}</option>" +
                 "@endforeach" +
-                "</select> &nbsp;&nbsp;&nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' data-solder-id='"+id+"' onclick='changeState(this)'></i> ";
+                "</select> &nbsp; <i class='fa fa-check-circle bigger-150' style='cursor: pointer !important; color: #18cb00 !important;' data-solder-id='"+id+"' onclick='changeState(this)'></i> " +
+                "&nbsp; <i class='fa fa-close bigger-150' style='cursor: pointer !important; color: red !important;' onclick='refreshPage()'></i>";
+
         }
         function changeState(element) {
             let paradeId = $(element).attr("data-solder-id");
@@ -442,7 +450,6 @@
             }).catch(function (error) {
                 alert('Error Try again...');
             })
-
         }
     </script>
 @endsection
