@@ -52,21 +52,12 @@
                                                 <img width="140px" src="{{ asset($allSiteInfo->organization_logo) }}"
                                                     alt="{{ $allSiteInfo->name }}">
                                             @else
-                                                <img width="140px" src="{{ asset('img/' . $allSiteInfo->organization_logo) }}"
-                                                    alt="No Photo upload yet">
+                                                <img style="margin-top:55px !important" width="140px" src="{{ asset('img/' . $allSiteInfo->organization_logo) }}"
+                                                    alt="No Logo upload yet">
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-sm-5 " style="margin:4px 10px 0 50px">
-
-                                        {{-- <div class="file-upload form-group">
-                                            <label class=" control-label no-padding-right" for="form-field-2">Choose New
-                                                Logo </label>
-                                            <div class="file-upload-select">
-                                                <input type="file" name="organization_logo" id="file-upload-input">
-                                            </div>
-                                        </div> --}}
-
 
                                         <div class="form-group">
                                             <label class="no-padding-right" for="form-field-1"> Organization Name </label>
