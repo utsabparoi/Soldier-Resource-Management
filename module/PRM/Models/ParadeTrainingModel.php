@@ -12,4 +12,8 @@ class ParadeTrainingModel extends Model
     function training(){
         return $this->belongsTo(Training::class, "training_id");
     }
+
+    public function parade(){
+        return $this->belongsTo(ParadeModel::class);
+    }
 }

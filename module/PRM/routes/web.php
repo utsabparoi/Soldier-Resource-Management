@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\APRController;
 use Module\PRM\Controllers\CampController;
+use Module\PRM\Controllers\ParadeTrainingController;
 use Module\PRM\Controllers\StoreController;
 use Module\PRM\Controllers\CourseController;
 use Module\PRM\Controllers\ParadeController;
@@ -86,6 +87,7 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
 
     //APR
     Route::resource('apr', APRController::class);
+    Route::resource('parade-training', ParadeTrainingController::class);
 
     // organization-info routes
     Route::get('/organization-infos', [OrganizationInfoController::class, 'index'])->name('organization_info');
