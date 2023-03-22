@@ -89,6 +89,7 @@
                                                                                 </td>
                                                                                 <td>
                                                                                     <input type="text" class="form-control" value="{{ $courseTaken->result }}" name="course_result[]" id="">
+                                                                                    <input type="text" value="{{ $courseTaken->id }}" name="course_id[]" hidden>
                                                                                 </td>
                                                                                 <td>
                                                                                     <input type="text" class="form-control" value="{{ $courseTaken->remark }}" name="course_remark[]" id="">
@@ -97,7 +98,7 @@
                                                                                     <input type="text" class="form-control" value="{{ $courseTaken->duration }}" name="course_duration[]" id="">
                                                                                 </td>
                                                                                 <td>
-                                                                                    <button type="button" onclick="delete_item(`{{ route('prm.parade-courses.destroy', $courseTaken->id) }}`)" class="removeEventCourse" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
+                                                                                    <button type="button" onclick="delete_item(`{{ route('prm.parade-courses.destroy', $courseTaken->id) }}`)" class="" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
                                                                                 </td>
                                                                             </tr>
                                                                             @endforeach
@@ -142,28 +143,28 @@
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody class="table_body_training">
+                                                                            @foreach($trainingsTaken as $trainingTaken)
                                                                             <tr class="remove_able_tr_training">
                                                                                 <td>
                                                                                     <select class="col-xs-12 col-sm-12" name="training[]">
-                                                                                        <option value="notSelect">-Select-</option>
-{{--                                                                                        @foreach($training as $trainings)--}}
-{{--                                                                                            <option>{{ $trainings->name }}</option>--}}
-{{--                                                                                        @endforeach--}}
+                                                                                         <option>{{ $trainingTaken->training->name }}</option>
                                                                                     </select>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <input type="text" class="form-control" name="training_result[]" id="">
+                                                                                    <input type="text" class="form-control" value="{{ $trainingTaken->result }}" name="training_result[]" id="">
+                                                                                    <input type="text" value="{{ $trainingTaken->id }}" name="training_id[]" hidden>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <input type="text" class="form-control" name="training_remark[]" id="">
+                                                                                    <input type="text" class="form-control" value="{{ $trainingTaken->remark }}" name="training_remark[]" id="">
                                                                                 </td>
                                                                                 <td>
-                                                                                    <input type="text" class="form-control" name="training_duration[]" id="">
+                                                                                    <input type="text" class="form-control" value="{{ $trainingTaken->duration }}" name="training_duration[]" id="">
                                                                                 </td>
                                                                                 <td>
-                                                                                    <button type="button" class="removeEventTraining" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
+                                                                                    <button type="button" onclick="delete_item(`{{ route('prm.parade-training.destroy', $trainingTaken->id) }}`)" class="" style="background-color: white; border: none"><h4><i class="fa fa-minus-circle" style="color: #ff3636;"></i></h4></button>
                                                                                 </td>
                                                                             </tr>
+                                                                            @endforeach
 
                                                                             </tbody>
                                                                             <tfoot>
@@ -193,7 +194,7 @@
                                                             </button>
                                                             <button class="btn btn-primary" type="submit" name="submitButton" value="updateCourseTraining" style="background-color: #431cff !important; border: none;">
                                                                 <i class="ace-icon fa fa-save bigger-110"></i>
-                                                                Save
+                                                                Update
                                                             </button>
                                                         </div>
                                                     </div>
@@ -260,9 +261,9 @@
                                                                                     <td>
                                                                                         <select class="col-xs-12 col-sm-12" name="training[]">
                                                                                             <option>-Select-</option>
-{{--                                                                                            @foreach($training as $trainings)--}}
-                    {{--<option>{{ $trainings->name }}</option>--}}
-{{--                                                                                            @endforeach--}}
+                                                                                            @foreach($trainingsNotTaken as $trainingNotTaken)
+                    <option>{{ $trainingNotTaken->name }}</option>
+                                                                                            @endforeach
                     </select>
                 </td>
                 <td>

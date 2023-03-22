@@ -244,11 +244,18 @@ class ParadeController extends Controller
 
     public function editCourse(Request $request, $id){
         try {
-            $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(30);
             $data['parade'] = ParadeModel::find($id);
+            //course edit work
+            $data['parade_courses']  = ParadeCourseModel::with('course','parade')->paginate(30);
             $data['coursesTaken'] = ParadeCourseModel::where('parade_id', $id)->with('course', 'parade')->get();
             $data['courses'] = ParadeCourseModel::where('parade_id', $id)->pluck('course_id');
             $data['coursesNotTaken'] = Course::whereNotIn('id', $data['courses'])->get();
+
+            //training edit work
+            $data['trainingsTaken'] = ParadeTrainingModel::where('parade_id', $id)->with('training', 'parade')->get();
+            $data['trainings'] = ParadeTrainingModel::where('parade_id', $id)->pluck('training_id');
+            $data['trainingsNotTaken'] = Training::whereNotIn('id', $data['trainings'])->get();
+
             return view('pages.parade.editCourse', $data);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
@@ -264,6 +271,10 @@ class ParadeController extends Controller
     public function update($id, Request $request)
     {
         try {
+            if ($request->submitButton == 'updateCourseTraining'){
+                $this->updateCourseTraining($request, $id);
+                return redirect()->route('prm.parade.index')->with('success', 'Soldier Updated Success');
+            }
             $this->storeOrUpdate($request, $id);
             return redirect()->route('prm.parade.index')->with('success', 'Soldier Updated Success');
         } catch (\Throwable $th) {
@@ -402,6 +413,71 @@ class ParadeController extends Controller
 
             session()->forget('profileImage');
             return $parade;
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th->getMessage());
+        }
+    }
+
+
+
+
+
+
+
+    public function updateCourseTraining(Request $request, $id = null)
+    {
+        try {
+            //course add
+            foreach ($request->course as $key => $value) {
+                if (isset($request->course_id[$key])){
+                    $pcid = $request->course_id[$key];
+                }
+                else{
+                    $pcid = null;
+                }
+
+                $paradeCourse = ParadeCourseModel::updateOrCreate(
+                    [
+                        'id'        => $pcid,
+                    ],
+                    [
+                        'course_id' => Course::where('name', '=', $request->course[$key])->first()->id,
+                        'parade_id' => $id,
+                        'remark'    => $request->course_remark[$key],
+                        'duration'  => $request->course_duration[$key],
+                        'result'    => $request->course_result[$key],
+                        'status'    => 1,
+                        'created_by' => auth()->id(),
+                        'updated_by' => auth()->id(),
+                    ]
+                );
+            }
+
+            //training add
+            foreach ($request->training as $key => $value) {
+                if (isset($request->training_id[$key])){
+                    $ptid = $request->training_id[$key];
+                }
+                else{
+                    $ptid = null;
+                }
+                $paradeTraining = ParadeTrainingModel::updateOrCreate(
+                    [
+                        'id' => $ptid,
+                    ],
+                    [
+                        'training_id' => Training::where('name', '=', $request->training[$key])->first()->id,
+                        'parade_id' => $id,
+                        'remark' => $request->training_remark[$key],
+                        'duration' => $request->training_duration[$key],
+                        'result' => $request->training_result[$key],
+                        'status' => 1,
+                        'created_by' => auth()->id(),
+                        'updated_by' => auth()->id(),
+                    ]
+                );
+            }
+            return redirect()->route('prm.parade.index')->with('success', 'Soldier Updated Success');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th->getMessage());
         }

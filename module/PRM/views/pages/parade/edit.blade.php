@@ -47,20 +47,6 @@
                                                         class="hide-in-sm">List</span>
                                                 </a>
                                             </span>
-                                                <span class="widget-toolbar">
-                            <!--------------- CREATE---------------->
-                            <a href="{{ route('prm.paradeCourseEdit', $parade->id) }}" class="text-center"
-                               style="width: 110px; background-color: #3eb1ff !important; color: #ffffff !important;">
-                                <i class="fa fa-edit"></i> Edit <span class="hide-in-sm">Course</span>
-                            </a>
-                        </span>
-                                                <span class="widget-toolbar">
-                            <!--------------- CREATE---------------->
-                            <a href="{{ route('prm.paradeCourseEdit', $parade->id) }}" class="text-center"
-                               style="width: 110px; background-color: #3eb1ff !important; color: #ffffff !important;">
-                                <i class="fa fa-edit"></i> Edit <span class="hide-in-sm">Training</span>
-                            </a>
-                        </span>
                                             </div>
                                             <div class="widget-body">
                                                 <div class="widget-main">
@@ -390,6 +376,12 @@
                                                         <br>
                                                         <div align="right" class="row">
                                                             <div class="col-sm-12" style="padding-right: 102px;">
+                                                                <a href="{{ route('prm.paradeCourseEdit', $parade->id) }}">
+                                                                <button class="btn" type="button"
+                                                                        style="background-color: #828282 !important; border: none;">
+                                                                    <i class="ace-icon fa fa-edit bigger-110"></i>
+                                                                    Edit Course & training
+                                                                </button></a>
                                                                 <button class="btn" type="submit" name="submitButton"
                                                                         value="save"
                                                                         style="background-color: #431cff !important; border: none;">
