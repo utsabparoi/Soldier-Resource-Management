@@ -88,9 +88,8 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
     Route::resource('apr', APRController::class);
 
     // organization-info routes
-    // Route::resource('organization-infos', OrganizationInfoController::class);
-    Route::get('/organization-infos', [OrganizationInfoController::class, "OrganizationInformation"])->name("organizationInformation");
-    Route::post("/organization-infos-update", [OrganizationInfoController::class, "OrganizationInformationUpdate"]);
+    Route::get('/organization-infos', [OrganizationInfoController::class, 'index'])->name('organization_info');
+    Route::post('/company/info/update', [OrganizationInfoController::class, 'update'])->name('company_update');
 
 });
 //ajax axios routes
