@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 
 /*
@@ -21,4 +22,12 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     });
     Route::post('/update-status/{table}', 'Controller@updateStatus')->name('update-status');
     //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    //user
+    Route::get('/user',[UserController::class, "User"])->name("user");
+    Route::get('/createUserForm',[UserController::class, "CreateUserForm"])->name("createUserForm");
+    Route::post('/createUser',[UserController::class, "CreateUser"])->name("createUser");
+    Route::get('/editUserForm/{id}',[UserController::class, "EditUserForm"])->name("editUserFrom");
+    Route::post('/updateUser',[UserController::class, "UserUpdate"])->name("userUpdate");
+    Route::get('/userDelete/{id}',[UserController::class, "UserDelete"])->name("deleteUser");
 });

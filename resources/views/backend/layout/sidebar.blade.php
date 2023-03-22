@@ -20,14 +20,14 @@
         {{-- This include is comming from module sidebar all menu items --}}
         @include('partials.sidebars.__sidebar_prm')
 
-        <li>
+        <li class="nav-link {{ request()->is('prm.organization_info*') ? 'active' : '' }}">
             <a href="{{ route('prm.organization_info') }}">
                 <i class="menu-icon fa fa-info"></i>
                 Organization Info
                 {{-- <b class="arrow fa fa-angle-down"></b> --}}
             </a>
         </li>
-        <li>
+        <li class="nav-link {{ request()->is('createUserForm', 'user') ? 'active' : '' }}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-user"></i>
                 Admin-User
@@ -35,18 +35,16 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                <li>
-                    <a href="">
+                <li class="nav-link {{ request()->is('createUserForm') ? 'active' : '' }}">
+                    <a href="{{ route('createUserForm') }}">
                         <i class="menu-icon fa fa-plus"></i>
                         Add
-                        <b class="arrow fa fa-angle-down"></b>
                     </a>
                 </li>
-                <li>
-                    <a href="">
+                <li class="nav-link {{ request()->is('user') ? 'active' : '' }}">
+                    <a href="{{ route('user') }}">
                         <i class="menu-icon fa fa-list"></i>
                         List
-                        <b class="arrow fa fa-angle-down"></b>
                     </a>
                 </li>
             </ul>

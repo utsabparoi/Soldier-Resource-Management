@@ -58,7 +58,7 @@
                                     <h5 style="font-family: Marienda;margin-top:-10px;">Filter by
                                         <span id="searchResulInfo" style="font-family: MariendaBold;font-size:13px;color: #00BE67;">Total: {{ $all_parade->count() }} </span>
                                     </h5>
-                                    <div class="widget-body" style="border: 0.5px solid #ffffff;box-shadow: 2px 4px 8px #1B2B55;">
+                                    <div class="widget-body" style="border: 0.5px solid #f4f1f1;box-shadow: 2px 4px 8px rgb(27 43 85 / 16%);">
                                         <div class="widget-main" style="margin-bottom:-15px">
                                             <div class="row">
                                                 <!-- Company Name -->

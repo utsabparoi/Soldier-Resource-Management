@@ -7,23 +7,12 @@ use Module\PRM\Models\Camp;
 use Illuminate\Http\Request;
 use Module\PRM\Models\ParadeModel;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Module\PRM\Models\ParadeCampMigration;
 use Module\PRM\Models\ParadeCurrentProfileModel;
 
 class ParadeCampMigrateController extends Controller
 {
     use FileSaver;
-
-    /*
-     |--------------------------------------------------------------------------
-     | CONSTRUCTOR
-     |--------------------------------------------------------------------------
-    */
-    public function __construct()
-    {
-        //
-    }
 
     /*
      |--------------------------------------------------------------------------

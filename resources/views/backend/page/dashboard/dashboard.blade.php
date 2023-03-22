@@ -65,8 +65,6 @@
         }
     }
 
-    // print_r($leave_count);
-
 
     $offRation = DB::table('leave_applications')
         ->whereDate('start_date', date('Y-m-d'))

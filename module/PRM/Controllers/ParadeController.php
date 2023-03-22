@@ -2,7 +2,6 @@
 
 namespace Module\PRM\Controllers;
 
-use App\Traits\AutoCreatedUpdated;
 use App\Traits\FileSaver;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Module\PRM\Models\Camp;
