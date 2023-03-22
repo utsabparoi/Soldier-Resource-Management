@@ -198,13 +198,4 @@ class ParadeCourseController extends Controller
         }
     }
 
-    public function updateCourse(Request $request){
-        ParadeCourseModel::where('id', $request->input('ParadeCourseID'))->
-            update([
-                "duration" => $request->input('Duration'),
-                "result" => $request->input('Result'),
-                "remark" => $request->input('Remark'),
-        ]);
-        return 1;
-    }
 }

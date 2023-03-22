@@ -62,6 +62,30 @@
                             </a>
                         </span>
                                             </div>
+                                            <div class="widget-body">
+                                                <div class="widget-main">
+                                                    <div id="fuelux-wizard-container">
+                                                        <div>
+                                                            <ul class="steps">
+                                                                <li data-step="1" class="active">
+                                                                    <span class="step">1</span>
+                                                                    <span class="title">Basic
+                                                                                        Information</span>
+                                                                </li>
+
+                                                                <li data-step="2">
+                                                                    <span class="step">2</span>
+                                                                    <span class="title">Course &
+                                                                                        Training</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <hr />
+
+                                                    </div>
+                                                </div><!-- /.widget-main -->
+                                            </div>
 
                                             <form action="{{ route('prm.parade.update',$parade->id) }}" id="Form"
                                                   method="post" enctype="multipart/form-data">

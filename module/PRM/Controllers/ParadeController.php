@@ -408,6 +408,9 @@ class ParadeController extends Controller
     }
 
 
+
+
+
     public function exportExcelCSV(Excel $excel){
         return $excel->download(new ParadeExport , 'Parades.csv');
     }
