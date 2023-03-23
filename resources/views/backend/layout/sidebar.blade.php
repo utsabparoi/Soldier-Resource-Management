@@ -30,7 +30,7 @@
         <li class="nav-link {{ request()->is('createUserForm', 'user') ? 'active' : '' }}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-user"></i>
-                Admin-User
+                Admin User
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>

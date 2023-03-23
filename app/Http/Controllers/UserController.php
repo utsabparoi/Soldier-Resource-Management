@@ -53,23 +53,22 @@ class UserController extends Controller
         return view('backend.page.user.editUser', compact('user'));
     }
 
-    function UserUpdate(Request $request)
+    function UserUpdate(Request $request, $id)
     {
-        $id = $request->input('UserId');
+        $user = User::find($id);
         $name = $request->input('Name');
         $email = $request->input('Email');
         $password = $request->input('Password');
-        $hashPassword = Hash::make($password);
+        $changePassword = $request->filled('Password') ? Hash::make($password) : $user->password;
 
-        $checkExistingName = User::where("id", "!=", $id)->where("name", "=", $name)->count();
-        $checkExistingEmail = User::where("id", "!=", $id)->where("email", "=", $email)->count();
+        $checkExistingName = User::where("id", "!=", $user->id)->where("name", "=", $name)->count();
+        $checkExistingEmail = User::where("id", "!=", $user->id)->where("email", "=", $email)->count();
         if ($checkExistingName > 0) {
             return 1;
         } else if ($checkExistingEmail > 0) {
             return 2;
         } else {
-            User::where("id", "=", $id)
-                ->update(["name" => $name, "email" => $email, "password" => $hashPassword]);
+            $user->update(["name" => $name, "email" => $email, "password" => $changePassword]);
         }
     }
 

@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('backend.layout.app')
+@section('title', 'Perfect Ten')
 
-@section('main_content')
+@section('content')
 <div class="main-content">
     <div class="main-content-inner">
         <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -9,32 +10,14 @@
                     <i class="ace-icon fa fa-home home-icon"></i>
                     <a href="#">Home</a>
                 </li>
-
-                <li>
-                    <a href="#">Forms</a>
-                </li>
-                <li class="active">Form Elements</li>
             </ul><!-- /.breadcrumb -->
-
-            <div class="nav-search" id="nav-search">
-                <form class="form-search">
-                    <span class="input-icon">
-                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
-                        <i class="ace-icon fa fa-search nav-search-icon"></i>
-                    </span>
-                </form>
-            </div><!-- /.nav-search -->
         </div>
 
         <div class="page-content">
 
             <div class="page-header">
                 <h1>
-                    <b>User Info</b>
-                    <small>
-                        <i class="ace-icon fa fa-angle-double-right"></i>
-                        Common form elements and layouts
-                    </small>
+                    <b>User Profile</b>
                 </h1>
             </div><!-- /.page-header -->
 
@@ -43,9 +26,6 @@
                     <!-- PAGE CONTENT BEGINS -->
                     <form action="{{ route('admin_update') }}" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
                         @csrf
-                        {{-- <div class="form-group" style="margin-left: 10px">
-                            <label  for="form-field-2"><h4><b>User Info</b></h4></label>
-                        </div> --}}
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div class="alert alert-danger">

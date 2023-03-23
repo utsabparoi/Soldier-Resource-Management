@@ -32,15 +32,15 @@
                     </a>
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li>
+                        {{-- <li>
                             <a href="#">
                                 <i class="ace-icon fa fa-cog"></i>
                                 Settings
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li>
-                            <a href="../profile.php">
+                            <a href="{{ route('user_index') }}">
                                 <i class="ace-icon fa fa-user"></i>
                                 Profile
                             </a>
@@ -51,7 +51,7 @@
                         <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <i class="ace-icon fa fa-power-off"></i> <span>Logout</span>
+                                <i class="ace-icon fa fa-sign-out"></i> <span>Logout</span>
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

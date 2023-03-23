@@ -65,8 +65,11 @@
                                                     Password <span class="label-required">*</span>
                                                 </span>
                                                     <input type="password" class="form-control " name="password"
-                                                           id="password" value="{{$user->password}}">
+                                                           id="password" value="" placeholder="*****">
                                                 </div>
+                                                @if ($errors->has('password'))
+                                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                                @endif
                                             </div>
                                         </div>
 
@@ -110,13 +113,10 @@
             else if(email === ""){
                 alert("Write your email")
             }
-            else if(password === ""){
-                alert("Write password");
-            }
             else {
-                let post_url = "/updateUser";
+                let post_url = "/updateUser/" + `{{ $user->id }}`;
                 let allData = new FormData();
-                allData.append("UserId", userId);
+                //allData.append("UserId", userId);
                 allData.append("Name", name);
                 allData.append("Email", email);
                 allData.append("Password", password);
