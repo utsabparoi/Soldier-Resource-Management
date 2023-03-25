@@ -83,7 +83,7 @@
                 <div class="col-sm-3 col-mb-3">
                     <!-- small box -->
                     <div class="small-box bg-info custom-color"
-                        style="border: 1px #a29999 solid; box-shadow: 2px 4px 8px rgb(52, 72, 200);">
+                        style="border: 1px #a29999 solid; box-shadow: 2px 4px 8px rgb(175, 183, 231);">
                         <div class="inner">
                             <h3>{!! $total_soldiers !!}</h3>
 
@@ -98,7 +98,7 @@
                 <!-- ./col -->
                 <div class="col-sm-3">
                     <!-- small box -->
-                    <div class="small-box bg-success" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
+                    <div class="small-box bg-success" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(233, 191, 233);">
                         <div class="inner">
                             <h3>{!! $total_camps !!}</h3>
 
@@ -119,14 +119,14 @@
 
             <div class="row custom-alignment">
                 <h1 class="text-center"
-                    style="color: #130059;margin-right:20px !;font-family:Marienda;font-size:36px;text-shadow: 2px 2px 2px rgb(205, 143, 205);">
+                    style="color: #130059;margin-right:20px !;font-family:Marienda;font-size:36px;text-shadow: 2px 2px 2px rgb(233, 191, 233);">
                     Today's Soldier States Information</h1>
             </div>
 
             <div class="row custom-alignment">
                 <div class="col-sm-3">
                     <div class="small-box bg-danger"
-                        style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(52, 72, 200);">
+                        style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(175, 183, 231);">
                         <div class="inner">
                             <h3>{!! $AuthorizedStates !!} Soldiers</h3>
 
@@ -141,7 +141,7 @@
 
                 <div class="col-sm-3">
 
-                    <div class="small-box bg-info" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
+                    <div class="small-box bg-info" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(233, 191, 233);">
                         <div class="inner">
                             <h3>{!! $heldStates !!} Soldiers</h3>
 
@@ -157,7 +157,7 @@
                 <div class="col-sm-3">
 
                     <div class="small-box bg-success"
-                        style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(52, 72, 200);">
+                        style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(175, 183, 231);">
                         <div class="inner">
                             <h3>{!! $leave_count !!} Soldiers</h3>
 
@@ -172,7 +172,7 @@
 
                 <div class="col-sm-3">
 
-                    <div class="small-box bg-warrning" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px purple;">
+                    <div class="small-box bg-warrning" style="border: 1px #a29999 solid;box-shadow: 2px 4px 8px rgb(233, 191, 233);">
                         <div class="inner">
                             <h3>{!! $onRation !!} Soldiers</h3>
 

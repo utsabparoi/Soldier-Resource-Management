@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use Module\PRM\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/editUserForm/{id}',[UserController::class, "EditUserForm"])->name("editUserFrom");
     Route::post('/updateUser/{id}',[UserController::class, "UserUpdate"])->name("userUpdate");
     Route::get('/userDelete/{id}',[UserController::class, "UserDelete"])->name("deleteUser");
+
+    Route::get('/soldiers-leave-notification', [NotificationController::class, 'soldier_leave'])->name('soldiers_leave_notification');
+    Route::get('/soldiers-in-camp-notifications', [NotificationController::class, 'soldier_in_camp'])->name('soldiers_camp_notification');
 });

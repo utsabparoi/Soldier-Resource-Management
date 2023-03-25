@@ -21,8 +21,26 @@
 
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
-
+                <li class="dropdown-modal">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="" style="background-color:transparent !important">
+                        {{-- <i class="fa fa-bell bigger-180" style="color: rgb(255, 179, 2)"></i> --}}
+                        <lottie-player
+                            src="{{ asset('/frontend/lord-icon/notification-bell.json') }}"
+                            background="transparent" speed="1" class="lotti-icon-center"
+                            style="width: 60px; height: 100%;margin-top:0" loop autoplay>
+                        </lottie-player>
+                    </a>
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="">Last Leave Only for 3 months</a>
+                        </li>
+                        <li>
+                            <a href="">Camp state more than 30 days</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="light-blue dropdown-modal">
+
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle" style="background-color: rgb(50, 8, 129) !important;">
                         <i class="ace-icon fa fa-user blue"></i>
                         <span class="user-info">

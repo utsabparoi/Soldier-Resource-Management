@@ -68,7 +68,7 @@ class LeaveApplicationController extends Controller
         // ddd($request);
         $start_dates = DB::table('leave_applications')->where('parade_id', $request->parade_id)->pluck('start_date');
         $end_dates = DB::table('leave_applications')->where('parade_id', $request->parade_id)->pluck('end_date');
-        ddd($start_dates, $end_dates);
+        // ddd($start_dates, $end_dates);
         $startDate = Carbon::createFromFormat('Y-m-d', $start_dates);
         $endDate = Carbon::createFromFormat('Y-m-d', $end_dates);
 
