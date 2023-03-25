@@ -393,6 +393,32 @@
                     </ul>
                 </li>
 
+                {{-- vehicle --}}
+                <li class="">
+                    <a href="" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-minus-circle red"></i>
+                        <span class="menu-text">Vehicle</span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="{{ route('prm.vehicle.create') }}">
+                                <i class=" fa fa-plus purple"></i>
+                                Add Vehicle
+                            </a>
+
+                        </li>
+                        <li class="">
+                            <a href="{{ route('prm.vehicle.index') }}">
+                                <i class=" fa fa-list blue"></i>
+                                All Vehicle
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+
             </ul>
         </li>
     </ul>

@@ -18,6 +18,7 @@ use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
 use Module\PRM\Controllers\OrganizationInfoController;
 use Module\PRM\Controllers\ParadeCampMigrateController;
+use Module\PRM\Controllers\VehicleController;
 use Module\PRM\Models\ParadeCourseModel;
 
 Auth::routes();
@@ -92,6 +93,8 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
     // organization-info routes
     Route::get('/organization-infos', [OrganizationInfoController::class, 'index'])->name('organization_info');
     Route::post('/company/info/update', [OrganizationInfoController::class, 'update'])->name('company_update');
+
+    Route::resource('vehicle', VehicleController::class);
 
 });
 //ajax axios routes
