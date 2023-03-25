@@ -18,24 +18,49 @@
                 </small>
             </a>
         </div>
+        @php
+            use Module\PRM\Models\ParadeModel;
+            use Module\PRM\Models\LeaveApplication;
+            use Module\PRM\Models\ParadeCampMigration;
+            use Illuminate\Support\Carbon;
+
+            $check_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(3), Carbon::now()])->pluck('parade_id');
+            $totalParadeInLeave = ParadeModel::whereNotIn('id', $check_leave)->count();
+
+            $parade_in_camp = ParadeModel::whereBetween('enrolment_date', [Carbon::now()->subDays(30), Carbon::now()])->pluck('id');
+            $migrate_in_camp = ParadeCampMigration::whereBetween('migration_date', [Carbon::now()->subDays(30), Carbon::now()])->pluck('parade_id');
+            $totalParadeInCamp  = ParadeModel::whereNotIn('id', $migrate_in_camp)->whereNotIn('id', $parade_in_camp)->count();
+
+            $total_notifications = $totalParadeInLeave + $totalParadeInCamp;
+
+        @endphp
 
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
                 <li class="dropdown-modal">
-                    <a data-toggle="dropdown" class="dropdown-toggle" href="" style="background-color:transparent !important">
-                        {{-- <i class="fa fa-bell bigger-180" style="color: rgb(255, 179, 2)"></i> --}}
-                        <lottie-player
-                            src="{{ asset('/frontend/lord-icon/notification-bell.json') }}"
-                            background="transparent" speed="1" class="lotti-icon-center"
-                            style="width: 60px; height: 100%;margin-top:0" loop autoplay>
-                        </lottie-player>
-                    </a>
+                    <div style="text-align:center;position:relative" data-toggle="dropdown" class="dropdown-toggle">
+                        <a href="" style="background-color:transparent !important">
+                            {{-- <i class="fa fa-bell bigger-180" style="color: rgb(255, 179, 2)"><sup style="color: red">{!! $total_notifications !!}</sup></i> --}}
+                            <lottie-player
+                                src="{{ asset('/frontend/lord-icon/notification-bell.json') }}"
+                                background="transparent" speed="1" class="lotti-icon-center"
+                                style="width: 50px; height: 100%;margin:0" loop autoplay>
+                            </lottie-player>
+                            <div style="position:absolute;color: rgb(0, 0, 0);top:-38%;left:47%;transform:translate(-50%, 50%);font-weight:600;">
+                                {!! $total_notifications !!}
+                            </div>
+                        </a>
+
+                    </div>
+
+
+
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="">Last Leave Only for 3 months</a>
+                            <a href="{{ route('prm.soldiers_leave_notification') }}">Last Leave Only for 3 months <span style="color:red !important">({!! $totalParadeInLeave !!} Soldiers)</span></a>
                         </li>
                         <li>
-                            <a href="">Camp state more than 30 days</a>
+                            <a href="{{ route('prm.soldiers_camp_notification') }}">Camp state more than 30 days <span style="color: red">({!! $totalParadeInCamp !!} Soldiers)</span></a>
                         </li>
                     </ul>
                 </li>

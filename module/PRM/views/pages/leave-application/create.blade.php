@@ -68,9 +68,13 @@
                                                                         <select name="parade_id"
                                                                             class="form-control multiselect">
                                                                             <option value="">-Select Soldier-</option>
-                                                                            @foreach ($parades as $parade)
-                                                                                <option value="{{ $parade->id }}">{{ $parade->name }}</option>
-                                                                            @endforeach
+                                                                            @if (isset($check_parade))
+                                                                                <option value="{{ $check_parade->id }}" selected>{{ $check_parade->name }}</option>
+                                                                            @else
+                                                                                @foreach ($parades as $parade)
+                                                                                    <option value="{{ $parade->id }}">{{ $parade->name }}</option>
+                                                                                @endforeach
+                                                                            @endif
                                                                         </select>
                                                                     </div>
                                                                 </div>

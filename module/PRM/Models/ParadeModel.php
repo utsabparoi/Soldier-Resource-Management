@@ -21,4 +21,14 @@ class ParadeModel extends Model
     public function state(){
         return $this->belongsTo(ParadeStateModel::class, 'state_id');
     }
+
+    public function paradeCampMigrations()
+    {
+        return $this->hasMany(ParadeCampMigration::class, 'parade_id');
+    }
+
+    public function activeParadeCampMigration()
+    {
+        return $this->hasOne(ParadeCampMigration::class, 'parade_id')->where('status', 1);
+    }
 }
