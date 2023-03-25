@@ -6,19 +6,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Module\PRM\Controllers\APRController;
 use Module\PRM\Controllers\CampController;
-use Module\PRM\Controllers\ParadeTrainingController;
 use Module\PRM\Controllers\StoreController;
 use Module\PRM\Controllers\CourseController;
 use Module\PRM\Controllers\ParadeController;
 use Module\PRM\Controllers\TrainingController;
+use Module\PRM\Controllers\NotificationController;
 use Module\PRM\Controllers\ParadeCourseController;
 use Module\PRM\Controllers\LeaveCategoryController;
+use Module\PRM\Controllers\ParadeTrainingController;
 use Module\PRM\Controllers\LeaveApplicationController;
+use Module\PRM\Controllers\OrganizationInfoController;
 use Module\PRM\Controllers\TrainingCategoryController;
 use Module\PRM\Controllers\AppointmentHolderController;
-use Module\PRM\Controllers\OrganizationInfoController;
 use Module\PRM\Controllers\ParadeCampMigrateController;
-use Module\PRM\Models\ParadeCourseModel;
 
 Auth::routes();
 Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], function(){
@@ -92,6 +92,12 @@ Route::group(['middleware'=>['auth','web'], 'prefix' =>'prm','as' => 'prm.'], fu
     // organization-info routes
     Route::get('/organization-infos', [OrganizationInfoController::class, 'index'])->name('organization_info');
     Route::post('/company/info/update', [OrganizationInfoController::class, 'update'])->name('company_update');
+
+    //Notification routes
+    Route::get('/soldiers-leave-notifications', [NotificationController::class, 'soldier_leave'])->name('soldiers_leave_notification');
+    Route::get('/leaveAssignToSoldier/{id}', [NotificationController::class, 'soldier_leave_assign'])->name('soldierLeaveAssign');
+    Route::get('/soldiers-in-camp-notifications', [NotificationController::class, 'soldier_in_camp'])->name('soldiers_camp_notification');
+    Route::get('/campAssignToSoldier/{id}', [NotificationController::class, 'soldier_camp_assign'])->name('soldierCampAssign');
 
 });
 //ajax axios routes

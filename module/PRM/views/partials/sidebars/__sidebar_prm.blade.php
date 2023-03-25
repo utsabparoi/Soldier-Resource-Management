@@ -13,7 +13,7 @@
         {{-- Leave Details menu item --}}
         <li class="{{ request()->routeIs('prm.leave-applications*') ? 'open active' : ''}} ">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-minus-circle red"></i>
+                <i class="menu-icon fa fa-minus-circle red bigger-130"></i>
                 Leave
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -68,7 +68,7 @@
 
         <li class="{{ request()->routeIs('prm.parade-camp-migrate','prm.bulk-camp-migrate', 'prm.parade-migrate*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-exchange red"></i>
+                <i class="menu-icon fa fa-exchange red bigger-130"></i>
                 <span class="menu-text">Soldier Migration</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -107,7 +107,7 @@
 
         <li class="{{ request()->routeIs('prm.appointment-holder*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-tasks red"></i>
+                <i class="menu-icon fa fa-tasks red bigger-130"></i>
                 <span class="menu-text">Appointment Holder</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -138,7 +138,7 @@
 
         <li class="{{ request()->routeIs('prm.parade*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-user"></i>
+                <i class="menu-icon fa fa-user bigger-130"></i>
                 <span class="menu-text">Soldier</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -168,7 +168,7 @@
 
         <li class="{{ request()->routeIs('prm.training*') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-info-circle red"></i>
+                <i class="menu-icon fa fa-info-circle red bigger-130"></i>
                 <span class="menu-text">Training</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -199,7 +199,7 @@
 
         <li class="{{ request()->routeIs('prm.parade-courses*', 'prm.assign-course') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-graduation-cap red"></i>
+                <i class="menu-icon fa fa-graduation-cap red bigger-130"></i>
                 <span class="menu-text">Soldier Course</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
@@ -228,7 +228,7 @@
         {{-- add punishment --}}
         <li class="nav-item">
             <a href="#">
-                <i class="menu-icon fa fa-plus-circle"></i>
+                <i class="menu-icon fa fa-plus-circle bigger-130"></i>
                 <span class="menu-text"> Add Punishment </span>
             </a>
 
@@ -238,7 +238,7 @@
         {{-- store --}}
         <li class="nav-item">
             <a href="{{ route('prm.store.index') }}">
-                <i class="menu-icon fa fa-shopping-cart"></i>
+                <i class="menu-icon fa fa-shopping-cart bigger-130"></i>
                 <span class="menu-text"> Store </span>
             </a>
 
@@ -247,7 +247,7 @@
 
         <li class="{{ request()->routeIs('prm.leave-category*', 'prm.camp*', 'prm.training-category*', 'prm.course*') ? 'open active' : ''}}">
             <a href="" class="dropdown-toggle">
-                <i class="menu-icon fa fa-gear fa-spin red"></i>
+                <i class="menu-icon fa fa-gear fa-spin red bigger-130"></i>
                 <span class="menu-text">All Settings</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>

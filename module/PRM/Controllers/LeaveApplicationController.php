@@ -65,19 +65,19 @@ class LeaveApplicationController extends Controller
     */
     public function store(Request $request)
     {
-        // ddd($request);
-        $start_dates = DB::table('leave_applications')->where('parade_id', $request->parade_id)->pluck('start_date');
-        $end_dates = DB::table('leave_applications')->where('parade_id', $request->parade_id)->pluck('end_date');
-        // ddd($start_dates, $end_dates);
-        $startDate = Carbon::createFromFormat('Y-m-d', $start_dates);
-        $endDate = Carbon::createFromFormat('Y-m-d', $end_dates);
 
-        $dateRange = CarbonPeriod::create($startDate, $endDate);
-        $dates = array_map(fn ($date) => $date->format('Y-m-d'), iterator_to_array($dateRange));
+        // $start_dates = DB::table('leave_applications')->where('parade_id', $request->parade_id)->pluck('start_date');
+        // $end_dates = DB::table('leave_applications')->where('parade_id', $request->parade_id)->pluck('end_date');
 
-        $this->validate($request, [
-            'parade_id'       => 'unique_with:$dates, camp_id, migration_date',
-        ]);
+        // $startDate = Carbon::createFromFormat('Y-m-d', $start_dates);
+        // $endDate = Carbon::createFromFormat('Y-m-d', $end_dates);
+
+        // $dateRange = CarbonPeriod::create($startDate, $endDate);
+        // $dates = array_map(fn ($date) => $date->format('Y-m-d'), iterator_to_array($dateRange));
+
+        // $this->validate($request, [
+        //     'parade_id'       => 'unique_with:$dates, camp_id, migration_date',
+        // ]);
 
         $request->validate([
             'start_date' => 'required|date_format:Y-m-d|before_or_equal:end_date',

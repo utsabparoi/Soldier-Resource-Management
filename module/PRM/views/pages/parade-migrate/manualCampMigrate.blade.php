@@ -59,9 +59,14 @@
                                                                         <select align="left" name="parade_id"
                                                                             class="form-control multiselect" onchange="loadCurrentCamp(this)">
                                                                             <option value="">-Select a Soldier-</option>
-                                                                            @foreach ($parades as $parade)
-                                                                                <option value="{{ $parade->id }}">{{ $parade->name }}</option>
-                                                                            @endforeach
+
+                                                                            @if (isset($checkParade)) {{-- this condition check where the parade is in a camp more than 30 days --}}
+                                                                                <option value="{{ $checkParade->id }}" selected>{{ $checkParade->name }}</option>
+                                                                            @else
+                                                                                @foreach ($parades as $parade)
+                                                                                    <option value="{{ $parade->id }}">{{ $parade->name }}</option>
+                                                                                @endforeach
+                                                                            @endif
                                                                         </select>
                                                                     </div>
                                                                     @if ($errors->has('parade_id'))

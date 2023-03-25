@@ -40,7 +40,7 @@
                                                 <tr class="thead-redesign">
                                                     <th width="5%" class="hide-in-sm text-center">Sl</th>
                                                     <th width="40%">Name</th>
-                                                    <th width="30%">Last Leave Date</th>
+                                                    <th width="20%">Camp</th>
                                                     <th width="15%" class="text-center" style="width: 120px">Action</th>
                                                 </tr>
                                             </thead>
@@ -91,10 +91,10 @@
                                                                 <i class="fa fa-history"></i>
                                                             </a>
 
-                                                            <a href="{{ route('prm.soldierLeaveAssign', $parade->id) }}" onchange="getParadeId($this)"
+                                                            <a href="{{ route('prm.soldierCampAssign', $parade->id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
                                                                style="background-color: rgb(75, 151, 228) !important; border: 1px solid rgb(75, 151, 228) !important;"
-                                                               title="Leave Assign" >
+                                                               title="Assign Camp">
                                                                 <i class="fa fa-plus-circle"></i>
                                                             </a>
 
