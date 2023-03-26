@@ -9,6 +9,7 @@ use Module\PRM\database\seeders\ParadeSeeder;
 use Module\PRM\database\seeders\ParadeStateSeeder;
 use Module\PRM\database\seeders\LeaveCategorySeeder;
 use Module\PRM\database\seeders\OrganizationInfoSeeder;
+use Module\PRM\database\seeders\VehicleCategoriesSeed;
 
 
 class DatabaseSeeder extends Seeder
@@ -26,7 +27,8 @@ class DatabaseSeeder extends Seeder
             ParadeSeeder::class,
             LeaveCategorySeeder::class,
             ParadeStateSeeder::class,
-            OrganizationInfoSeeder::class
+            OrganizationInfoSeeder::class,
+            VehicleCategoriesSeed::class,
         ]
     );
     }
