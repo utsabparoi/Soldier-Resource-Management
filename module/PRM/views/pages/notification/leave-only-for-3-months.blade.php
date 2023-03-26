@@ -67,8 +67,17 @@
                                                         </span>
                                                     </td>
 
-                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda">
+                                                    {{-- <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda">
                                                         <span class="span">{{ $parade->camp->name}}</span>
+                                                    </td> --}}
+                                                    <td style="display:table-cell; vertical-align:middle;  font-size: 14px !important;font-family:Marienda">
+                                                        <span class="span">
+                                                            @if (isset($last_leave))
+                                                                {{ $parade->leave_application->start_date .' to '. $parade->leave_application->end_date}}
+                                                            @else
+                                                                Leave not take yet
+                                                            @endif
+                                                        </span>
                                                     </td>
 
                                                     <td class="text-center"

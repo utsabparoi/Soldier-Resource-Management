@@ -34,7 +34,10 @@ class NotificationController extends Controller
         try {
 
             $check_leave = LeaveApplication::whereBetween('end_date',[Carbon::now()->subMonth(3), Carbon::now()])->pluck('parade_id');
-            $data['parades'] = ParadeModel::whereNotIn('id', $check_leave)->with('camp')->paginate(30);
+            $data['parades'] = ParadeModel::whereNotIn('id', $check_leave)->with('camp','leave_application')->paginate(30);
+
+            // $data['last_leave'] = ParadeCurrentProfileModel::whereIn('parade_id', $check_leave)->pluck('leave_application_id');
+            // ddd($data['last_leave']);
 
             $data['table'] = ParadeModel::getTableName();
 

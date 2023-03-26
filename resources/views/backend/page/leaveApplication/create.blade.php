@@ -176,7 +176,7 @@
                                                                 </label>
                                                                 <div style="display: flex;">
                                                                     <input type="date" name="comanyName" id="comanyName"
-                                                                        class="col-xs-10 col-sm-4">
+                                                                        class="col-xs-10 col-sm-4" autocomplete="off">
                                                                     <span
                                                                         style="font-weight: bolder; font-size: 20px; background: #e5e5e5; border-top: 1px solid #d0d0d0; border-bottom: 1px solid #d0d0d0;">&#x21C6;</span>
                                                                     <input type="date" name="comanyName" id="comanyName"

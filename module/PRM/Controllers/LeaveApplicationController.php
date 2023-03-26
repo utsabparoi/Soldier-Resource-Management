@@ -63,7 +63,7 @@ class LeaveApplicationController extends Controller
      | STORE METHOD
      |--------------------------------------------------------------------------
     */
-    public function store(Request $request)
+    public function store(Request $request, $id = null)
     {
 
         // $start_dates = DB::table('leave_applications')->where('parade_id', $request->parade_id)->pluck('start_date');
@@ -87,6 +87,8 @@ class LeaveApplicationController extends Controller
 
         try {
             $this->storeOrUpdate($request);
+            //This query updated parade state to off ration in parades table
+            DB::table('parades')->where('id', $request->parade_id)->update(['state_id' => 4]);
 
             return redirect()->route('prm.leave-applications.index')->with('success','Leave Application Created Successfully');
 
@@ -174,7 +176,7 @@ class LeaveApplicationController extends Controller
                 'status'                =>$request->status ? 1: 0,
             ]);
 
-            $current_profile_data = ParadeCurrentProfileModel::updateOrCreate([
+            ParadeCurrentProfileModel::updateOrCreate([
                 'id'           =>$id,
             ],[
                 'parade_id'             =>$request->parade_id,

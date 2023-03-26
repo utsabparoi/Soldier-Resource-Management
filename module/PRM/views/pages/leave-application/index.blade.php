@@ -97,7 +97,7 @@
                                                                 data-id="{{ $application->id }}"
                                                                 data-attachment="{{ $application->attachment }}"
                                                                 data-name="{{ $application->parade->name }}"
-                                                                onclick="viewAttachment(this)">View
+                                                                @if(isset($application->attachment)) onclick="viewAttachment(this)" @endif>View
                                                             </button>
                                                             <!-- The Modal -->
                                                             <div id="myModal" class="modal">

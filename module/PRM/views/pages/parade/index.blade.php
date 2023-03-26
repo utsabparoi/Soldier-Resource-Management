@@ -81,9 +81,13 @@
                                                             onchange="getSoldierState()">
                                                             <option value="">-Select State-</option>
                                                             @foreach ($all_states as $state)
-                                                                <option value="{{ $state->id }}">
-                                                                    {{ $state->name }}</option>
+                                                                @if (isset(request()->id))
+                                                                    <option value="1" selected>{{ $state->name }}</option>
+                                                                @else
+                                                                    <option value="{{ $state->id }}">{{ $state->name }}</option>
+                                                                @endif
                                                             @endforeach
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -102,7 +106,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <!-- Company Name -->
+                                                <!-- Soldier Name -->
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <div>
@@ -206,21 +210,21 @@
 
                                                             <a href="{{ route('prm.paradeProfile', $parades->id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
-                                                               style="background-color: #00d8ff !important; border: 1px solid #00d8ff !important;"
+                                                               style="background-color: gray !important; border: 1px solid gray !important;"
                                                                title="Current Profile">
                                                                 <i class="fa fa-user"></i>
                                                             </a>
 
                                                             <a href="{{ route('prm.parade_history', $parades->id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
-                                                               style="background-color: #ff6500 !important; border: 1px solid #ff6500 !important;"
+                                                               style="background-color: #a95380 !important; border: 1px solid #a95380 !important;"
                                                                title="Soilder History">
                                                                 <i class="fa fa-history"></i>
                                                             </a>
 
                                                             <a href="{{ route('prm.parade.edit', $parades->id) }}"
                                                                role="button" class="btn btn-xs bs-tooltip"
-                                                               style="background-color: limegreen !important; border: 1px solid limegreen !important;"
+                                                               style="background-color: rgb(75, 151, 228) !important; border: 1px solid rgb(75, 151, 228) !important;"
                                                                title="Edit">
                                                                 <i class="fa fa-edit"></i>
                                                             </a>
@@ -229,7 +233,7 @@
                                                             <button type="button"
                                                                     onclick="delete_item(`{{ route('prm.parade.destroy', $parades->id) }}`)"
                                                                     class="btn btn-xs bs-tooltip"
-                                                                    style="background-color: #ff0084 !important; border: 1px solid #ff0084 !important;"
+                                                                    style="background-color: #d75353 !important; border: 1px solid #d75353 !important;"
                                                                     title="Delete">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>

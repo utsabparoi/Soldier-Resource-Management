@@ -46,7 +46,7 @@
                                 background="transparent" speed="1" class="lotti-icon-center"
                                 style="width: 50px; height: 100%;margin:0" loop autoplay>
                             </lottie-player>
-                            <div style="position:absolute;color: rgb(0, 0, 0);top:-38%;left:47%;transform:translate(-50%, 50%);font-weight:600;">
+                            <div style="position:absolute;color: rgb(0, 0, 0);top:-38%;left:45%;transform:translate(-50%, 50%);font-weight:600;">
                                 {!! $total_notifications !!}
                             </div>
                         </a>

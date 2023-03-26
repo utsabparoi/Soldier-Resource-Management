@@ -32,4 +32,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/editUserForm/{id}',[UserController::class, "EditUserForm"])->name("editUserFrom");
     Route::post('/updateUser/{id}',[UserController::class, "UserUpdate"])->name("userUpdate");
     Route::get('/userDelete/{id}',[UserController::class, "UserDelete"])->name("deleteUser");
+
+    //Dashboard all routes
+    Route::get('/state-information/{id}',[HomeController::class, "state_info"])->name('state-information');
 });

@@ -37,7 +37,7 @@ class ParadeController extends Controller
     public function index()
     {
         try {
-            $data['parade'] = ParadeModel::with('camp')->paginate(30);
+            $data['parade'] = ParadeModel::with('camp','state')->paginate(30);
             $data['camp_name'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
             $data['all_states'] = ParadeStateModel::all();
