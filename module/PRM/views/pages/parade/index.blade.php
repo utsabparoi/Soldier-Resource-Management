@@ -82,7 +82,7 @@
                                                             <option value="">-Select State-</option>
                                                             @foreach ($all_states as $state)
                                                                 @if (isset(request()->id))
-                                                                    <option value="1" selected>{{ $state->name }}</option>
+                                                                    <option value="{{ request()->id }}" selected>{{ $state->name }}</option>
                                                                 @else
                                                                     <option value="{{ $state->id }}">{{ $state->name }}</option>
                                                                 @endif

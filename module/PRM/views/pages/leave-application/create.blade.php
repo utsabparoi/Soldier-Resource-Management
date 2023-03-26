@@ -53,7 +53,7 @@
                                             <div class="widget-body">
                                                 <div class="widget-main">
                                                     <form action="{{ route('prm.leave-applications.store') }}" id="Form"
-                                                        method="POST" enctype="multipart/form-data">
+                                                        method="POST" enctype="multipart/form-data" autocomplete="off">
                                                         @csrf
                                                         <div class="row">
                                                             <!-- Soldier Name -->
