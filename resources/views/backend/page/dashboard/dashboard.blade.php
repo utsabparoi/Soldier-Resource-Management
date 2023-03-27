@@ -109,7 +109,7 @@
                             <div class="icon">
                                 <i class="fa fa-graduation-cap"></i>
                             </div>
-                            <a href="{{ route('state-information', 3) }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{ route('prm.parade.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <!-- ./col -->
