@@ -37,7 +37,7 @@
                         </h4>
                         <span class="widget-toolbar">
                             <!--------------- CREATE---------------->
-                            <a href="{{ route('prm.store.create') }}" class="">
+                            <a href="{{ route('prm.vehicle.create') }}" class="">
                                 <i class="fa fa-plus"></i> Add <span class="hide-in-sm">New</span>
                             </a>
                         </span>
