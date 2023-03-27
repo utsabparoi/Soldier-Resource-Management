@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
         [
             CampSeeder::class,
             CourseSeeder::class,
+            TrainingCategorySeeder::class,
+            TrainingSeeder::class,
             ParadeSeeder::class,
             LeaveCategorySeeder::class,
             ParadeStateSeeder::class,
