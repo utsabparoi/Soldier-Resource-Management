@@ -81,23 +81,12 @@
                                                             onchange="getSoldierState()">
                                                             <option value="">-Select State-</option>
                                                             @foreach ($all_states as $state)
-                                                                @if (request()->id == 1)
-                                                                    <option value="1" selected>AUTHORIZED</option>
-                                                                    @break
-                                                                @elseif (request()->id == 2)
-                                                                    <option value="2" selected>HELD</option>
-                                                                    @break
-                                                                @elseif (request()->id == 3)
-                                                                    <option value="3" selected>ON RATION</option>
-                                                                    @break
-                                                                @elseif (request()->id == 4)
-                                                                    <option value="4" selected>OFF RATION</option>
-                                                                    @break
+                                                                @if (isset(request()->id))
+                                                                    <option value="{{ $state->id }}" selected>{{ $state->name }}</option>
                                                                 @else
                                                                     <option value="{{ $state->id }}">{{ $state->name }}</option>
                                                                 @endif
                                                             @endforeach
-
                                                         </select>
                                                     </div>
                                                 </div>

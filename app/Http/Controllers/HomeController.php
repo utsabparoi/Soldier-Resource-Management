@@ -84,7 +84,7 @@ class HomeController extends Controller
             $data['parade'] = ParadeModel::where('state_id', $id)->with('camp')->paginate(30);
             $data['camp_name'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
-            $data['all_states'] = ParadeStateModel::all();
+            $data['all_states'] = ParadeStateModel::where('id', $id)->get();
             $data['table'] = ParadeModel::getTableName();
             //get soldier migrate camp name on today's date
             $current_location = ParadeCurrentProfileModel::with('camp')->latest()->first();
