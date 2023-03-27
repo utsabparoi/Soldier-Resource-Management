@@ -1,5 +1,5 @@
 @extends('backend.layout.app')
-@section('title', 'PRM-Admin')
+@section('title', 'Vehicle')
 @section('css')
 
 @endsection
@@ -12,9 +12,8 @@
                         <i class="ace-icon fa fa-home home-icon"></i>
                         <a href="#">Home</a>
                     </li>
-                    <li class="active">Edit Store</li>
-                </ul>
-                <!-- /.breadcrumb -->
+                    <li class="active">Edit Vehicle</li>
+                </ul><!-- /.breadcrumb -->
             </div>
             {{-- main content start from here --}}
             <div class="page-content no-print">
@@ -27,22 +26,24 @@
                                         <div class="widget-box">
                                             <div class="widget-header">
                                                 <h4 class="widget-title">
-                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Edit Store</span>
+                                                    <i class="fa fa-plus-circle"></i> <span class="hide-in-sm">Edit
+                                                        Vehicle</span>
                                                 </h4>
 
                                                 <span class="widget-toolbar">
-                                                <!--------------- Slider List---------------->
-                                                <a href="{{ route('prm.store.index') }}" class="">
-                                                    <i class="fa fa-list"></i> Store <span class="hide-in-sm">List</span>
-                                                </a>
-                                            </span>
+                                                    <!--------------- Slider List---------------->
+                                                    <a href="{{ route('prm.vehicle.index') }}" class="">
+                                                        <i class="fa fa-list"></i> Vehicle <span class="hide-in-sm">List</span>
+                                                    </a>
+                                                </span>
                                             </div>
 
 
                                             <div class="widget-body">
                                                 <div class="widget-main">
 
-                                                    <form action="{{ route('prm.store.update',$store->id) }}" id="Form" method="post" enctype="multipart/form-data">
+                                                    <form action="{{ route('prm.vehicle.update', $vehicle->id) }}" id="Form"
+                                                          method="post" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
 
@@ -52,14 +53,59 @@
 
                                                             <div class="col-md-10 col-md-offset-1">
 
+                                                                <!-- Category -->
+                                                                <div class="form-group">
+                                                                    <div class="input-group width-100 mb-1">
+                                                                        <span class="input-group-addon width-20"
+                                                                              style="text-align: left">
+                                                                            Vehicle Categories <sup class="text-danger">*</sup><span
+                                                                                class="label-required"></span>
+                                                                        </span>
+                                                                        <select class="form-control @error('vehicleCategories') has-error @enderror" name="vehicleCategories" id="vehicleCategories" >
+                                                                            <option value="">-Select-</option>
+                                                                            @foreach($vehicleCategories as $vehicleCategory)
+                                                                                @if($vehicle->vehicle_category_id == $vehicleCategory->id)
+                                                                                <option value="{{$vehicleCategory->id}}" selected>{{$vehicleCategory->name}}</option>
+                                                                                @endif
+                                                                                    <option value="{{$vehicleCategory->id}}">{{$vehicleCategory->name}}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                    @if ($errors->has('vehicleCategories'))
+                                                                        <span class="text-danger">{{ $errors->first('vehicleCategories') }}</span>
+                                                                    @endif
+                                                                </div>
+
                                                                 <!-- Name -->
                                                                 <div class="form-group">
                                                                     <div class="input-group width-100 mb-1">
-                                                                    <span class="input-group-addon width-30" style="text-align: left">
-                                                                        Store Name <sup class="text-danger">*</sup><span class="label-required"></span>
-                                                                    </span>
-                                                                        <input type="text" class="form-control @error('name') has-error @enderror"
-                                                                               name="name" id="name" value="{{ old('name', $store->name) }}">
+                                                                        <span class="input-group-addon width-20"
+                                                                              style="text-align: left">
+                                                                            Vehicle Name <sup class="text-danger">*</sup><span
+                                                                                class="label-required"></span>
+                                                                        </span>
+                                                                        <input type="text"
+                                                                               class="form-control @error('name') has-error @enderror"
+                                                                               name="name" id="name"
+                                                                               value="{{ $vehicle->name }}">
+                                                                    </div>
+                                                                    @if ($errors->has('name'))
+                                                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                                    @endif
+                                                                </div>
+
+                                                                <!-- Capacity -->
+                                                                <div class="form-group">
+                                                                    <div class="input-group width-100 mb-1">
+                                                                        <span class="input-group-addon width-20"
+                                                                              style="text-align: left">
+                                                                            Engine Number<span
+                                                                                class="label-required"></span>
+                                                                        </span>
+                                                                        <input type="text"
+                                                                               class="form-control @error('engineNumber') has-error @enderror"
+                                                                               name="engineNumber" id="engineNumber"
+                                                                               value="{{ $vehicle->engine_number }}">
 
                                                                     </div>
                                                                 </div>
@@ -67,45 +113,45 @@
                                                                 <!-- Capacity -->
                                                                 <div class="form-group">
                                                                     <div class="input-group width-100 mb-1">
-                                                                    <span class="input-group-addon width-30" style="text-align: left">
-                                                                        Store Man Name <sup class="text-danger">*</sup><span class="label-required"></span>
-                                                                    </span>
-                                                                        <input type="text" class="form-control @error('storeMan') has-error @enderror"
-                                                                               name="storeMan" id="storeMan" value="{{ old('storeMan', $store->store_man) }}">
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <!-- camp -->
-                                                                <div class="form-group">
-                                                                    <div class="input-group width-100 mb-1">
-                                                                        <span class="input-group-addon width-30"
+                                                                        <span class="input-group-addon width-20"
                                                                               style="text-align: left">
-                                                                            Camp Name <sup class="text-danger">*</sup><span
+                                                                            Chassis Number<span
                                                                                 class="label-required"></span>
                                                                         </span>
-                                                                        <select class="form-control @error('campName') has-error @enderror" name="campName" id="campName" >
-                                                                            @foreach($camp as $camps)
-                                                                                <option value="{{$camps->name}}"
-                                                                                        @if($camps->name == \Module\PRM\Models\Camp::where('id', $store->camp_id)->first()->name) selected @endif>{{$camps->name}}</option>
-                                                                            @endforeach
-                                                                        </select>
+                                                                        <input type="text"
+                                                                               class="form-control @error('chassisNumber') has-error @enderror"
+                                                                               name="chassisNumber" id="chassisNumber"
+                                                                               value="{{ $vehicle->chassis_number }}">
+
                                                                     </div>
-                                                                    @if ($errors->has('campName'))
-                                                                        <span class="text-danger">{{ $errors->first('campName') }}</span>
-                                                                    @endif
                                                                 </div>
 
-
+                                                                <!-- Capacity -->
+                                                                <div class="form-group">
+                                                                    <div class="input-group width-100 mb-1">
+                                                                        <span class="input-group-addon width-20"
+                                                                              style="text-align: left">
+                                                                            Model Year<span
+                                                                                class="label-required"></span>
+                                                                        </span>
+                                                                        <input type="text"
+                                                                               class="form-control @error('modelYear') has-error @enderror"
+                                                                               name="modelYear" id="modelYear"
+                                                                               value="{{ $vehicle->model_year }}">
+                                                                    </div>
+                                                                </div>
 
                                                                 {{-- Status --}}
                                                                 <div class="form-group">
                                                                     <div class="input-group width-100">
-                                                                    <span class="input-group-addon width-30" style="text-align: left">
-                                                                        Status
-                                                                    </span>
+                                                                        <span class="input-group-addon width-20"
+                                                                              style="text-align: left">
+                                                                            Status
+                                                                        </span>
                                                                         <label style="margin: 5px 0 0 8px">
-                                                                            <input name="status" class="ace ace-switch ace-switch-6" type="checkbox" {{ $store->status == 1 ? 'checked' : '' }}>
+                                                                            <input name="status"
+                                                                                   class="ace ace-switch ace-switch-6"
+                                                                                   type="checkbox" checked>
                                                                             <span class="lbl"></span>
                                                                         </label>
                                                                     </div>
@@ -117,11 +163,13 @@
                                                             <div class="form-group">
                                                                 <!-- Add Page -->
                                                                 <h5 class="widget-title">
-                                                                    <div class="row" style="margin-top: 10px;padding:5px">
+                                                                    <div class="row"
+                                                                         style="margin-top: 10px;padding:5px">
                                                                         <div class="col-md-12 text-center pr-2">
-                                                                            <button type="submit" class="btn btn-primary btn-sm btn-block"
+                                                                            <button type="submit"
+                                                                                    class="btn btn-primary btn-sm btn-block"
                                                                                     style="max-width: 150px">
-                                                                                <i class="fa fa-save"></i> Update
+                                                                                <i class="fa fa-save"></i> Create
                                                                             </button>
                                                                         </div>
                                                                     </div>

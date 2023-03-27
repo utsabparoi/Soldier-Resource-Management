@@ -87,7 +87,7 @@ class VehicleController extends Controller
     public function store(Request $request)
     {
         $this->storeOrUpdate($request);
-        return view('pages.vehicle.index');
+        return redirect(route('prm.vehicle.index'));
     }
 
 
@@ -131,7 +131,9 @@ class VehicleController extends Controller
     */
     public function edit($id)
     {
-        # code...
+        $data['vehicle'] = VehicleModel::find($id);
+        $data['vehicleCategories'] = DB::table('vehicle_categories')->get();
+        return view('pages.vehicle.edit', $data);
     }
 
 
@@ -153,7 +155,8 @@ class VehicleController extends Controller
     */
     public function update($id, Request $request)
     {
-        # code...
+        $this->storeOrUpdate($request, $id);
+        return redirect(route('prm.vehicle.index'));
     }
 
 
