@@ -79,9 +79,9 @@ class HomeController extends Controller
     /*=======================================================
         This Section start for dashboard controller purpose
     =========================================================*/
-    public function state_info(){
+    public function state_info($id){
         try {
-            $data['parade'] = ParadeModel::with('camp')->paginate(30);
+            $data['parade'] = ParadeModel::where('state_id', $id)->with('camp')->paginate(30);
             $data['camp_name'] = Camp::all();
             $data['all_parade'] = ParadeModel::all();
             $data['all_states'] = ParadeStateModel::all();

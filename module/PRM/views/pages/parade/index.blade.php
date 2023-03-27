@@ -81,8 +81,18 @@
                                                             onchange="getSoldierState()">
                                                             <option value="">-Select State-</option>
                                                             @foreach ($all_states as $state)
-                                                                @if (isset(request()->id))
-                                                                    <option value="{{ request()->id }}" selected>{{ $state->name }}</option>
+                                                                @if (request()->id == 1)
+                                                                    <option value="1" selected>AUTHORIZED</option>
+                                                                    @break
+                                                                @elseif (request()->id == 2)
+                                                                    <option value="2" selected>HELD</option>
+                                                                    @break
+                                                                @elseif (request()->id == 3)
+                                                                    <option value="3" selected>ON RATION</option>
+                                                                    @break
+                                                                @elseif (request()->id == 4)
+                                                                    <option value="4" selected>OFF RATION</option>
+                                                                    @break
                                                                 @else
                                                                     <option value="{{ $state->id }}">{{ $state->name }}</option>
                                                                 @endif
@@ -199,7 +209,7 @@
                                                     <td style="display:table-cell; vertical-align:middle;" id="{{ $parades->id }}">
                                                         <span data-id="{{ $parades->id }}" onclick="stateSelect(this)" class="label label-sm" title="Click for change"
                                                             style="cursor: pointer !important; background-color: rgb(13, 138, 187) !important; color: #ffffff !important; font-weight: bold !important;  font-size: 14px !important;">
-                                                            {{ $parades->state->name}}
+                                                            {{ $parades->state->name }}
                                                         </span>
                                                     </td>
                                                     <td class="text-center"

@@ -57,7 +57,7 @@ class ParadeController extends Controller
         }
     }
     /*=============================================
-        Parade al kind of search filter function
+        search filters function of Parade
     ===============================================*/
     public function getParadeSearch(Request $request)
     {

@@ -10,6 +10,35 @@
     </a>
     <b class="arrow"></b>
     <ul class="submenu">
+        {{-- Parade menu item --}}
+
+        <li class="{{ request()->routeIs('prm.parade*') ? 'open active' : ''}}">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-user bigger-130"></i>
+                <span class="menu-text">Soldier</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                {{-- 'Add Person' submenu of "Person" --}}
+                <li class="{{ request()->routeIs('prm.parade.create') ? 'active' : '' }}">
+                    <a href="{{ route('prm.parade.create') }}">
+                        <i class=" fa fa-plus purple"></i>
+                        Add New
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                {{-- 'Persons List' submenu of "Person" --}}
+                <li class="{{ request()->routeIs('prm.parade.index') ? 'active' : '' }}">
+                    <a href="{{ route('prm.parade.index') }}">
+                        <i class=" fa fa-list red"></i>
+                        List
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
         {{-- Leave Details menu item --}}
         <li class="{{ request()->routeIs('prm.leave-applications*') ? 'open active' : ''}} ">
             <a href="#" class="dropdown-toggle">
@@ -78,7 +107,7 @@
                 <li class="{{ request()->routeIs('prm.parade-camp-migrate') ? 'active' : '' }}">
                     <a href="{{ route('prm.parade-camp-migrate') }}">
                         <i class="fa fa-exchange blue"></i>
-                        Soldier Camp-Migration
+                        Single Soldier Camp-Migration
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -86,7 +115,7 @@
                 <li class="{{ request()->routeIs('prm.bulk-camp-migrate') ? 'active' : '' }}">
                     <a href="{{ route('prm.bulk-camp-migrate') }}">
                         <i class="fa fa-exchange blue"></i>
-                        Bulk Camp-Migration
+                        Bulk Soldier Camp-Migration
                     </a>
 
                     <b class="arrow"></b>
@@ -94,7 +123,7 @@
 
                 <li class="{{ request()->routeIs('prm.parade-migrate.index') ? 'active' : '' }}">
                     <a href="{{ route('prm.parade-migrate.index') }}">
-                        <i class="fa fa-exchange blue"></i>
+                        <i class="fa fa-list blue"></i>
                         All Migration List
                     </a>
 
@@ -134,35 +163,6 @@
             </ul>
         </li>
 
-        {{-- Person menu item --}}
-
-        <li class="{{ request()->routeIs('prm.parade*') ? 'open active' : ''}}">
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-user bigger-130"></i>
-                <span class="menu-text">Soldier</span>
-                <b class="arrow fa fa-angle-down"></b>
-            </a>
-            <b class="arrow"></b>
-            <ul class="submenu">
-                {{-- 'Add Person' submenu of "Person" --}}
-                <li class="{{ request()->routeIs('prm.parade.create') ? 'active' : '' }}">
-                    <a href="{{ route('prm.parade.create') }}">
-                        <i class=" fa fa-plus purple"></i>
-                        Add New
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-
-                {{-- 'Persons List' submenu of "Person" --}}
-                <li class="{{ request()->routeIs('prm.parade.index') ? 'active' : '' }}">
-                    <a href="{{ route('prm.parade.index') }}">
-                        <i class=" fa fa-list red"></i>
-                        List
-                    </a>
-                    <b class="arrow"></b>
-                </li>
-            </ul>
-        </li>
 
         {{-- 'Training' menu item --}}
 
@@ -197,7 +197,7 @@
 
         {{-- 'Course' menu item --}}
 
-        <li class="{{ request()->routeIs('prm.parade-courses*', 'prm.assign-course') ? 'open active' : ''}}">
+        {{-- <li class="{{ request()->routeIs('prm.parade-courses*', 'prm.assign-course') ? 'open active' : ''}}">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-graduation-cap red bigger-130"></i>
                 <span class="menu-text">Soldier Course</span>
@@ -205,7 +205,7 @@
             </a>
             <b class="arrow"></b>
             <ul class="submenu">
-                {{-- 'Assing Course' submenu of "Course" --}}
+
                 <li class="{{ request()->routeIs('prm.assign-course') ? 'active' : '' }}">
                     <a href="{{ route('prm.assign-course') }}">
                         <i class=" fa fa-plus purple"></i>
@@ -223,7 +223,7 @@
                     <b class="arrow"></b>
                 </li>
             </ul>
-        </li>
+        </li> --}}
 
         {{-- add punishment --}}
         <li class="nav-item">
