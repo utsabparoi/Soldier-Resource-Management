@@ -1,1 +1,1 @@
-This web application gives patient better level of facilities, time efficient doctor appointment and many other services.
+This resource management helps to optimize people, providing insight into their workloads, availability, project time requirements, skills. So this SRM helps soldier to organize their all type of stuffs related to their resource.
